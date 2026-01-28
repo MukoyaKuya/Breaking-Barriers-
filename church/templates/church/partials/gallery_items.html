@@ -1,7 +1,7 @@
+{% load thumbnail %}
 {% for image in gallery_images %}
 <div class="relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition duration-300 cursor-pointer"
-    @click="openModal()"
-    x-data="{ 
+    @click="openModal()" x-data="{ 
         openModal() { 
             {% if image.video_url %}
             $dispatch('open-lightbox', { 
@@ -18,9 +18,15 @@
             {% endif %}
         } 
     }">
-    {% if image.get_image_url %}
-    <img src="{{ image.get_image_url }}" alt="{{ image.caption }}"
+    {% if image.image %}
+    {% if image.image_cropping %}
+    {% thumbnail image.image "800x600" box=image.image_cropping crop=True detail=True as thumb %}
+    <img src="{{ thumb.url }}" alt="{{ image.caption }}"
         class="w-full h-64 object-cover hover:scale-110 transition duration-300">
+    {% else %}
+    <img src="{{ image.image.url }}" alt="{{ image.caption }}"
+        class="w-full h-64 object-cover hover:scale-110 transition duration-300">
+    {% endif %}
     {% else %}
     <div class="w-full h-64 bg-gray-200 flex items-center justify-center">
         <i class="fas fa-image text-gray-400 text-4xl"></i>

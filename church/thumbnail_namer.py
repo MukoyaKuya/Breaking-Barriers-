@@ -29,8 +29,8 @@ def custom_namer(thumbnailer, prepared_options, source_filename, thumbnail_exten
                 except ValueError:
                     pass
     
-    # Start with the source filename
-    path = source_filename
+    # Start with the source filename - normalize to forward slashes for GCS/Linux
+    path = source_filename.replace('\\', '/')
     
     # Build the options suffix
     opts = []
@@ -49,10 +49,10 @@ def custom_namer(thumbnailer, prepared_options, source_filename, thumbnail_exten
     if box:
         if isinstance(box, str):
             # If box is a string like "0,0,100,100", use it directly  
-            opts.append('box-%s' % box)
+            opts.append('box-%s' % box.replace(',', '_')) # Use underscore to avoid URL enc issues
         else:
             # If box is a tuple/list, format it
-            opts.append('box-%s' % ','.join(str(int(x)) for x in box))
+            opts.append('box-%s' % ','.join(str(int(x)) for x in box).replace(',', '_'))
     
     # Add other boolean options
     for key in ['crop', 'upscale', 'detail', 'sharpen', 'bw']:
@@ -62,6 +62,11 @@ def custom_namer(thumbnailer, prepared_options, source_filename, thumbnail_exten
     # Join all options
     opts_str = '_'.join(opts)
     
+    # Ensure extension starts with a dot and only one dot
+    ext = thumbnail_extension
+    if not ext.startswith('.'):
+        ext = '.' + ext
+    
     # Return the final filename
-    result = '%s.%s%s' % (path, opts_str, thumbnail_extension)
+    result = '%s.%s%s' % (path, opts_str, ext)
     return result

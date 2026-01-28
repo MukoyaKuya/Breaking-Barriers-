@@ -16,6 +16,7 @@ In normal document flow: when FAQs expand, this block is pushed down dynamically
                     referrerpolicy="strict-origin-when-cross-origin"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
+                {% elif promo.image %}
                 {% thumbnail promo.image "300x400" box=promo.image_cropping crop=True detail=True as cropped %}
                 <img src="{{ cropped.url }}" alt="{{ promo.caption|default:'Sidebar promo' }}"
                     class="w-full h-full object-cover object-center">

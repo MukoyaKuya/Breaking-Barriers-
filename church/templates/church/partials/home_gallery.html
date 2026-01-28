@@ -19,7 +19,8 @@
                     :class="active === {{ forloop.counter0 }} ? 'border-brand-color bg-gray-100 shadow-sm' : 'border-transparent hover:bg-gray-50'"
                     @click="active = {{ forloop.counter0 }}">
                     <div class="flex-shrink-0 w-16 h-10 overflow-hidden bg-black rounded">
-                        <img src="{{ item.image.url }}" alt="{{ item.caption }}"
+                        {% thumbnail item.image "100x100" crop="smart" as thumb %}
+                        <img src="{{ thumb.url }}" alt="{{ item.caption }}"
                             class="w-full h-full object-cover opacity-90">
                     </div>
                     <div class="flex-1 min-w-0 text-left">
@@ -51,8 +52,14 @@
                     </div>
                     {% else %}
                     <div class="aspect-video w-full">
+                        {% if item.image_cropping %}
+                        {% thumbnail item.image "800x600" box=item.image_cropping crop=True detail=True as cropped %}
+                        <img src="{{ cropped.url }}" alt="{{ item.caption }}"
+                            class="w-full h-full object-contain bg-gray-900">
+                        {% else %}
                         <img src="{{ item.image.url }}" alt="{{ item.caption }}"
                             class="w-full h-full object-contain bg-gray-900">
+                        {% endif %}
                     </div>
                     {% endif %}
                     {% if item.caption %}

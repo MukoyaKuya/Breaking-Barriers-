@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FELLOWSHIP - Breaking Barriers International</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/static/images/logo.png">
+    <link rel="shortcut icon" type="image/png" href="/static/images/logo.png">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- HTMX -->
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    
+    <!-- Alpine.js for interactivity -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts - Fjalla One and Kaushan Script -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Kaushan+Script&display=swap" rel="stylesheet">
+    
+    <!-- Custom styles for brand color -->
+    <style>
+        .brand-color {
+            background-color: rgb(153, 0, 48);
+        }
+        .brand-text {
+            color: rgb(153, 0, 48);
+        }
+        [x-cloak] {
+            display: none !important;
+        }
+        .fjalla-one-regular {
+            font-family: "Fjalla One", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+        .kaushan-script-regular {
+            font-family: "Kaushan Script", cursive;
+            font-weight: 400;
+            font-style: normal;
+        }
+    </style>
+    
+    
+</head>
+<body class="flex flex-col min-h-screen bg-gray-50">
+    <header class="brand-color text-white shadow-lg" x-data="{ mobileMenuOpen: false, searchOpen: false }">
+    <nav class="px-0 py-4">
+        <div class="flex items-center justify-between mx-4">
+            <!-- Left: Logo and Branding -->
+            <div class="flex items-center flex-shrink-0 mr-auto">
+                <a href="/" class="flex items-center space-x-3">
+                    
+                    <div class="p-2">
+                        <img src="/static/images/logo.png" alt="Breaking Barriers International Logo"
+                            class="h-12 md:h-16 w-auto">
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="fjalla-one-regular text-xl md:text-2xl text-white leading-tight underline">
+                            BREAKING BARRIERS INTERNATIONAL
+                        </span>
+                        <span class="kaushan-script-regular text-lg md:text-xl text-gray-300 leading-tight">
+                            Breaking Bondages, Empowering People
+                        </span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Middle: Vertical Navigation -->
+            <div class="hidden md:flex flex-col items-center space-y-2 flex-grow justify-center">
+                <a href="/about/" class="text-white hover:text-gray-200 transition text-lg font-medium">
+                    About Us
+                </a>
+                <a href="/word-of-truth/"
+                    class="text-white hover:text-gray-200 transition text-lg font-medium">
+                    Word of Truth
+                </a>
+            </div>
+
+            <!-- Right: Social Media Icons and Search -->
+            <div class="flex items-center space-x-4">
+                <!-- Social Media Icons -->
+                <div class="hidden md:flex items-center space-x-2">
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-gray-200 hover:scale-110 hover:shadow-md transition-all duration-300 relative"
+                        aria-label="Facebook">
+                        <div class="w-8 h-8 rounded-full brand-color flex items-center justify-center">
+                            <i class="fab fa-facebook-f text-white text-xs"></i>
+                        </div>
+                    </a>
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-gray-200 hover:scale-110 hover:shadow-md transition-all duration-300 relative"
+                        aria-label="WhatsApp">
+                        <div class="w-8 h-8 rounded-full brand-color flex items-center justify-center">
+                            <i class="fab fa-whatsapp text-white text-xs"></i>
+                        </div>
+                    </a>
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-gray-200 hover:scale-110 hover:shadow-md transition-all duration-300 relative"
+                        aria-label="YouTube">
+                        <div class="w-8 h-8 rounded-full brand-color flex items-center justify-center">
+                            <i class="fab fa-youtube text-white text-xs"></i>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Search Bar -->
+                <div class="relative hidden md:block">
+                    <form action="/search/" method="get" class="flex items-center">
+                        <div class="relative">
+                            <i
+                                class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+                            <input type="text" name="q" placeholder="Type to start searching..."
+                                class="pl-10 pr-4 py-2 rounded-lg bg-white text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white w-64 border-0 shadow-sm">
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-white focus:outline-none" @click="mobileMenuOpen = !mobileMenuOpen"
+                    :aria-expanded="mobileMenuOpen">
+                    <i class="fas fa-bars text-2xl" x-show="!mobileMenuOpen"></i>
+                    <i class="fas fa-times text-2xl" x-show="mobileMenuOpen" x-cloak></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-200"
+            x-transition:enter-start="opacity-0 transform scale-95"
+            x-transition:enter-end="opacity-100 transform scale-100"
+            x-transition:leave="transition ease-in duration-150"
+            x-transition:leave-start="opacity-100 transform scale-100"
+            x-transition:leave-end="opacity-0 transform scale-95" class="md:hidden mt-4 pb-4" x-cloak>
+            <div class="flex flex-col space-y-3">
+                <a href="/" class="hover:text-gray-200 transition py-2"
+                    @click="mobileMenuOpen = false">Home</a>
+                <a href="/about/" class="hover:text-gray-200 transition py-2"
+                    @click="mobileMenuOpen = false">About Us</a>
+                <a href="/word-of-truth/" class="hover:text-gray-200 transition py-2"
+                    @click="mobileMenuOpen = false">Word of Truth</a>
+                <a href="/childrens-bread-school/" class="hover:text-gray-200 transition py-2"
+                    @click="mobileMenuOpen = false">Children's Bread School</a>
+                <a href="/media/" class="hover:text-gray-200 transition py-2"
+                    @click="mobileMenuOpen = false">Media</a>
+                <a href="/contact-us/" class="hover:text-gray-200 transition py-2"
+                    @click="mobileMenuOpen = false">Contact Us</a>
+
+                <!-- Mobile Social Media Icons -->
+                <div class="flex items-center space-x-4 pt-4 border-t border-red-900 mt-4">
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-gray-200 hover:scale-110 hover:shadow-md transition-all duration-300 relative"
+                        aria-label="Facebook">
+                        <div class="w-8 h-8 rounded-full brand-color flex items-center justify-center">
+                            <i class="fab fa-facebook-f text-white text-xs"></i>
+                        </div>
+                    </a>
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-gray-200 hover:scale-110 hover:shadow-md transition-all duration-300 relative"
+                        aria-label="WhatsApp">
+                        <div class="w-8 h-8 rounded-full brand-color flex items-center justify-center">
+                            <i class="fab fa-whatsapp text-white text-xs"></i>
+                        </div>
+                    </a>
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-gray-200 hover:scale-110 hover:shadow-md transition-all duration-300 relative"
+                        aria-label="YouTube">
+                        <div class="w-8 h-8 rounded-full brand-color flex items-center justify-center">
+                            <i class="fab fa-youtube text-white text-xs"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+    
+    <main class="flex-grow">
+        
+        
+        
+<div class="bg-white py-8">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            <!-- Main Content column -->
+            <div class="lg:col-span-3 space-y-10">
+                <a href="/" class="text-brand-color hover:underline mb-4 inline-block">&larr; Back to
+                    Home</a>
+
+                <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+                    
+                    <div class="w-full aspect-[16/9] relative bg-gray-100">
+                        
+                        
+                        <img src="/media/info_cards/554046056_1264358689061610_2566163542975989460_n_qF56OZ2.jpg.1600x900_box-0_0_1104_621.jpg" alt="FELLOWSHIP" class="w-full h-full object-contain">
+                        
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                        <div class="absolute bottom-6 left-8 right-8">
+                            <span
+                                class="bg-brand-color text-white px-3 py-1 rounded-full text-sm font-semibold shadow-lg mb-3 inline-block">
+                                News
+                            </span>
+                            <h1 class="text-3xl md:text-5xl font-bold text-white shadow-sm">RESISTING END TIMES DECEPTION</h1>
+                        </div>
+                    </div>
+                    
+
+                    <div class="p-8 md:p-12">
+                        <div class="flex items-center justify-between mb-8 pb-6 border-b border-gray-100">
+                            <div class="flex items-center gap-4">
+                                <div
+                                    class="h-12 w-12 rounded-full brand-color flex items-center justify-center text-white">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs uppercase text-gray-500 font-bold tracking-wider">Posted by</p>
+                                    <p class="font-semibold text-gray-900">Pst. Nellie Shani</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-xs uppercase text-gray-500 font-bold tracking-wider">Published</p>
+                                <p class="font-semibold text-gray-900">January 27, 2026</p>
+                            </div>
+                        </div>
+
+                        <div class="prose prose-lg max-w-none text-gray-700">
+                            
+                            <p>The bible tells us that believers discern truth from deception in the context of end-time events. It emphasizes that false teachings and misleading prophecies can lead Christians astray, causing fear, confusion, or spiritual compromise. Key points include:</p>
+
+<ol>
+	<li>
+	<p><strong>Awareness of Deception:</strong> Many end-times teachings are distorted, mixing truth with falsehood to manipulate believers. Awareness and vigilance are crucial.</p>
+	</li>
+	<li>
+	<p><strong>Grounding in Scripture:</strong> The Bible is the ultimate authority. Knowledge of Scripture equips believers to identify errors and test prophecies or claims against God&rsquo;s Word.</p>
+	</li>
+	<li>
+	<p><strong>Spiritual Discernment:</strong> The Holy Spirit enables Christians to distinguish truth from lies. Prayer, obedience, and a relationship with God strengthen discernment.</p>
+	</li>
+	<li>
+	<p><strong>Avoiding Fear and Panic:</strong> End-time deception often preys on fear. Believers are encouraged to remain steadfast, trusting God&rsquo;s sovereignty rather than succumbing to sensationalism.</p>
+	</li>
+	<li>
+	<p><strong>Living Faithfully Now:</strong> Instead of being consumed by speculation, Christians are called to live holy, obedient, and mission-focused lives while waiting for Christ&rsquo;s return.</p>
+	</li>
+</ol>
+
+<p><strong>Core Message:</strong> Believers must anchor themselves in Scripture, cultivate spiritual discernment, and resist being led astray by fear, false teachers, or sensationalized interpretations of end-time events.</p>
+                            
+                        </div>
+
+                        <div class="mt-12 pt-8 border-t border-gray-100 flex justify-between items-center">
+                            <div class="flex gap-4">
+                                <button onclick="window.print()"
+                                    class="text-gray-500 hover:text-brand-color transition flex items-center gap-2">
+                                    <i class="fas fa-print"></i>
+                                    <span>Print Article</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right sidebar column -->
+            <aside class="lg:col-span-1 space-y-8 mt-12">
+                <div class="space-y-6">
+    <!-- Maroon CTA Card (Pushed from Hero Row) -->
+    <div
+        class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col hover:shadow-2xl transition-all duration-300 h-full">
+        <!-- Header Section -->
+        <div class="brand-color text-white px-6 py-10 rounded-t-xl flex flex-col justify-center min-h-[220px]">
+            <p class="text-sm md:text-base leading-relaxed mb-3 font-light text-center">
+                "Empowering you to live victoriously by identifying and breaking invisible barriers in your life"
+            </p>
+            <p class="text-sm font-bold tracking-wide text-center">
+                Galatians 3:13
+            </p>
+        </div>
+
+        <!-- Buttons Section -->
+        <div class="p-5 space-y-3 flex-grow flex flex-col justify-center">
+            <a href="#"
+                class="block w-full brand-color text-white py-3.5 px-4 rounded-lg text-center font-semibold hover:bg-red-900 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105">
+                Books
+            </a>
+            <a href="/childrens-bread-school/"
+                class="block w-full brand-color text-white py-3.5 px-4 rounded-lg text-center font-semibold hover:bg-red-900 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105">
+                School of Ministry
+            </a>
+            <a href="/donate/"
+                class="block w-full brand-color text-white py-3.5 px-4 rounded-lg text-center font-semibold hover:bg-red-900 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105">
+                Partner With Us
+            </a>
+        </div>
+    </div>
+
+    <!-- Men's Ministry CTAs (pushed further below hero/info-cards row) -->
+    <div class="space-y-4 mt-8 md:mt-12">
+        <div class="brand-color text-white rounded-lg p-4 shadow-md">
+            <h3 class="text-lg font-bold mb-2">Need Deliverance?</h3>
+            <p class="text-sm leading-relaxed">
+                God has answers for you through the work of Jesus on the cross.
+                Start to walk in freedom today and discover what He has already done for you.
+            </p>
+        </div>
+
+        <div class="brand-color text-white rounded-lg p-4 shadow-md">
+            <h3 class="text-lg font-bold mb-2">Need Prayer?</h3>
+            <p class="text-sm leading-relaxed">
+                We would be honoured to stand with you in prayer and believe God for the strength,
+                healing and breakthrough you need in every area of your life.
+            </p>
+        </div>
+
+        <div class="brand-color text-white rounded-lg p-4 shadow-md">
+            <h3 class="text-lg font-bold mb-2">Join BBI Family</h3>
+            <p class="text-sm leading-relaxed">
+                Become part of a family of faith and encouragement.
+                We welcome you into a circle of strength, love and support as we grow together in Christ.
+            </p>
+        </div>
+    </div>
+
+    <!-- FAQ / Questions card -->
+    <div class="bg-white rounded-lg shadow-md border border-gray-200" x-data="{ openIndex: null }">
+        <div class="border-b border-gray-200 px-4 py-3 brand-color text-white rounded-t-lg">
+            <h3 class="font-semibold text-sm">Common Questions</h3>
+        </div>
+        <ul class="divide-y divide-gray-200 text-sm">
+            
+            <li class="px-4 py-3">
+                <button 
+                    @click="openIndex = openIndex === 0 ? null : 0"
+                    class="w-full flex items-start gap-2 text-left hover:text-brand-color transition-colors"
+                >
+                    <span class="text-brand-color font-bold flex-shrink-0 mt-0.5 transition-transform" 
+                          x-text="openIndex === 0 ? '−' : '+'"
+                          :class="openIndex === 0 ? 'rotate-0' : ''"></span>
+                    <span class="flex-grow font-medium">Do I need deliverance even if I&#x27;m born again?</span>
+                </button>
+                <div 
+                    x-show="openIndex === 0"
+                    x-transition:enter="transition ease-out duration-200"
+                    x-transition:enter-start="opacity-0 max-h-0"
+                    x-transition:enter-end="opacity-100 max-h-96"
+                    x-transition:leave="transition ease-in duration-150"
+                    x-transition:leave-start="opacity-100 max-h-96"
+                    x-transition:leave-end="opacity-0 max-h-0"
+                    x-cloak
+                    class="mt-2 ml-6 text-gray-600 text-sm leading-relaxed overflow-hidden"
+                >
+                    <div class="pb-2"><p>Being born again secures your salvation—your sins are forgiven, and you belong to Christ. You don’t need deliverance to be saved.</p>
+
+<p>However, even as a believer, you can still struggle with patterns, strongholds, or spiritual oppression from the past. Deliverance isn’t about salvation; it’s about applying Jesus’ freedom to those areas. If you experience ongoing struggles, prayer, renunciation, and pastoral support can help you walk fully in the liberty Christ has already won for you.</p></div>
+                </div>
+            </li>
+            
+            <li class="px-4 py-3">
+                <button 
+                    @click="openIndex = openIndex === 1 ? null : 1"
+                    class="w-full flex items-start gap-2 text-left hover:text-brand-color transition-colors"
+                >
+                    <span class="text-brand-color font-bold flex-shrink-0 mt-0.5 transition-transform" 
+                          x-text="openIndex === 1 ? '−' : '+'"
+                          :class="openIndex === 1 ? 'rotate-0' : ''"></span>
+                    <span class="flex-grow font-medium">How are generational curses broken?</span>
+                </button>
+                <div 
+                    x-show="openIndex === 1"
+                    x-transition:enter="transition ease-out duration-200"
+                    x-transition:enter-start="opacity-0 max-h-0"
+                    x-transition:enter-end="opacity-100 max-h-96"
+                    x-transition:leave="transition ease-in duration-150"
+                    x-transition:leave-start="opacity-100 max-h-96"
+                    x-transition:leave-end="opacity-0 max-h-0"
+                    x-cloak
+                    class="mt-2 ml-6 text-gray-600 text-sm leading-relaxed overflow-hidden"
+                >
+                    <div class="pb-2"><p>Breaking a generational curse, in a religious sense, is seen as a spiritual journey of repentance, faith, and deliberate action. It begins with acknowledging sin—both one’s own and, in some beliefs, the lingering effects of ancestors’ wrongdoing—and turning away from it through heartfelt repentance and prayer. This recognition is often accompanied by a conscious renunciation of the curse, verbally declaring that one no longer accepts the negative patterns or misfortunes that may have been passed down through the family line.</p>
+
+<p>Faith plays a central role in this process. Believers rely on the power of God to intervene, heal, and restore, trusting that divine authority can break spiritual strongholds that have persisted for generations. Prayer, sometimes accompanied by fasting, Scripture reading, or intercession from spiritual leaders, is used to call on God’s guidance and protection.</p></div>
+                </div>
+            </li>
+            
+            <li class="px-4 py-3">
+                <button 
+                    @click="openIndex = openIndex === 2 ? null : 2"
+                    class="w-full flex items-start gap-2 text-left hover:text-brand-color transition-colors"
+                >
+                    <span class="text-brand-color font-bold flex-shrink-0 mt-0.5 transition-transform" 
+                          x-text="openIndex === 2 ? '−' : '+'"
+                          :class="openIndex === 2 ? 'rotate-0' : ''"></span>
+                    <span class="flex-grow font-medium">I am yet to understand why at the time we receive salvation the curse is not broken automatically?</span>
+                </button>
+                <div 
+                    x-show="openIndex === 2"
+                    x-transition:enter="transition ease-out duration-200"
+                    x-transition:enter-start="opacity-0 max-h-0"
+                    x-transition:enter-end="opacity-100 max-h-96"
+                    x-transition:leave="transition ease-in duration-150"
+                    x-transition:leave-start="opacity-100 max-h-96"
+                    x-transition:leave-end="opacity-0 max-h-0"
+                    x-cloak
+                    class="mt-2 ml-6 text-gray-600 text-sm leading-relaxed overflow-hidden"
+                >
+                    <div class="pb-2"><p>When we receive salvation, our spirit is redeemed immediately. Our sins are forgiven, we are justified, and the Holy Spirit comes to dwell in us (Ephesians 1:7; Romans 5:1; Ephesians 1:13–14). Salvation restores our relationship with God and secures eternal life.</p>
+
+<p>However, the curses or effects of sin in the world—sickness, generational patterns, fear, poverty, or emotional wounds—are not always broken automatically. The reason is that while our spirit is saved, our body, mind, and circumstances still exist in a fallen world under the consequences of sin (Romans 8:20–22).</p></div>
+                </div>
+            </li>
+            
+            <li class="px-4 py-3">
+                <button 
+                    @click="openIndex = openIndex === 3 ? null : 3"
+                    class="w-full flex items-start gap-2 text-left hover:text-brand-color transition-colors"
+                >
+                    <span class="text-brand-color font-bold flex-shrink-0 mt-0.5 transition-transform" 
+                          x-text="openIndex === 3 ? '−' : '+'"
+                          :class="openIndex === 3 ? 'rotate-0' : ''"></span>
+                    <span class="flex-grow font-medium">If we struggle with something but generally win, is that a spirit?</span>
+                </button>
+                <div 
+                    x-show="openIndex === 3"
+                    x-transition:enter="transition ease-out duration-200"
+                    x-transition:enter-start="opacity-0 max-h-0"
+                    x-transition:enter-end="opacity-100 max-h-96"
+                    x-transition:leave="transition ease-in duration-150"
+                    x-transition:leave-start="opacity-100 max-h-96"
+                    x-transition:leave-end="opacity-0 max-h-0"
+                    x-cloak
+                    class="mt-2 ml-6 text-gray-600 text-sm leading-relaxed overflow-hidden"
+                >
+                    <div class="pb-2"><p>If you struggle with something but generally overcome it, it is not necessarily a spirit. The Bible shows that even faithful believers wrestle with sin and weakness—Paul himself admitted in Romans 7:15–20 that he struggled to do what was right even as he desired to obey God. A true “spirit” or demonic stronghold is usually characterized by persistent, overpowering opposition that cannot be resisted through prayer, Scripture, and obedience.</p>
+
+<p>If you are able to resist, repent, and grow despite the struggle, it is more likely an area God is using to refine your character and strengthen your faith. Struggles can reveal patterns in our lives that need God’s grace, teaching us dependence on Him, humility, and perseverance. Victory is not about perfection; it is about continuing to walk in obedience, relying on God’s Word, and trusting His Spirit to lead you forward.</p></div>
+                </div>
+            </li>
+            
+            <li class="px-4 py-3">
+                <button 
+                    @click="openIndex = openIndex === 4 ? null : 4"
+                    class="w-full flex items-start gap-2 text-left hover:text-brand-color transition-colors"
+                >
+                    <span class="text-brand-color font-bold flex-shrink-0 mt-0.5 transition-transform" 
+                          x-text="openIndex === 4 ? '−' : '+'"
+                          :class="openIndex === 4 ? 'rotate-0' : ''"></span>
+                    <span class="flex-grow font-medium">Is there a spirit that can enter the spirit man?</span>
+                </button>
+                <div 
+                    x-show="openIndex === 4"
+                    x-transition:enter="transition ease-out duration-200"
+                    x-transition:enter-start="opacity-0 max-h-0"
+                    x-transition:enter-end="opacity-100 max-h-96"
+                    x-transition:leave="transition ease-in duration-150"
+                    x-transition:leave-start="opacity-100 max-h-96"
+                    x-transition:leave-end="opacity-0 max-h-0"
+                    x-cloak
+                    class="mt-2 ml-6 text-gray-600 text-sm leading-relaxed overflow-hidden"
+                >
+                    <div class="pb-2"><p>Yes, according to Scripture, the human spirit can be influenced, but it’s important to be precise about what that means. The Bible teaches that we are spirit, soul, and body (1 Thessalonians 5:23). The “spirit man” is the part of us that connects with God, discerns spiritual truths, and communes with Him (John 4:24; Romans 8:16).</p>
+
+<p>A demonic spirit cannot possess the spirit of a born-again believer because the Holy Spirit indwells them (1 Corinthians 6:19; 1 John 4:4). The Spirit of God protects and fills the spirit man, so it cannot be taken over. However, the spirit man can be influenced or oppressed by external spiritual forces if there is neglect, unrepented sin, or agreement with lies, which can affect our thoughts, emotions, and will.</p>
+
+<p>Satan and his spirits can tempt, deceive, and oppress, but they cannot inhabit the spirit of someone truly born again. That’s why Scripture emphasizes guarding your heart and mind, staying in God’s Word, and walking in obedience—this keeps your spirit man aligned with God and resistant to attack (Ephesians 6:10–18; James 4:7).</p></div>
+                </div>
+            </li>
+            
+            <li class="px-4 py-3">
+                <button 
+                    @click="openIndex = openIndex === 5 ? null : 5"
+                    class="w-full flex items-start gap-2 text-left hover:text-brand-color transition-colors"
+                >
+                    <span class="text-brand-color font-bold flex-shrink-0 mt-0.5 transition-transform" 
+                          x-text="openIndex === 5 ? '−' : '+'"
+                          :class="openIndex === 5 ? 'rotate-0' : ''"></span>
+                    <span class="flex-grow font-medium">What is a generational curse?</span>
+                </button>
+                <div 
+                    x-show="openIndex === 5"
+                    x-transition:enter="transition ease-out duration-200"
+                    x-transition:enter-start="opacity-0 max-h-0"
+                    x-transition:enter-end="opacity-100 max-h-96"
+                    x-transition:leave="transition ease-in duration-150"
+                    x-transition:leave-start="opacity-100 max-h-96"
+                    x-transition:leave-end="opacity-0 max-h-0"
+                    x-cloak
+                    class="mt-2 ml-6 text-gray-600 text-sm leading-relaxed overflow-hidden"
+                >
+                    <div class="pb-2"><p>consequences of sin, wrongdoing, or negative behavior can extend beyond an individual and affect their descendants. In this context, a generational curse is not merely about inherited traits or family patterns in a psychological sense, but rather a spiritual or moral consequence passed down through family lines.</p>
+
+<p>For example, the Bible mentions in several passages, such as Exodus 20:5 and Numbers 14:18, that the sins of the parents can affect their children “to the third and fourth generation.” This is often interpreted to mean that unrepented sin or disobedience to God can create spiritual or circumstantial burdens like poverty, addiction, illness, or relational strife that may continue to manifest in subsequent generations.</p>
+
+<p>Religious teachings often emphasize that generational curses are not inevitable. Through repentance, prayer, faith, and obedience to God, it is believed that individuals can break these curses and restore spiritual blessings to themselves and their descendants. In Christian practice, this might involve confession, seeking deliverance through prayer, or living a life aligned with God’s commandments to end the cycle of negative spiritual influence.</p></div>
+                </div>
+            </li>
+            
+            <li class="px-4 py-3">
+                <button 
+                    @click="openIndex = openIndex === 6 ? null : 6"
+                    class="w-full flex items-start gap-2 text-left hover:text-brand-color transition-colors"
+                >
+                    <span class="text-brand-color font-bold flex-shrink-0 mt-0.5 transition-transform" 
+                          x-text="openIndex === 6 ? '−' : '+'"
+                          :class="openIndex === 6 ? 'rotate-0' : ''"></span>
+                    <span class="flex-grow font-medium">When I become angry and I am able to ensure that I don’t sin, is this still a spirit of anger?</span>
+                </button>
+                <div 
+                    x-show="openIndex === 6"
+                    x-transition:enter="transition ease-out duration-200"
+                    x-transition:enter-start="opacity-0 max-h-0"
+                    x-transition:enter-end="opacity-100 max-h-96"
+                    x-transition:leave="transition ease-in duration-150"
+                    x-transition:leave-start="opacity-100 max-h-96"
+                    x-transition:leave-end="opacity-0 max-h-0"
+                    x-cloak
+                    class="mt-2 ml-6 text-gray-600 text-sm leading-relaxed overflow-hidden"
+                >
+                    <div class="pb-2"><p>Feeling anger is not automatically a “spirit.” Anger is a natural emotion that God Himself expresses in certain circumstances (Exodus 32:10; Psalm 7:11). What matters is how you handle it. If you feel angry but do not act in sin, controlling your words, thoughts, and actions, this is not a demonic spirit—it is a natural human response being managed in obedience to God.</p>
+
+<p>A spirit of anger in Scripture refers to a persistent, controlling, or destructive force that dominates a person’s behavior (Ephesians 4:26–27 warns against letting anger give the devil a foothold). If your anger arises but you remain calm, forgive, and do not allow it to control you, it is simply an emotion, not a spirit.</p></div>
+                </div>
+            </li>
+            
+            <li class="px-4 py-3">
+                <button 
+                    @click="openIndex = openIndex === 7 ? null : 7"
+                    class="w-full flex items-start gap-2 text-left hover:text-brand-color transition-colors"
+                >
+                    <span class="text-brand-color font-bold flex-shrink-0 mt-0.5 transition-transform" 
+                          x-text="openIndex === 7 ? '−' : '+'"
+                          :class="openIndex === 7 ? 'rotate-0' : ''"></span>
+                    <span class="flex-grow font-medium">When do I run and when do I resist in the face of temptation?</span>
+                </button>
+                <div 
+                    x-show="openIndex === 7"
+                    x-transition:enter="transition ease-out duration-200"
+                    x-transition:enter-start="opacity-0 max-h-0"
+                    x-transition:enter-end="opacity-100 max-h-96"
+                    x-transition:leave="transition ease-in duration-150"
+                    x-transition:leave-start="opacity-100 max-h-96"
+                    x-transition:leave-end="opacity-0 max-h-0"
+                    x-cloak
+                    class="mt-2 ml-6 text-gray-600 text-sm leading-relaxed overflow-hidden"
+                >
+                    <div class="pb-2"><p>When faced with temptation, there are times to run and times to resist, and Scripture gives clear guidance.</p>
+
+<p>You run from sin when it is dangerous, seductive, or beyond your natural ability to resist. Paul says in 1 Corinthians 6:18, “Flee fornication.” You remove yourself from the source of temptation—whether it’s a place, a person, or an opportunity—because staying there puts your soul at risk. Running is not cowardice; it is obedience and wisdom.</p>
+
+<p>You resist when you are confronted with pressure or attack that you can face through God’s power. James 4:7 says, “Resist the devil, and he will flee from you.” Resisting means standing firm in faith, speaking Scripture, and relying on the Holy Spirit. This is active confrontation, not passive endurance.</p></div>
+                </div>
+            </li>
+            
+        </ul>
+        <div class="px-4 py-3 border-t border-gray-200">
+            <a href="/news/"
+                class="block w-full brand-color text-white py-2 rounded-md text-sm font-semibold hover:bg-red-900 transition text-center">
+                Calendar
+            </a>
+        </div>
+    </div>
+
+    <!-- Verse of the Day -->
+    <div class="bg-white rounded-lg shadow-md border border-gray-200">
+        <div class="border-b border-gray-200 px-4 py-3">
+            <h3 class="font-semibold text-center text-brand-color">Verse of the Day</h3>
+        </div>
+        <div class="px-4 py-4 text-sm text-gray-700">
+            
+            <p class="italic mb-2">
+                "“So be strong and courageous! Do not be afraid and do not panic before them. For the Lord your God will personally go ahead of you. He will neither fail you nor abandon you.”"
+            </p>
+            <p class="font-semibold text-brand-color text-right">
+                — Deuteronomy 31:6
+            </p>
+            
+        </div>
+    </div>
+
+    <!-- Sidebar image/video holders (pushed down dynamically when FAQs expand) -->
+    
+
+<div class="space-y-4">
+    
+    <div class="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden">
+        
+            <div class="aspect-[3/4] w-full bg-gray-100 overflow-hidden">
+                
+                
+                <img src="/media/sidebar_promos/W641643.jpg.300x400_box-0_0_257_342.jpg" alt="The Christ Commission"
+                    class="w-full h-full object-cover object-center">
+                
+            </div>
+            
+            <div class="px-3 py-2 border-t border-gray-100">
+                <p class="text-sm text-gray-700 font-medium">The Christ Commission</p>
+            </div>
+            
+            
+    </div>
+    
+    <div class="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden">
+        
+            <div class="aspect-[3/4] w-full bg-gray-100 overflow-hidden">
+                
+                
+                <img src="/media/sidebar_promos/ABS.jpg.300x400_box-0_0_185_246.jpg" alt="ABS"
+                    class="w-full h-full object-cover object-center">
+                
+            </div>
+            
+            <div class="px-3 py-2 border-t border-gray-100">
+                <p class="text-sm text-gray-700 font-medium">ABS</p>
+            </div>
+            
+            
+    </div>
+    
+</div>
+</div>
+            </aside>
+        </div>
+    </div>
+</div>
+
+    </main>
+    
+    
+<footer class="brand-color text-white mt-auto">
+    <div class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 items-start">
+            <!-- Logo + Ministry name + Social icons -->
+            <div class="flex flex-col items-start space-y-3">
+                <div class="flex items-center space-x-3">
+                    <img src="/static/images/logo.png" alt="Breaking Barriers International Logo"
+                        class="h-12 w-auto">
+                    <div class="flex flex-col leading-tight">
+                        <span class="font-bold text-lg">Breaking Barriers</span>
+                        <span class="font-bold text-lg">International</span>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-3 pt-1">
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-gray-200 hover:scale-110 hover:shadow-md transition-all duration-300 relative"
+                        aria-label="Facebook">
+                        <div class="w-8 h-8 rounded-full brand-color flex items-center justify-center">
+                            <i class="fab fa-facebook-f text-white text-xs"></i>
+                        </div>
+                    </a>
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-gray-200 hover:scale-110 hover:shadow-md transition-all duration-300 relative"
+                        aria-label="WhatsApp">
+                        <div class="w-8 h-8 rounded-full brand-color flex items-center justify-center">
+                            <i class="fab fa-whatsapp text-white text-xs"></i>
+                        </div>
+                    </a>
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-gray-200 hover:scale-110 hover:shadow-md transition-all duration-300 relative"
+                        aria-label="YouTube">
+                        <div class="w-8 h-8 rounded-full brand-color flex items-center justify-center">
+                            <i class="fab fa-youtube text-white text-xs"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mission text + verse (center-left) -->
+            <div class="text-sm md:text-base leading-relaxed">
+                <p>
+                    
+                        Empowering you to live victoriously by identifying and breaking invisible barriers in your life
+                    
+                </p>
+                <p class="mt-2 font-bold">
+                    
+                        -Galatians 3:13
+                    
+                </p>
+            </div>
+
+            <!-- Navigation links (center-right) -->
+            <div class="space-y-1 text-sm md:text-base">
+                <a href="/about/" class="block hover:text-gray-200 transition">About Us</a>
+                <a href="/contact-us/" class="block hover:text-gray-200 transition">Contact Us</a>
+                <a href="/news/" class="block hover:text-gray-200 transition">Calendar</a>
+                <a href="/media/" class="block hover:text-gray-200 transition">Books</a>
+                <a href="/childrens-bread-school/" class="block hover:text-gray-200 transition">School</a>
+                <a href="/childrens-bread-school/" class="block hover:text-gray-200 transition">Children's Bread</a>
+            </div>
+
+            <!-- Newsletter (far right) -->
+            <div class="space-y-3 md:text-right">
+                <h3 class="text-2xl font-bold">News Letter</h3>
+                <form action="/newsletter/subscribe/" method="post" class="space-y-3">
+                    <input type="hidden" name="csrfmiddlewaretoken" value="hnYAmi6b1A5NJtdwzh0Fhg15UJ6iUefRMG3SVieeGJYkN2VlMX7WZGhPJAsIC7gn">
+                    <input type="email" name="email" placeholder="Email"
+                        class="w-full md:w-56 px-3 py-2 rounded-sm bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white border border-gray-300" required>
+                    <button type="submit"
+                        class="w-full md:w-56 py-2 rounded-sm bg-red-700 border border-white text-white font-semibold hover:bg-red-800 transition">
+                        Send
+                    </button>
+                </form>
+                <div class="pt-2 text-sm">
+                    <a href="/privacy/" class="hover:text-gray-200 transition">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="mt-8 pt-4 text-center text-gray-200 text-sm">
+            <p>Copyright&copy; 2026 Breaking Barriers International</p>
+        </div>
+    </div>
+</footer>
+    
+    
+</body>
+</html>

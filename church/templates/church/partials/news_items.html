@@ -2,8 +2,12 @@
 {% for news_item in news_items %}
 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
     {% if news_item.image %}
-    {% thumbnail news_item.image "800x600" crop detail as cropped %}
+    {% if news_item.image_cropping %}
+    {% thumbnail news_item.image "800x600" box=news_item.image_cropping crop=True detail=True as cropped %}
     <img src="{{ cropped.url }}" alt="{{ news_item.title }}" class="w-full h-48 object-cover">
+    {% else %}
+    <img src="{{ news_item.image.url }}" alt="{{ news_item.title }}" class="w-full h-48 object-cover">
+    {% endif %}
     {% endif %}
     <div class="p-6">
         <h2 class="text-xl font-bold mb-2">

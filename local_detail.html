@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FELLOWSHIP - Breaking Barriers International</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/static/images/logo.png">
+    <link rel="shortcut icon" type="image/png" href="/static/images/logo.png">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- HTMX -->
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    
+    <!-- Alpine.js for interactivity -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts - Fjalla One and Kaushan Script -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Kaushan+Script&display=swap" rel="stylesheet">
+    
+    <!-- Custom styles for brand color -->
+    <style>
+        .brand-color {
+            background-color: rgb(153, 0, 48);
+        }
+        .brand-text {
+            color: rgb(153, 0, 48);
+        }
+        [x-cloak] {
+            display: none !important;
+        }
+        .fjalla-one-regular {
+            font-family: "Fjalla One", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+        .kaushan-script-regular {
+            font-family: "Kaushan Script", cursive;
+            font-weight: 400;
+            font-style: normal;
+        }
+    </style>
+    
+    
+</head>
+<body class="flex flex-col min-h-screen bg-gray-50">
+    <header class="brand-color text-white shadow-lg" x-data="{ mobileMenuOpen: false, searchOpen: false }">
+    <nav class="px-0 py-4">
+        <div class="flex items-center justify-between mx-4">
+            <!-- Left: Logo and Branding -->
+            <div class="flex items-center flex-shrink-0 mr-auto">
+                <a href="/" class="flex items-center space-x-3">
+                    
+                    <div class="p-2">
+                        <img src="/static/images/logo.png" alt="Breaking Barriers International Logo"
+                            class="h-12 md:h-16 w-auto">
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="fjalla-one-regular text-xl md:text-2xl text-white leading-tight underline">
+                            BREAKING BARRIERS INTERNATIONAL
+                        </span>
+                        <span class="kaushan-script-regular text-lg md:text-xl text-gray-300 leading-tight">
+                            Breaking Bondages, Empowering People
+                        </span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Middle: Vertical Navigation -->
+            <div class="hidden md:flex flex-col items-center space-y-2 flex-grow justify-center">
+                <a href="/about/" class="text-white hover:text-gray-200 transition text-lg font-medium">
+                    About Us
+                </a>
+                <a href="/word-of-truth/"
+                    class="text-white hover:text-gray-200 transition text-lg font-medium">
+                    Word of Truth
+                </a>
+            </div>
+
+            <!-- Right: Social Media Icons and Search -->
+            <div class="flex items-center space-x-4">
+                <!-- Social Media Icons -->
+                <div class="hidden md:flex items-center space-x-2">
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-gray-200 hover:scale-110 hover:shadow-md transition-all duration-300 relative"
+                        aria-label="Facebook">
+                        <div class="w-8 h-8 rounded-full brand-color flex items-center justify-center">
+                            <i class="fab fa-facebook-f text-white text-xs"></i>
+                        </div>
+                    </a>
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-gray-200 hover:scale-110 hover:shadow-md transition-all duration-300 relative"
+                        aria-label="WhatsApp">
+                        <div class="w-8 h-8 rounded-full brand-color flex items-center justify-center">
+                            <i class="fab fa-whatsapp text-white text-xs"></i>
+                        </div>
+                    </a>
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-gray-200 hover:scale-110 hover:shadow-md transition-all duration-300 relative"
+                        aria-label="YouTube">
+                        <div class="w-8 h-8 rounded-full brand-color flex items-center justify-center">
+                            <i class="fab fa-youtube text-white text-xs"></i>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Search Bar -->
+                <div class="relative hidden md:block">
+                    <form action="/search/" method="get" class="flex items-center">
+                        <div class="relative">
+                            <i
+                                class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+                            <input type="text" name="q" placeholder="Type to start searching..."
+                                class="pl-10 pr-4 py-2 rounded-lg bg-white text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white w-64 border-0 shadow-sm">
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-white focus:outline-none" @click="mobileMenuOpen = !mobileMenuOpen"
+                    :aria-expanded="mobileMenuOpen">
+                    <i class="fas fa-bars text-2xl" x-show="!mobileMenuOpen"></i>
+                    <i class="fas fa-times text-2xl" x-show="mobileMenuOpen" x-cloak></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-200"
+            x-transition:enter-start="opacity-0 transform scale-95"
+            x-transition:enter-end="opacity-100 transform scale-100"
+            x-transition:leave="transition ease-in duration-150"
+            x-transition:leave-start="opacity-100 transform scale-100"
+            x-transition:leave-end="opacity-0 transform scale-95" class="md:hidden mt-4 pb-4" x-cloak>
+            <div class="flex flex-col space-y-3">
+                <a href="/" class="hover:text-gray-200 transition py-2"
+                    @click="mobileMenuOpen = false">Home</a>
+                <a href="/about/" class="hover:text-gray-200 transition py-2"
+                    @click="mobileMenuOpen = false">About Us</a>
+                <a href="/word-of-truth/" class="hover:text-gray-200 transition py-2"
+                    @click="mobileMenuOpen = false">Word of Truth</a>
+                <a href="/childrens-bread-school/" class="hover:text-gray-200 transition py-2"
+                    @click="mobileMenuOpen = false">Children's Bread School</a>
+                <a href="/media/" class="hover:text-gray-200 transition py-2"
+                    @click="mobileMenuOpen = false">Media</a>
+                <a href="/contact-us/" class="hover:text-gray-200 transition py-2"
+                    @click="mobileMenuOpen = false">Contact Us</a>
+
+                <!-- Mobile Social Media Icons -->
+                <div class="flex items-center space-x-4 pt-4 border-t border-red-900 mt-4">
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-gray-200 hover:scale-110 hover:shadow-md transition-all duration-300 relative"
+                        aria-label="Facebook">
+                        <div class="w-8 h-8 rounded-full brand-color flex items-center justify-center">
+                            <i class="fab fa-facebook-f text-white text-xs"></i>
+                        </div>
+                    </a>
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-gray-200 hover:scale-110 hover:shadow-md transition-all duration-300 relative"
+                        aria-label="WhatsApp">
+                        <div class="w-8 h-8 rounded-full brand-color flex items-center justify-center">
+                            <i class="fab fa-whatsapp text-white text-xs"></i>
+                        </div>
+                    </a>
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-gray-200 hover:scale-110 hover:shadow-md transition-all duration-300 relative"
+                        aria-label="YouTube">
+                        <div class="w-8 h-8 rounded-full brand-color flex items-center justify-center">
+                            <i class="fab fa-youtube text-white text-xs"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+    
+    <main class="flex-grow">
+        
+        
+        
+<div class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <a href="/" class="text-brand-color hover:underline mb-8 inline-block">&larr; Back to Home</a>
+
+        <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+            
+            <div class="w-full aspect-[16/9] relative bg-gray-100">
+                
+                
+                <img src="/media/info_cards/554046056_1264358689061610_2566163542975989460_n_qF56OZ2.jpg.1600x900jpg" alt="FELLOWSHIP" class="w-full h-full object-contain">
+                
+                <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                <div class="absolute bottom-6 left-8 right-8">
+                    <span
+                        class="bg-brand-color text-white px-3 py-1 rounded-full text-sm font-semibold shadow-lg mb-3 inline-block">
+                        News
+                    </span>
+                    <h1 class="text-3xl md:text-5xl font-bold text-white shadow-sm">RESISTING END TIMES DECEPTION</h1>
+                </div>
+            </div>
+            
+
+            <div class="p-8 md:p-12">
+                <div class="flex items-center justify-between mb-8 pb-6 border-b border-gray-100">
+                    <div class="flex items-center gap-4">
+                        <div class="h-12 w-12 rounded-full brand-color flex items-center justify-center text-white">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs uppercase text-gray-500 font-bold tracking-wider">Posted by</p>
+                            <p class="font-semibold text-gray-900">Pst. Nellie Shani</p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-xs uppercase text-gray-500 font-bold tracking-wider">Published</p>
+                        <p class="font-semibold text-gray-900">January 27, 2026</p>
+                    </div>
+                </div>
+
+                <div class="prose prose-lg max-w-none text-gray-700">
+                    
+                    <p>The bible tells us that believers discern truth from deception in the context of end-time events. It emphasizes that false teachings and misleading prophecies can lead Christians astray, causing fear, confusion, or spiritual compromise. Key points include:</p>
+
+<ol>
+	<li>
+	<p><strong>Awareness of Deception:</strong> Many end-times teachings are distorted, mixing truth with falsehood to manipulate believers. Awareness and vigilance are crucial.</p>
+	</li>
+	<li>
+	<p><strong>Grounding in Scripture:</strong> The Bible is the ultimate authority. Knowledge of Scripture equips believers to identify errors and test prophecies or claims against God&rsquo;s Word.</p>
+	</li>
+	<li>
+	<p><strong>Spiritual Discernment:</strong> The Holy Spirit enables Christians to distinguish truth from lies. Prayer, obedience, and a relationship with God strengthen discernment.</p>
+	</li>
+	<li>
+	<p><strong>Avoiding Fear and Panic:</strong> End-time deception often preys on fear. Believers are encouraged to remain steadfast, trusting God&rsquo;s sovereignty rather than succumbing to sensationalism.</p>
+	</li>
+	<li>
+	<p><strong>Living Faithfully Now:</strong> Instead of being consumed by speculation, Christians are called to live holy, obedient, and mission-focused lives while waiting for Christ&rsquo;s return.</p>
+	</li>
+</ol>
+
+<p><strong>Core Message:</strong> Believers must anchor themselves in Scripture, cultivate spiritual discernment, and resist being led astray by fear, false teachers, or sensationalized interpretations of end-time events.</p>
+                    
+                </div>
+
+                <div class="mt-12 pt-8 border-t border-gray-100 flex justify-between items-center">
+                    <div class="flex gap-4">
+                        <button onclick="window.print()"
+                            class="text-gray-500 hover:text-brand-color transition flex items-center gap-2">
+                            <i class="fas fa-print"></i>
+                            <span>Print Article</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </main>
+    
+    
+<footer class="brand-color text-white mt-auto">
+    <div class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 items-start">
+            <!-- Logo + Ministry name + Social icons -->
+            <div class="flex flex-col items-start space-y-3">
+                <div class="flex items-center space-x-3">
+                    <img src="/static/images/logo.png" alt="Breaking Barriers International Logo"
+                        class="h-12 w-auto">
+                    <div class="flex flex-col leading-tight">
+                        <span class="font-bold text-lg">Breaking Barriers</span>
+                        <span class="font-bold text-lg">International</span>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-3 pt-1">
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-gray-200 hover:scale-110 hover:shadow-md transition-all duration-300 relative"
+                        aria-label="Facebook">
+                        <div class="w-8 h-8 rounded-full brand-color flex items-center justify-center">
+                            <i class="fab fa-facebook-f text-white text-xs"></i>
+                        </div>
+                    </a>
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-gray-200 hover:scale-110 hover:shadow-md transition-all duration-300 relative"
+                        aria-label="WhatsApp">
+                        <div class="w-8 h-8 rounded-full brand-color flex items-center justify-center">
+                            <i class="fab fa-whatsapp text-white text-xs"></i>
+                        </div>
+                    </a>
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-gray-200 hover:scale-110 hover:shadow-md transition-all duration-300 relative"
+                        aria-label="YouTube">
+                        <div class="w-8 h-8 rounded-full brand-color flex items-center justify-center">
+                            <i class="fab fa-youtube text-white text-xs"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mission text + verse (center-left) -->
+            <div class="text-sm md:text-base leading-relaxed">
+                <p>
+                    
+                        Empowering you to live victoriously by identifying and breaking invisible barriers in your life
+                    
+                </p>
+                <p class="mt-2 font-bold">
+                    
+                        -Galatians 3:13
+                    
+                </p>
+            </div>
+
+            <!-- Navigation links (center-right) -->
+            <div class="space-y-1 text-sm md:text-base">
+                <a href="/about/" class="block hover:text-gray-200 transition">About Us</a>
+                <a href="/contact-us/" class="block hover:text-gray-200 transition">Contact Us</a>
+                <a href="/news/" class="block hover:text-gray-200 transition">Calendar</a>
+                <a href="/media/" class="block hover:text-gray-200 transition">Books</a>
+                <a href="/childrens-bread-school/" class="block hover:text-gray-200 transition">School</a>
+                <a href="/childrens-bread-school/" class="block hover:text-gray-200 transition">Children's Bread</a>
+            </div>
+
+            <!-- Newsletter (far right) -->
+            <div class="space-y-3 md:text-right">
+                <h3 class="text-2xl font-bold">News Letter</h3>
+                <form action="/newsletter/subscribe/" method="post" class="space-y-3">
+                    <input type="hidden" name="csrfmiddlewaretoken" value="t8tCIUNkAMkZnAc5hD8aWJWmU6xBHNsK914SxnmDvYMBclXCqbb8v1N7mGlJp8Tz">
+                    <input type="email" name="email" placeholder="Email"
+                        class="w-full md:w-56 px-3 py-2 rounded-sm bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white border border-gray-300" required>
+                    <button type="submit"
+                        class="w-full md:w-56 py-2 rounded-sm bg-red-700 border border-white text-white font-semibold hover:bg-red-800 transition">
+                        Send
+                    </button>
+                </form>
+                <div class="pt-2 text-sm">
+                    <a href="/privacy/" class="hover:text-gray-200 transition">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="mt-8 pt-4 text-center text-gray-200 text-sm">
+            <p>Copyright&copy; 2026 Breaking Barriers International</p>
+        </div>
+    </div>
+</footer>
+    
+    
+</body>
+</html>

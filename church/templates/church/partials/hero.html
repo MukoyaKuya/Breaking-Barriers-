@@ -1,6 +1,6 @@
 {% load thumbnail %}
 {% if hero_settings.image %}
-{% thumbnail hero_settings.image "1920x1080" crop detail as hero_cropped %}
+{% thumbnail hero_settings.image "1920x1080" crop=True detail=True as hero_cropped %}
 <section class="relative h-[500px] md:h-[600px] bg-cover bg-center bg-gray-900"
     style="background-image: url('{{ hero_cropped.url }}');">
     {% else %}

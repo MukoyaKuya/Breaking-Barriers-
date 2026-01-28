@@ -1,0 +1,66 @@
+worker_processes 1;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    include       /etc/nginx/mime.types;
+    default_type  application/octet-stream;
+    sendfile        on;
+    keepalive_timeout  65;
+
+    upstream app_server {
+        server 127.0.0.1:8000;
+    }
+
+    server {
+        listen       $PORT;
+        server_name  localhost;
+
+        # Static files
+        location /static/ {
+            alias /app/staticfiles/;
+            expires 30d;
+            add_header Cache-Control "public, no-transform";
+        }
+
+        # Media files
+        location /media/ {
+            alias /app/media/;
+            expires 30d;
+            add_header Cache-Control "public, no-transform";
+            
+            # If not found locally, proxy to GCS if configured
+            # Note: This is a basic proxy. For complex GCS setups, 
+            # direct GCS URLs are usually preferred.
+            error_page 404 = @gcs_proxy;
+        }
+
+        location @gcs_proxy {
+            set $bucket "$GS_BUCKET_NAME";
+            if ($bucket = "") { return 404; }
+            resolver 8.8.8.8;
+            proxy_pass https://storage.googleapis.com/$bucket$uri;
+            proxy_set_header Host storage.googleapis.com;
+            proxy_hide_header x-goog-hash;
+            proxy_hide_header x-goog-id-2;
+            proxy_hide_header x-goog-metageneration;
+            proxy_hide_header x-goog-storage-class;
+            proxy_hide_header x-goog-stored-content-encoding;
+            proxy_hide_header x-goog-stored-content-length;
+            proxy_hide_header x-goog-generation;
+            proxy_intercept_errors on;
+        }
+
+        # Proxy all other requests to Gunicorn
+        location / {
+            proxy_pass          http://app_server;
+            proxy_set_header    Host $host;
+            proxy_set_header    X-Real-IP $remote_addr;
+            proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header    X-Forwarded-Proto $scheme;
+            proxy_redirect      off;
+        }
+    }
+}

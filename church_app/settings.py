@@ -146,13 +146,13 @@ STATICFILES_DIRS = [
 if os.environ.get('GS_BUCKET_NAME'):
     DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
     GS_BUCKET_NAME = os.environ.get('GS_BUCKET_NAME')
-    GS_DEFAULT_ACL = 'publicRead'
+    GS_DEFAULT_ACL = os.environ.get('GS_DEFAULT_ACL', None)
     GS_QUERYSTRING_AUTH = False
     GS_FILE_OVERWRITE = False
-    MEDIA_URL = f'https://storage.googleapis.com/{GS_BUCKET_NAME}/'
-else:
-    MEDIA_URL = '/media/'
+    GS_LOCATION = os.environ.get('GS_LOCATION', '')
 
+# Always use relative MEDIA_URL so Nginx can catch and serve/proxy media
+MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 # Serve static files efficiently in production (Cloud Run, etc.)

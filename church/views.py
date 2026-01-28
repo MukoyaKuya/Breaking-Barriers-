@@ -149,7 +149,21 @@ def news_list_view(request):
 def info_card_detail_view(request, slug):
     """Detail view for Hero Info Cards (Children's Bread, News, Word of Truth)"""
     card = get_object_or_404(InfoCard, slug=slug, is_active=True)
-    return render(request, 'church/info_card_detail.html', {'card': card})
+    
+    # Get sidebar context (same as homepage)
+    faqs = FAQ.objects.filter(is_active=True)
+    sidebar_promos = SidebarPromo.objects.filter(is_active=True)[:3]
+    cta_card = CTACard.load()
+    verse_of_the_day = Verse.objects.filter(is_active=True, is_featured=True).first()
+
+    context = {
+        'card': card,
+        'faqs': faqs,
+        'sidebar_promos': sidebar_promos,
+        'cta_card': cta_card,
+        'verse_of_the_day': verse_of_the_day,
+    }
+    return render(request, 'church/info_card_detail.html', context)
 
 
 def news_detail_view(request, slug):
