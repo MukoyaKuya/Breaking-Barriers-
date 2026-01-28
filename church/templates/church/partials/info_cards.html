@@ -12,16 +12,10 @@
                 {% if childrens_bread_card %}
                 <a href="{% if childrens_bread_card.link_url %}{{ childrens_bread_card.link_url }}{% else %}{% url 'info_card_detail' childrens_bread_card.slug %}{% endif %}"
                     class="flex flex-col flex-grow">
-                    <div class="relative w-full aspect-[16/9] overflow-hidden group bg-gray-100">
+                    <div class="relative w-full h-56 md:h-60 overflow-hidden group bg-gray-100">
                         {% if childrens_bread_card.image %}
-                        {% if childrens_bread_card.image_cropping %}
-                        {% thumbnail childrens_bread_card.image "1600x900" box=childrens_bread_card.image_cropping crop detail as cropped %}
-                        <img src="{{ cropped.url }}" alt="{{ childrens_bread_card.headline }}"
-                            class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110">
-                        {% else %}
                         <img src="{{ childrens_bread_card.image.url }}" alt="{{ childrens_bread_card.headline }}"
                             class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
-                        {% endif %}
                         <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                         {% else %}
                         <div
@@ -67,16 +61,10 @@
                 {% if news_card %}
                 <a href="{% if news_card.link_url %}{{ news_card.link_url }}{% else %}{% url 'info_card_detail' news_card.slug %}{% endif %}"
                     class="flex flex-col flex-grow">
-                    <div class="relative w-full aspect-[16/9] overflow-hidden group bg-gray-100">
+                    <div class="relative w-full h-56 md:h-60 overflow-hidden group bg-gray-100">
                         {% if news_card.image %}
-                        {% if news_card.image_cropping %}
-                        {% thumbnail news_card.image "1600x900" box=news_card.image_cropping crop detail as cropped %}
-                        <img src="{{ cropped.url }}" alt="{{ news_card.headline }}"
-                            class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110">
-                        {% else %}
                         <img src="{{ news_card.image.url }}" alt="{{ news_card.headline }}"
                             class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
-                        {% endif %}
                         <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                         {% else %}
                         <div
@@ -122,16 +110,10 @@
                 {% if word_of_truth_card %}
                 <a href="{% if word_of_truth_card.link_url %}{{ word_of_truth_card.link_url }}{% else %}{% url 'info_card_detail' word_of_truth_card.slug %}{% endif %}"
                     class="flex flex-col flex-grow">
-                    <div class="relative w-full aspect-[16/9] overflow-hidden group bg-gray-100">
+                    <div class="relative w-full h-56 md:h-60 overflow-hidden group bg-gray-100">
                         {% if word_of_truth_card.image %}
-                        {% if word_of_truth_card.image_cropping %}
-                        {% thumbnail word_of_truth_card.image "1600x900" box=word_of_truth_card.image_cropping crop detail as cropped %}
-                        <img src="{{ cropped.url }}" alt="{{ word_of_truth_card.headline }}"
-                            class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110">
-                        {% else %}
                         <img src="{{ word_of_truth_card.image.url }}" alt="{{ word_of_truth_card.headline }}"
                             class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
-                        {% endif %}
                         <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                         {% else %}
                         <div

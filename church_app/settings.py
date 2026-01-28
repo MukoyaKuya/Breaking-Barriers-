@@ -19,13 +19,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
+import os
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-np3^#88u=exi*1xe1^bl5__@g7#yr$&cps2o-jwx)y%cp#=1$5'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-np3^#88u=exi*1xe1^bl5__@g7#yr$&cps2o-jwx)y%cp#=1$5')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(',') if os.environ.get('ALLOWED_HOSTS') else []
+CSRF_TRUSTED_ORIGINS = os.environ.get('CSRF_TRUSTED_ORIGINS', '').split(',') if os.environ.get('CSRF_TRUSTED_ORIGINS') else []
 
 
 # Application definition
@@ -44,6 +47,9 @@ INSTALLED_APPS = [
     'easy_thumbnails',
     'church',
 ]
+
+if os.environ.get('GS_BUCKET_NAME'):
+    INSTALLED_APPS += ['storages']
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -79,12 +85,18 @@ WSGI_APPLICATION = 'church_app.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if os.environ.get('DATABASE_URL'):
+    import dj_database_url
+    DATABASES = {
+        'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 
 # Password validation
@@ -120,14 +132,31 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
+#
+# IMPORTANT: these must be absolute URLs (start with "/") in production,
+# otherwise pages under subpaths (e.g. /info-card/...) will emit relative
+# asset URLs (e.g. "static/...") which then 404.
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]# Media files (User uploaded content)
-MEDIA_URL = 'media/'
+# Media files (User uploaded content)
+if os.environ.get('GS_BUCKET_NAME'):
+    DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+    GS_BUCKET_NAME = os.environ.get('GS_BUCKET_NAME')
+    GS_DEFAULT_ACL = 'publicRead'
+    GS_QUERYSTRING_AUTH = False
+    GS_FILE_OVERWRITE = False
+    MEDIA_URL = f'https://storage.googleapis.com/{GS_BUCKET_NAME}/'
+else:
+    MEDIA_URL = '/media/'
+
 MEDIA_ROOT = BASE_DIR / 'media'
+
+# Serve static files efficiently in production (Cloud Run, etc.)
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # CKEditor Configuration
 CKEDITOR_UPLOAD_PATH = 'uploads/'

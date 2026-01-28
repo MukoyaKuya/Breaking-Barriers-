@@ -1,0 +1,3091 @@
+[
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2026-01-26T19:35:36.309Z",
+    "user": 1,
+    "content_type": 11,
+    "object_id": "1",
+    "object_repr": "Hero Section Settings",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2026-01-27T09:04:29.322Z",
+    "user": 1,
+    "content_type": 14,
+    "object_id": "1",
+    "object_repr": "Men's Ministry",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2026-01-27T09:08:19.119Z",
+    "user": 1,
+    "content_type": 14,
+    "object_id": "1",
+    "object_repr": "Men's Ministry",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2026-01-27T09:11:10.548Z",
+    "user": 1,
+    "content_type": 14,
+    "object_id": "1",
+    "object_repr": "Men's Ministry",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Video url\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2026-01-27T09:47:50.952Z",
+    "user": 1,
+    "content_type": 14,
+    "object_id": "1",
+    "object_repr": "Men's Ministry",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Video url\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2026-01-27T10:05:10.896Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "1",
+    "object_repr": "Love In Deed",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2026-01-27T10:06:31.076Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "2",
+    "object_repr": "Beacon Life Church",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2026-01-27T10:20:03.204Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "1",
+    "object_repr": "Alphone Aoko - I thank God for His faithfulness in my life. There...",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2026-01-27T12:54:16.098Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "1",
+    "object_repr": "Deuteronomy 31:6 - “So be strong and courageous! Do not be afraid and...",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2026-01-27T12:56:32.808Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "1",
+    "object_repr": "Deuteronomy 31:6 - “So be strong and courageous! Do not be afraid and...",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Is featured\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2026-01-27T12:56:38.809Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "1",
+    "object_repr": "Deuteronomy 31:6 - “So be strong and courageous! Do not be afraid and...",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2026-01-27T18:13:10.317Z",
+    "user": 1,
+    "content_type": 17,
+    "object_id": "1",
+    "object_repr": "Mens Conference - 2026-01-28",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 13,
+  "fields": {
+    "action_time": "2026-01-27T18:20:02.913Z",
+    "user": 1,
+    "content_type": 17,
+    "object_id": "2",
+    "object_repr": "Women's Champions - 2026-01-27",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 14,
+  "fields": {
+    "action_time": "2026-01-27T18:35:22.704Z",
+    "user": 1,
+    "content_type": 17,
+    "object_id": "3",
+    "object_repr": "Kesha - 2026-02-10",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 15,
+  "fields": {
+    "action_time": "2026-01-27T18:35:42.503Z",
+    "user": 1,
+    "content_type": 17,
+    "object_id": "3",
+    "object_repr": "Kesha - 2026-02-10",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 16,
+  "fields": {
+    "action_time": "2026-01-27T18:43:24.663Z",
+    "user": 1,
+    "content_type": 17,
+    "object_id": "3",
+    "object_repr": "Kesha - 2026-01-31",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Event date\", \"Event type\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 17,
+  "fields": {
+    "action_time": "2026-01-27T18:43:55.045Z",
+    "user": 1,
+    "content_type": 17,
+    "object_id": "3",
+    "object_repr": "Kesha - 2026-01-31",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Color\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 18,
+  "fields": {
+    "action_time": "2026-01-27T18:52:53.847Z",
+    "user": 1,
+    "content_type": 17,
+    "object_id": "3",
+    "object_repr": "Kesha - 2026-01-31",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 19,
+  "fields": {
+    "action_time": "2026-01-27T18:59:29.245Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "1",
+    "object_repr": "Word Of Truth",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 20,
+  "fields": {
+    "action_time": "2026-01-27T19:24:05.346Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "1",
+    "object_repr": "Children's Bread - How to pray purposely",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 21,
+  "fields": {
+    "action_time": "2026-01-27T19:41:05.729Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "1",
+    "object_repr": "Children's Bread - Children's Bread",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Title\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 22,
+  "fields": {
+    "action_time": "2026-01-27T20:31:17.898Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "1",
+    "object_repr": "\"We shall continue to spread the word\" - Outreach",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 23,
+  "fields": {
+    "action_time": "2026-01-27T20:40:48.158Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "2",
+    "object_repr": "Matthew 18:20  \"For where two or three gather in my name, there am I with them - Outreach",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 24,
+  "fields": {
+    "action_time": "2026-01-27T20:52:14.623Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "2",
+    "object_repr": "Peter Mwenje - \"I want to thank God for the gift of this child. T...",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 25,
+  "fields": {
+    "action_time": "2026-01-27T20:52:40.423Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "2",
+    "object_repr": "Peter Mwenje - \"I want to thank God for the gift of this child. T...",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Approved\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 26,
+  "fields": {
+    "action_time": "2026-01-27T20:54:01.750Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "1",
+    "object_repr": "Alphone Aoko - I thank God for His faithfulness in my life. There...",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Video url\", \"Photo\", \"Text\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 27,
+  "fields": {
+    "action_time": "2026-01-27T21:12:56.410Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "3",
+    "object_repr": "Brian Nganya - “And they overcame him by the blood of the Lamb, a...",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 28,
+  "fields": {
+    "action_time": "2026-01-27T21:13:55.749Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "2",
+    "object_repr": "Peter Mwenje - \"I want to thank God for the gift of this child. T...",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Text\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 29,
+  "fields": {
+    "action_time": "2026-01-27T21:14:30.874Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "3",
+    "object_repr": "Brian Nganya - “And they overcame him by the blood of the Lamb, a...",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Photo\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 30,
+  "fields": {
+    "action_time": "2026-01-27T21:15:16.737Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "3",
+    "object_repr": "Brian Nganya - “And they overcame him by the blood of the Lamb, a...",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Photo\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 31,
+  "fields": {
+    "action_time": "2026-01-27T21:21:24.405Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "2",
+    "object_repr": "Peter Mwenje - \"I want to thank God for the gift of this child. T...",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Text\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 32,
+  "fields": {
+    "action_time": "2026-01-27T22:02:19.394Z",
+    "user": 1,
+    "content_type": 18,
+    "object_id": "1",
+    "object_repr": "What is a generational curse?",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 33,
+  "fields": {
+    "action_time": "2026-01-27T22:03:34.299Z",
+    "user": 1,
+    "content_type": 18,
+    "object_id": "2",
+    "object_repr": "How are generational curses broken?",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 34,
+  "fields": {
+    "action_time": "2026-01-27T22:05:15.898Z",
+    "user": 1,
+    "content_type": 18,
+    "object_id": "3",
+    "object_repr": "Do I need deliverance even if I'm born again?",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 35,
+  "fields": {
+    "action_time": "2026-01-27T22:10:53.306Z",
+    "user": 1,
+    "content_type": 18,
+    "object_id": "4",
+    "object_repr": "If we struggle with something but generally win, i...",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 36,
+  "fields": {
+    "action_time": "2026-01-27T22:11:49.392Z",
+    "user": 1,
+    "content_type": 18,
+    "object_id": "5",
+    "object_repr": "Is there a spirit that can enter the spirit man?",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 37,
+  "fields": {
+    "action_time": "2026-01-27T22:13:08.630Z",
+    "user": 1,
+    "content_type": 18,
+    "object_id": "6",
+    "object_repr": "When do I run and when do I resist in the face of ...",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 38,
+  "fields": {
+    "action_time": "2026-01-27T22:15:14.776Z",
+    "user": 1,
+    "content_type": 18,
+    "object_id": "7",
+    "object_repr": "I am yet to understand why at the time we receive ...",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 39,
+  "fields": {
+    "action_time": "2026-01-27T22:16:22.195Z",
+    "user": 1,
+    "content_type": 18,
+    "object_id": "8",
+    "object_repr": "When I become angry and I am able to ensure that I...",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 40,
+  "fields": {
+    "action_time": "2026-01-27T22:27:58.915Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "3",
+    "object_repr": "The power of a Christian fellowship - Other",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 41,
+  "fields": {
+    "action_time": "2026-01-27T22:40:47.671Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 42,
+  "fields": {
+    "action_time": "2026-01-27T22:41:13.230Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 43,
+  "fields": {
+    "action_time": "2026-01-27T22:41:58.573Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 44,
+  "fields": {
+    "action_time": "2026-01-27T22:45:09.864Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "3",
+    "object_repr": "Word of Truth - The Story of Moses",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 45,
+  "fields": {
+    "action_time": "2026-01-27T22:47:02.665Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "3",
+    "object_repr": "Word of Truth - The Story of Moses",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Summary\", \"Content\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 46,
+  "fields": {
+    "action_time": "2026-01-27T22:57:16.679Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 47,
+  "fields": {
+    "action_time": "2026-01-27T23:03:53.858Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 48,
+  "fields": {
+    "action_time": "2026-01-27T23:17:33.012Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 49,
+  "fields": {
+    "action_time": "2026-01-27T23:31:03.060Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 50,
+  "fields": {
+    "action_time": "2026-01-27T23:31:19.622Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 51,
+  "fields": {
+    "action_time": "2026-01-27T23:34:27.049Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 52,
+  "fields": {
+    "action_time": "2026-01-27T23:34:57.825Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "3",
+    "object_repr": "Brian Nganya - “And they overcame him by the blood of the Lamb, a...",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Photo\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 53,
+  "fields": {
+    "action_time": "2026-01-27T23:45:56.665Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 54,
+  "fields": {
+    "action_time": "2026-01-27T23:47:50.312Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 55,
+  "fields": {
+    "action_time": "2026-01-27T23:48:15.646Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 56,
+  "fields": {
+    "action_time": "2026-01-27T23:48:28.821Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 57,
+  "fields": {
+    "action_time": "2026-01-27T23:48:44.232Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 58,
+  "fields": {
+    "action_time": "2026-01-27T23:49:12.192Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 59,
+  "fields": {
+    "action_time": "2026-01-27T23:49:22.454Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 60,
+  "fields": {
+    "action_time": "2026-01-27T23:57:28.418Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 61,
+  "fields": {
+    "action_time": "2026-01-27T23:59:52.977Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 62,
+  "fields": {
+    "action_time": "2026-01-28T00:00:32.698Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 63,
+  "fields": {
+    "action_time": "2026-01-28T00:00:55.448Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 64,
+  "fields": {
+    "action_time": "2026-01-28T00:01:11.166Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\", \"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 65,
+  "fields": {
+    "action_time": "2026-01-28T00:01:23.223Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 66,
+  "fields": {
+    "action_time": "2026-01-28T00:02:17.120Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 67,
+  "fields": {
+    "action_time": "2026-01-28T00:06:38.229Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\", \"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 68,
+  "fields": {
+    "action_time": "2026-01-28T00:06:59.353Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 69,
+  "fields": {
+    "action_time": "2026-01-28T00:07:20.252Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\", \"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 70,
+  "fields": {
+    "action_time": "2026-01-28T00:07:29.280Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 71,
+  "fields": {
+    "action_time": "2026-01-28T00:20:12.911Z",
+    "user": 1,
+    "content_type": 22,
+    "object_id": "1",
+    "object_repr": "The Christ Commission",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 72,
+  "fields": {
+    "action_time": "2026-01-28T00:21:22.028Z",
+    "user": 1,
+    "content_type": 22,
+    "object_id": "2",
+    "object_repr": "ABS",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 73,
+  "fields": {
+    "action_time": "2026-01-28T00:27:04.950Z",
+    "user": 1,
+    "content_type": 22,
+    "object_id": "1",
+    "object_repr": "The Christ Commission",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 74,
+  "fields": {
+    "action_time": "2026-01-28T00:27:27.830Z",
+    "user": 1,
+    "content_type": 22,
+    "object_id": "2",
+    "object_repr": "ABS",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 75,
+  "fields": {
+    "action_time": "2026-01-28T00:34:50.055Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\", \"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 76,
+  "fields": {
+    "action_time": "2026-01-28T05:27:01.035Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "1",
+    "object_repr": "Love In Deed",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Logo\", \"Logo cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 77,
+  "fields": {
+    "action_time": "2026-01-28T05:36:47.336Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "1",
+    "object_repr": "Love In Deed",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Logo cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 78,
+  "fields": {
+    "action_time": "2026-01-28T05:37:09.807Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "2",
+    "object_repr": "Beacon Life Church",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Logo cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 79,
+  "fields": {
+    "action_time": "2026-01-28T05:44:25.807Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "2",
+    "object_repr": "Beacon Life Church",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Logo\", \"Logo cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 80,
+  "fields": {
+    "action_time": "2026-01-28T05:44:44.912Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "2",
+    "object_repr": "Beacon Life Church",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Logo cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 81,
+  "fields": {
+    "action_time": "2026-01-28T05:44:59.636Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "2",
+    "object_repr": "Beacon Life Church",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 82,
+  "fields": {
+    "action_time": "2026-01-28T05:45:16.568Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "2",
+    "object_repr": "Beacon Life Church",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Logo cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 83,
+  "fields": {
+    "action_time": "2026-01-28T05:47:03.732Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "2",
+    "object_repr": "Beacon Life Church",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Logo cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 84,
+  "fields": {
+    "action_time": "2026-01-28T05:48:53.523Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "3",
+    "object_repr": "Truth Encounters Ministries",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 85,
+  "fields": {
+    "action_time": "2026-01-28T05:49:10.107Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "3",
+    "object_repr": "Truth Encounters Ministries",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Logo cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 86,
+  "fields": {
+    "action_time": "2026-01-28T05:49:30.811Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "3",
+    "object_repr": "Truth Encounters Ministries",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 87,
+  "fields": {
+    "action_time": "2026-01-28T05:49:42.718Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "3",
+    "object_repr": "Truth Encounters Ministries",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 88,
+  "fields": {
+    "action_time": "2026-01-28T05:49:49.865Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "3",
+    "object_repr": "Truth Encounters Ministries",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 89,
+  "fields": {
+    "action_time": "2026-01-28T05:49:58.474Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "3",
+    "object_repr": "Truth Encounters Ministries",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Logo cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 90,
+  "fields": {
+    "action_time": "2026-01-28T05:50:22.215Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "3",
+    "object_repr": "Truth Encounters Ministries",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Logo cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 91,
+  "fields": {
+    "action_time": "2026-01-28T05:50:29.097Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "2",
+    "object_repr": "Beacon Life Church",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 92,
+  "fields": {
+    "action_time": "2026-01-28T05:50:43.206Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "3",
+    "object_repr": "Truth Encounters Ministries",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Logo cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 93,
+  "fields": {
+    "action_time": "2026-01-28T05:54:02.652Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "3",
+    "object_repr": "Truth Encounters Ministries",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 94,
+  "fields": {
+    "action_time": "2026-01-28T06:30:42.323Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "4",
+    "object_repr": "Smiles for children foundation",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 95,
+  "fields": {
+    "action_time": "2026-01-28T06:58:16.361Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "5",
+    "object_repr": "BB International",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 96,
+  "fields": {
+    "action_time": "2026-01-28T06:59:02.073Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "5",
+    "object_repr": "BB International",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Logo\", \"Logo cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 97,
+  "fields": {
+    "action_time": "2026-01-28T07:03:06.058Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "5",
+    "object_repr": "BB International",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Logo\", \"Logo cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 98,
+  "fields": {
+    "action_time": "2026-01-28T07:05:55.490Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "3",
+    "object_repr": "Brian Nganya - “And they overcame him by the blood of the Lamb, a...",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 99,
+  "fields": {
+    "action_time": "2026-01-28T07:06:00.306Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "2",
+    "object_repr": "Peter Mwenje - \"I want to thank God for the gift of this child. T...",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 100,
+  "fields": {
+    "action_time": "2026-01-28T07:06:04.999Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "1",
+    "object_repr": "Alphone Aoko - I thank God for His faithfulness in my life. There...",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 101,
+  "fields": {
+    "action_time": "2026-01-28T07:07:41.755Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "4",
+    "object_repr": "Amish Behal - \"And they overcame him by the Blood of The Lamb an...",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 102,
+  "fields": {
+    "action_time": "2026-01-28T07:19:39.888Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "4",
+    "object_repr": "Amish Behal - Amish Behal shares his journey of faith, highlight...",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Text\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 103,
+  "fields": {
+    "action_time": "2026-01-28T07:24:34.924Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "4",
+    "object_repr": "Open Heaven, the hour of Prayer - Worship",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 104,
+  "fields": {
+    "action_time": "2026-01-28T07:26:30.922Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "4",
+    "object_repr": "Open Heaven, the hour of Prayer - Worship",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\", \"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 105,
+  "fields": {
+    "action_time": "2026-01-28T07:26:38.059Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "4",
+    "object_repr": "Open Heaven, the hour of Prayer - Worship",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 106,
+  "fields": {
+    "action_time": "2026-01-28T07:30:09.156Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "3",
+    "object_repr": "The power of a Christian fellowship - Other",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\", \"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 107,
+  "fields": {
+    "action_time": "2026-01-28T07:30:20.061Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "3",
+    "object_repr": "The power of a Christian fellowship - Other",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 108,
+  "fields": {
+    "action_time": "2026-01-28T07:32:05.795Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "4",
+    "object_repr": "Open Heaven, the hour of Prayer - Worship",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 109,
+  "fields": {
+    "action_time": "2026-01-28T07:32:19.459Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "4",
+    "object_repr": "Open Heaven, the hour of Prayer - Worship",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 110,
+  "fields": {
+    "action_time": "2026-01-28T07:42:40.831Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "1",
+    "object_repr": "Children's Bread - Children's Bread",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image cropping\", \"Author name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 111,
+  "fields": {
+    "action_time": "2026-01-28T07:42:50.827Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Author name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 112,
+  "fields": {
+    "action_time": "2026-01-28T07:44:34.654Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "1",
+    "object_repr": "Children's Bread - Children's Bread",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 113,
+  "fields": {
+    "action_time": "2026-01-28T07:46:44.774Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "1",
+    "object_repr": "Children's Bread - Children's Bread",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 114,
+  "fields": {
+    "action_time": "2026-01-28T07:47:08.963Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "1",
+    "object_repr": "Children's Bread - Children's Bread",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 115,
+  "fields": {
+    "action_time": "2026-01-28T07:47:18.492Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "1",
+    "object_repr": "Children's Bread - Children's Bread",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$6jWvO8hT8r6Fd5PGPyvkyr$evOwnS5mWmtxb6L0xUiAVV1IhOMN8f9LxfqezWl2jYU=",
+    "last_login": "2026-01-27T13:37:45.529Z",
+    "is_superuser": true,
+    "username": "Roy",
+    "first_name": "",
+    "last_name": "",
+    "email": "roy@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-01-26T19:32:56.442Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "ekv1vuac9a39nmjyf8vbbiaj51w9vvlx",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hBbpsC4dN8zEGYYpGpoUtqV8e7apAvd_vfef6kQt7WErckSpqQuqlOn340iP6TuIN1jvc2a57ouE-ld0QdtepyTPK-H-3dQYivfWtgx9kSd8wKGPJp-ADIZPAqgR4vJJJMtCQMLUR4ErEkA7hzJOq_eH-vVOCk:1vkSLH:7y6-VPZXNv3nfi1EmZDamEY9LjdBBuwMr5SbCEArpjU",
+    "expire_date": "2026-02-09T19:33:43.143Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "jvva4f6a3x26355qd0d1drzi25dd4hws",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hBbpsC4dN8zEGYYpGpoUtqV8e7apAvd_vfef6kQt7WErckSpqQuqlOn340iP6TuIN1jvc2a57ouE-ld0QdtepyTPK-H-3dQYivfWtgx9kSd8wKGPJp-ADIZPAqgR4vJJJMtCQMLUR4ErEkA7hzJOq_eH-vVOCk:1vkSba:PXPwNnOD8C6WmUg_CqHx0ZYeOc1iC6SobLhyBGpfT2E",
+    "expire_date": "2026-02-09T19:50:34.763Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "n8xoikgn92glg8fs2sejug007o75ytir",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hBbpsC4dN8zEGYYpGpoUtqV8e7apAvd_vfef6kQt7WErckSpqQuqlOn340iP6TuIN1jvc2a57ouE-ld0QdtepyTPK-H-3dQYivfWtgx9kSd8wKGPJp-ADIZPAqgR4vJJJMtCQMLUR4ErEkA7hzJOq_eH-vVOCk:1vkTdW:X6jjTe2lQxg7BeMq0rw7pJfroF9dmm4w9pVk_IGQtPo",
+    "expire_date": "2026-02-09T20:56:38.260Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "runuletjj3tj1mir5imjta2f5epce7qe",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hBbpsC4dN8zEGYYpGpoUtqV8e7apAvd_vfef6kQt7WErckSpqQuqlOn340iP6TuIN1jvc2a57ouE-ld0QdtepyTPK-H-3dQYivfWtgx9kSd8wKGPJp-ADIZPAqgR4vJJJMtCQMLUR4ErEkA7hzJOq_eH-vVOCk:1vkjGL:P_tSy22WoXbuM6fh-wDB03S3ldzjGpVhP7Mp_MyWReM",
+    "expire_date": "2026-02-10T13:37:45.538Z"
+  }
+},
+{
+  "model": "easy_thumbnails.source",
+  "pk": 1,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "info_cards/554046056_1264358689061610_2566163542975989460_n_YiZedjm.jpg",
+    "modified": "2026-01-27T23:47:36.492Z"
+  }
+},
+{
+  "model": "easy_thumbnails.source",
+  "pk": 2,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "info_cards/ckanjama.jpg",
+    "modified": "2026-01-27T23:48:31.308Z"
+  }
+},
+{
+  "model": "easy_thumbnails.source",
+  "pk": 3,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "info_cards/554046056_1264358689061610_2566163542975989460_n_XkZypRx.jpg",
+    "modified": "2026-01-27T23:59:38.865Z"
+  }
+},
+{
+  "model": "easy_thumbnails.source",
+  "pk": 4,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "info_cards/554046056_1264358689061610_2566163542975989460_n_vgfKNc9.jpg",
+    "modified": "2026-01-28T00:00:26.343Z"
+  }
+},
+{
+  "model": "easy_thumbnails.source",
+  "pk": 5,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "info_cards/Screenshot_2026-01-28_010632.png",
+    "modified": "2026-01-28T00:01:01.184Z"
+  }
+},
+{
+  "model": "easy_thumbnails.source",
+  "pk": 6,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "info_cards/554046056_1264358689061610_2566163542975989460_n_mQGRqsV.jpg",
+    "modified": "2026-01-28T00:01:26.423Z"
+  }
+},
+{
+  "model": "easy_thumbnails.source",
+  "pk": 7,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "info_cards/554046056_1264358689061610_2566163542975989460_n_FNrrAMa.jpg",
+    "modified": "2026-01-28T00:06:48.002Z"
+  }
+},
+{
+  "model": "easy_thumbnails.source",
+  "pk": 8,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "info_cards/12.jpg",
+    "modified": "2026-01-28T00:07:07.487Z"
+  }
+},
+{
+  "model": "easy_thumbnails.source",
+  "pk": 9,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "info_cards/554046056_1264358689061610_2566163542975989460_n_wqUuGtQ.jpg",
+    "modified": "2026-01-28T00:07:31.624Z"
+  }
+},
+{
+  "model": "easy_thumbnails.source",
+  "pk": 10,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "sidebar_promos/W641643.jpg",
+    "modified": "2026-01-28T00:27:16.791Z"
+  }
+},
+{
+  "model": "easy_thumbnails.source",
+  "pk": 11,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "sidebar_promos/ABS.jpg",
+    "modified": "2026-01-28T00:27:32.115Z"
+  }
+},
+{
+  "model": "easy_thumbnails.source",
+  "pk": 12,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "info_cards/554046056_1264358689061610_2566163542975989460_n_DyWfGSk.jpg",
+    "modified": "2026-01-28T07:42:43.113Z"
+  }
+},
+{
+  "model": "easy_thumbnails.source",
+  "pk": 13,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "testimonials/lumina-pro-restoration-1768937180393_bW0mrOn.png",
+    "modified": "2026-01-28T07:05:52.867Z"
+  }
+},
+{
+  "model": "easy_thumbnails.source",
+  "pk": 14,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "testimonials/lumina-pro-restoration-1768937370408.png",
+    "modified": "2026-01-28T07:05:57.513Z"
+  }
+},
+{
+  "model": "easy_thumbnails.source",
+  "pk": 15,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "testimonials/489273419_1123201806510633_7270729839666654413_n.jpg",
+    "modified": "2026-01-28T07:06:02.056Z"
+  }
+},
+{
+  "model": "easy_thumbnails.source",
+  "pk": 16,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "gallery/554046056_1264358689061610_2566163542975989460_n.jpg",
+    "modified": "2026-01-28T07:30:00.200Z"
+  }
+},
+{
+  "model": "easy_thumbnails.source",
+  "pk": 17,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "gallery/489618915_1125867569577390_8605684623545821322_n.jpg",
+    "modified": "2026-01-28T00:34:54.207Z"
+  }
+},
+{
+  "model": "easy_thumbnails.source",
+  "pk": 18,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "gallery/586128223_1317086613788817_5564622601631894897_n.jpg",
+    "modified": "2026-01-28T00:34:54.306Z"
+  }
+},
+{
+  "model": "easy_thumbnails.source",
+  "pk": 19,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "partners/LoveInDeed_logo-white.png",
+    "modified": "2026-01-28T05:26:40.562Z"
+  }
+},
+{
+  "model": "easy_thumbnails.source",
+  "pk": 20,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "partners/241950360_3111690835621622_4717744177550104395_n.png",
+    "modified": "2026-01-28T05:37:12.169Z"
+  }
+},
+{
+  "model": "easy_thumbnails.source",
+  "pk": 21,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "partners/LoveInDeed_logo-white_Rg91fee.png",
+    "modified": "2026-01-28T05:36:53.567Z"
+  }
+},
+{
+  "model": "easy_thumbnails.source",
+  "pk": 22,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "partners/241950360_3111690835621622_4717744177550104395_n_1.png",
+    "modified": "2026-01-28T05:47:06.032Z"
+  }
+},
+{
+  "model": "easy_thumbnails.source",
+  "pk": 23,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "partners/TEM-wide-400px-300x46.png",
+    "modified": "2026-01-28T05:50:02.096Z"
+  }
+},
+{
+  "model": "easy_thumbnails.source",
+  "pk": 24,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "partners/lumina-enhanced-1769582339551.png",
+    "modified": "2026-01-28T06:58:55.499Z"
+  }
+},
+{
+  "model": "easy_thumbnails.source",
+  "pk": 25,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "partners/Screenshot_2026-01-28_095846.png",
+    "modified": "2026-01-28T07:02:30.686Z"
+  }
+},
+{
+  "model": "easy_thumbnails.source",
+  "pk": 26,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "gallery/Screenshot_2026-01-28_015801.png",
+    "modified": "2026-01-28T07:26:20.268Z"
+  }
+},
+{
+  "model": "easy_thumbnails.source",
+  "pk": 27,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "gallery/Screenshot_2026-01-28_102612.png",
+    "modified": "2026-01-28T07:30:32.687Z"
+  }
+},
+{
+  "model": "easy_thumbnails.source",
+  "pk": 28,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "gallery/lumina-enhanced-1769585360198.png",
+    "modified": "2026-01-28T07:30:32.999Z"
+  }
+},
+{
+  "model": "easy_thumbnails.source",
+  "pk": 29,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "gallery/lumina-enhanced-1769585508111.png",
+    "modified": "2026-01-28T07:41:07.499Z"
+  }
+},
+{
+  "model": "easy_thumbnails.source",
+  "pk": 30,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "info_cards/12.jpeg",
+    "modified": "2026-01-28T07:41:45.656Z"
+  }
+},
+{
+  "model": "easy_thumbnails.source",
+  "pk": 31,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "info_cards/moses.jpg",
+    "modified": "2026-01-28T07:41:53.129Z"
+  }
+},
+{
+  "model": "easy_thumbnails.source",
+  "pk": 32,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "info_cards/23.webp",
+    "modified": "2026-01-28T07:46:48.239Z"
+  }
+},
+{
+  "model": "easy_thumbnails.source",
+  "pk": 33,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "info_cards/12_9LA3AYL.jpeg",
+    "modified": "2026-01-28T07:47:20.964Z"
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 1,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "info_cards\\554046056_1264358689061610_2566163542975989460_n_YiZedjm.jpg.300x300_q85_detail_upscale.jpg",
+    "modified": "2026-01-27T23:45:47.565Z",
+    "source": 1
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 2,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "info_cards\\554046056_1264358689061610_2566163542975989460_n_YiZedjm.jpg.1600x900_q85_crop-smart.jpg",
+    "modified": "2026-01-27T23:47:36.511Z",
+    "source": 1
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 3,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "info_cards\\ckanjama.jpg.300x300_q85_detail_upscale.jpg",
+    "modified": "2026-01-27T23:48:17.588Z",
+    "source": 2
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 4,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "info_cards\\ckanjama.jpg.1600x900_q85_crop-smart.jpg",
+    "modified": "2026-01-27T23:48:31.324Z",
+    "source": 2
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 5,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "info_cards\\554046056_1264358689061610_2566163542975989460_n_XkZypRx.jpg.300x300_q85_detail_upscale.jpg",
+    "modified": "2026-01-27T23:49:17.172Z",
+    "source": 3
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 6,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "info_cards\\554046056_1264358689061610_2566163542975989460_n_XkZypRx.jpg.1600x900_q85_crop-smart.jpg",
+    "modified": "2026-01-27T23:49:25.736Z",
+    "source": 3
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 7,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "info_cards\\554046056_1264358689061610_2566163542975989460_n_XkZypRx.jpg.1600x900_q85.jpg",
+    "modified": "2026-01-27T23:59:38.882Z",
+    "source": 3
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 8,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "info_cards\\554046056_1264358689061610_2566163542975989460_n_vgfKNc9.jpg.1600x900_q85.jpg",
+    "modified": "2026-01-27T23:59:56.292Z",
+    "source": 4
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 9,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "info_cards\\554046056_1264358689061610_2566163542975989460_n_vgfKNc9.jpg.300x300_q85_detail_upscale.jpg",
+    "modified": "2026-01-28T00:00:26.355Z",
+    "source": 4
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 10,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "info_cards\\Screenshot_2026-01-28_010632.png.300x300_q85_detail_upscale.png",
+    "modified": "2026-01-28T00:00:57.382Z",
+    "source": 5
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 11,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "info_cards\\Screenshot_2026-01-28_010632.png.1600x900_q85.png",
+    "modified": "2026-01-28T00:01:01.204Z",
+    "source": 5
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 12,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "info_cards\\554046056_1264358689061610_2566163542975989460_n_mQGRqsV.jpg.300x300_q85_detail_upscale.jpg",
+    "modified": "2026-01-28T00:01:16.758Z",
+    "source": 6
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 13,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "info_cards\\554046056_1264358689061610_2566163542975989460_n_mQGRqsV.jpg.1600x900_q85.jpg",
+    "modified": "2026-01-28T00:01:26.437Z",
+    "source": 6
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 14,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "info_cards\\554046056_1264358689061610_2566163542975989460_n_FNrrAMa.jpg.300x300_q85_detail_upscale.jpg",
+    "modified": "2026-01-28T00:06:40.466Z",
+    "source": 7
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 15,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "info_cards\\554046056_1264358689061610_2566163542975989460_n_FNrrAMa.jpg.1600x900_q85.jpg",
+    "modified": "2026-01-28T00:06:48.014Z",
+    "source": 7
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 16,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "info_cards\\12.jpg.1600x900_q85.jpg",
+    "modified": "2026-01-28T00:07:03.223Z",
+    "source": 8
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 17,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "info_cards\\12.jpg.300x300_q85_detail_upscale.jpg",
+    "modified": "2026-01-28T00:07:07.496Z",
+    "source": 8
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 18,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "info_cards\\554046056_1264358689061610_2566163542975989460_n_wqUuGtQ.jpg.300x300_q85_detail_upscale.jpg",
+    "modified": "2026-01-28T00:07:22.186Z",
+    "source": 9
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 19,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "info_cards\\554046056_1264358689061610_2566163542975989460_n_wqUuGtQ.jpg.1600x900_q85.jpg",
+    "modified": "2026-01-28T00:07:31.635Z",
+    "source": 9
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 20,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "sidebar_promos\\W641643.jpg.300x400_q85_box-0,129,257,321_crop_detail.jpg",
+    "modified": "2026-01-28T00:26:46.203Z",
+    "source": 10
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 21,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "sidebar_promos\\ABS.jpg.300x400_q85_box-0,67,185,206_crop_detail.jpg",
+    "modified": "2026-01-28T00:26:46.252Z",
+    "source": 11
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 22,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "sidebar_promos\\W641643.jpg.300x300_q85_detail_upscale.jpg",
+    "modified": "2026-01-28T00:26:59.807Z",
+    "source": 10
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 23,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "sidebar_promos\\W641643.jpg.300x400_q85_box-0,0,257,342_crop_detail.jpg",
+    "modified": "2026-01-28T00:27:16.809Z",
+    "source": 10
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 24,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "sidebar_promos\\ABS.jpg.300x300_q85_detail_upscale.jpg",
+    "modified": "2026-01-28T00:27:22.685Z",
+    "source": 11
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 25,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "sidebar_promos\\ABS.jpg.300x400_q85_box-0,0,185,246_crop_detail.jpg",
+    "modified": "2026-01-28T00:27:32.127Z",
+    "source": 11
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 26,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "info_cards\\554046056_1264358689061610_2566163542975989460_n_DyWfGSk.jpg.1600x900_q85_box-0,15,1104,636_crop_detail.jpg",
+    "modified": "2026-01-28T00:34:52.420Z",
+    "source": 12
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 27,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "testimonials\\lumina-pro-restoration-1768937180393_bW0mrOn.png.800x800_q85_crop_detail.jpg",
+    "modified": "2026-01-28T00:34:52.825Z",
+    "source": 13
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 28,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "testimonials\\lumina-pro-restoration-1768937370408.png.800x800_q85_crop_detail.jpg",
+    "modified": "2026-01-28T00:34:53.166Z",
+    "source": 14
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 29,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "testimonials\\489273419_1123201806510633_7270729839666654413_n.jpg.800x800_q85_crop_detail.jpg",
+    "modified": "2026-01-28T00:34:53.449Z",
+    "source": 15
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 30,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "gallery\\554046056_1264358689061610_2566163542975989460_n.jpg.200x150_q85_crop_detail.jpg",
+    "modified": "2026-01-28T00:34:53.563Z",
+    "source": 16
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 31,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "gallery\\489618915_1125867569577390_8605684623545821322_n.jpg.200x150_q85_crop_detail.jpg",
+    "modified": "2026-01-28T00:34:53.801Z",
+    "source": 17
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 32,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "gallery\\586128223_1317086613788817_5564622601631894897_n.jpg.200x150_q85_crop_detail.jpg",
+    "modified": "2026-01-28T00:34:53.885Z",
+    "source": 18
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 33,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "gallery\\489618915_1125867569577390_8605684623545821322_n.jpg.800x600_q85_crop_detail.jpg",
+    "modified": "2026-01-28T00:34:54.220Z",
+    "source": 17
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 34,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "gallery\\586128223_1317086613788817_5564622601631894897_n.jpg.800x600_q85_crop_detail.jpg",
+    "modified": "2026-01-28T00:34:54.317Z",
+    "source": 18
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 35,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "partners\\LoveInDeed_logo-white.png.300x200_q85_crop_detail.png",
+    "modified": "2026-01-28T00:34:54.436Z",
+    "source": 19
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 36,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "partners\\241950360_3111690835621622_4717744177550104395_n.png.300x200_q85_crop_detail.jpg",
+    "modified": "2026-01-28T00:34:54.536Z",
+    "source": 20
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 37,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "testimonials\\lumina-pro-restoration-1768937180393_bW0mrOn.png.100x100_q85_crop_detail.jpg",
+    "modified": "2026-01-28T00:39:32.279Z",
+    "source": 13
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 38,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "testimonials\\lumina-pro-restoration-1768937370408.png.100x100_q85_crop_detail.jpg",
+    "modified": "2026-01-28T00:39:32.516Z",
+    "source": 14
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 39,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "testimonials\\489273419_1123201806510633_7270729839666654413_n.jpg.100x100_q85_crop_detail.jpg",
+    "modified": "2026-01-28T00:39:32.634Z",
+    "source": 15
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 40,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "partners\\LoveInDeed_logo-white.png.300x300_q85_detail_upscale.png",
+    "modified": "2026-01-28T05:26:40.579Z",
+    "source": 19
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 41,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "partners\\LoveInDeed_logo-white_Rg91fee.png.300x200_q85_box-0,90,1000,757_crop_detail.png",
+    "modified": "2026-01-28T05:27:05.196Z",
+    "source": 21
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 42,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "partners\\LoveInDeed_logo-white_Rg91fee.png.300x300_q85_detail_upscale.png",
+    "modified": "2026-01-28T05:36:30.993Z",
+    "source": 21
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 43,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "partners\\LoveInDeed_logo-white_Rg91fee.png.300x200_q85_box-0,0,1000,667_crop_detail.png",
+    "modified": "2026-01-28T05:36:53.575Z",
+    "source": 21
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 44,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "partners\\241950360_3111690835621622_4717744177550104395_n.png.300x300_q85_detail_upscale.jpg",
+    "modified": "2026-01-28T05:37:01.634Z",
+    "source": 20
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 45,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "partners\\241950360_3111690835621622_4717744177550104395_n.png.300x200_q85_box-0,133,800,667_crop_detail.jpg",
+    "modified": "2026-01-28T05:37:12.183Z",
+    "source": 20
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 46,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "partners\\241950360_3111690835621622_4717744177550104395_n_1.png.300x200_q85_box-616,64,621,68_crop_detail.png",
+    "modified": "2026-01-28T05:44:29.798Z",
+    "source": 22
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 47,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "partners\\241950360_3111690835621622_4717744177550104395_n_1.png.300x300_q85_detail_upscale.png",
+    "modified": "2026-01-28T05:44:40.598Z",
+    "source": 22
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 48,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "partners\\241950360_3111690835621622_4717744177550104395_n_1.png.300x200_q85_box-616,64,624,69_crop_detail.png",
+    "modified": "2026-01-28T05:44:48.173Z",
+    "source": 22
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 49,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "partners\\241950360_3111690835621622_4717744177550104395_n_1.png.300x200_q85_box-13,259,779,769_crop_detail.png",
+    "modified": "2026-01-28T05:45:19.121Z",
+    "source": 22
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 50,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "partners\\241950360_3111690835621622_4717744177550104395_n_1.png.300x200_q85_box-8,240,800,768_crop_detail.png",
+    "modified": "2026-01-28T05:47:06.047Z",
+    "source": 22
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 51,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "partners\\TEM-wide-400px-300x46.png.300x200_q85_box-116,0,184,46_crop_detail.png",
+    "modified": "2026-01-28T05:48:56.525Z",
+    "source": 23
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 52,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "partners\\TEM-wide-400px-300x46.png.300x300_q85_detail_upscale.png",
+    "modified": "2026-01-28T05:49:05.016Z",
+    "source": 23
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 53,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "partners\\TEM-wide-400px-300x46.png.300x200_q85_box-116,0,185,46_crop_detail.png",
+    "modified": "2026-01-28T05:49:14.209Z",
+    "source": 23
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 54,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "partners\\TEM-wide-400px-300x46.png.300x200_q85_box-1,0,70,46_crop_detail.png",
+    "modified": "2026-01-28T05:50:02.114Z",
+    "source": 23
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 55,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "partners\\lumina-enhanced-1769582339551.png.300x300_q85_detail_upscale.jpg",
+    "modified": "2026-01-28T06:58:55.515Z",
+    "source": 24
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 56,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "partners\\Screenshot_2026-01-28_095846.png.300x300_q85_detail_upscale.png",
+    "modified": "2026-01-28T07:02:30.702Z",
+    "source": 25
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 57,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "testimonials\\lumina-pro-restoration-1768937180393_bW0mrOn.png.300x300_q85_detail_upscale.jpg",
+    "modified": "2026-01-28T07:05:52.878Z",
+    "source": 13
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 58,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "testimonials\\lumina-pro-restoration-1768937370408.png.300x300_q85_detail_upscale.jpg",
+    "modified": "2026-01-28T07:05:57.526Z",
+    "source": 14
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 59,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "testimonials\\489273419_1123201806510633_7270729839666654413_n.jpg.300x300_q85_detail_upscale.jpg",
+    "modified": "2026-01-28T07:06:02.070Z",
+    "source": 15
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 60,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "gallery\\Screenshot_2026-01-28_015801.png.200x150_q85_box-126,0,1292,875_crop_detail.png",
+    "modified": "2026-01-28T07:24:39.822Z",
+    "source": 26
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 61,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "gallery\\Screenshot_2026-01-28_015801.png.800x600_q85_box-126,0,1292,875_crop_detail.png",
+    "modified": "2026-01-28T07:25:04.408Z",
+    "source": 26
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 62,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "gallery\\554046056_1264358689061610_2566163542975989460_n.jpg.800x600_q85_crop_detail.jpg",
+    "modified": "2026-01-28T07:25:04.534Z",
+    "source": 16
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 63,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "gallery\\Screenshot_2026-01-28_015801.png.300x300_q85_detail_upscale.png",
+    "modified": "2026-01-28T07:26:20.284Z",
+    "source": 26
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 64,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "gallery\\Screenshot_2026-01-28_102612.png.300x300_q85_detail_upscale.png",
+    "modified": "2026-01-28T07:26:32.885Z",
+    "source": 27
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 65,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "gallery\\Screenshot_2026-01-28_102612.png.200x150_q85_box-128,0,821,521_crop_detail.png",
+    "modified": "2026-01-28T07:26:46.287Z",
+    "source": 27
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 66,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "gallery\\554046056_1264358689061610_2566163542975989460_n.jpg.300x300_q85_detail_upscale.jpg",
+    "modified": "2026-01-28T07:30:00.219Z",
+    "source": 16
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 67,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "gallery\\lumina-enhanced-1769585360198.png.300x300_q85_detail_upscale.jpg",
+    "modified": "2026-01-28T07:30:12.264Z",
+    "source": 28
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 68,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "gallery\\lumina-enhanced-1769585360198.png.200x150_q85_box-376,74,2238,1474_crop_detail.jpg",
+    "modified": "2026-01-28T07:30:25.710Z",
+    "source": 28
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 69,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "gallery\\Screenshot_2026-01-28_102612.png.800x600_q85_box-128,0,821,521_crop_detail.png",
+    "modified": "2026-01-28T07:30:32.701Z",
+    "source": 27
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 70,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "gallery\\lumina-enhanced-1769585360198.png.800x600_q85_box-376,74,2238,1474_crop_detail.jpg",
+    "modified": "2026-01-28T07:30:33.016Z",
+    "source": 28
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 71,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "gallery\\lumina-enhanced-1769585508111.png.300x300_q85_detail_upscale.jpg",
+    "modified": "2026-01-28T07:32:09.382Z",
+    "source": 29
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 72,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "gallery\\lumina-enhanced-1769585508111.png.800x600_q85_box-459,0,2501,1536_crop_detail.jpg",
+    "modified": "2026-01-28T07:32:22.175Z",
+    "source": 29
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 73,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "gallery\\lumina-enhanced-1769585508111.png.200x150_q85_box-459,0,2501,1536_crop_detail.jpg",
+    "modified": "2026-01-28T07:41:07.518Z",
+    "source": 29
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 74,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "info_cards\\12.jpeg.300x300_q85_detail_upscale.jpg",
+    "modified": "2026-01-28T07:41:45.670Z",
+    "source": 30
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 75,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "info_cards\\moses.jpg.300x300_q85_detail_upscale.jpg",
+    "modified": "2026-01-28T07:41:53.146Z",
+    "source": 31
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 76,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "info_cards\\554046056_1264358689061610_2566163542975989460_n_DyWfGSk.jpg.300x300_q85_detail_upscale.jpg",
+    "modified": "2026-01-28T07:42:43.126Z",
+    "source": 12
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 77,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "info_cards\\23.webp.1600x900_q85_box-19,0,1387,768_crop_detail.jpg",
+    "modified": "2026-01-28T07:44:41.757Z",
+    "source": 32
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 78,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "info_cards\\23.webp.300x300_q85_detail_upscale.jpg",
+    "modified": "2026-01-28T07:46:36.214Z",
+    "source": 32
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 79,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "info_cards\\23.webp.1600x900_q85_box-18,41,768,463_crop_detail.jpg",
+    "modified": "2026-01-28T07:46:48.252Z",
+    "source": 32
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 80,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "info_cards\\12_9LA3AYL.jpeg.300x300_q85_detail_upscale.jpg",
+    "modified": "2026-01-28T07:47:11.014Z",
+    "source": 33
+  }
+},
+{
+  "model": "easy_thumbnails.thumbnail",
+  "pk": 81,
+  "fields": {
+    "storage_hash": "0d677af76ca5bf5575d614e04932c3a4",
+    "name": "info_cards\\12_9LA3AYL.jpeg.1600x900_q85_box-61,42,1354,768_crop_detail.jpg",
+    "modified": "2026-01-28T07:47:20.982Z",
+    "source": 33
+  }
+},
+{
+  "model": "church.verse",
+  "pk": 1,
+  "fields": {
+    "content": "“So be strong and courageous! Do not be afraid and do not panic before them. For the Lord your God will personally go ahead of you. He will neither fail you nor abandon you.”",
+    "reference": "Deuteronomy 31:6",
+    "date_posted": "2026-01-27T12:54:16.094Z",
+    "is_active": true,
+    "is_featured": true
+  }
+},
+{
+  "model": "church.newsitem",
+  "pk": 1,
+  "fields": {
+    "title": "Word Of Truth",
+    "slug": "word-of-truth",
+    "image": "news/JEG_Themes_Matthew_600x.png",
+    "image_cropping": "",
+    "summary": "“But he answered and said, It is written, Man shall not live by bread alone, but by every word that proceedeth out of the mouth of God.”",
+    "body": "<p><strong>Matthew 4:4 (KJV)</strong></p>\r\n\r\n<p>&ldquo;But he answered and said, It is written, Man shall not live by bread alone, but by every word that proceedeth out of the mouth of God.&rdquo;</p>\r\n\r\n<p><strong>This is Jesus responding to Satan during the temptation in the wilderness.</strong></p>\r\n\r\n<p><br />\r\nThe full temptation passage<em> (Matthew 4:1&ndash;11)</em></p>\r\n\r\n<p>A different verse where Jesus says <strong>&ldquo;It is written&rdquo;</strong></p>\r\n\r\n<p>A short teaching explanation to go with it for a slide or message.</p>",
+    "event_date": null,
+    "created_at": "2026-01-27T18:59:29.232Z",
+    "is_published": false
+  }
+},
+{
+  "model": "church.calendarevent",
+  "pk": 1,
+  "fields": {
+    "title": "Mens Conference",
+    "description": "Mens Conference",
+    "event_date": "2026-01-28",
+    "event_type": "Prayer Meeting",
+    "location": "Nairobi",
+    "image": "",
+    "image_cropping": "",
+    "color": "#990030",
+    "is_published": true,
+    "created_at": "2026-01-27T18:13:10.309Z",
+    "updated_at": "2026-01-27T18:13:10.309Z"
+  }
+},
+{
+  "model": "church.calendarevent",
+  "pk": 2,
+  "fields": {
+    "title": "Women's Champions",
+    "description": "Join women of all ages for a powerful time of worship, connection, and spiritual renewal at our Women’s Church Conference. This gathering is designed to encourage, equip, and empower women to grow deeper in their faith and walk confidently in God’s purpose for their lives.\r\n\r\nThrough inspiring messages, heartfelt worship, and meaningful fellowship, we will create space to reflect, be refreshed, and be reminded that we are not alone on the journey. Whether you are seeking clarity, healing, renewed strength, or simply a moment to pause and be filled, this conference is for you.\r\n\r\nCome as you are and leave encouraged, strengthened, and ready to live out your calling with faith and boldness.",
+    "event_date": "2026-01-27",
+    "event_type": "Conference",
+    "location": "",
+    "image": "",
+    "image_cropping": "",
+    "color": "#0fe628",
+    "is_published": true,
+    "created_at": "2026-01-27T18:20:02.907Z",
+    "updated_at": "2026-01-27T18:20:02.907Z"
+  }
+},
+{
+  "model": "church.calendarevent",
+  "pk": 3,
+  "fields": {
+    "title": "Kesha",
+    "description": "A day of worship, wisdom, and sisterhood. Join us for a Women’s Church Conference filled with encouragement, connection, and powerful reminders of God’s love and purpose for your life.",
+    "event_date": "2026-01-31",
+    "event_type": "Outreach",
+    "location": "Church",
+    "image": "calendar_events/554046056_1264358689061610_2566163542975989460_n.jpg",
+    "image_cropping": "",
+    "color": "#001eff",
+    "is_published": true,
+    "created_at": "2026-01-27T18:35:22.699Z",
+    "updated_at": "2026-01-27T18:52:53.840Z"
+  }
+},
+{
+  "model": "church.testimonial",
+  "pk": 4,
+  "fields": {
+    "member_name": "Amish Behal",
+    "photo": "",
+    "photo_cropping": "",
+    "video_url": "https://www.youtube.com/watch?v=L_TZlVHtapY",
+    "text": "Amish Behal shares his journey of faith, highlighting a transformative experience of being saved by Jesus during high school. Despite facing multiple setbacks and temptations from the devil, he has remained steadfast in his faith for the past six years, emphasizing the importance of choices and their consequences.",
+    "approved": true,
+    "created_at": "2026-01-28T07:07:41.750Z"
+  }
+},
+{
+  "model": "church.galleryimage",
+  "pk": 1,
+  "fields": {
+    "caption": "\"We shall continue to spread the word\"",
+    "image": "gallery/586128223_1317086613788817_5564622601631894897_n.jpg",
+    "image_cropping": "",
+    "video_url": "",
+    "duration_label": "",
+    "category": "Outreach",
+    "uploaded_at": "2026-01-27T20:31:17.891Z"
+  }
+},
+{
+  "model": "church.galleryimage",
+  "pk": 2,
+  "fields": {
+    "caption": "Matthew 18:20  \"For where two or three gather in my name, there am I with them",
+    "image": "gallery/489618915_1125867569577390_8605684623545821322_n.jpg",
+    "image_cropping": "",
+    "video_url": "",
+    "duration_label": "",
+    "category": "Outreach",
+    "uploaded_at": "2026-01-27T20:40:48.146Z"
+  }
+},
+{
+  "model": "church.galleryimage",
+  "pk": 3,
+  "fields": {
+    "caption": "The power of a Christian fellowship",
+    "image": "gallery/lumina-enhanced-1769585360198.png",
+    "image_cropping": "376,74,2238,1474",
+    "video_url": "https://youtu.be/qkOZHILUBHw?si=IDWLbk9O86E7f3JX",
+    "duration_label": "",
+    "category": "Other",
+    "uploaded_at": "2026-01-27T22:27:58.912Z"
+  }
+},
+{
+  "model": "church.galleryimage",
+  "pk": 4,
+  "fields": {
+    "caption": "Open Heaven, the hour of Prayer",
+    "image": "gallery/lumina-enhanced-1769585508111.png",
+    "image_cropping": "459,0,2501,1536",
+    "video_url": "https://youtu.be/jmK5_YjWtVc?si=XtUzc_kk_PXuNgV6",
+    "duration_label": "",
+    "category": "Worship",
+    "uploaded_at": "2026-01-28T07:24:34.919Z"
+  }
+},
+{
+  "model": "church.herosettings",
+  "pk": 1,
+  "fields": {
+    "image": "hero/12.jpeg",
+    "image_cropping": "",
+    "updated_at": "2026-01-26T19:35:36.306Z"
+  }
+},
+{
+  "model": "church.infocard",
+  "pk": 1,
+  "fields": {
+    "card_type": "childrens_bread",
+    "title": "Children's Bread",
+    "slug": "how-to-pray-purposely",
+    "image": "info_cards/12_9LA3AYL.jpeg",
+    "image_cropping": "61,42,1354,768",
+    "headline": "How to pray",
+    "summary": "Prayer is communicating with God through praise, confession, thanksgiving, and requests, trusting His will and praying in faith. If you want it even shorter or more Scripture-styled, just say the word.",
+    "content": "<p>Prayer is simply talking to God with honesty and faith. It doesn&rsquo;t require perfect words&mdash;just a sincere heart.</p>\r\n\r\n<ol>\r\n\t<li>\r\n\t<p><strong>Begin with worship</strong><br />\r\n\tAcknowledge who God is. Thank Him, praise Him, and honor His greatness.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Confess and surrender</strong><br />\r\n\tHumbly bring your sins, struggles, and weaknesses before God, asking for forgiveness and help.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Ask with faith</strong><br />\r\n\tPresent your needs, desires, and concerns to God, trusting Him to hear and respond according to His will.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Pray God&rsquo;s Word</strong><br />\r\n\tUse Scripture as your guide. God&rsquo;s Word strengthens your prayers and aligns your heart with His truth.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Listen and trust</strong><br />\r\n\tTake time to be still. Trust God with the outcome and remain open to His direction.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Close with gratitude</strong><br />\r\n\tThank God in advance, believing He is working even when you cannot see it.</p>\r\n\t</li>\r\n</ol>",
+    "author_name": "Pst. Nellie Shani",
+    "link_url": "",
+    "is_active": true,
+    "created_at": "2026-01-27T19:24:05.343Z",
+    "updated_at": "2026-01-28T07:47:18.487Z"
+  }
+},
+{
+  "model": "church.infocard",
+  "pk": 2,
+  "fields": {
+    "card_type": "news",
+    "title": "FELLOWSHIP",
+    "slug": "fellowship",
+    "image": "info_cards/554046056_1264358689061610_2566163542975989460_n_DyWfGSk.jpg",
+    "image_cropping": "0,15,1104,636",
+    "headline": "RESISTING END TIMES DECEPTION",
+    "summary": "The Bible focuses on helping believers discern truth from deception in the context of end-time events. It emphasizes that false teachings and misleading prophecies can lead Christians astray, causing fear, confusion, or spiritual compromise",
+    "content": "<p>The bible tells us that believers discern truth from deception in the context of end-time events. It emphasizes that false teachings and misleading prophecies can lead Christians astray, causing fear, confusion, or spiritual compromise. Key points include:</p>\r\n\r\n<ol>\r\n\t<li>\r\n\t<p><strong>Awareness of Deception:</strong> Many end-times teachings are distorted, mixing truth with falsehood to manipulate believers. Awareness and vigilance are crucial.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Grounding in Scripture:</strong> The Bible is the ultimate authority. Knowledge of Scripture equips believers to identify errors and test prophecies or claims against God&rsquo;s Word.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Spiritual Discernment:</strong> The Holy Spirit enables Christians to distinguish truth from lies. Prayer, obedience, and a relationship with God strengthen discernment.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Avoiding Fear and Panic:</strong> End-time deception often preys on fear. Believers are encouraged to remain steadfast, trusting God&rsquo;s sovereignty rather than succumbing to sensationalism.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Living Faithfully Now:</strong> Instead of being consumed by speculation, Christians are called to live holy, obedient, and mission-focused lives while waiting for Christ&rsquo;s return.</p>\r\n\t</li>\r\n</ol>\r\n\r\n<p><strong>Core Message:</strong> Believers must anchor themselves in Scripture, cultivate spiritual discernment, and resist being led astray by fear, false teachers, or sensationalized interpretations of end-time events.</p>",
+    "author_name": "Pst. Nellie Shani",
+    "link_url": "",
+    "is_active": true,
+    "created_at": "2026-01-27T22:40:47.668Z",
+    "updated_at": "2026-01-28T07:42:50.824Z"
+  }
+},
+{
+  "model": "church.infocard",
+  "pk": 3,
+  "fields": {
+    "card_type": "word_of_truth",
+    "title": "The Story of Moses",
+    "slug": "the-story-of-moses",
+    "image": "info_cards/moses.jpg",
+    "image_cropping": "",
+    "headline": "Passing On the Spiritual Legacy",
+    "summary": "The message emphasizes the importance of passing on a spiritual legacy to the next generation. Just as Moses discipled Joshua to lead Israel faithfully, believers today must teach their children and others about God’s works and the gospel of Jesus Christ. The Bible warns that failing to pass on this spiritual heritage can result in future generations who “know neither the Lord nor what He has done” (Judges 2:10). Christians are encouraged to intentionally share their faith, ensuring the gospel is remembered and lived by those who come after us (1 Corinthians 15:3-5).",
+    "content": "<p><strong>The Bible </strong>tells us that after the death of Moses, Joshua took over and was the one who led the children of Israel into Canaan, the Promised Land.&nbsp;<br />\r\nMoses was careful to disciple his aide, Joshua, &ldquo;In the ways of the Lord&rdquo;. Just before Moses died, God told Moses to pass on his spiritual mantle to Joshua.&nbsp;<br />\r\n&ldquo;Now Joshua son of Nun was filled with the spirit of wisdom because Moses had laid his hands on him. So the Israelites listened to him and did what the LORD had commanded <em><strong>Moses&rdquo; &ndash; Deuteronomy 34:9.&nbsp;</strong></em><br />\r\nGod wanted a spiritual legacy passed on from Moses to the next leader, Joshua.<br />\r\n&nbsp;However after the death of Joshua the Israelites followed God for a little while then forsook Him! We are told,&nbsp;<br />\r\n&ldquo;After that whole generation had been gathered to their ancestors, another generation grew up who knew neither the Lord nor what he had done for Israel&rdquo; &ndash; Judges 2:10.&nbsp;<br />\r\nUnfortunately there was a generation that did not tell the next generation about the God of Israel and what He had done for their nation! This is what God was avoiding when He told the <em><strong>Israelites in Deuteronomy 6:1-9,&nbsp;</strong></em><br />\r\n&ldquo;These are the commands the Lord your God commanded me to teach you&hellip;so that your children and the children after them may fear the Lord your God as long as you live&hellip;Impress them on your children. Talk about them when you sit at home and when you walk along the road, when you lie down and when you get up&hellip;Write them on the doorframes of your houses and on your gates.&rdquo;&nbsp;<br />\r\nThis was the way to pass on the spiritual legacy of Israel to the next generation. Unfortunately the Israelites failed to do this!</p>\r\n\r\n<p>It is very easy to see how the children and grandchildren of a great man or woman of God can totally turn away from God because the &ldquo;mantle&rdquo; of faith in Jesus Christ was never passed down to them by their parents!&nbsp;<br />\r\nIf we as believers in Jesus Christ do not pass on our Christian heritage to our children, we risk having a generation after we have gone, who will know neither the Lord, nor what He has done for us! How sad that would be!</p>\r\n\r\n<p><br />\r\n&nbsp;&ldquo;For what I received I passed on to you as of first importance: that Christ died for our sins according to the Scriptures, that he was buried, that he was raised on the third day according to the Scriptures&rdquo; &ndash; <strong>1 Corinthians 15:3-5.</strong><br />\r\n<strong>&nbsp;Prayer Points:</strong><br />\r\n&nbsp;1). Ask the Lord to forgive you where you have not helped pass on the Word of God to the next generation.<br />\r\n&nbsp;2). Ask the Holy Spirit to give you opportunities where you can share the gospel with the next generation.<br />\r\n&nbsp;3). Thank the Lord that He has called us as co-laborers with Him in spreading the Gospel.</p>",
+    "author_name": "Pst. Nellie Shani",
+    "link_url": "",
+    "is_active": true,
+    "created_at": "2026-01-27T22:45:09.859Z",
+    "updated_at": "2026-01-27T22:47:02.661Z"
+  }
+},
+{
+  "model": "church.ctacard",
+  "pk": 1,
+  "fields": {
+    "quote_text": "",
+    "verse_reference": "Galatians 3:13",
+    "button1_text": "Books",
+    "button1_url": "#",
+    "button2_text": "School of Ministry",
+    "button2_url": "/childrens-bread-school/",
+    "button3_text": "Partner With Us",
+    "button3_url": "/donate/",
+    "updated_at": "2026-01-26T20:49:03.469Z"
+  }
+},
+{
+  "model": "church.mensministry",
+  "pk": 1,
+  "fields": {
+    "title": "Men's Ministry",
+    "video_url": "https://www.youtube.com/watch?v=RKG-JkgzcyU",
+    "description": "The Men’s Ministry exists to raise godly men who lead with integrity, faith, and purpose—at home, in the church, and in the wider community. Grounded in biblical principles, the ministry provides a space where men can grow spiritually, build strong brotherhood, and sharpen one another through prayer, accountability, and discipleship.\r\n\r\nThrough regular fellowship meetings, Bible studies, mentorship, and outreach initiatives, we equip men to become servant leaders, responsible fathers, faithful husbands, and positive role models. The ministry also addresses real-life challenges facing men today—spiritual, emotional, family, and societal—offering biblical solutions and practical support.",
+    "is_active": true,
+    "created_at": "2026-01-27T09:04:29.315Z"
+  }
+},
+{
+  "model": "church.partner",
+  "pk": 1,
+  "fields": {
+    "name": "Love In Deed",
+    "logo": "partners/LoveInDeed_logo-white_Rg91fee.png",
+    "use_cropping": false,
+    "logo_cropping": "0,0,1000,667",
+    "website_url": "",
+    "display_order": 0,
+    "is_active": true,
+    "created_at": "2026-01-27T10:05:10.894Z"
+  }
+},
+{
+  "model": "church.partner",
+  "pk": 2,
+  "fields": {
+    "name": "Beacon Life Church",
+    "logo": "partners/241950360_3111690835621622_4717744177550104395_n_1.png",
+    "use_cropping": false,
+    "logo_cropping": "8,240,800,768",
+    "website_url": "",
+    "display_order": 1,
+    "is_active": true,
+    "created_at": "2026-01-27T10:06:31.073Z"
+  }
+},
+{
+  "model": "church.partner",
+  "pk": 3,
+  "fields": {
+    "name": "Truth Encounters Ministries",
+    "logo": "partners/TEM-wide-400px-300x46.png",
+    "use_cropping": false,
+    "logo_cropping": "0,0,69,46",
+    "website_url": "https://truthencounterministries.org/",
+    "display_order": 0,
+    "is_active": true,
+    "created_at": "2026-01-28T05:48:53.518Z"
+  }
+},
+{
+  "model": "church.partner",
+  "pk": 4,
+  "fields": {
+    "name": "Smiles for children foundation",
+    "logo": "partners/ChatGPT_Image_Jan_28_2026_09_28_32_AM_1.png",
+    "use_cropping": false,
+    "logo_cropping": "0,171,1024,853",
+    "website_url": "",
+    "display_order": 0,
+    "is_active": true,
+    "created_at": "2026-01-28T06:30:42.318Z"
+  }
+},
+{
+  "model": "church.partner",
+  "pk": 5,
+  "fields": {
+    "name": "BB International",
+    "logo": "partners/lumina-enhanced-1769583745526.png",
+    "use_cropping": false,
+    "logo_cropping": "223,0,329,70",
+    "website_url": "",
+    "display_order": 0,
+    "is_active": true,
+    "created_at": "2026-01-28T06:58:16.355Z"
+  }
+},
+{
+  "model": "church.newslettersubscriber",
+  "pk": 1,
+  "fields": {
+    "email": "iamblynq@gmail.com",
+    "date_subscribed": "2026-01-27T12:52:29.103Z",
+    "is_active": true
+  }
+},
+{
+  "model": "church.sidebarpromo",
+  "pk": 1,
+  "fields": {
+    "image": "sidebar_promos/W641643.jpg",
+    "image_cropping": "0,0,257,342",
+    "video_url": "",
+    "caption": "The Christ Commission",
+    "link_url": "",
+    "display_order": 0,
+    "is_active": true,
+    "created_at": "2026-01-28T00:20:12.903Z"
+  }
+},
+{
+  "model": "church.sidebarpromo",
+  "pk": 2,
+  "fields": {
+    "image": "sidebar_promos/ABS.jpg",
+    "image_cropping": "0,0,185,246",
+    "video_url": "",
+    "caption": "ABS",
+    "link_url": "",
+    "display_order": 2,
+    "is_active": true,
+    "created_at": "2026-01-28T00:21:22.023Z"
+  }
+},
+{
+  "model": "church.faq",
+  "pk": 1,
+  "fields": {
+    "question": "What is a generational curse?",
+    "answer": "consequences of sin, wrongdoing, or negative behavior can extend beyond an individual and affect their descendants. In this context, a generational curse is not merely about inherited traits or family patterns in a psychological sense, but rather a spiritual or moral consequence passed down through family lines.\r\n\r\nFor example, the Bible mentions in several passages, such as Exodus 20:5 and Numbers 14:18, that the sins of the parents can affect their children “to the third and fourth generation.” This is often interpreted to mean that unrepented sin or disobedience to God can create spiritual or circumstantial burdens like poverty, addiction, illness, or relational strife that may continue to manifest in subsequent generations.\r\n\r\nReligious teachings often emphasize that generational curses are not inevitable. Through repentance, prayer, faith, and obedience to God, it is believed that individuals can break these curses and restore spiritual blessings to themselves and their descendants. In Christian practice, this might involve confession, seeking deliverance through prayer, or living a life aligned with God’s commandments to end the cycle of negative spiritual influence.",
+    "display_order": 0,
+    "is_active": true,
+    "created_at": "2026-01-27T22:02:19.390Z",
+    "updated_at": "2026-01-27T22:02:19.390Z"
+  }
+},
+{
+  "model": "church.faq",
+  "pk": 2,
+  "fields": {
+    "question": "How are generational curses broken?",
+    "answer": "Breaking a generational curse, in a religious sense, is seen as a spiritual journey of repentance, faith, and deliberate action. It begins with acknowledging sin—both one’s own and, in some beliefs, the lingering effects of ancestors’ wrongdoing—and turning away from it through heartfelt repentance and prayer. This recognition is often accompanied by a conscious renunciation of the curse, verbally declaring that one no longer accepts the negative patterns or misfortunes that may have been passed down through the family line.\r\n\r\nFaith plays a central role in this process. Believers rely on the power of God to intervene, heal, and restore, trusting that divine authority can break spiritual strongholds that have persisted for generations. Prayer, sometimes accompanied by fasting, Scripture reading, or intercession from spiritual leaders, is used to call on God’s guidance and protection.",
+    "display_order": 0,
+    "is_active": true,
+    "created_at": "2026-01-27T22:03:34.291Z",
+    "updated_at": "2026-01-27T22:03:34.291Z"
+  }
+},
+{
+  "model": "church.faq",
+  "pk": 3,
+  "fields": {
+    "question": "Do I need deliverance even if I'm born again?",
+    "answer": "Being born again secures your salvation—your sins are forgiven, and you belong to Christ. You don’t need deliverance to be saved.\r\n\r\nHowever, even as a believer, you can still struggle with patterns, strongholds, or spiritual oppression from the past. Deliverance isn’t about salvation; it’s about applying Jesus’ freedom to those areas. If you experience ongoing struggles, prayer, renunciation, and pastoral support can help you walk fully in the liberty Christ has already won for you.",
+    "display_order": 0,
+    "is_active": true,
+    "created_at": "2026-01-27T22:05:15.891Z",
+    "updated_at": "2026-01-27T22:05:15.891Z"
+  }
+},
+{
+  "model": "church.faq",
+  "pk": 4,
+  "fields": {
+    "question": "If we struggle with something but generally win, is that a spirit?",
+    "answer": "If you struggle with something but generally overcome it, it is not necessarily a spirit. The Bible shows that even faithful believers wrestle with sin and weakness—Paul himself admitted in Romans 7:15–20 that he struggled to do what was right even as he desired to obey God. A true “spirit” or demonic stronghold is usually characterized by persistent, overpowering opposition that cannot be resisted through prayer, Scripture, and obedience.\r\n\r\nIf you are able to resist, repent, and grow despite the struggle, it is more likely an area God is using to refine your character and strengthen your faith. Struggles can reveal patterns in our lives that need God’s grace, teaching us dependence on Him, humility, and perseverance. Victory is not about perfection; it is about continuing to walk in obedience, relying on God’s Word, and trusting His Spirit to lead you forward.",
+    "display_order": 0,
+    "is_active": true,
+    "created_at": "2026-01-27T22:10:53.301Z",
+    "updated_at": "2026-01-27T22:10:53.301Z"
+  }
+},
+{
+  "model": "church.faq",
+  "pk": 5,
+  "fields": {
+    "question": "Is there a spirit that can enter the spirit man?",
+    "answer": "Yes, according to Scripture, the human spirit can be influenced, but it’s important to be precise about what that means. The Bible teaches that we are spirit, soul, and body (1 Thessalonians 5:23). The “spirit man” is the part of us that connects with God, discerns spiritual truths, and communes with Him (John 4:24; Romans 8:16).\r\n\r\nA demonic spirit cannot possess the spirit of a born-again believer because the Holy Spirit indwells them (1 Corinthians 6:19; 1 John 4:4). The Spirit of God protects and fills the spirit man, so it cannot be taken over. However, the spirit man can be influenced or oppressed by external spiritual forces if there is neglect, unrepented sin, or agreement with lies, which can affect our thoughts, emotions, and will.\r\n\r\nSatan and his spirits can tempt, deceive, and oppress, but they cannot inhabit the spirit of someone truly born again. That’s why Scripture emphasizes guarding your heart and mind, staying in God’s Word, and walking in obedience—this keeps your spirit man aligned with God and resistant to attack (Ephesians 6:10–18; James 4:7).",
+    "display_order": 0,
+    "is_active": true,
+    "created_at": "2026-01-27T22:11:49.387Z",
+    "updated_at": "2026-01-27T22:11:49.387Z"
+  }
+},
+{
+  "model": "church.faq",
+  "pk": 6,
+  "fields": {
+    "question": "When do I run and when do I resist in the face of temptation?",
+    "answer": "When faced with temptation, there are times to run and times to resist, and Scripture gives clear guidance.\r\n\r\nYou run from sin when it is dangerous, seductive, or beyond your natural ability to resist. Paul says in 1 Corinthians 6:18, “Flee fornication.” You remove yourself from the source of temptation—whether it’s a place, a person, or an opportunity—because staying there puts your soul at risk. Running is not cowardice; it is obedience and wisdom.\r\n\r\nYou resist when you are confronted with pressure or attack that you can face through God’s power. James 4:7 says, “Resist the devil, and he will flee from you.” Resisting means standing firm in faith, speaking Scripture, and relying on the Holy Spirit. This is active confrontation, not passive endurance.",
+    "display_order": 0,
+    "is_active": true,
+    "created_at": "2026-01-27T22:13:08.627Z",
+    "updated_at": "2026-01-27T22:13:08.627Z"
+  }
+},
+{
+  "model": "church.faq",
+  "pk": 7,
+  "fields": {
+    "question": "I am yet to understand why at the time we receive salvation the curse is not broken automatically?",
+    "answer": "When we receive salvation, our spirit is redeemed immediately. Our sins are forgiven, we are justified, and the Holy Spirit comes to dwell in us (Ephesians 1:7; Romans 5:1; Ephesians 1:13–14). Salvation restores our relationship with God and secures eternal life.\r\n\r\nHowever, the curses or effects of sin in the world—sickness, generational patterns, fear, poverty, or emotional wounds—are not always broken automatically. The reason is that while our spirit is saved, our body, mind, and circumstances still exist in a fallen world under the consequences of sin (Romans 8:20–22).",
+    "display_order": 0,
+    "is_active": true,
+    "created_at": "2026-01-27T22:15:14.772Z",
+    "updated_at": "2026-01-27T22:15:14.772Z"
+  }
+},
+{
+  "model": "church.faq",
+  "pk": 8,
+  "fields": {
+    "question": "When I become angry and I am able to ensure that I don’t sin, is this still a spirit of anger?",
+    "answer": "Feeling anger is not automatically a “spirit.” Anger is a natural emotion that God Himself expresses in certain circumstances (Exodus 32:10; Psalm 7:11). What matters is how you handle it. If you feel angry but do not act in sin, controlling your words, thoughts, and actions, this is not a demonic spirit—it is a natural human response being managed in obedience to God.\r\n\r\nA spirit of anger in Scripture refers to a persistent, controlling, or destructive force that dominates a person’s behavior (Ephesians 4:26–27 warns against letting anger give the devil a foothold). If your anger arises but you remain calm, forgive, and do not allow it to control you, it is simply an emotion, not a spirit.",
+    "display_order": 0,
+    "is_active": true,
+    "created_at": "2026-01-27T22:16:22.188Z",
+    "updated_at": "2026-01-27T22:16:22.188Z"
+  }
+}
+]

@@ -9,3 +9,8 @@ tzdata==2025.3
 whitenoise==6.11.0
 django-image-cropping==1.7
 easy-thumbnails==2.10.1
+gunicorn==23.0.0
+psycopg2-binary==2.9.10
+django-storages[google]==1.14.4
+google-cloud-storage==2.19.0
+dj-database-url==2.3.0

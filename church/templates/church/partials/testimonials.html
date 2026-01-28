@@ -74,8 +74,7 @@
                             allowfullscreen></iframe>
                     </div>
                     {% elif testimonial.photo %}
-                    {% thumbnail testimonial.photo "800x800" box=testimonial.photo_cropping crop detail as cropped %}
-                    <img src="{{ cropped.url }}" alt="{{ testimonial.member_name }} testimonial photo"
+                    <img src="{{ testimonial.photo.url }}" alt="{{ testimonial.member_name }} testimonial photo"
                         class="w-full h-full object-cover">
                     {% else %}
                     <div class="w-full h-full flex items-center justify-center bg-gray-800 text-gray-300">
@@ -106,8 +105,7 @@
                         <div class="flex items-center mt-6 pt-4 border-t border-gray-200 flex-shrink-0">
                             <div class="w-12 h-12 rounded-full bg-gray-300 overflow-hidden mr-4 flex-shrink-0">
                                 {% if testimonial.photo %}
-                                {% thumbnail testimonial.photo "100x100" box=testimonial.photo_cropping crop detail as cropped %}
-                                <img src="{{ cropped.url }}" alt="{{ testimonial.member_name }}"
+                                <img src="{{ testimonial.photo.url }}" alt="{{ testimonial.member_name }}"
                                     class="w-full h-full object-cover">
                                 {% else %}
                                 <div
