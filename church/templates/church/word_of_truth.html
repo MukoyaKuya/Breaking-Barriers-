@@ -1,0 +1,33 @@
+{% extends 'church/base.html' %}
+
+{% block title %}Word of Truth - Breaking Barriers International{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-12">
+    <h1 class="text-4xl font-bold text-center mb-8 brand-text">Word of Truth</h1>
+    
+    <div class="max-w-4xl mx-auto">
+        <p class="text-lg text-gray-700 mb-8 text-center">
+            Discover the transformative power of God's Word through our collection of verses, teachings, and spiritual insights.
+        </p>
+        
+        {% if verses %}
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for verse in verses %}
+            <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition">
+                <p class="text-gray-800 mb-4 italic">"{{ verse.content }}"</p>
+                <p class="text-brand-text font-semibold">{{ verse.reference }}</p>
+                {% if verse.date_posted %}
+                <p class="text-sm text-gray-500 mt-2">{{ verse.date_posted|date:"F d, Y" }}</p>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="text-center py-12">
+            <p class="text-gray-600 text-lg">Content will be available soon. Please check back later.</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

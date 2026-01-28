@@ -1,0 +1,35 @@
+<section class="py-16 bg-gray-100">
+    <div class="container mx-auto px-4">
+        {% if mens_ministry %}
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-10 brand-text">
+            {{ mens_ministry.title }}
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+            <!-- Video -->
+            <div>
+                <div class="rounded-lg overflow-hidden shadow-lg bg-black">
+                    <div class="aspect-video">
+                        <iframe class="w-full h-full"
+                                src="{{ mens_ministry.get_embed_url }}"
+                                title="{{ mens_ministry.title }}"
+                                frameborder="0"
+                                referrerpolicy="strict-origin-when-cross-origin"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right column: description text -->
+            <div>
+                <p class="text-lg text-gray-800 leading-relaxed">
+                    {{ mens_ministry.description }}
+                </p>
+            </div>
+        </div>
+
+        {% endif %}
+    </div>
+</section>
+

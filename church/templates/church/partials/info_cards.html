@@ -1,0 +1,175 @@
+{% load thumbnail %}
+<!-- Info Cards Section -->
+<section class="bg-gray-50 pt-2 pb-4">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Card 1: Children's Bread -->
+            <div
+                class="rounded-xl shadow-lg border-2 border-gray-400 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col h-full">
+                <div class="px-5 pt-5 pb-3 border-b border-gray-100">
+                    <h2 class="text-2xl font-bold brand-text text-center">{% if childrens_bread_card %}{{ childrens_bread_card.title }}{% else %}Children's Bread{% endif %}</h2>
+                </div>
+                {% if childrens_bread_card %}
+                <a href="{% if childrens_bread_card.link_url %}{{ childrens_bread_card.link_url }}{% else %}{% url 'info_card_detail' childrens_bread_card.slug %}{% endif %}"
+                    class="flex flex-col flex-grow">
+                    <div class="relative w-full aspect-[16/9] overflow-hidden group bg-gray-100">
+                        {% if childrens_bread_card.image %}
+                        {% if childrens_bread_card.image_cropping %}
+                        {% thumbnail childrens_bread_card.image "1600x900" box=childrens_bread_card.image_cropping crop detail as cropped %}
+                        <img src="{{ cropped.url }}" alt="{{ childrens_bread_card.headline }}"
+                            class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110">
+                        {% else %}
+                        <img src="{{ childrens_bread_card.image.url }}" alt="{{ childrens_bread_card.headline }}"
+                            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                        {% endif %}
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                        {% else %}
+                        <div
+                            class="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
+                            <i class="fas fa-image text-gray-400 text-5xl"></i>
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col">
+                        <h3 class="text-lg font-bold brand-text mb-3 leading-tight">{{ childrens_bread_card.headline|truncatewords:12 }}</h3>
+                        <p class="text-gray-600 text-sm mb-4 leading-relaxed flex-grow">{{ childrens_bread_card.summary|truncatewords:25 }}</p>
+                        <span class="text-brand-text font-semibold hover:underline inline-flex items-center group">
+                            Read More
+                            <i
+                                class="fas fa-arrow-right ml-2 text-xs group-hover:translate-x-1 transition-transform"></i>
+                        </span>
+                        <div
+                            class="flex items-center justify-between mt-5 pt-4 text-xs text-gray-500 border-t border-gray-100">
+                            <div class="flex items-center space-x-1.5">
+                                <i class="fas fa-user text-gray-400"></i>
+                                <span class="text-gray-600">{{ childrens_bread_card.author_name }}</span>
+                            </div>
+                            <div class="flex items-center space-x-1.5">
+                                <i class="fas fa-calendar text-gray-400"></i>
+                                <span class="text-gray-600">{{ childrens_bread_card.created_at|date:"M d, Y" }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                {% else %}
+                <div class="p-5 flex-grow flex items-center justify-center">
+                    <p class="text-gray-400 text-sm text-center">No content available. Please configure in admin.</p>
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Card 2: News -->
+            <div
+                class="rounded-xl shadow-lg border-2 border-gray-400 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col h-full">
+                <div class="px-5 pt-5 pb-3 border-b border-gray-100">
+                    <h2 class="text-2xl font-bold brand-text text-center">{% if news_card %}{{ news_card.title }}{% else %}News{% endif %}</h2>
+                </div>
+                {% if news_card %}
+                <a href="{% if news_card.link_url %}{{ news_card.link_url }}{% else %}{% url 'info_card_detail' news_card.slug %}{% endif %}"
+                    class="flex flex-col flex-grow">
+                    <div class="relative w-full aspect-[16/9] overflow-hidden group bg-gray-100">
+                        {% if news_card.image %}
+                        {% if news_card.image_cropping %}
+                        {% thumbnail news_card.image "1600x900" box=news_card.image_cropping crop detail as cropped %}
+                        <img src="{{ cropped.url }}" alt="{{ news_card.headline }}"
+                            class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110">
+                        {% else %}
+                        <img src="{{ news_card.image.url }}" alt="{{ news_card.headline }}"
+                            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                        {% endif %}
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                        {% else %}
+                        <div
+                            class="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
+                            <i class="fas fa-image text-gray-400 text-5xl"></i>
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col">
+                        <h3 class="text-lg font-bold brand-text mb-3 leading-tight">{{ news_card.headline|truncatewords:12 }}</h3>
+                        <p class="text-gray-600 text-sm mb-4 leading-relaxed flex-grow">{{ news_card.summary|truncatewords:25 }}</p>
+                        <span class="text-brand-text font-semibold hover:underline inline-flex items-center group">
+                            Read More
+                            <i
+                                class="fas fa-arrow-right ml-2 text-xs group-hover:translate-x-1 transition-transform"></i>
+                        </span>
+                        <div
+                            class="flex items-center justify-between mt-5 pt-4 text-xs text-gray-500 border-t border-gray-100">
+                            <div class="flex items-center space-x-1.5">
+                                <i class="fas fa-user text-gray-400"></i>
+                                <span class="text-gray-600">{{ news_card.author_name }}</span>
+                            </div>
+                            <div class="flex items-center space-x-1.5">
+                                <i class="fas fa-calendar text-gray-400"></i>
+                                <span class="text-gray-600">{{ news_card.created_at|date:"M d, Y" }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                {% else %}
+                <div class="p-5 flex-grow flex items-center justify-center">
+                    <p class="text-gray-400 text-sm text-center">No content available. Please configure in admin.</p>
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Card 3: Word of Truth -->
+            <div
+                class="rounded-xl shadow-lg border-2 border-gray-400 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col h-full">
+                <div class="px-5 pt-5 pb-3 border-b border-gray-100">
+                    <h2 class="text-2xl font-bold brand-text text-center">{% if word_of_truth_card %}{{ word_of_truth_card.title }}{% else %}Word of Truth{% endif %}</h2>
+                </div>
+                {% if word_of_truth_card %}
+                <a href="{% if word_of_truth_card.link_url %}{{ word_of_truth_card.link_url }}{% else %}{% url 'info_card_detail' word_of_truth_card.slug %}{% endif %}"
+                    class="flex flex-col flex-grow">
+                    <div class="relative w-full aspect-[16/9] overflow-hidden group bg-gray-100">
+                        {% if word_of_truth_card.image %}
+                        {% if word_of_truth_card.image_cropping %}
+                        {% thumbnail word_of_truth_card.image "1600x900" box=word_of_truth_card.image_cropping crop detail as cropped %}
+                        <img src="{{ cropped.url }}" alt="{{ word_of_truth_card.headline }}"
+                            class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110">
+                        {% else %}
+                        <img src="{{ word_of_truth_card.image.url }}" alt="{{ word_of_truth_card.headline }}"
+                            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                        {% endif %}
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                        {% else %}
+                        <div
+                            class="w-full h-full bg-gradient-to-br from-yellow-400 via-orange-500 to-red-600 flex items-center justify-center">
+                            <div class="text-center">
+                                <i class="fas fa-book text-white text-5xl opacity-80 mb-2"></i>
+                                <p class="text-white text-xs font-semibold opacity-90">Word of Truth</p>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="p-5 flex-grow flex flex-col">
+                        <h3 class="text-lg font-bold brand-text mb-3 leading-tight">{{ word_of_truth_card.headline|truncatewords:12 }}</h3>
+                        <p class="text-gray-600 text-sm mb-4 leading-relaxed flex-grow">{{ word_of_truth_card.summary|truncatewords:25 }}</p>
+                        <span class="text-brand-text font-semibold hover:underline inline-flex items-center group">
+                            Read More
+                            <i
+                                class="fas fa-arrow-right ml-2 text-xs group-hover:translate-x-1 transition-transform"></i>
+                        </span>
+                        <div
+                            class="flex items-center justify-between mt-5 pt-4 text-xs text-gray-500 border-t border-gray-100">
+                            <div class="flex items-center space-x-1.5">
+                                <i class="fas fa-user text-gray-400"></i>
+                                <span class="text-gray-600">{{ word_of_truth_card.author_name }}</span>
+                            </div>
+                            <div class="flex items-center space-x-1.5">
+                                <i class="fas fa-calendar text-gray-400"></i>
+                                <span class="text-gray-600">{{ word_of_truth_card.created_at|date:"M d, Y" }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                {% else %}
+                <div class="p-5 flex-grow flex items-center justify-center">
+                    <p class="text-gray-400 text-sm text-center">No content available. Please configure in admin.</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>

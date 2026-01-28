@@ -1,0 +1,1087 @@
+/* Custom Admin CSS for Breaking Barriers International */
+
+/* Body Background */
+body {
+    background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%) !important;
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+}
+
+/* Login page background - handled by login.css */
+
+#content {
+    background-color: transparent !important;
+    padding: 24px;
+}
+
+/* Ensure content is visible on non-login pages */
+body:not(.login) #content {
+    display: block !important;
+    visibility: visible !important;
+}
+
+/* Don't interfere with login page */
+body.login #content {
+    padding: 0 !important;
+}
+
+/* Header Styling */
+#header {
+    background: linear-gradient(135deg, #990030 0%, #7a0026 100%) !important;
+    color: white !important;
+    box-shadow: 0 4px 16px rgba(153, 0, 48, 0.35) !important;
+    border-bottom: 3px solid rgba(255, 255, 255, 0.1) !important;
+    padding: 18px 0 !important;
+    position: relative;
+    z-index: 100;
+}
+
+#header a:link,
+#header a:visited {
+    color: white !important;
+}
+
+#header h1 {
+    color: white !important;
+    font-weight: bold;
+}
+
+#header h1 a {
+    color: white !important;
+}
+
+/* Branding Section */
+#branding {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 5px 0;
+}
+
+#branding img {
+    height: 45px;
+    width: auto;
+    margin-right: 10px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    transition: transform 0.3s ease;
+}
+
+#branding img:hover {
+    transform: scale(1.05);
+}
+
+#branding h1 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-size: 24px !important;
+    letter-spacing: 0.5px;
+}
+
+/* User Tools */
+#user-tools {
+    color: white !important;
+}
+
+#user-tools a {
+    color: white !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+#user-tools a:hover {
+    border-bottom-color: white;
+}
+
+/* Module List */
+.module h2,
+.module caption,
+.inline-group h2 {
+    background: linear-gradient(135deg, #990030 0%, #7a0026 100%) !important;
+    color: white !important;
+    box-shadow: 0 3px 8px rgba(153, 0, 48, 0.25) !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3) !important;
+    border-radius: 8px 8px 0 0 !important;
+    padding: 14px 18px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.5px !important;
+    font-size: 16px !important;
+}
+
+.module h2 a,
+.module caption a,
+.inline-group h2 a {
+    color: white !important;
+    text-decoration: none !important;
+}
+
+/* Ensure all text in module headings is white */
+.module h2,
+.module h2 *,
+.module caption,
+.module caption *,
+.inline-group h2,
+.inline-group h2 * {
+    color: white !important;
+}
+
+/* Override any link colors in module headings */
+.module h2 a:link,
+.module h2 a:visited,
+.module h2 a:hover,
+.module h2 a:active,
+.module caption a:link,
+.module caption a:visited,
+.module caption a:hover,
+.module caption a:active,
+.inline-group h2 a:link,
+.inline-group h2 a:visited,
+.inline-group h2 a:hover,
+.inline-group h2 a:active {
+    color: white !important;
+}
+
+/* Buttons */
+.button,
+input[type=submit],
+input[type=button],
+.submit-row input,
+a.button {
+    background: linear-gradient(135deg, #990030 0%, #7a0026 100%) !important;
+    color: white !important;
+    border: none !important;
+    box-shadow: 0 4px 12px rgba(153, 0, 48, 0.35) !important;
+    border-radius: 8px !important;
+    padding: 11px 22px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    cursor: pointer !important;
+    font-size: 14px !important;
+}
+
+.button:hover,
+input[type=submit]:hover,
+input[type=button]:hover,
+a.button:hover {
+    background: linear-gradient(135deg, #7a0026 0%, #5a0019 100%) !important;
+    color: white !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 18px rgba(153, 0, 48, 0.45) !important;
+}
+
+.button:active,
+input[type=submit]:active,
+input[type=button]:active,
+a.button:active {
+    transform: translateY(0) !important;
+    box-shadow: 0 2px 10px rgba(153, 0, 48, 0.3) !important;
+}
+
+.button.default,
+input[type=submit].default,
+.submit-row input.default {
+    background: linear-gradient(135deg, #990030 0%, #7a0026 100%) !important;
+    box-shadow: 0 4px 15px rgba(153, 0, 48, 0.4) !important;
+}
+
+.button.default:hover,
+input[type=submit].default:hover {
+    background: linear-gradient(135deg, #7a0026 0%, #5a0019 100%) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Links - default to black for readability on white backgrounds */
+a:link,
+a:visited {
+    color: #000000 !important;
+}
+
+a:hover {
+    color: #990030 !important;
+}
+
+/* Exception: Module heading links should always be white (on colored backgrounds) */
+.module h2 a:link,
+.module h2 a:visited,
+.module h2 a:hover,
+.module caption a:link,
+.module caption a:visited,
+.module caption a:hover,
+.inline-group h2 a:link,
+.inline-group h2 a:visited,
+.inline-group h2 a:hover {
+    color: white !important;
+}
+
+/* Exception: Header links should be white */
+#header a:link,
+#header a:visited,
+#header a:hover {
+    color: white !important;
+}
+
+/* Selected Items */
+.selected {
+    background-color: #990030 !important;
+}
+
+.selected a {
+    color: white !important;
+}
+
+/* Change List */
+.change-list .results th {
+    background: linear-gradient(135deg, #990030 0%, #7a0026 100%) !important;
+    color: white !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3) !important;
+    padding: 14px 18px !important;
+    font-weight: 600 !important;
+    border: none !important;
+    box-shadow: 0 2px 4px rgba(153, 0, 48, 0.2) !important;
+    font-size: 14px !important;
+}
+
+.change-list .results {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+    border: 1px solid #e5e7eb !important;
+}
+
+.change-list .results tr {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    transition: all 0.3s ease !important;
+    border-bottom: 1px solid #e8e8e8 !important;
+}
+
+.change-list .results td {
+    color: #000000 !important;
+    padding: 12px 15px !important;
+}
+
+.change-list .results tr:hover {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
+    box-shadow: inset 0 0 0 1px rgba(153, 0, 48, 0.1) !important;
+}
+
+/* Action Bar */
+.actions {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
+    border: 2px solid #990030 !important;
+    border-radius: 10px !important;
+    color: #000000 !important;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08) !important;
+    padding: 18px 20px !important;
+    margin: 20px 0 !important;
+}
+
+.actions label {
+    color: #000000 !important;
+    font-weight: 600 !important;
+}
+
+/* Breadcrumbs */
+.breadcrumbs {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
+    border-bottom: 3px solid #990030 !important;
+    color: #000000 !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06) !important;
+    padding: 14px 24px !important;
+    border-radius: 0 0 10px 10px !important;
+    margin-bottom: 20px !important;
+}
+
+.breadcrumbs a {
+    color: #000000 !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+    text-decoration: none !important;
+}
+
+.breadcrumbs a:hover {
+    color: #990030 !important;
+    text-decoration: underline !important;
+}
+
+/* Form Fields */
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=url],
+input[type=number],
+textarea,
+select {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: 2px solid #d1d5db !important;
+    border-radius: 8px !important;
+    padding: 11px 16px !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04) !important;
+    font-size: 14px !important;
+}
+
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=email]:focus,
+input[type=url]:focus,
+input[type=number]:focus,
+textarea:focus,
+select:focus {
+    border-color: #990030 !important;
+    box-shadow: 0 0 0 4px rgba(153, 0, 48, 0.15), 0 4px 12px rgba(153, 0, 48, 0.1) !important;
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    transform: translateY(-1px) !important;
+    outline: none !important;
+}
+
+.form-row label {
+    color: #000000 !important;
+    font-weight: 600 !important;
+    margin-bottom: 8px !important;
+    display: block !important;
+}
+
+/* Messages */
+.success {
+    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%) !important;
+    border-left: 4px solid #28a745 !important;
+    color: #155724 !important;
+    box-shadow: 0 3px 8px rgba(40, 167, 69, 0.18) !important;
+    border-radius: 8px !important;
+    padding: 16px 22px !important;
+    margin: 18px 0 !important;
+    font-weight: 500 !important;
+}
+
+.error {
+    background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%) !important;
+    border-left: 4px solid #dc3545 !important;
+    color: #721c24 !important;
+    box-shadow: 0 3px 8px rgba(220, 53, 69, 0.18) !important;
+    border-radius: 8px !important;
+    padding: 16px 22px !important;
+    margin: 18px 0 !important;
+    font-weight: 500 !important;
+}
+
+.info {
+    background: linear-gradient(135deg, #d1ecf1 0%, #bee5eb 100%) !important;
+    border-left: 4px solid #17a2b8 !important;
+    color: #0c5460 !important;
+    box-shadow: 0 3px 8px rgba(23, 162, 184, 0.18) !important;
+    border-radius: 8px !important;
+    padding: 16px 22px !important;
+    margin: 18px 0 !important;
+    font-weight: 500 !important;
+}
+
+/* Login Page - Handled by custom login.html template */
+/* These rules are moved to login.css to avoid conflicts */
+
+/* Sidebar */
+#changelist-filter {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
+    border-radius: 10px !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
+    border: 1px solid #e5e7eb !important;
+    padding: 18px !important;
+}
+
+#changelist-filter li {
+    color: #000000 !important;
+    margin: 8px 0 !important;
+    padding: 8px 12px !important;
+    border-radius: 6px !important;
+    transition: all 0.3s ease !important;
+}
+
+#changelist-filter li:hover {
+    background-color: rgba(153, 0, 48, 0.1) !important;
+    transform: translateX(5px) !important;
+}
+
+#changelist-filter a {
+    color: #000000 !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+}
+
+#changelist-filter a:hover {
+    color: white !important;
+}
+
+#changelist-filter h2 {
+    background: linear-gradient(135deg, #990030 0%, #7a0026 100%) !important;
+    color: white !important;
+    box-shadow: 0 3px 8px rgba(153, 0, 48, 0.25) !important;
+    border-radius: 8px !important;
+    padding: 14px 18px !important;
+    margin-bottom: 18px !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3) !important;
+    font-weight: 600 !important;
+    font-size: 15px !important;
+}
+
+#changelist-filter li.selected {
+    background-color: rgba(153, 0, 48, 0.15) !important;
+    border-left: 3px solid #990030 !important;
+}
+
+#changelist-filter li.selected a {
+    color: white !important;
+    font-weight: bold !important;
+}
+
+/* Pagination */
+.paginator {
+    margin: 24px 0 !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.paginator a {
+    background: linear-gradient(135deg, #990030 0%, #7a0026 100%) !important;
+    color: white !important;
+    border-radius: 8px !important;
+    padding: 9px 16px !important;
+    box-shadow: 0 3px 8px rgba(153, 0, 48, 0.3) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    text-decoration: none !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    min-width: 40px;
+    text-align: center;
+}
+
+.paginator a:hover {
+    background: linear-gradient(135deg, #7a0026 0%, #5a0019 100%) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 5px 14px rgba(153, 0, 48, 0.4) !important;
+}
+
+.paginator .this-page {
+    background: linear-gradient(135deg, #990030 0%, #7a0026 100%) !important;
+    color: white !important;
+    box-shadow: 0 4px 10px rgba(153, 0, 48, 0.4) !important;
+    font-weight: bold !important;
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Module and Dashboard */
+.module {
+    background-color: #ffffff !important;
+    border: 1px solid #e5e7eb !important;
+    border-radius: 10px !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
+    margin-bottom: 24px !important;
+    overflow: hidden !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.module:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+    transform: translateY(-3px) !important;
+    border-color: #d1d5db !important;
+}
+
+.module table {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+}
+
+.module table th {
+    color: #000000 !important;
+    font-weight: 600 !important;
+    padding: 12px 15px !important;
+}
+
+.module table td {
+    color: #000000 !important;
+    padding: 12px 15px !important;
+    border-bottom: 1px solid #e9ecef !important;
+}
+
+.module table tr:last-child td {
+    border-bottom: none !important;
+}
+
+.module table a {
+    color: #000000 !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+    text-decoration: none !important;
+}
+
+.module table a:hover {
+    color: #990030 !important;
+    text-decoration: underline !important;
+}
+
+/* Dashboard */
+.dashboard .module {
+    background-color: #ffffff !important;
+    border-radius: 12px !important;
+}
+
+.dashboard .module table td a {
+    color: #000000 !important;
+}
+
+.dashboard .module table td a:hover {
+    color: #990030 !important;
+}
+
+/* Improve inline forms */
+.inline-group {
+    border-radius: 8px !important;
+    overflow: hidden !important;
+}
+
+.inline-group .tabular {
+    border-radius: 0 0 8px 8px !important;
+}
+
+/* Better help text styling */
+.help,
+.help-block {
+    color: #6b7280 !important;
+    font-size: 13px !important;
+    margin-top: 6px !important;
+    font-style: italic !important;
+}
+
+/* Improve checkbox and radio styling */
+input[type=checkbox],
+input[type=radio] {
+    width: 18px !important;
+    height: 18px !important;
+    cursor: pointer !important;
+    accent-color: #990030 !important;
+}
+
+/* Better select dropdowns */
+select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23990030' d='M6 9L1 4h10z'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 12px center !important;
+    padding-right: 40px !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+}
+
+/* Add smooth transitions to all interactive elements */
+a,
+button,
+input,
+select,
+textarea {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Improve overall typography */
+body,
+input,
+textarea,
+select {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+}
+
+/* Consistent shadow system */
+* {
+    box-sizing: border-box;
+}
+
+/* Add depth to selected items */
+.selected {
+    background: linear-gradient(135deg, rgba(153, 0, 48, 0.1) 0%, rgba(122, 0, 38, 0.1) 100%) !important;
+    border-left: 3px solid #990030 !important;
+    box-shadow: 0 2px 6px rgba(153, 0, 48, 0.18) !important;
+}
+
+/* Additional professional touches */
+.object-tools {
+    margin-bottom: 20px !important;
+}
+
+.object-tools a {
+    background: linear-gradient(135deg, #990030 0%, #7a0026 100%) !important;
+    color: white !important;
+    border-radius: 8px !important;
+    box-shadow: 0 3px 8px rgba(153, 0, 48, 0.3) !important;
+}
+
+.object-tools a:hover {
+    color: white !important;
+    box-shadow: 0 5px 14px rgba(153, 0, 48, 0.4) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Improve table styling */
+.results table {
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+}
+
+.results table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+/* Better fieldset styling */
+fieldset {
+    border: 1px solid #e5e7eb !important;
+    border-radius: 8px !important;
+    padding: 20px !important;
+    margin-bottom: 20px !important;
+    background-color: #ffffff !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04) !important;
+}
+
+fieldset h2 {
+    margin-top: 0 !important;
+}
+
+/* Change red text colors to white - but keep regular content text readable */
+/* Override for table content links - keep them readable */
+.change-list .results td a {
+    color: #990030 !important;
+}
+
+.change-list .results td a:hover {
+    color: #7a0026 !important;
+}
+
+/* Keep form labels and help text readable */
+.form-row label,
+.help,
+.help-block,
+#changelist-filter li:not(.selected) a {
+    color: #000000 !important;
+}
+
+/* Jazzmin specific overrides - make navigation text white */
+.navbar-brand,
+.navbar-nav .nav-link,
+.sidebar .nav-link,
+.sidebar .nav-link i,
+.breadcrumb-item a,
+.breadcrumb-item.active {
+    color: white !important;
+}
+
+.navbar-nav .nav-link:hover,
+.sidebar .nav-link:hover {
+    color: #f0f0f0 !important;
+}
+
+/* Make sure any red-colored text elements are white */
+.text-danger,
+.text-red,
+[style*="color: #990030"],
+[style*="color: rgb(153, 0, 48)"] {
+    color: white !important;
+}
+
+/* Change specific admin navigation text to black (not sidebar) */
+/* User tools text (like "Roy") */
+#user-tools,
+#user-tools a,
+#user-tools span {
+    color: white !important;
+}
+
+/* Dashboard module titles - keep readable */
+.dashboard .module h2,
+.dashboard .module h2 a,
+.dashboard .module caption,
+.dashboard .module caption a {
+    color: white !important;
+}
+
+/* Ensure all content text on white backgrounds is black */
+#content,
+#content p,
+#content div,
+#content span,
+#content li,
+#content td,
+#content th:not(.change-list .results th) {
+    color: #000000 !important;
+}
+
+/* Form pages - ensure all text is readable */
+.form-row,
+.form-row p,
+.form-row div,
+.form-row span,
+fieldset,
+fieldset p,
+fieldset div,
+fieldset label {
+    color: #000000 !important;
+}
+
+/* Admin pages content area */
+.main-content,
+.content-main,
+.content {
+    color: #000000 !important;
+}
+
+/* Jazzmin specific - ensure content text is black */
+.content-wrapper,
+.content-wrapper p,
+.content-wrapper div,
+.content-wrapper span {
+    color: #000000 !important;
+}
+
+/* Make sure help text is visible but muted */
+.help,
+.help-block,
+.help-text {
+    color: #6b7280 !important;
+}
+
+/* Ensure all admin list pages have readable text */
+.admin-list,
+.admin-list td,
+.admin-list th:not(.change-list .results th),
+.admin-list a {
+    color: #000000 !important;
+}
+
+.admin-list a:hover {
+    color: #990030 !important;
+}
+
+/* Ensure error messages are readable */
+.errorlist,
+.errorlist li,
+ul.errorlist li {
+    color: #721c24 !important;
+    background-color: #f8d7da !important;
+}
+
+/* Ensure success messages are readable */
+.success-message,
+.success-message p {
+    color: #155724 !important;
+}
+
+/* Ensure info messages are readable */
+.info-message,
+.info-message p {
+    color: #0c5460 !important;
+}
+
+/* Make sure all form text is black */
+input[type="text"]::placeholder,
+textarea::placeholder,
+input[type="email"]::placeholder,
+input[type="url"]::placeholder {
+    color: #9ca3af !important;
+}
+
+/* Ensure readonly fields have readable text */
+.readonly,
+.readonly input,
+.readonly textarea {
+    color: #000000 !important;
+    background-color: #f9fafb !important;
+}
+
+/* Ensure all admin content sections have black text */
+.admin-content,
+.admin-content p,
+.admin-content div,
+.admin-content span,
+.admin-content h1,
+.admin-content h2,
+.admin-content h3,
+.admin-content h4,
+.admin-content h5,
+.admin-content h6 {
+    color: #000000 !important;
+}
+
+/* Exception: Only colored headers should have white text */
+.module h2,
+.module caption,
+.inline-group h2,
+.change-list .results th,
+#changelist-filter h2 {
+    color: white !important;
+}
+
+/* Fix Django Admin Calendar Widget UI - Complete Overhaul */
+.calendarbox {
+    background: #ffffff !important;
+    border: 1px solid #d1d5db !important;
+    border-radius: 8px !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+    padding: 0 !important;
+    width: 280px !important;
+    min-width: 280px !important;
+    max-width: 280px !important;
+    overflow: visible !important;
+    position: absolute !important;
+    z-index: 10000 !important;
+}
+
+/* Ensure parent containers don't clip the calendar */
+#content,
+.form-row,
+fieldset {
+    overflow: visible !important;
+}
+
+.calendarbox table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    border-spacing: 0 !important;
+    margin: 0 !important;
+    table-layout: fixed !important;
+}
+
+/* Navigation Bar */
+.calendarbox .calendarnav {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
+    border-bottom: 2px solid #d1d5db !important;
+    padding: 10px 12px !important;
+    margin: 0 !important;
+    border-radius: 8px 8px 0 0 !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+.calendarbox .calendarnav a {
+    color: #000000 !important;
+    text-decoration: none !important;
+    padding: 6px 10px !important;
+    border-radius: 4px !important;
+    font-weight: bold !important;
+    font-size: 16px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 32px !important;
+    height: 32px !important;
+    line-height: 1 !important;
+    background: transparent !important;
+    transition: all 0.2s ease !important;
+}
+
+.calendarbox .calendarnav a:hover {
+    background: #e9ecef !important;
+    color: #000000 !important;
+}
+
+.calendarbox .calendarnav .calendarnav-month {
+    color: #000000 !important;
+    font-weight: 600 !important;
+    font-size: 15px !important;
+    text-align: center !important;
+    flex: 1 !important;
+    padding: 0 12px !important;
+    margin: 0 !important;
+    background: transparent !important;
+    border: none !important;
+}
+
+/* Calendar Grid */
+.calendarbox table th {
+    background: #f8f9fa !important;
+    color: #000000 !important;
+    font-weight: 600 !important;
+    padding: 8px 4px !important;
+    text-align: center !important;
+    border: none !important;
+    font-size: 11px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    width: 14.28% !important;
+    box-sizing: border-box !important;
+}
+
+.calendarbox table td {
+    padding: 2px !important;
+    text-align: center !important;
+    border: none !important;
+    width: 14.28% !important;
+    box-sizing: border-box !important;
+    vertical-align: middle !important;
+}
+
+.calendarbox table td a {
+    color: #000000 !important;
+    text-decoration: none !important;
+    display: block !important;
+    padding: 8px 4px !important;
+    border-radius: 6px !important;
+    min-width: 32px !important;
+    height: 32px !important;
+    line-height: 16px !important;
+    transition: all 0.2s ease !important;
+    box-sizing: border-box !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+}
+
+.calendarbox table td a:hover {
+    background: #e9ecef !important;
+    color: #000000 !important;
+    transform: scale(1.05) !important;
+}
+
+.calendarbox table td.selected a {
+    background: #007bff !important;
+    color: #ffffff !important;
+    font-weight: bold !important;
+    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.3) !important;
+}
+
+.calendarbox table td.today a {
+    background: #e3f2fd !important;
+    color: #1976d2 !important;
+    font-weight: bold !important;
+    border: 2px solid #1976d2 !important;
+}
+
+.calendarbox table td.other-month a {
+    color: #9ca3af !important;
+    opacity: 0.5 !important;
+}
+
+/* Shortcuts Section */
+.calendarbox .calendar-shortcuts {
+    background: #f8f9fa !important;
+    border-top: 1px solid #e5e7eb !important;
+    padding: 10px 12px !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    display: flex !important;
+    gap: 6px !important;
+    flex-wrap: nowrap !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+.calendarbox .calendar-shortcuts a {
+    color: #000000 !important;
+    text-decoration: none !important;
+    padding: 6px 8px !important;
+    border-radius: 4px !important;
+    font-size: 12px !important;
+    background: #ffffff !important;
+    border: 1px solid #d1d5db !important;
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    transition: all 0.2s ease !important;
+}
+
+.calendarbox .calendar-shortcuts a:hover {
+    background: #e9ecef !important;
+    color: #000000 !important;
+    border-color: #9ca3af !important;
+    transform: translateY(-1px) !important;
+}
+
+/* Cancel Button */
+.calendarbox .calendar-cancel {
+    margin: 0 !important;
+    padding: 10px 12px !important;
+    background: #6c757d !important;
+    color: #ffffff !important;
+    border-radius: 0 0 8px 8px !important;
+    text-align: center !important;
+    display: block !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    border: none !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+}
+
+.calendarbox .calendar-cancel:hover {
+    background: #5a6268 !important;
+    color: #ffffff !important;
+}
+
+/* Fix any container overflow issues */
+.calendarbox-container,
+#calendarbox {
+    overflow: visible !important;
+    position: relative !important;
+}
+
+/* Ensure calendar popup is not clipped */
+body.admin-calendar-open {
+    overflow: visible !important;
+}
+
+/* Fix form containers that might clip calendar */
+.form-row,
+.form-row > div,
+fieldset {
+    overflow: visible !important;
+    position: relative !important;
+}
+
+/* Fix date input wrapper */
+.vDateField,
+input[type="date"],
+.date input {
+    position: relative !important;
+}
+
+/* Calendar link styling */
+.calendarlink,
+.calendarbox-shortcuts {
+    color: #000000 !important;
+    text-decoration: none !important;
+}
+
+.calendarlink:hover {
+    color: #990030 !important;
+    text-decoration: underline !important;
+}
+
+/* Ensure calendar is above everything */
+.calendarbox {
+    z-index: 99999 !important;
+}
+
+/* Fix for calendar being cut off in admin forms */
+#content-main,
+#content {
+    overflow-x: visible !important;
+}
+
+/* Improve calendar table cell spacing */
+.calendarbox table tbody tr {
+    height: auto !important;
+}
+
+.calendarbox table tbody tr td {
+    height: auto !important;
+    min-height: 36px !important;
+}

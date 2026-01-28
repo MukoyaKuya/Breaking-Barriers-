@@ -1,0 +1,11 @@
+asgiref==3.11.0
+Django==5.2.10
+django-ckeditor==6.7.3
+django-jazzmin==3.0.1
+django-js-asset==3.1.2
+pillow==12.1.0
+sqlparse==0.5.5
+tzdata==2025.3
+whitenoise==6.11.0
+django-image-cropping==1.7
+easy-thumbnails==2.10.1

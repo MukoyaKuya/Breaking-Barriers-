@@ -1,0 +1,24 @@
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.home_view, name='home'),
+    path('about/', views.about_view, name='about'),
+    path('word-of-truth/', views.word_of_truth_view, name='word_of_truth'),
+    path('childrens-bread-school/', views.childrens_bread_school_view, name='childrens_bread_school'),
+    path('media/', views.media_view, name='media'),
+    path('contact-us/', views.contact_us_view, name='contact_us'),
+    path('news/', views.news_list_view, name='news_list'),
+    path('news/<slug:slug>/', views.news_detail_view, name='news_detail'),
+    path('info-card/<slug:slug>/', views.info_card_detail_view, name='info_card_detail'),
+    path('news/load-more/', views.load_more_news_view, name='load_more_news'),
+    path('api/calendar-event/create/', views.calendar_event_create_view, name='calendar_event_create'),
+    path('api/calendar-event/<int:event_id>/', views.calendar_event_detail_view, name='calendar_event_detail'),
+    path('api/calendar-event/<int:event_id>/edit/', views.calendar_event_edit_view, name='calendar_event_edit'),
+    path('api/calendar-event/<int:event_id>/delete/', views.calendar_event_delete_view, name='calendar_event_delete'),
+    path('gallery/', views.gallery_view, name='gallery'),
+    path('privacy/', views.privacy_view, name='privacy'),
+    path('donate/', views.donate_view, name='donate'),
+    path('search/', views.search_view, name='search'),
+    path('newsletter/subscribe/', views.newsletter_subscribe_view, name='newsletter_subscribe'),
+]

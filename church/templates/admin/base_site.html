@@ -1,0 +1,27 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block title %}{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} | Breaking Barriers International{% endblock %}
+
+{% block branding %}
+<div id="branding">
+    <a href="{% url 'admin:index' %}">
+        <img src="{% static 'images/logo.png' %}" alt="Breaking Barriers International Logo" />
+    </a>
+    <h1 id="site-name">
+        <a href="{% url 'admin:index' %}">Breaking Barriers International</a>
+    </h1>
+</div>
+{% endblock %}
+
+{% block extrastyle %}
+{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% static 'admin/css/custom_admin.css' %}">
+{% endblock %}
+
+{% block extrahead %}
+{{ block.super }}
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="{% static 'images/logo.png' %}">
+<link rel="shortcut icon" type="image/png" href="{% static 'images/logo.png' %}">
+{% endblock %}

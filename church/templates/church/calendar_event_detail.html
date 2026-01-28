@@ -1,0 +1,119 @@
+{% extends 'church/base.html' %}
+
+{% block title %}{{ event.title }} - Breaking Barriers International{% endblock %}
+
+{% block content %}
+<div class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <a href="{% url 'news_list' %}" class="text-brand-color hover:underline mb-8 inline-block">&larr; Back to
+            Calendar</a>
+
+        <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+            {% if event.event_image %}
+            <div class="w-full h-64 md:h-96 relative">
+                <img src="{{ event.event_image.url }}" alt="{{ event.title }}" class="w-full h-full object-cover">
+                <div class="absolute top-4 left-4">
+                    <span class="bg-brand-color text-white px-3 py-1 rounded-full text-sm font-semibold shadow-lg">
+                        {{ event.event_type }}
+                    </span>
+                </div>
+            </div>
+            {% endif %}
+
+            <div class="brand-color text-white p-8 md:p-12">
+                {% if not event.event_image %}
+                <div class="mb-4">
+                    <span class="bg-white text-brand-color px-3 py-1 rounded-full text-sm font-semibold shadow-md">
+                        {{ event.event_type }}
+                    </span>
+                </div>
+                {% endif %}
+                <h1 class="text-3xl md:text-5xl font-bold mb-4">{{ event.title }}</h1>
+                <div class="flex flex-wrap gap-6 text-sm md:text-base opacity-90">
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>{{ event.start_datetime|date:"l, F j, Y" }}</span>
+                    </div>
+                    {% if not event.is_all_day %}
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-clock"></i>
+                        <span>
+                            {{ event.start_datetime|date:"g:i A" }}
+                            {% if event.end_datetime %} - {{ event.end_datetime|date:"g:i A" }}{% endif %}
+                        </span>
+                    </div>
+                    {% else %}
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-clock"></i>
+                        <span>All Day Event</span>
+                    </div>
+                    {% endif %}
+                    {% if event.location %}
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>{{ event.location }}</span>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="p-8 md:p-12">
+                <div class="prose prose-lg max-w-none text-gray-700">
+                    {{ event.description|safe }}
+                </div>
+
+                {% if event.organizer or event.contact_email or event.external_link %}
+                <div class="mt-12 p-6 bg-gray-50 rounded-xl border border-gray-100">
+                    <h3 class="text-xl font-bold mb-4">Event Details</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {% if event.organizer %}
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-users text-brand-color"></i>
+                            <div>
+                                <p class="text-xs uppercase text-gray-500">Organizer</p>
+                                <p class="font-semibold text-gray-900">{{ event.organizer }}</p>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% if event.contact_email %}
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-envelope text-brand-color"></i>
+                            <div>
+                                <p class="text-xs uppercase text-gray-500">Contact</p>
+                                <a href="mailto:{{ event.contact_email }}"
+                                    class="font-semibold text-brand-color hover:underline">{{ event.contact_email }}</a>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% if event.external_link %}
+                    <div class="mt-6 text-center">
+                        <a href="{{ event.external_link }}" target="_blank"
+                            class="inline-block bg-brand-color text-white px-8 py-3 rounded-lg font-bold hover:bg-red-900 transition shadow-lg">
+                            Register / More Info <i class="fas fa-external-link-alt ml-2"></i>
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+                {% endif %}
+
+                <div class="mt-12 pt-8 border-t border-gray-100 flex justify-between items-center">
+                    <div class="flex gap-4">
+                        <button onclick="window.print()"
+                            class="text-gray-500 hover:text-brand-color transition flex items-center gap-2">
+                            <i class="fas fa-print"></i>
+                            <span>Print Details</span>
+                        </button>
+                    </div>
+                    <div>
+                        <a href="{% url 'contact_us' %}"
+                            class="brand-color text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-900 transition shadow-md">
+                            Inquire About Event
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

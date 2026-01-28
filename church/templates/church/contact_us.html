@@ -1,0 +1,64 @@
+{% extends 'church/base.html' %}
+
+{% block title %}Contact Us - Breaking Barriers International{% endblock %}
+
+{% block content %}
+<div class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <h1 class="text-4xl md:text-5xl font-bold mb-12 text-center">Contact Us</h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <!-- Contact Information -->
+            <div class="bg-gray-50 p-8 rounded-lg shadow-md">
+                <h2 class="text-2xl font-bold mb-4">
+                    <i class="fas fa-map-marker-alt brand-text mr-2"></i>
+                    Visit Us
+                </h2>
+                <p class="text-gray-700 mb-4">
+                    We'd love to have you visit us in person. Please check our service times 
+                    and location information.
+                </p>
+                <p class="text-gray-600 text-sm">
+                    Address information will be updated here.
+                </p>
+            </div>
+            
+            <!-- Contact Form -->
+            <div class="bg-gray-50 p-8 rounded-lg shadow-md">
+                <h2 class="text-2xl font-bold mb-4">
+                    <i class="fas fa-envelope brand-text mr-2"></i>
+                    Get in Touch
+                </h2>
+                <p class="text-gray-700 mb-4">
+                    Have a question or want to reach out? Send us a message and we'll get back to you.
+                </p>
+                <p class="text-gray-600 text-sm">
+                    Contact form will be implemented here.
+                </p>
+            </div>
+        </div>
+        
+        <!-- Additional Contact Methods -->
+        <div class="bg-gray-50 p-8 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold mb-4 text-center">Other Ways to Reach Us</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                <div>
+                    <i class="fas fa-phone text-3xl brand-text mb-2"></i>
+                    <p class="text-gray-700 font-semibold">Phone</p>
+                    <p class="text-gray-600 text-sm">Phone number will be updated</p>
+                </div>
+                <div>
+                    <i class="fas fa-envelope text-3xl brand-text mb-2"></i>
+                    <p class="text-gray-700 font-semibold">Email</p>
+                    <p class="text-gray-600 text-sm">Email address will be updated</p>
+                </div>
+                <div>
+                    <i class="fas fa-clock text-3xl brand-text mb-2"></i>
+                    <p class="text-gray-700 font-semibold">Office Hours</p>
+                    <p class="text-gray-600 text-sm">Hours will be updated</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

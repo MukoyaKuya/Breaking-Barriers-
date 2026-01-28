@@ -1,0 +1,309 @@
+from django.contrib import admin
+from django.urls import reverse
+from django.utils.html import format_html
+from django.forms import ModelForm
+from django.forms.widgets import ColorInput
+from image_cropping import ImageCroppingMixin
+from .models import Verse, NewsItem, CalendarEvent, Testimonial, GalleryImage, HeroSettings, InfoCard, CTACard, MensMinistry, Partner, NewsletterSubscriber, FAQ, SidebarPromo
+
+
+@admin.register(Verse)
+class VerseAdmin(admin.ModelAdmin):
+    list_display = ('reference', 'content_preview', 'is_active', 'is_featured', 'date_posted')
+    list_filter = ('is_active', 'is_featured', 'date_posted')
+    search_fields = ('content', 'reference')
+    list_editable = ('is_active', 'is_featured')
+
+    def content_preview(self, obj):
+        return obj.content[:50] + '...' if len(obj.content) > 50 else obj.content
+    content_preview.short_description = 'Content'
+
+
+@admin.register(NewsItem)
+class NewsItemAdmin(ImageCroppingMixin, admin.ModelAdmin):
+    list_display = ('title', 'is_published', 'event_date', 'created_at')
+    list_filter = ('is_published', 'event_date', 'created_at')
+    search_fields = ('title', 'summary', 'body')
+    prepopulated_fields = {'slug': ('title',)}
+    date_hierarchy = 'created_at'
+    list_editable = ('is_published',)
+    readonly_fields = ('created_at',)
+    fieldsets = (
+        (None, {
+            'fields': ('title', 'slug', 'is_published')
+        }),
+        ('Content', {
+            'fields': ('image', 'image_cropping', 'summary', 'body')
+        }),
+        ('Event Details', {
+            'fields': ('event_date',),
+            'classes': ('collapse',)
+        }),
+        ('Timestamps', {
+            'fields': ('created_at',),
+            'classes': ('collapse',)
+        }),
+    )
+
+
+class CalendarEventForm(ModelForm):
+    """Custom form with color picker widget"""
+    class Meta:
+        model = CalendarEvent
+        fields = '__all__'
+        widgets = {
+            'color': ColorInput(attrs={'type': 'color', 'style': 'width: 100px; height: 40px; cursor: pointer;'}),
+        }
+
+
+@admin.register(CalendarEvent)
+class CalendarEventAdmin(ImageCroppingMixin, admin.ModelAdmin):
+    form = CalendarEventForm
+    list_display = ('title', 'event_date', 'event_type', 'calendar_link', 'is_published')
+    list_filter = ('event_type', 'is_published', 'event_date')
+    search_fields = ('title', 'description', 'location')
+    date_hierarchy = 'event_date'
+    list_editable = ('is_published',)
+    readonly_fields = ('created_at', 'updated_at', 'calendar_preview', 'color_preview')
+    
+    fieldsets = (
+        ('Event Information', {
+            'fields': ('title', 'description', 'event_date', 'event_type')
+        }),
+        ('Details', {
+            'fields': ('location', 'image', 'image_cropping', 'color', 'color_preview'),
+            'description': 'Select a color for the event label. Click the color box to open the color picker. Use the image cropper to crop the image.'
+        }),
+        ('Calendar Preview', {
+            'fields': ('calendar_preview',),
+            'description': 'View this event on the calendar page'
+        }),
+        ('Status', {
+            'fields': ('is_published', 'created_at', 'updated_at')
+        }),
+    )
+    
+    def calendar_link(self, obj):
+        if obj.id:
+            url = reverse('news_list') + f'?year={obj.event_date.year}&month={obj.event_date.month}'
+            return format_html('<a href="{}" target="_blank">View on Calendar</a>', url)
+        return '-'
+    calendar_link.short_description = 'Calendar'
+    
+    def calendar_preview(self, obj):
+        if obj.id:
+            url = reverse('news_list') + f'?year={obj.event_date.year}&month={obj.event_date.month}'
+            return format_html(
+                '<div style="padding: 15px; background: #f8f9fa; border-radius: 8px; margin: 10px 0;">'
+                '<p><strong>View on Calendar:</strong></p>'
+                '<iframe src="{}" style="width: 100%; height: 600px; border: 1px solid #ddd; border-radius: 4px;"></iframe>'
+                '</div>',
+                url
+            )
+        return 'Save the event first to see calendar preview'
+    calendar_preview.short_description = 'Calendar Preview'
+    
+    def color_preview(self, obj):
+        """Show a preview of the selected color"""
+        if obj.id:
+            return format_html(
+                '<div style="display: flex; align-items: center; gap: 10px; padding: 10px; background: #f8f9fa; border-radius: 4px;">'
+                '<div style="width: 60px; height: 60px; background-color: {}; border: 2px solid #ddd; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"></div>'
+                '<div>'
+                '<p style="margin: 0; font-weight: bold;">Color Preview</p>'
+                '<p style="margin: 0; color: #666; font-size: 12px;">Code: {}</p>'
+                '</div>'
+                '</div>',
+                obj.color, obj.color
+            )
+        return 'Select a color and save to see preview'
+    color_preview.short_description = 'Color Preview'
+    color_preview.readonly = True
+
+
+@admin.register(Testimonial)
+class TestimonialAdmin(ImageCroppingMixin, admin.ModelAdmin):
+    list_display = ('member_name', 'approved', 'text_preview', 'created_at')
+    list_filter = ('approved', 'created_at')
+    search_fields = ('member_name', 'text')
+    list_editable = ('approved',)
+    fieldsets = (
+        (None, {
+            'fields': ('member_name', 'approved')
+        }),
+        ('Media', {
+            'fields': ('video_url', 'photo', 'photo_cropping'),
+            'description': 'Provide either a video URL or an image (or both). Use the image cropper to crop the photo.',
+        }),
+        ('Content', {
+            'fields': ('text',),
+        }),
+        ('Timestamps', {
+            'fields': ('created_at',),
+            'classes': ('collapse',),
+        }),
+    )
+    readonly_fields = ('created_at',)
+
+    def text_preview(self, obj):
+        return obj.text[:50] + '...' if len(obj.text) > 50 else obj.text
+    text_preview.short_description = 'Text'
+
+
+@admin.register(GalleryImage)
+class GalleryImageAdmin(ImageCroppingMixin, admin.ModelAdmin):
+    list_display = ('caption', 'category', 'has_video', 'uploaded_at')
+    list_filter = ('category', 'uploaded_at')
+    search_fields = ('caption', 'category', 'video_url')
+    fieldsets = (
+        (None, {
+            'fields': ('caption', 'category')
+        }),
+        ('Media', {
+            'fields': ('image', 'image_cropping', 'video_url', 'duration_label'),
+            'description': 'Provide an image for all items. Add a video URL for video entries (e.g. YouTube embed URL). Use the image cropper to crop the image.',
+        }),
+        ('Timestamps', {
+            'fields': ('uploaded_at',),
+            'classes': ('collapse',),
+        }),
+    )
+    readonly_fields = ('uploaded_at',)
+
+    def has_video(self, obj):
+        return bool(obj.video_url)
+    has_video.boolean = True
+    has_video.short_description = 'Video?'
+
+
+@admin.register(HeroSettings)
+class HeroSettingsAdmin(ImageCroppingMixin, admin.ModelAdmin):
+    fields = ('image', 'image_cropping', 'updated_at')
+    readonly_fields = ('updated_at',)
+    
+    def has_add_permission(self, request):
+        # Only allow one instance
+        return not HeroSettings.objects.exists()
+
+    def has_delete_permission(self, request, obj=None):
+        # Prevent deletion
+        return False
+
+
+@admin.register(InfoCard)
+class InfoCardAdmin(ImageCroppingMixin, admin.ModelAdmin):
+    list_display = ('card_type', 'title', 'headline', 'is_active', 'updated_at')
+    list_filter = ('card_type', 'is_active', 'created_at', 'updated_at')
+    search_fields = ('title', 'headline', 'summary', 'author_name')
+    list_editable = ('is_active',)
+    prepopulated_fields = {'slug': ('title',)}
+    readonly_fields = ('created_at', 'updated_at')
+    fieldsets = (
+        ('Card Information', {
+            'fields': ('card_type', 'title', 'slug', 'is_active')
+        }),
+        ('Content', {
+            'fields': ('image', 'image_cropping', 'headline', 'summary', 'content', 'author_name'),
+            'description': 'Use the image cropper to crop the image to 16:9 aspect ratio for proper alignment and to prevent cropping issues.',
+        }),
+        ('Link', {
+            'fields': ('link_url',),
+            'description': 'Leave blank to use the internal detail page (recommended if content is provided).'
+        }),
+        ('Timestamps', {
+            'fields': ('created_at', 'updated_at'),
+            'classes': ('collapse',)
+        }),
+    )
+
+
+@admin.register(CTACard)
+class CTACardAdmin(admin.ModelAdmin):
+    def has_add_permission(self, request):
+        # Only allow one instance
+        return not CTACard.objects.exists()
+
+    def has_delete_permission(self, request, obj=None):
+        # Prevent deletion
+        return False
+
+    fieldsets = (
+        ('Quote Section', {
+            'fields': ('quote_text', 'verse_reference')
+        }),
+        ('Button 1', {
+            'fields': ('button1_text', 'button1_url')
+        }),
+        ('Button 2', {
+            'fields': ('button2_text', 'button2_url')
+        }),
+        ('Button 3', {
+            'fields': ('button3_text', 'button3_url')
+        }),
+    )
+
+
+@admin.register(MensMinistry)
+class MensMinistryAdmin(admin.ModelAdmin):
+    list_display = ('title', 'is_active', 'created_at')
+    list_filter = ('is_active', 'created_at')
+    search_fields = ('title', 'description')
+    readonly_fields = ('created_at',)
+
+
+@admin.register(Partner)
+class PartnerAdmin(ImageCroppingMixin, admin.ModelAdmin):
+    list_display = ('name', 'is_active', 'use_cropping', 'display_order', 'created_at')
+    list_filter = ('is_active', 'use_cropping', 'created_at')
+    search_fields = ('name',)
+    readonly_fields = ('created_at',)
+    fields = ('name', 'logo', 'use_cropping', 'logo_cropping', 'website_url', 'display_order', 'is_active', 'created_at')
+
+
+@admin.register(NewsletterSubscriber)
+class NewsletterSubscriberAdmin(admin.ModelAdmin):
+    list_display = ('email', 'is_active', 'date_subscribed')
+    list_filter = ('is_active', 'date_subscribed')
+    search_fields = ('email',)
+
+
+@admin.register(SidebarPromo)
+class SidebarPromoAdmin(ImageCroppingMixin, admin.ModelAdmin):
+    list_display = ('caption_preview', 'display_order', 'is_active', 'created_at')
+    list_filter = ('is_active', 'created_at')
+    search_fields = ('caption',)
+    list_editable = ('display_order', 'is_active')
+    fields = (
+        'image', 'image_cropping', 'video_url', 'caption', 'link_url',
+        'display_order', 'is_active', 'created_at',
+    )
+    readonly_fields = ('created_at',)
+
+    def caption_preview(self, obj):
+        return obj.caption or f'Promo #{obj.id}'
+    caption_preview.short_description = 'Caption'
+
+
+@admin.register(FAQ)
+class FAQAdmin(admin.ModelAdmin):
+    list_display = ('question_preview', 'display_order', 'is_active', 'created_at')
+    list_filter = ('is_active', 'created_at')
+    search_fields = ('question', 'answer')
+    list_editable = ('display_order', 'is_active')
+    fieldsets = (
+        ('Question & Answer', {
+            'fields': ('question', 'answer')
+        }),
+        ('Display Settings', {
+            'fields': ('display_order', 'is_active')
+        }),
+        ('Timestamps', {
+            'fields': ('created_at', 'updated_at'),
+            'classes': ('collapse',)
+        }),
+    )
+    readonly_fields = ('created_at', 'updated_at')
+
+    def question_preview(self, obj):
+        return obj.question[:60] + '...' if len(obj.question) > 60 else obj.question
+    question_preview.short_description = 'Question'

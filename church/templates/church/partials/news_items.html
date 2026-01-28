@@ -1,0 +1,36 @@
+{% load thumbnail %}
+{% for news_item in news_items %}
+<div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+    {% if news_item.image %}
+    {% thumbnail news_item.image "800x600" box=news_item.image_cropping crop detail as cropped %}
+    <img src="{{ cropped.url }}" alt="{{ news_item.title }}" class="w-full h-48 object-cover">
+    {% endif %}
+    <div class="p-6">
+        <h2 class="text-xl font-bold mb-2">
+            <a href="{% url 'news_detail' news_item.slug %}" class="hover:text-brand-color transition">
+                {{ news_item.title }}
+            </a>
+        </h2>
+        <p class="text-gray-600 mb-4">{{ news_item.summary|truncatewords:30 }}</p>
+        {% if news_item.event_date %}
+        <p class="text-sm text-gray-500 mb-2">
+            <i class="fas fa-calendar mr-1"></i>
+            {{ news_item.event_date|date:"F d, Y" }}
+        </p>
+        {% endif %}
+        <p class="text-sm text-gray-500">
+            <i class="fas fa-clock mr-1"></i>
+            {{ news_item.created_at|date:"F d, Y" }}
+        </p>
+    </div>
+</div>
+{% endfor %}
+
+{% if has_more_news %}
+<div class="text-center mt-8 col-span-full" id="load-more-wrapper">
+    <button hx-get="{% url 'load_more_news' %}?offset={{ next_offset }}" hx-target="#news-container" hx-swap="beforeend"
+        class="bg-brand-color text-white px-8 py-3 rounded-lg hover:bg-red-900 transition font-semibold">
+        Load More News
+    </button>
+</div>
+{% endif %}

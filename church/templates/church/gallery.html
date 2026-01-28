@@ -1,0 +1,95 @@
+{% extends 'church/base.html' %}
+
+{% block title %}Gallery - Breaking Barriers International{% endblock %}
+
+{% block content %}
+<div class="bg-white py-16">
+    <div class="container mx-auto px-4">
+        <h1 class="text-4xl md:text-5xl font-bold mb-8 text-center">Gallery</h1>
+        
+        <!-- Category Filter -->
+        <div class="mb-8 text-center">
+            <div class="inline-flex flex-wrap gap-2 justify-center">
+                <button 
+                    hx-get="{% url 'gallery' %}"
+                    hx-target="#gallery-container"
+                    hx-swap="innerHTML"
+                    class="px-4 py-2 rounded-lg {% if not selected_category %}bg-brand-color text-white{% else %}bg-gray-200 text-gray-700 hover:bg-gray-300{% endif %} transition">
+                    All
+                </button>
+                {% for category in categories %}
+                <button 
+                    hx-get="{% url 'gallery' %}?category={{ category }}"
+                    hx-target="#gallery-container"
+                    hx-swap="innerHTML"
+                    class="px-4 py-2 rounded-lg {% if selected_category == category %}bg-brand-color text-white{% else %}bg-gray-200 text-gray-700 hover:bg-gray-300{% endif %} transition">
+                    {{ category }}
+                </button>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <!-- Gallery Grid -->
+        <div id="gallery-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {% include 'church/partials/gallery_items.html' %}
+        </div>
+    </div>
+</div>
+
+<!-- Lightbox Modal -->
+<div 
+    x-data="{ 
+        show: false, 
+        isVideo: false,
+        mediaUrl: '', 
+        caption: '',
+        openLightbox(event) { 
+            this.isVideo = !!event.detail.isVideo;
+            this.mediaUrl = event.detail.url; 
+            this.caption = event.detail.caption; 
+            this.show = true; 
+        },
+        close() { this.show = false; }
+    }"
+    @open-lightbox.window="openLightbox($event)"
+    x-show="show"
+    x-cloak
+    class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75"
+    @click.self="close()"
+    style="display: none;"
+>
+    <div class="relative max-w-4xl max-h-[90vh] mx-4">
+        <button 
+            @click="close()"
+            class="absolute -top-10 right-0 text-white text-3xl hover:text-gray-300">
+            <i class="fas fa-times"></i>
+        </button>
+        <template x-if="isVideo">
+            <div class="w-screen max-w-4xl aspect-video">
+                <iframe class="w-full h-full" :src="mediaUrl" :title="caption"
+                        frameborder="0" referrerpolicy="strict-origin-when-cross-origin"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+            </div>
+        </template>
+        <template x-if="!isVideo">
+            <img :src="mediaUrl" :alt="caption" class="max-w-full max-h-[90vh] rounded-lg">
+        </template>
+        <p class="text-white text-center mt-4" x-text="caption"></p>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Ensure Alpine.js re-initializes after HTMX swaps
+    document.body.addEventListener('htmx:afterSwap', function(evt) {
+        if (evt.detail.target.id === 'gallery-container') {
+            // Alpine.js 3.x automatically initializes new elements, but we can force a refresh if needed
+            if (window.Alpine) {
+                window.Alpine.initTree(evt.detail.target);
+            }
+        }
+    });
+</script>
+{% endblock %}

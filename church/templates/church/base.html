@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Breaking Barriers International{% endblock %}</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{% static 'images/logo.png' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/logo.png' %}">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- HTMX -->
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    
+    <!-- Alpine.js for interactivity -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts - Fjalla One and Kaushan Script -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Kaushan+Script&display=swap" rel="stylesheet">
+    
+    <!-- Custom styles for brand color -->
+    <style>
+        .brand-color {
+            background-color: rgb(153, 0, 48);
+        }
+        .brand-text {
+            color: rgb(153, 0, 48);
+        }
+        [x-cloak] {
+            display: none !important;
+        }
+        .fjalla-one-regular {
+            font-family: "Fjalla One", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+        .kaushan-script-regular {
+            font-family: "Kaushan Script", cursive;
+            font-weight: 400;
+            font-style: normal;
+        }
+    </style>
+    
+    {% block extra_css %}{% endblock %}
+</head>
+<body class="flex flex-col min-h-screen bg-gray-50">
+    {% include 'church/partials/header.html' %}
+    
+    <main class="flex-grow">
+        {% if messages %}
+            <div class="container mx-auto px-4 py-2">
+                {% for message in messages %}
+                    <div class="bg-blue-100 border border-blue-400 text-blue-700 px-4 py-3 rounded relative" role="alert">
+                        <span class="block sm:inline">{{ message }}</span>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        
+        {% block content %}{% endblock %}
+    </main>
+    
+    {% include 'church/partials/footer.html' %}
+    
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

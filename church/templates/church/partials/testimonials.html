@@ -1,0 +1,157 @@
+{% load static thumbnail %}
+
+<section class="pt-4 pb-4">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-10 brand-text">
+            Testimonials
+        </h2>
+
+        {% if testimonials %}
+        <div x-data="{
+            active: 0,
+            total: {{ testimonials|length }},
+            interval: null,
+            isRotating: false,
+            init() {
+                // Start auto-rotation after initial load
+                setTimeout(() => {
+                    this.startAutoRotate();
+                }, 1000);
+            },
+            startAutoRotate() {
+                // Clear any existing interval first
+                this.stopAutoRotate();
+                this.isRotating = true;
+                this.interval = setInterval(() => {
+                    if (!this.isRotating) return;
+                    this.active = (this.active + 1) % this.total;
+                }, 10000); // Change every 10 seconds
+            },
+            stopAutoRotate() {
+                if (this.interval) {
+                    clearInterval(this.interval);
+                    this.interval = null;
+                }
+                this.isRotating = false;
+            },
+            next() {
+                this.stopAutoRotate();
+                this.active = (this.active + 1) % this.total;
+                setTimeout(() => {
+                    this.startAutoRotate();
+                }, 500);
+            },
+            prev() {
+                this.stopAutoRotate();
+                this.active = (this.active - 1 + this.total) % this.total;
+                setTimeout(() => {
+                    this.startAutoRotate();
+                }, 500);
+            },
+            goTo(index) {
+                this.stopAutoRotate();
+                this.active = index;
+                setTimeout(() => {
+                    this.startAutoRotate();
+                }, 500);
+            }
+        }" @mouseenter="stopAutoRotate()" @mouseleave="startAutoRotate()" x-init="init()"
+            class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Media column -->
+            <div class="w-full relative" style="min-height: 450px;">
+                {% for testimonial in testimonials %}
+                <div x-show="active === {{ forloop.counter0 }}" x-cloak
+                    x-transition:enter="transition ease-out duration-700" x-transition:enter-start="opacity-0 scale-95"
+                    x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-500"
+                    x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
+                    class="absolute inset-0 rounded-lg overflow-hidden shadow-lg bg-black">
+                    {% if testimonial.video_url %}
+                    <div class="w-full h-full">
+                        <iframe class="w-full h-full" src="{{ testimonial.get_embed_url }}"
+                            title="{{ testimonial.member_name }} testimonial" frameborder="0"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                    {% elif testimonial.photo %}
+                    {% thumbnail testimonial.photo "800x800" box=testimonial.photo_cropping crop detail as cropped %}
+                    <img src="{{ cropped.url }}" alt="{{ testimonial.member_name }} testimonial photo"
+                        class="w-full h-full object-cover">
+                    {% else %}
+                    <div class="w-full h-full flex items-center justify-center bg-gray-800 text-gray-300">
+                        <span class="text-sm">Media coming soon</span>
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Text column -->
+            <div class="w-full flex flex-col">
+                <div class="relative flex-1" style="min-height: 450px;">
+                    {% for testimonial in testimonials %}
+                    <div x-show="active === {{ forloop.counter0 }}" x-cloak
+                        x-transition:enter="transition ease-out duration-700"
+                        x-transition:enter-start="opacity-0 translate-x-4"
+                        x-transition:enter-end="opacity-100 translate-x-0"
+                        x-transition:leave="transition ease-in duration-500"
+                        x-transition:leave-start="opacity-100 translate-x-0"
+                        x-transition:leave-end="opacity-0 -translate-x-4"
+                        class="absolute inset-0 bg-gray-50 rounded-lg shadow-md p-6 md:p-8 flex flex-col">
+                        <div class="flex-1 overflow-y-auto pr-2">
+                            <p class="text-lg md:text-xl text-gray-800 italic leading-relaxed">
+                                “{{ testimonial.text }}”
+                            </p>
+                        </div>
+                        <div class="flex items-center mt-6 pt-4 border-t border-gray-200 flex-shrink-0">
+                            <div class="w-12 h-12 rounded-full bg-gray-300 overflow-hidden mr-4 flex-shrink-0">
+                                {% if testimonial.photo %}
+                                {% thumbnail testimonial.photo "100x100" box=testimonial.photo_cropping crop detail as cropped %}
+                                <img src="{{ cropped.url }}" alt="{{ testimonial.member_name }}"
+                                    class="w-full h-full object-cover">
+                                {% else %}
+                                <div
+                                    class="w-full h-full flex items-center justify-center text-gray-500 text-sm font-semibold">
+                                    {{ testimonial.member_name|first|upper }}
+                                </div>
+                                {% endif %}
+                            </div>
+                            <div class="min-w-0">
+                                <p class="font-semibold text-gray-900 truncate">{{ testimonial.member_name }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Slider controls -->
+                <div class="flex items-center justify-between mt-6">
+                    <button type="button"
+                        class="w-9 h-9 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-gray-100"
+                        @click="prev()">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+
+                    <div class="flex space-x-2">
+                        {% for testimonial in testimonials %}
+                        <button type="button" class="w-3 h-3 rounded-full"
+                            :class="active === {{ forloop.counter0 }} ? 'bg-brand-color' : 'bg-gray-300'"
+                            @click="goTo({{ forloop.counter0 }})"></button>
+                        {% endfor %}
+                    </div>
+
+                    <button type="button"
+                        class="w-9 h-9 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-gray-100"
+                        @click="next()">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="max-w-3xl mx-auto text-center text-gray-500">
+            <p>No testimonials available yet. Please check back soon.</p>
+        </div>
+        {% endif %}
+    </div>
+</section>
