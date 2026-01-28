@@ -6,107 +6,119 @@
         </h2>
     </div>
 
-        {% if partners %}
-        {# Full-bleed (edge-to-edge) marquee without affecting the centered container above #}
-        <div class="relative overflow-hidden w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
-            <div class="partners-marquee">
-                <div class="partners-marquee-inner">
-                    {# Group A #}
-                    <div class="partners-marquee-group">
-                        {% for partner in partners %}
-                        <div class="flex-shrink-0 max-w-[200px] md:max-w-[250px] flex items-center justify-center">
-                            {% if partner.website_url %}
-                            <a href="{{ partner.website_url }}" target="_blank" rel="noopener noreferrer" class="block w-full">
-                                {% if partner.use_cropping and partner.logo_cropping %}
-                                    {% thumbnail partner.logo "300x200" box=partner.logo_cropping crop detail as cropped %}
-                                    <img src="{{ cropped.url }}" alt="{{ partner.name }}" class="h-24 md:h-32 w-auto max-w-full object-contain">
-                                {% else %}
-                                    <img src="{{ partner.logo.url }}" alt="{{ partner.name }}" class="h-24 md:h-32 w-auto max-w-full object-contain">
-                                {% endif %}
-                            </a>
+    {% if partners %}
+    {# Full-bleed (edge-to-edge) marquee without affecting the centered container above #}
+    <div class="relative overflow-hidden w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
+        <div class="partners-marquee">
+            <div class="partners-marquee-inner">
+                {# Group A #}
+                <div class="partners-marquee-group">
+                    {% for partner in partners %}
+                    <div class="flex-shrink-0 max-w-[200px] md:max-w-[250px] flex items-center justify-center">
+                        {% if partner.website_url %}
+                        <a href="{{ partner.website_url }}" target="_blank" rel="noopener noreferrer"
+                            class="block w-full">
+                            {% if partner.use_cropping and partner.logo_cropping %}
+                            {% thumbnail partner.logo "300x200" crop detail as cropped %}
+                            <img src="{{ cropped.url }}" alt="{{ partner.name }}"
+                                class="h-24 md:h-32 w-auto max-w-full object-contain">
                             {% else %}
-                                {% if partner.use_cropping and partner.logo_cropping %}
-                                    {% thumbnail partner.logo "300x200" box=partner.logo_cropping crop detail as cropped %}
-                                    <img src="{{ cropped.url }}" alt="{{ partner.name }}" class="h-24 md:h-32 w-auto max-w-full object-contain">
-                                {% else %}
-                                    <img src="{{ partner.logo.url }}" alt="{{ partner.name }}" class="h-24 md:h-32 w-auto max-w-full object-contain">
-                                {% endif %}
+                            <img src="{{ partner.logo.url }}" alt="{{ partner.name }}"
+                                class="h-24 md:h-32 w-auto max-w-full object-contain">
                             {% endif %}
-                        </div>
-                        {% endfor %}
+                        </a>
+                        {% else %}
+                        {% if partner.use_cropping and partner.logo_cropping %}
+                        {% thumbnail partner.logo "300x200" crop detail as cropped %}
+                        <img src="{{ cropped.url }}" alt="{{ partner.name }}"
+                            class="h-24 md:h-32 w-auto max-w-full object-contain">
+                        {% else %}
+                        <img src="{{ partner.logo.url }}" alt="{{ partner.name }}"
+                            class="h-24 md:h-32 w-auto max-w-full object-contain">
+                        {% endif %}
+                        {% endif %}
                     </div>
+                    {% endfor %}
+                </div>
 
-                    {# Group B (duplicate) - required for seamless looping #}
-                    <div class="partners-marquee-group" aria-hidden="true">
-                        {% for partner in partners %}
-                        <div class="flex-shrink-0 max-w-[200px] md:max-w-[250px] flex items-center justify-center">
-                            {% if partner.website_url %}
-                            <a href="{{ partner.website_url }}" target="_blank" rel="noopener noreferrer" class="block w-full" tabindex="-1">
-                                {% if partner.use_cropping and partner.logo_cropping %}
-                                    {% thumbnail partner.logo "300x200" box=partner.logo_cropping crop detail as cropped %}
-                                    <img src="{{ cropped.url }}" alt="" class="h-24 md:h-32 w-auto max-w-full object-contain">
-                                {% else %}
-                                    <img src="{{ partner.logo.url }}" alt="" class="h-24 md:h-32 w-auto max-w-full object-contain">
-                                {% endif %}
-                            </a>
+                {# Group B (duplicate) - required for seamless looping #}
+                <div class="partners-marquee-group" aria-hidden="true">
+                    {% for partner in partners %}
+                    <div class="flex-shrink-0 max-w-[200px] md:max-w-[250px] flex items-center justify-center">
+                        {% if partner.website_url %}
+                        <a href="{{ partner.website_url }}" target="_blank" rel="noopener noreferrer"
+                            class="block w-full" tabindex="-1">
+                            {% if partner.use_cropping and partner.logo_cropping %}
+                            {% thumbnail partner.logo "300x200" crop detail as cropped %}
+                            <img src="{{ cropped.url }}" alt="" class="h-24 md:h-32 w-auto max-w-full object-contain">
                             {% else %}
-                                {% if partner.use_cropping and partner.logo_cropping %}
-                                    {% thumbnail partner.logo "300x200" box=partner.logo_cropping crop detail as cropped %}
-                                    <img src="{{ cropped.url }}" alt="" class="h-24 md:h-32 w-auto max-w-full object-contain">
-                                {% else %}
-                                    <img src="{{ partner.logo.url }}" alt="" class="h-24 md:h-32 w-auto max-w-full object-contain">
-                                {% endif %}
+                            <img src="{{ partner.logo.url }}" alt=""
+                                class="h-24 md:h-32 w-auto max-w-full object-contain">
                             {% endif %}
-                        </div>
-                        {% endfor %}
+                        </a>
+                        {% else %}
+                        {% if partner.use_cropping and partner.logo_cropping %}
+                        {% thumbnail partner.logo "300x200" crop detail as cropped %}
+                        <img src="{{ cropped.url }}" alt="" class="h-24 md:h-32 w-auto max-w-full object-contain">
+                        {% else %}
+                        <img src="{{ partner.logo.url }}" alt="" class="h-24 md:h-32 w-auto max-w-full object-contain">
+                        {% endif %}
+                        {% endif %}
                     </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
+    </div>
 
-        <style>
-            /* Seamless infinite marquee (left -> right).
+    <style>
+        /* Seamless infinite marquee (left -> right).
                We duplicate the group and translate exactly one group width (50% of inner). */
-            .partners-marquee {
-                width: 100%;
-                overflow: hidden;
-            }
+        .partners-marquee {
+            width: 100%;
+            overflow: hidden;
+        }
 
-            .partners-marquee-inner {
-                display: flex;
-                width: max-content; /* content defines width */
-                will-change: transform;
-                animation: partners-scroll-ltr 45s linear infinite;
-            }
+        .partners-marquee-inner {
+            display: flex;
+            width: max-content;
+            /* content defines width */
+            will-change: transform;
+            animation: partners-scroll-ltr 45s linear infinite;
+        }
 
+        .partners-marquee-group {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            /* gap-10 */
+            padding-right: 2.5rem;
+            /* keep space between end/start */
+        }
+
+        @media (min-width: 768px) {
             .partners-marquee-group {
-                display: flex;
-                align-items: center;
-                gap: 2.5rem; /* gap-10 */
-                padding-right: 2.5rem; /* keep space between end/start */
+                gap: 4rem;
+                /* md:gap-16 */
+                padding-right: 4rem;
+            }
+        }
+
+        @keyframes partners-scroll-ltr {
+            from {
+                transform: translateX(0);
             }
 
-            @media (min-width: 768px) {
-                .partners-marquee-group {
-                    gap: 4rem; /* md:gap-16 */
-                    padding-right: 4rem;
-                }
+            to {
+                transform: translateX(50%);
             }
+        }
 
-            @keyframes partners-scroll-ltr {
-                from {
-                    transform: translateX(0);
-                }
-                to {
-                    transform: translateX(50%);
-                }
+        @media (prefers-reduced-motion: reduce) {
+            .partners-marquee-inner {
+                animation: none;
             }
-
-            @media (prefers-reduced-motion: reduce) {
-                .partners-marquee-inner {
-                    animation: none;
-                }
-            }
-        </style>
-        {% endif %}
+        }
+    </style>
+    {% endif %}
 </section>

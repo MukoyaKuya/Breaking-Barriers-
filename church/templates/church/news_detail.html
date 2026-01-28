@@ -35,7 +35,7 @@
         <!-- Featured Image -->
         {% if news_item.image %}
         <div class="mb-8">
-            {% thumbnail news_item.image "1200x800" box=news_item.image_cropping crop detail as cropped %}
+            {% thumbnail news_item.image "1200x800" crop detail as cropped %}
             <img src="{{ cropped.url }}" alt="{{ news_item.title }}" class="w-full h-auto rounded-lg shadow-md">
         </div>
         {% endif %}

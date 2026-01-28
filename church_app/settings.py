@@ -175,6 +175,10 @@ THUMBNAIL_PROCESSORS = (
     'image_cropping.thumbnail_processors.crop_corners',
 ) + thumbnail_settings.THUMBNAIL_PROCESSORS
 
+# Custom thumbnail namer to include 'box' parameter in filenames
+# This ensures thumbnails with different crop boxes are treated as separate files
+THUMBNAIL_NAMER = 'church.thumbnail_namer.custom_namer'
+
 THUMBNAIL_ALIASES = {
     '': {
         'small': {'size': (100, 100), 'crop': 'smart'},

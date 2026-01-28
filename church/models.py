@@ -165,6 +165,34 @@ class GalleryImage(models.Model):
         """Return a YouTube embed URL if possible, or the raw URL as fallback."""
         return _to_youtube_embed(self.video_url)
 
+    def has_image_file(self) -> bool:
+        """
+        Safely check if the backing file for this image actually exists
+        in the configured storage (useful on Cloud Run where DB rows
+        might outlive files).
+        """
+        try:
+            if self.image and self.image.name:
+                from django.core.files.storage import default_storage
+                return default_storage.exists(self.image.name)
+        except Exception:
+            # If anything goes wrong, treat it as missing
+            return False
+        return False
+
+    def get_image_url(self) -> str:
+        """
+        Return a usable image URL only if the file exists.
+        Otherwise, return an empty string so templates can fall back
+        to a clean placeholder instead of a broken thumbnail.
+        """
+        if self.has_image_file():
+            try:
+                return self.image.url
+            except Exception:
+                return ''
+        return ''
+
 
 class HeroSettings(models.Model):
     """Singleton model for hero section settings"""

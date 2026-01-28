@@ -13,7 +13,7 @@
             {% if card.image %}
             <div class="w-full aspect-[16/9] relative bg-gray-100">
                 {% if card.image_cropping %}
-                {% thumbnail card.image "1600x900" box=card.image_cropping crop detail as cropped %}
+                {% thumbnail card.image "1600x900" crop detail as cropped %}
                 <img src="{{ cropped.url }}" alt="{{ card.title }}" class="w-full h-full object-contain">
                 {% else %}
                 <img src="{{ card.image.url }}" alt="{{ card.title }}" class="w-full h-full object-cover">

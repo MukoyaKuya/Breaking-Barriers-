@@ -1,40 +1,36 @@
 {% load thumbnail %}
 {% comment %}
-  Portrait image/video holders below Verse of the Day (3:4 aspect).
-  In normal document flow: when FAQs expand, this block is pushed down dynamically.
+Portrait image/video holders below Verse of the Day (3:4 aspect).
+In normal document flow: when FAQs expand, this block is pushed down dynamically.
 {% endcomment %}
 <div class="space-y-4">
     {% for promo in sidebar_promos %}
     <div class="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden">
         {% if promo.link_url %}
         <a href="{{ promo.link_url }}" target="_blank" rel="noopener" class="block">
-        {% endif %}
-        <div class="aspect-[3/4] w-full bg-gray-100 overflow-hidden">
-            {% if promo.video_url and promo.get_embed_url %}
-            <iframe class="w-full h-full"
-                    src="{{ promo.get_embed_url }}"
-                    title="{{ promo.caption|default:'Sidebar video' }}"
-                    frameborder="0"
+            {% endif %}
+            <div class="aspect-[3/4] w-full bg-gray-100 overflow-hidden">
+                {% if promo.video_url and promo.get_embed_url %}
+                <iframe class="w-full h-full" src="{{ promo.get_embed_url }}"
+                    title="{{ promo.caption|default:'Sidebar video' }}" frameborder="0"
                     referrerpolicy="strict-origin-when-cross-origin"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
-            {% else %}
-            {% if promo.image_cropping %}
-            {% thumbnail promo.image "300x400" box=promo.image_cropping crop detail as cropped %}
-            <img src="{{ cropped.url }}" alt="{{ promo.caption|default:'Sidebar promo' }}"
-                 class="w-full h-full object-cover object-center">
-            {% else %}
-            <img src="{{ promo.image.url }}" alt="{{ promo.caption|default:'Sidebar promo' }}"
-                 class="w-full h-full object-cover object-center">
+                {% thumbnail promo.image "300x400" box=promo.image_cropping crop=True detail=True as cropped %}
+                <img src="{{ cropped.url }}" alt="{{ promo.caption|default:'Sidebar promo' }}"
+                    class="w-full h-full object-cover object-center">
+                {% else %}
+                <div class="w-full h-full flex items-center justify-center bg-gray-200">
+                    <span class="text-gray-400">No image</span>
+                </div>
+                {% endif %}
+            </div>
+            {% if promo.caption %}
+            <div class="px-3 py-2 border-t border-gray-100">
+                <p class="text-sm text-gray-700 font-medium">{{ promo.caption }}</p>
+            </div>
             {% endif %}
-            {% endif %}
-        </div>
-        {% if promo.caption %}
-        <div class="px-3 py-2 border-t border-gray-100">
-            <p class="text-sm text-gray-700 font-medium">{{ promo.caption }}</p>
-        </div>
-        {% endif %}
-        {% if promo.link_url %}
+            {% if promo.link_url %}
         </a>
         {% endif %}
     </div>
