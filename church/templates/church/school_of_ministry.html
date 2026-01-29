@@ -1,0 +1,81 @@
+{% extends 'church/base.html' %}
+
+{% block title %}School Enrolment Form - Breaking Barriers International{% endblock %}
+
+{% block content %}
+<div class="bg-white py-12 md:py-16">
+  <div class="container mx-auto px-4 max-w-5xl">
+    <h1 class="text-2xl md:text-3xl font-bold text-center mb-6 tracking-wide">SCHOOL ENROLMENT FORM</h1>
+
+    <div class="prose max-w-none text-gray-700 mb-10">
+      <p>
+        The idea of starting a training and discipleship department was born out of the realisation that BBI needed to
+        teach and train willing believers in deliverance. We in BBI believe the scriptures in Mark 16:17 that all
+        believers can cast out spirits and therefore should be enlightened and trained to do this.
+      </p>
+      <p>
+        We trained our first group of students in 2013. It was a class of only five students. As the classes grew, we
+        added facilitators to assist with any matters that have to do with students so that the teacher could focus on
+        teaching. As the facilitators assist they listen to the teaching again which helps them deepen their
+        understanding of deliverance. We target them to be future teachers.
+      </p>
+      <p>
+        We are now in Cohort 14 where we have arranged two cohort classes per year. To enrol in these classes we discuss
+        up to four case studies per cohort. On completion of the cohort classes graduands who want to have more
+        opportunity for practical training accompanies a deliverance minister while doing deliverance. Once the student
+        feels ready to pray for others, we commission them to launch out on their own. We currently have seven alumni
+        doing deliverance on their own.
+      </p>
+    </div>
+
+    <div class="max-w-3xl mx-auto">
+      <div class="rounded-xl shadow-lg overflow-hidden border border-gray-200">
+        <div class="brand-color text-white text-center py-4 px-6">
+          <h2 class="text-lg md:text-xl font-semibold">To Join our Training</h2>
+        </div>
+
+        <form method="post" class="p-5 md:p-6 space-y-4">
+          {% csrf_token %}
+
+          <div>
+            <input
+              type="text"
+              name="name"
+              placeholder="Name"
+              required
+              class="w-full border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-200"
+            />
+          </div>
+
+          <div>
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              required
+              class="w-full border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-200"
+            />
+          </div>
+
+          <div>
+            <input
+              type="tel"
+              name="phone_number"
+              placeholder="Phone Number"
+              class="w-full border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-200"
+            />
+          </div>
+
+          <button
+            type="submit"
+            class="w-full brand-color text-white py-3 rounded-md font-semibold hover:bg-red-900 transition-all duration-200 shadow-md"
+          >
+            Send
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+

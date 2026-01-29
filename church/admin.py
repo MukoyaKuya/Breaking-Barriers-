@@ -4,7 +4,7 @@ from django.utils.html import format_html
 from django.forms import ModelForm
 from django.forms.widgets import ColorInput
 from image_cropping import ImageCroppingMixin
-from .models import Verse, NewsItem, CalendarEvent, Testimonial, GalleryImage, HeroSettings, InfoCard, CTACard, MensMinistry, Partner, NewsletterSubscriber, FAQ, SidebarPromo
+from .models import Verse, NewsItem, CalendarEvent, Testimonial, GalleryImage, HeroSettings, InfoCard, CTACard, MensMinistry, Partner, NewsletterSubscriber, SchoolMinistryEnrollment, FAQ, SidebarPromo, WordOfTruth
 
 
 @admin.register(Verse)
@@ -267,6 +267,14 @@ class NewsletterSubscriberAdmin(admin.ModelAdmin):
     search_fields = ('email',)
 
 
+@admin.register(SchoolMinistryEnrollment)
+class SchoolMinistryEnrollmentAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'phone_number', 'programme', 'enrolled_at')
+    list_filter = ('programme', 'enrolled_at')
+    search_fields = ('name', 'email', 'phone_number')
+    readonly_fields = ('enrolled_at',)
+
+
 @admin.register(SidebarPromo)
 class SidebarPromoAdmin(ImageCroppingMixin, admin.ModelAdmin):
     list_display = ('caption_preview', 'display_order', 'is_active', 'created_at')
@@ -307,3 +315,25 @@ class FAQAdmin(admin.ModelAdmin):
     def question_preview(self, obj):
         return obj.question[:60] + '...' if len(obj.question) > 60 else obj.question
     question_preview.short_description = 'Question'
+
+
+@admin.register(WordOfTruth)
+class WordOfTruthAdmin(ImageCroppingMixin, admin.ModelAdmin):
+    list_display = ('title', 'author_name', 'is_published', 'created_at')
+    list_filter = ('is_published', 'created_at')
+    search_fields = ('title', 'summary', 'author_name', 'body')
+    prepopulated_fields = {'slug': ('title',)}
+    readonly_fields = ('created_at', 'updated_at')
+    fieldsets = (
+        (None, {
+            'fields': ('title', 'slug', 'is_published')
+        }),
+        ('Content & Media', {
+            'fields': ('author_name', 'image', 'image_cropping', 'summary', 'body'),
+            'description': 'Images are cropped to 800x600 for consistency.'
+        }),
+        ('Timestamps', {
+            'fields': ('created_at', 'updated_at'),
+            'classes': ('collapse',)
+        }),
+    )

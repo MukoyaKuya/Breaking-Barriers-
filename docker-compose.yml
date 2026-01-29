@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    volumes:
+      - .:/app
+    environment:
+      - PORT=8080
+      - DEBUG=True
+      - DATABASE_URL=sqlite:///db.sqlite3
+      - GS_BUCKET_NAME=${GS_BUCKET_NAME}
+      - SECRET_KEY=local-secret-key
+    ports:
+      - "8080:8080"
+    command: >
+      bash -c "envsubst < nginx.conf.template > /etc/nginx/nginx.conf &&
+               gunicorn --bind 127.0.0.1:8000 --workers 1 --threads 8 --timeout 0 church_app.wsgi:application &
+               nginx -g 'daemon off;'"

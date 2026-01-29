@@ -1,0 +1,150 @@
+{% extends 'church/base.html' %}
+{% load static %}
+{% load thumbnail %}
+
+{% block title %}{{ word_of_truth.title }} - Breaking Barriers International{% endblock %}
+
+{% block content %}
+<div class="bg-white py-8">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            <!-- Main Content column -->
+            <div class="lg:col-span-3 space-y-10">
+                <div class="flex flex-wrap items-center gap-4 mb-4">
+                    <a href="{% url 'word_of_truth' %}"
+                        class="text-brand-color hover:underline flex items-center gap-2">
+                        &larr; Back to Word of Truth
+                    </a>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+                    {% if word_of_truth.image %}
+                    <div class="w-full aspect-video relative bg-gray-100">
+                        {% if word_of_truth.image_cropping %}
+                        {% thumbnail word_of_truth.image "1200x800" box=word_of_truth.image_cropping crop detail as cropped %}
+                        <img src="{{ cropped.url }}" alt="{{ word_of_truth.title }}" class="w-full h-full object-cover">
+                        {% else %}
+                        <img src="{{ word_of_truth.image.url }}" alt="{{ word_of_truth.title }}"
+                            class="w-full h-full object-cover">
+                        {% endif %}
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent">
+                        </div>
+                        <div class="absolute bottom-8 left-10 right-10">
+                            <span
+                                class="bg-white/20 backdrop-blur-md text-white border border-white/30 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4 inline-block">
+                                Word of Truth
+                            </span>
+                            <h1 class="text-3xl md:text-5xl font-bold text-white leading-tight">{{ word_of_truth.title }}</h1>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="brand-color text-white p-8 md:p-12">
+                        <span
+                            class="bg-white text-brand-color px-3 py-1 rounded-full text-sm font-semibold shadow-md mb-4 inline-block">
+                            Teaching / Article
+                        </span>
+                        <h1 class="text-3xl md:text-5xl font-bold">{{ word_of_truth.title }}</h1>
+                    </div>
+                    {% endif %}
+
+                    <div class="p-8 md:p-12">
+                        <div class="flex items-center justify-between mb-8 pb-6 border-b border-gray-100">
+                            <div class="flex items-center gap-4">
+                                <div
+                                    class="h-12 w-12 rounded-full brand-color flex items-center justify-center text-white text-xl">
+                                    <i class="fas fa-bible"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs uppercase text-gray-500 font-bold tracking-wider">Topic / Author
+                                    </p>
+                                    <p class="font-semibold text-gray-900">Word of Truth / {{ word_of_truth.author_name }}</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-xs uppercase text-gray-500 font-bold tracking-wider">Published</p>
+                                <p class="font-semibold text-gray-900">{{ word_of_truth.created_at|date:"F j, Y" }}</p>
+                            </div>
+                        </div>
+
+                        <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+                            {% if word_of_truth.summary %}
+                            <p
+                                class="lead text-xl text-gray-600 mb-8 font-medium italic border-l-4 border-brand-color pl-6">
+                                {{ word_of_truth.summary }}
+                            </p>
+                            {% endif %}
+
+                            <div class="article-content">
+                                {{ word_of_truth.body|safe }}
+                            </div>
+                        </div>
+
+                        <div
+                            class="mt-12 pt-8 border-t border-gray-100 flex flex-wrap justify-between items-center gap-4">
+                            <div class="flex gap-4">
+                                <a href="{% url 'word_of_truth_pdf' word_of_truth.slug %}"
+                                    class="inline-flex items-center px-6 py-3 brand-color text-white rounded-lg hover:opacity-90 transition shadow-md">
+                                    <i class="fas fa-file-pdf mr-2"></i> Download PDF
+                                </a>
+                                <button onclick="window.print()"
+                                    class="text-gray-500 hover:text-brand-color transition flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-lg">
+                                    <i class="fas fa-print"></i>
+                                    <span>Print</span>
+                                </button>
+                            </div>
+
+                            <div class="flex items-center gap-2 text-gray-500">
+                                <i class="fas fa-share-alt"></i>
+                                <span>Share this teaching</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right sidebar column -->
+            <aside class="lg:col-span-1 space-y-8 mt-12 lg:mt-0">
+                {% include 'church/partials/sidebar.html' %}
+            </aside>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .article-content h2 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #990030;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .article-content h3 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        color: #333;
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .article-content p {
+        margin-bottom: 1.25rem;
+    }
+
+    .article-content ul,
+    .article-content ol {
+        margin-bottom: 1.25rem;
+        padding-left: 1.5rem;
+    }
+
+    .article-content ul {
+        list-style-type: disc;
+    }
+
+    .article-content ol {
+        list-style-type: decimal;
+    }
+</style>
+{% endblock %}

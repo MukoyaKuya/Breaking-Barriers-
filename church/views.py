@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.http import Http404, JsonResponse
+from django.http import Http404, JsonResponse, HttpResponse
 from django.db.models import Q
 from django.utils import timezone
 import calendar
@@ -17,7 +17,11 @@ from .models import (
     NewsletterSubscriber,
     FAQ,
     SidebarPromo,
+    WordOfTruth,
+    SchoolMinistryEnrollment,
 )
+from django.template.loader import get_template
+from io import BytesIO
 from easy_thumbnails.files import get_thumbnailer
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
@@ -233,6 +237,47 @@ def childrens_bread_school_view(request):
     return render(request, 'church/childrens_bread_school.html')
 
 
+def school_of_ministry_view(request):
+    """School of Ministry enrolment form (stores enrollments in DB)."""
+    if request.method == 'POST':
+        name = (request.POST.get('name') or '').strip()
+        email = (request.POST.get('email') or '').strip().lower()
+        phone_number = (request.POST.get('phone_number') or '').strip()
+
+        if not name or not email:
+            messages.error(request, "Please enter your name and a valid email address.")
+            return redirect('school_of_ministry')
+
+        enrollment, created = SchoolMinistryEnrollment.objects.get_or_create(
+            email=email,
+            defaults={
+                'name': name,
+                'phone_number': phone_number,
+                'programme': 'School of Ministry',
+            },
+        )
+
+        if not created:
+            # Keep record fresh if they submit again
+            changed = False
+            if enrollment.name != name:
+                enrollment.name = name
+                changed = True
+            if phone_number and enrollment.phone_number != phone_number:
+                enrollment.phone_number = phone_number
+                changed = True
+            if changed:
+                enrollment.save(update_fields=['name', 'phone_number'])
+
+            messages.info(request, "You are already enrolled. Thank you!")
+        else:
+            messages.success(request, "Thank you! You’re enrolled for the School of Ministry. We’ll contact you soon.")
+
+        return redirect('school_of_ministry')
+
+    return render(request, 'church/school_of_ministry.html')
+
+
 def media_view(request):
     """Media page"""
     return render(request, 'church/media.html')
@@ -247,10 +292,78 @@ def word_of_truth_view(request):
     """Word of Truth page"""
     # Get featured verses
     verses = Verse.objects.filter(is_active=True, is_featured=True)
+    # Get published articles
+    articles = WordOfTruth.objects.filter(is_published=True)
+    
     context = {
         'verses': verses,
+        'articles': articles,
     }
     return render(request, 'church/word_of_truth.html', context)
+
+
+def word_of_truth_detail_view(request, slug):
+    """Detail view for a Word of Truth article"""
+    word_of_truth = get_object_or_404(WordOfTruth, slug=slug, is_published=True)
+    
+    # Get sidebar context (common sidebar items)
+    faqs = FAQ.objects.filter(is_active=True)
+    sidebar_promos = SidebarPromo.objects.filter(is_active=True)[:3]
+    cta_card = CTACard.load()
+    verse_of_the_day = Verse.objects.filter(is_active=True, is_featured=True).first()
+
+    context = {
+        'word_of_truth': word_of_truth,
+        'faqs': faqs,
+        'sidebar_promos': sidebar_promos,
+        'cta_card': cta_card,
+        'verse_of_the_day': verse_of_the_day,
+    }
+    return render(request, 'church/word_of_truth_detail.html', context)
+
+
+def word_of_truth_pdf_view(request, slug):
+    """Generate and download PDF for a Word of Truth article"""
+    # Optional dependency: only needed for PDF generation
+    try:
+        from xhtml2pdf import pisa
+    except ModuleNotFoundError:
+        return HttpResponse(
+            "PDF generation dependency missing: install 'xhtml2pdf' to enable this feature.",
+            status=501,
+            content_type="text/plain",
+        )
+
+    word_of_truth = get_object_or_404(WordOfTruth, slug=slug, is_published=True)
+    
+    # Path to the logo for the PDF
+    from django.conf import settings
+    import os
+    logo_path = os.path.join(settings.BASE_DIR, 'static', 'images', 'logo.png')
+    
+    template_path = 'church/word_of_truth_pdf.html'
+    context = {
+        'article': word_of_truth,
+        'current_year': timezone.now().year,
+        'logo_path': logo_path if os.path.exists(logo_path) else None,
+    }
+    
+    # Create a Django response object, and specify content_type as pdf
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = f'attachment; filename="{word_of_truth.slug}.pdf"'
+    
+    # find the template and render it.
+    template = get_template(template_path)
+    html = template.render(context)
+    
+    # create a pdf
+    pisa_status = pisa.CreatePDF(
+       html, dest=response)
+    
+    # if error then return response as error
+    if pisa_status.err:
+       return HttpResponse('We had some errors <pre>' + html + '</pre>')
+    return response
 
 
 def search_view(request):

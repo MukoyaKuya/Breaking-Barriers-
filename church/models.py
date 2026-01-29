@@ -257,6 +257,33 @@ class InfoCard(models.Model):
         super().save(*args, **kwargs)
 
 
+class WordOfTruth(models.Model):
+    """Articles for Word of Truth section with PDF download"""
+    title = models.CharField(max_length=200)
+    slug = models.SlugField(unique=True, max_length=200)
+    summary = models.TextField(help_text='Short summary for the listing page')
+    author_name = models.CharField(max_length=100, default='Breaking Barriers International', help_text='Name of the article writer')
+    image = models.ImageField(upload_to='word_of_truth/', blank=True, null=True, help_text='Featured image for the article')
+    image_cropping = ImageRatioField('image', '800x600', size_warning=True, help_text='Crop the image for proper display (800x600)')
+    body = RichTextField(help_text='Full article content for the PDF and web view')
+    is_published = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = 'Word of Truth Article'
+        verbose_name_plural = 'Word of Truth Articles'
+
+    def __str__(self):
+        return self.title
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
+
+
 class CTACard(models.Model):
     """Singleton model for Call-to-Action card (4th card)"""
     quote_text = models.TextField(help_text='Motivational quote text')
@@ -270,7 +297,7 @@ class CTACard(models.Model):
     # Button 2
     button2_text = models.CharField(max_length=100, default='School of Ministry', 
                                    help_text='Text for second button')
-    button2_url = models.CharField(max_length=200, default='/childrens-bread-school/', 
+    button2_url = models.CharField(max_length=200, default='/school-of-ministry/', 
                                   help_text='URL for second button')
     
     # Button 3
@@ -355,6 +382,27 @@ class NewsletterSubscriber(models.Model):
 
     def __str__(self):
         return self.email
+
+
+class SchoolMinistryEnrollment(models.Model):
+    """People who enroll to join the School of Ministry programme."""
+    programme = models.CharField(
+        max_length=100,
+        default='School of Ministry',
+        help_text='Programme name (kept for reporting/future expansion)',
+    )
+    name = models.CharField(max_length=120)
+    email = models.EmailField(unique=True)
+    phone_number = models.CharField(max_length=30, blank=True)
+    enrolled_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-enrolled_at']
+        verbose_name = 'School Ministry Enrollment'
+        verbose_name_plural = 'School Ministry Enrollments'
+
+    def __str__(self):
+        return f"{self.name} <{self.email}>"
 
 
 class SidebarPromo(models.Model):
