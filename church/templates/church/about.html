@@ -1,86 +1,105 @@
 {% extends 'church/base.html' %}
 
-{% block title %}About Us - GraceCommunity Church{% endblock %}
+{% block title %}About Us - Breaking Barriers International{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Ensure numbered lists from the editor render correctly on the About page */
+    .about-body ol {
+        list-style-type: decimal;
+        margin-left: 1.5rem;
+        padding-left: 0.5rem;
+    }
+    .about-body ol li {
+        margin-bottom: 0.25rem;
+    }
+</style>
+{% endblock %}
 
 {% block content %}
-<div class="py-16">
-    <div class="container mx-auto px-4">
-        <h1 class="text-4xl md:text-5xl font-bold text-center mb-12">About Us</h1>
-        
-        <!-- Mission & Vision Section -->
-        <div class="max-w-4xl mx-auto mb-16">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-                <div class="bg-gray-50 p-8 rounded-lg shadow-md border border-gray-300">
-                    <div class="text-center mb-4">
-                        <i class="fas fa-eye text-5xl brand-text mb-4"></i>
-                        <h2 class="text-3xl font-bold mb-4">Our Vision</h2>
-                    </div>
-                    <p class="text-gray-700 leading-relaxed">
-                        To be a beacon of hope and transformation in our community, 
-                        where every person experiences the love of Christ and discovers 
-                        their God-given purpose. We envision a church that bridges 
-                        generations, cultures, and backgrounds in unified worship and service.
-                    </p>
+<div class="bg-gradient-to-b from-gray-100 via-white to-gray-100 py-10 md:py-16">
+    <div class="container mx-auto px-4 max-w-6xl space-y-10 md:space-y-14">
+        <!-- Top banner -->
+        <section class="text-center">
+            <p class="uppercase tracking-[0.25em] text-xs md:text-sm text-gray-500 mb-2">
+                About Breaking Barriers International
+            </p>
+            <h1 class="text-3xl md:text-4xl font-bold mb-3 text-gray-900">
+                {{ about.title }}
+            </h1>
+            {% if about.subtitle %}
+                <p class="max-w-3xl mx-auto text-sm md:text-base text-gray-700">
+                    {{ about.subtitle }}
+                </p>
+            {% endif %}
+        </section>
+
+        <!-- Main card -->
+        <section class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-0">
+                <!-- Image / Video -->
+                <div class="md:col-span-1 bg-gray-50 flex items-stretch justify-center p-6 md:p-8">
+                    {% if about.video_url %}
+                        <div class="w-full max-w-xs md:max-w-sm">
+                            <div class="rounded-2xl overflow-hidden shadow-md bg-black">
+                                <div class="aspect-video">
+                                    <iframe
+                                        class="w-full h-full"
+                                        src="{{ about.get_embed_url }}"
+                                        title="{{ about.subtitle|default:about.title }}"
+                                        frameborder="0"
+                                        referrerpolicy="strict-origin-when-cross-origin"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen
+                                    ></iframe>
+                                </div>
+                            </div>
+                            {% if about.image %}
+                                <div class="mt-4 rounded-2xl overflow-hidden shadow-md border border-gray-200">
+                                    <img
+                                        src="{{ about.image.url }}"
+                                        alt="{{ about.subtitle|default:about.title }}"
+                                        class="w-full h-full object-cover"
+                                    >
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% elif about.image %}
+                        <div class="rounded-2xl overflow-hidden shadow-md border border-gray-200 w-full max-w-xs md:max-w-sm">
+                            <img
+                                src="{{ about.image.url }}"
+                                alt="{{ about.subtitle|default:about.title }}"
+                                class="w-full h-full object-cover"
+                            >
+                        </div>
+                    {% else %}
+                        <div class="bg-gray-100 rounded-2xl w-full max-w-xs md:max-w-sm aspect-[3/4] flex items-center justify-center text-gray-400 border border-dashed border-gray-300 text-center px-6 text-sm">
+                            <span>Upload a founder / ministry image or add a YouTube video URL in the About Page admin to display it here.</span>
+                        </div>
+                    {% endif %}
                 </div>
-                
-                <div class="bg-gray-50 p-8 rounded-lg shadow-md border border-gray-300">
-                    <div class="text-center mb-4">
-                        <i class="fas fa-cross text-5xl brand-text mb-4"></i>
-                        <h2 class="text-3xl font-bold mb-4">Our Mission</h2>
+
+                <!-- Text -->
+                <div class="md:col-span-2 border-t md:border-t-0 md:border-l border-gray-100 bg-white">
+                    <div class="h-full p-6 md:p-10 flex flex-col">
+                        <div class="about-body prose prose-sm md:prose-base max-w-none text-gray-800 leading-relaxed">
+                            {{ about.body|safe }}
+                        </div>
+
+                        <!-- Objectives highlight strip if the body contains a list -->
+                        <div class="mt-6 md:mt-8 pt-5 md:pt-6 border-t border-gray-100">
+                            <p class="text-xs uppercase tracking-[0.3em] text-gray-500 mb-1">
+                                Our Focus
+                            </p>
+                            <p class="text-sm md:text-base text-gray-700">
+                                Through teaching, deliverance and discipleship, BBI exists to help believers
+                                identify and break invisible barriers so they can walk in the freedom Jesus purchased.
+                            </p>
+                        </div>
                     </div>
-                    <p class="text-gray-700 leading-relaxed">
-                        To make disciples of Jesus Christ by sharing the Gospel, 
-                        nurturing spiritual growth through authentic community, 
-                        and serving our neighbors with compassion and grace. 
-                        We are committed to equipping believers to impact their 
-                        families, workplaces, and communities for God's kingdom.
-                    </p>
                 </div>
             </div>
-        </div>
-        
-        <!-- Church History -->
-        <div class="max-w-4xl mx-auto mb-16">
-            <h2 class="text-3xl font-bold mb-6 text-center">Our History</h2>
-            <div class="bg-gray-50 p-8 rounded-lg shadow-md">
-                <p class="text-gray-700 leading-relaxed mb-4">
-                    GraceCommunity Church was founded with a vision to create a welcoming 
-                    space where individuals and families can grow in their faith journey. 
-                    Since our establishment, we have been committed to serving our community 
-                    and sharing the message of God's love.
-                </p>
-                <p class="text-gray-700 leading-relaxed mb-4">
-                    Over the years, we have seen lives transformed, families strengthened, 
-                    and our community enriched through various outreach programs, worship 
-                    services, and fellowship opportunities. We believe in the power of 
-                    authentic relationships and genuine care for one another.
-                </p>
-                <p class="text-gray-700 leading-relaxed">
-                    Today, we continue to build on this foundation, reaching out to new 
-                    generations while honoring the traditions that have shaped us. We 
-                    invite you to be part of our story and experience the joy of 
-                    belonging to a community that truly cares.
-                </p>
-            </div>
-        </div>
-        
-        <!-- Leadership Team -->
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold mb-6 text-center">Leadership Team</h2>
-            <div class="bg-gray-50 p-8 rounded-lg shadow-md">
-                <p class="text-gray-700 leading-relaxed mb-4">
-                    Our leadership team is dedicated to serving the congregation and 
-                    guiding the church's mission. They bring years of experience, 
-                    wisdom, and a heart for ministry.
-                </p>
-                <p class="text-gray-700 leading-relaxed">
-                    We are blessed with pastors, elders, and ministry leaders who are 
-                    committed to shepherding the flock and equipping the saints for 
-                    the work of ministry. Their passion for God's word and love for 
-                    people is evident in everything they do.
-                </p>
-            </div>
-        </div>
+        </section>
     </div>
 </div>
 {% endblock %}

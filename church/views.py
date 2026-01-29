@@ -10,6 +10,7 @@ from .models import (
     Testimonial,
     GalleryImage,
     HeroSettings,
+    AboutPage,
     InfoCard,
     CTACard,
     MensMinistry,
@@ -85,8 +86,9 @@ def home_view(request):
 
 
 def about_view(request):
-    """About page view"""
-    return render(request, 'church/about.html')
+    """About page view (driven from AboutPage singleton)."""
+    about = AboutPage.load()
+    return render(request, 'church/about.html', {'about': about})
 
 
 def news_list_view(request):

@@ -218,6 +218,77 @@ class HeroSettings(models.Model):
         return obj
 
 
+class AboutPage(models.Model):
+    """Singleton model for the About Us page (story + founder image)."""
+    title = models.CharField(max_length=200, default='The birth of a Ministry')
+    subtitle = models.CharField(max_length=255, blank=True)
+    image = models.ImageField(
+        upload_to='about/',
+        blank=True,
+        null=True,
+        help_text='Image shown on the About page (e.g. founder photo)',
+    )
+    image_cropping = ImageRatioField(
+        'image',
+        '400x400',
+        size_warning=True,
+        help_text='Crop the image to a square for best results (400x400).',
+    )
+    video_url = models.URLField(
+        blank=True,
+        help_text='Optional YouTube video URL (e.g. https://www.youtube.com/watch?v=VIDEO_ID or https://www.youtube.com/embed/VIDEO_ID). If provided, video will be shown instead of or alongside the image.',
+    )
+    body = RichTextField(
+        help_text='Main About text. Supports headings, paragraphs and bullet lists.'
+    )
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = 'About Page'
+        verbose_name_plural = 'About Page'
+
+    def __str__(self):
+        return "About Page Content"
+
+    def save(self, *args, **kwargs):
+        # Ensure only one instance exists
+        self.pk = 1
+        super().save(*args, **kwargs)
+
+    def get_embed_url(self):
+        """Return a YouTube embed URL if possible, or the raw URL as fallback."""
+        return _to_youtube_embed(self.video_url)
+
+    @classmethod
+    def load(cls):
+        obj, created = cls.objects.get_or_create(
+            pk=1,
+            defaults={
+                'title': 'The birth of a Ministry',
+                'body': (
+                    "<p>A 20-year journey in the school of the Holy Spirit gave birth to the BBI Ministry. "
+                    "In the area of deliverance the first thing that the Holy Spirit taught the founder, pastor Nellie Shani, "
+                    "was about generational curses and how the sins of the forefathers could still affect us today.</p>"
+                    "<p>Since then the founder has been involved in teaching around the world. "
+                    "The first meeting before BBI was formally registered took place at her residence, "
+                    "but later as the numbers grew she looked for a hall she could hire.</p>"
+                    "<p>Ten days later we had an executive committee and a registered ministry called BBI in 2012. "
+                    "Since then God has continued to add people who work with her and share the vision, "
+                    "and many volunteers and partners have put their hand to the plough.</p>"
+                    "<h3>Objectives</h3>"
+                    "<ol>"
+                    "<li>To teach Biblical truths concerning spiritual warfare and deliverance.</li>"
+                    "<li>To help believers in Jesus Christ identify and break generational curses.</li>"
+                    "<li>To enable believers in Jesus Christ know, live and sustain their deliverance.</li>"
+                    "<li>To counsel believers in Jesus Christ who may need specialised help beyond the teaching and prayer seminars.</li>"
+                    "<li>To identify and train workers in spiritual warfare and deliverance ministry.</li>"
+                    "</ol>"
+                ),
+            },
+        )
+        return obj
+
+
 class InfoCard(models.Model):
     """Model for info cards (Children's Bread, News, Word of Truth)"""
     CARD_TYPE_CHOICES = [
