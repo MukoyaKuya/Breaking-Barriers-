@@ -1,48 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Breaking Barriers International{% endblock %}</title>
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="{% static 'images/logo.png' %}">
     <link rel="shortcut icon" type="image/png" href="{% static 'images/logo.png' %}">
-    
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- HTMX -->
-    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
-    
+    <script defer src="https://unpkg.com/htmx.org@1.9.10"></script>
+
     <!-- Alpine.js for interactivity -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    
+
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- Google Fonts - Fjalla One and Kaushan Script -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Kaushan+Script&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Kaushan+Script&display=swap"
+        rel="stylesheet">
+
     <!-- Custom styles for brand color -->
     <style>
         .brand-color {
             background-color: rgb(153, 0, 48);
         }
+
         .brand-text {
             color: rgb(153, 0, 48);
         }
+
         [x-cloak] {
             display: none !important;
         }
+
         .fjalla-one-regular {
             font-family: "Fjalla One", sans-serif;
             font-weight: 400;
             font-style: normal;
         }
+
         .kaushan-script-regular {
             font-family: "Kaushan Script", cursive;
             font-weight: 400;
@@ -69,27 +75,24 @@
             margin-bottom: 0.25rem;
         }
     </style>
-    
+
+    {% block extra_head %}{% endblock %}
     {% block extra_css %}{% endblock %}
 </head>
+
 <body class="flex flex-col min-h-screen bg-gray-50">
     {% include 'church/partials/header.html' %}
-    
+
     <main class="flex-grow">
         {% if messages %}
-            <div class="fixed top-4 right-4 z-50 w-[calc(100vw-2rem)] max-w-md space-y-3" aria-live="polite" aria-atomic="true">
-                {% for message in messages %}
-                    <div
-                        x-data="{ show: true }"
-                        x-show="show"
-                        x-init="setTimeout(() => show = false, 6000)"
-                        x-transition:enter="transition ease-out duration-200"
-                        x-transition:enter-start="opacity-0 translate-y-2"
-                        x-transition:enter-end="opacity-100 translate-y-0"
-                        x-transition:leave="transition ease-in duration-150"
-                        x-transition:leave-start="opacity-100 translate-y-0"
-                        x-transition:leave-end="opacity-0 translate-y-2"
-                        class="
+        <div class="fixed top-4 right-4 z-50 w-[calc(100vw-2rem)] max-w-md space-y-3" aria-live="polite"
+            aria-atomic="true">
+            {% for message in messages %}
+            <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 6000)"
+                x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 translate-y-2"
+                x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150"
+                x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 translate-y-2"
+                class="
                             rounded-xl shadow-xl border p-4
                             {% if 'success' in message.tags %}
                                 bg-green-600 text-white border-green-700
@@ -100,46 +103,41 @@
                             {% else %}
                                 bg-blue-600 text-white border-blue-700
                             {% endif %}
-                        "
-                        role="alert"
-                    >
-                        <div class="flex items-start gap-3">
-                            <div class="mt-0.5 text-lg leading-none">
-                                {% if 'success' in message.tags %}
-                                    <i class="fa-solid fa-circle-check"></i>
-                                {% elif 'error' in message.tags %}
-                                    <i class="fa-solid fa-circle-xmark"></i>
-                                {% elif 'warning' in message.tags %}
-                                    <i class="fa-solid fa-triangle-exclamation"></i>
-                                {% else %}
-                                    <i class="fa-solid fa-circle-info"></i>
-                                {% endif %}
-                            </div>
-
-                            <div class="flex-1">
-                                <p class="font-semibold leading-snug">Message</p>
-                                <p class="opacity-95 leading-relaxed">{{ message }}</p>
-                            </div>
-
-                            <button
-                                type="button"
-                                class="ml-2 opacity-90 hover:opacity-100 transition"
-                                aria-label="Close notification"
-                                @click="show = false"
-                            >
-                                <i class="fa-solid fa-xmark"></i>
-                            </button>
-                        </div>
+                        " role="alert">
+                <div class="flex items-start gap-3">
+                    <div class="mt-0.5 text-lg leading-none">
+                        {% if 'success' in message.tags %}
+                        <i class="fa-solid fa-circle-check"></i>
+                        {% elif 'error' in message.tags %}
+                        <i class="fa-solid fa-circle-xmark"></i>
+                        {% elif 'warning' in message.tags %}
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        {% else %}
+                        <i class="fa-solid fa-circle-info"></i>
+                        {% endif %}
                     </div>
-                {% endfor %}
+
+                    <div class="flex-1">
+                        <p class="font-semibold leading-snug">Message</p>
+                        <p class="opacity-95 leading-relaxed">{{ message }}</p>
+                    </div>
+
+                    <button type="button" class="ml-2 opacity-90 hover:opacity-100 transition"
+                        aria-label="Close notification" @click="show = false">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
             </div>
+            {% endfor %}
+        </div>
         {% endif %}
-        
+
         {% block content %}{% endblock %}
     </main>
-    
+
     {% include 'church/partials/footer.html' %}
-    
+
     {% block extra_js %}{% endblock %}
 </body>
+
 </html>

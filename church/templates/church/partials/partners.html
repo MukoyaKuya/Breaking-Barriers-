@@ -72,7 +72,7 @@
     </div>
 
     <style>
-        /* Seamless infinite marquee (left -> right).
+        /* Seamless infinite marquee (right -> left).
                We duplicate the group and translate exactly one group width (50% of inner). */
         .partners-marquee {
             width: 100%;
@@ -84,7 +84,7 @@
             width: max-content;
             /* content defines width */
             will-change: transform;
-            animation: partners-scroll-ltr 45s linear infinite;
+            animation: partners-scroll-rtl 75s linear infinite;
         }
 
         .partners-marquee-group {
@@ -104,13 +104,13 @@
             }
         }
 
-        @keyframes partners-scroll-ltr {
+        @keyframes partners-scroll-rtl {
             from {
                 transform: translateX(0);
             }
 
             to {
-                transform: translateX(50%);
+                transform: translateX(-50%);
             }
         }
 

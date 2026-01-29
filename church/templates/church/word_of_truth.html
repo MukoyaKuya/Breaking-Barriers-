@@ -4,82 +4,133 @@
 {% block title %}Word of Truth - Breaking Barriers International{% endblock %}
 
 {% block content %}
-<div class="container mx-auto px-4 py-12">
-    <h1 class="text-4xl font-bold text-center mb-8 brand-text">Word of Truth</h1>
-
-    <div class="max-w-4xl mx-auto">
-        <p class="text-lg text-gray-700 mb-8 text-center border-b pb-8">
-            Discover the transformative power of God's Word through our collection of verses, teachings, and spiritual
-            insights.
-        </p>
+<div class="bg-gray-50/50 py-16">
+    <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 brand-text kaushan-script-regular">Word of Truth</h1>
+            <p class="text-lg md:text-xl text-gray-600 leading-relaxed font-light">
+                Discover the transformative power of God's Word through our collection of teachings, spiritual insights,
+                and biblical truths.
+            </p>
+            <div class="w-24 h-1 brand-color mx-auto mt-8 rounded-full opacity-30"></div>
+        </div>
 
         {% if articles %}
-        <div class="mb-12">
-            <h2 class="text-2xl font-bold mb-6 brand-text">Teachings & Articles</h2>
-            <div class="space-y-6">
+        <div class="mb-20">
+            <div class="flex items-center justify-between mb-10 border-b border-gray-100 pb-6">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-800">Latest Teachings</h2>
+                <span
+                    class="text-sm text-gray-500 font-medium bg-white px-4 py-1.5 rounded-full shadow-sm border border-gray-100">
+                    {{ articles.paginator.count }} Articles
+                </span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {% for word_of_truth in articles %}
                 <div
-                    class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden flex flex-col hover:shadow-xl transition-all duration-300">
-                    {% if word_of_truth.image %}
-                    <div class="w-full aspect-video overflow-hidden">
+                    class="group bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-500 flex flex-col h-full transform hover:-translate-y-1">
+                    <!-- Article Banner/Image -->
+                    <div class="relative aspect-[16/10] overflow-hidden bg-gray-100">
+                        {% if word_of_truth.image %}
                         {% if word_of_truth.image_cropping %}
                         {% thumbnail word_of_truth.image "800x600" box=word_of_truth.image_cropping crop detail as cropped %}
                         <img src="{{ cropped.url }}" alt="{{ word_of_truth.title }}" loading="lazy"
-                            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                            class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                         {% else %}
                         <img src="{{ word_of_truth.image.url }}" alt="{{ word_of_truth.title }}" loading="lazy"
-                            class="w-full h-full object-cover">
+                            class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                         {% endif %}
-                    </div>
-                    {% endif %}
-
-                    <div
-                        class="p-6 flex flex-col md:flex-row justify-between items-start md:items-center flex-grow gap-4">
-                        <div class="flex-grow">
-                            <h3 class="text-2xl font-bold mb-1 brand-text">{{ word_of_truth.title }}</h3>
-                            <p class="text-sm text-gray-400 font-medium mb-3 italic">Published by {{ word_of_truth.author_name }}</p>
-                            <p class="text-gray-600 mb-4 line-clamp-2 leading-relaxed">{{ word_of_truth.summary }}</p>
-                            <div class="flex items-center gap-2 text-sm text-gray-400 font-medium">
-                                <i class="far fa-calendar-alt"></i>
-                                <span>{{ word_of_truth.created_at|date:"F d, Y" }}</span>
-                            </div>
+                        {% else %}
+                        <div class="w-full h-full brand-color opacity-90 flex items-center justify-center">
+                            <i class="fas fa-bible text-white/30 text-6xl"></i>
                         </div>
-                        <div class="mt-4 md:mt-0 md:ml-6 flex-shrink-0 flex flex-col gap-3 w-full md:w-auto">
+                        {% endif %}
+
+                        <!-- Date Badge -->
+                        <div
+                            class="absolute top-4 right-4 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-xl shadow-lg border border-white/50 text-center min-w-[50px]">
+                            <span class="block text-xs font-bold text-brand-color uppercase tracking-tighter">{{ word_of_truth.created_at|date:"M" }}</span>
+                            <span class="block text-lg font-black text-gray-900 leading-none">{{ word_of_truth.created_at|date:"d" }}</span>
+                        </div>
+                    </div>
+
+                    <!-- Content Area -->
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex-grow">
+                            <h3
+                                class="text-xl font-bold text-gray-900 mb-3 group-hover:text-brand-color transition-colors line-clamp-2 leading-snug">
+                                {{ word_of_truth.title }}
+                            </h3>
+                            <p
+                                class="text-xs text-gray-400 font-bold uppercase tracking-widest mb-4 flex items-center gap-2">
+                                <span class="w-6 h-px bg-gray-200"></span>
+                                {{ word_of_truth.author_name }}
+                            </p>
+                            <p class="text-gray-600 text-sm leading-relaxed line-clamp-3 mb-6 font-light">
+                                {{ word_of_truth.summary }}
+                            </p>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="grid grid-cols-2 gap-3 pt-6 border-t border-gray-50 mt-auto">
                             <a href="{% url 'word_of_truth_detail' word_of_truth.slug %}"
-                                class="inline-flex items-center justify-center px-6 py-2.5 border-2 border-brand-color text-brand-color font-bold rounded-lg hover:bg-brand-color hover:text-white transition shadow-sm">
-                                <i class="fas fa-book-open mr-2"></i> Read Online
+                                class="flex items-center justify-center gap-2 py-2.5 bg-gray-50 text-gray-700 text-xs font-bold rounded-xl hover:bg-brand-color hover:text-white transition-all shadow-sm">
+                                <i class="fas fa-book-open text-[10px]"></i> Read
                             </a>
                             <a href="{% url 'word_of_truth_pdf' word_of_truth.slug %}"
-                                class="inline-flex items-center justify-center px-6 py-2.5 brand-color text-white font-bold rounded-lg hover:opacity-90 transition shadow-md">
-                                <i class="fas fa-file-pdf mr-2"></i> Download PDF
+                                class="flex items-center justify-center gap-2 py-2.5 bg-white text-brand-color text-xs font-bold rounded-xl border border-brand-color/20 hover:border-brand-color hover:shadow-md transition-all">
+                                <i class="fas fa-file-pdf text-[10px]"></i> PDF
                             </a>
                         </div>
                     </div>
                 </div>
                 {% endfor %}
             </div>
-            {% include 'church/partials/pagination.html' %}
+
+            <!-- Pagination Wrapper -->
+            <div class="mt-16">
+                {% include 'church/partials/pagination.html' %}
+            </div>
         </div>
         {% endif %}
 
-        <h2 class="text-2xl font-bold mb-6 brand-text">Daily Verses</h2>
-        {% if verses %}
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {% for verse in verses %}
-            <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition border-t-4 border-brand-color">
-                <p class="text-gray-800 mb-4 italic">"{{ verse.content }}"</p>
-                <p class="text-brand-text font-semibold">{{ verse.reference }}</p>
-                {% if verse.date_posted %}
-                <p class="text-sm text-gray-500 mt-2">{{ verse.date_posted|date:"F d, Y" }}</p>
-                {% endif %}
+        <!-- Daily Verses Section -->
+        <div class="mt-8">
+            <div class="flex items-center gap-4 mb-10">
+                <h2 class="text-2xl font-bold text-gray-800">Spiritual Nourishment</h2>
+                <div class="flex-grow h-px bg-gray-200"></div>
             </div>
-            {% endfor %}
+
+            {% if verses %}
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {% for verse in verses %}
+                <div
+                    class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 relative hover:shadow-md transition-shadow">
+                    <div
+                        class="w-10 h-10 brand-color rounded-full flex items-center justify-center text-white text-sm absolute -top-5 left-8 shadow-lg">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="text-gray-700 mb-6 italic text-lg leading-relaxed font-light mt-2">
+                        "{{ verse.content }}"
+                    </p>
+                    <div class="flex items-center justify-between mt-auto">
+                        <p class="text-brand-color font-bold tracking-tight">{{ verse.reference }}</p>
+                        {% if verse.date_posted %}
+                        <span class="text-[10px] uppercase font-bold text-gray-300 tracking-widest">{{ verse.date_posted|date:"F d" }}</span>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="text-center py-20 bg-white rounded-3xl border border-gray-100 shadow-sm">
+                <div class="mb-4">
+                    <i class="fas fa-bible text-5xl text-gray-200"></i>
+                </div>
+                <p class="text-gray-500 font-light italic">Daily verses will be available soon.</p>
+            </div>
+            {% endif %}
         </div>
-        {% else %}
-        <div class="text-center py-12">
-            <p class="text-gray-600 text-lg">Daily verses will be available soon.</p>
-        </div>
-        {% endif %}
     </div>
 </div>
 {% endblock %}

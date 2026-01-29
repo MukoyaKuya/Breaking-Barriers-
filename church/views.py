@@ -203,19 +203,31 @@ def load_more_news_view(request):
 
 
 def gallery_view(request):
-    """Gallery view with optional category filter"""
+    """Gallery view with optional category filter and pagination."""
     category = request.GET.get('category', '')
     
     if category:
-        gallery_images = GalleryImage.objects.filter(category=category)
+        gallery_images_list = GalleryImage.objects.filter(category=category).order_by('-uploaded_at')
     else:
-        gallery_images = GalleryImage.objects.all()
+        gallery_images_list = GalleryImage.objects.all().order_by('-uploaded_at')
     
-    # Get all unique categories
+    # Paginate results - 9 per page
+    paginator = Paginator(gallery_images_list, 9)
+    page = request.GET.get('page', 1)
+    
+    try:
+        gallery_images = paginator.page(page)
+    except PageNotAnInteger:
+        gallery_images = paginator.page(1)
+    except EmptyPage:
+        gallery_images = paginator.page(paginator.num_pages)
+    
+    # Get all unique categories for the filters
     categories = GalleryImage.objects.values_list('category', flat=True).distinct()
     
     context = {
         'gallery_images': gallery_images,
+        'page_obj': gallery_images,
         'categories': categories,
         'selected_category': category,
     }
@@ -350,16 +362,25 @@ def word_of_truth_pdf_view(request, slug):
 
     word_of_truth = get_object_or_404(WordOfTruth, slug=slug, is_published=True)
     
-    # Path to the logo for the PDF
+    # Logo for PDF: embed as base64 so xhtml2pdf renders it reliably (file:// often fails on Windows)
+    from pathlib import Path
     from django.conf import settings
-    import os
-    logo_path = os.path.join(settings.BASE_DIR, 'static', 'images', 'logo.png')
+    import base64
+    logo_data_uri = None
+    logo_file = Path(settings.BASE_DIR) / 'static' / 'images' / 'logo.png'
+    if logo_file.exists():
+        try:
+            logo_bytes = logo_file.read_bytes()
+            logo_b64 = base64.b64encode(logo_bytes).decode('ascii')
+            logo_data_uri = f'data:image/png;base64,{logo_b64}'
+        except Exception:
+            pass
     
     template_path = 'church/word_of_truth_pdf.html'
     context = {
         'article': word_of_truth,
         'current_year': timezone.now().year,
-        'logo_path': logo_path if os.path.exists(logo_path) else None,
+        'logo_data_uri': logo_data_uri,
     }
     
     # Create a Django response object, and specify content_type as pdf
@@ -457,7 +478,6 @@ def search_view(request):
     return render(request, 'church/search_results.html', context)
 
 
-@csrf_exempt
 def calendar_event_create_view(request):
     """AJAX endpoint to create a calendar event"""
     if not request.user.is_staff:
@@ -488,7 +508,6 @@ def calendar_event_create_view(request):
     return JsonResponse({'error': 'Invalid method'}, status=405)
 
 
-@csrf_exempt
 def calendar_event_detail_view(request, event_id):
     """AJAX endpoint to get calendar event details (for viewing)"""
     event = get_object_or_404(CalendarEvent, id=event_id, is_published=True)
@@ -521,7 +540,6 @@ def calendar_event_detail_view(request, event_id):
     return JsonResponse({'error': 'Invalid method'}, status=405)
 
 
-@csrf_exempt
 def calendar_event_edit_view(request, event_id):
     """AJAX endpoint to edit a calendar event (admin only)"""
     if not request.user.is_staff:
@@ -567,7 +585,6 @@ def calendar_event_edit_view(request, event_id):
     return JsonResponse({'error': 'Invalid method'}, status=405)
 
 
-@csrf_exempt
 def calendar_event_delete_view(request, event_id):
     """AJAX endpoint to delete a calendar event"""
     if not request.user.is_staff:
