@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import Http404, JsonResponse, HttpResponse
 from django.db.models import Q
 from django.utils import timezone
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import calendar
 from .models import (
     Verse,
@@ -21,50 +22,52 @@ from .models import (
     WordOfTruth,
     SchoolMinistryEnrollment,
 )
+from .query_utils import (
+    get_cached_hero_settings,
+    get_cached_cta_card,
+    get_cached_about_page,
+    get_optimized_news_items,
+    get_optimized_testimonials,
+    get_optimized_gallery_items,
+    get_optimized_mens_ministry,
+    get_optimized_partners,
+    get_optimized_verse_of_the_day,
+    get_optimized_info_cards,
+    get_optimized_faqs,
+    get_optimized_sidebar_promos,
+    get_optimized_word_of_truth_list,
+)
 from django.template.loader import get_template
 from io import BytesIO
 from easy_thumbnails.files import get_thumbnailer
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
+from .cache_decorators import cache_page_for_anonymous
 
 
+@cache_page_for_anonymous(60 * 15)  # Cache for 15 minutes (anonymous users only)
 def home_view(request):
-    """Home page view with featured content"""
-    # Get latest 6 published news items
+    """Home page view with featured content (optimized queries + cached singletons)."""
     limit = 6
-    news_items = NewsItem.objects.filter(is_published=True)[:limit]
+    news_items = get_optimized_news_items(limit=limit)
     total_count = NewsItem.objects.filter(is_published=True).count()
     has_more_news = total_count > limit
-    
-    # Get approved testimonials (latest 6)
-    testimonials = Testimonial.objects.filter(approved=True)[:6]
-    
-    # Get latest active Men's Ministry section (if any)
-    mens_ministry = MensMinistry.objects.filter(is_active=True).order_by('-created_at').first()
-    
-    # Get active partners for logo carousel
-    partners = Partner.objects.filter(is_active=True)
-    
-    # Get latest gallery items (for homepage gallery section)
-    gallery_items = GalleryImage.objects.all().order_by('-uploaded_at')[:6]
-    
-    # Get hero settings
-    hero_settings = HeroSettings.load()
-    
-    # Get verse of the day (latest active & featured verse)
-    verse_of_the_day = Verse.objects.filter(is_active=True, is_featured=True).first()
-    
-    # Get info cards
-    childrens_bread_card = InfoCard.objects.filter(card_type='childrens_bread', is_active=True).first()
-    news_card = InfoCard.objects.filter(card_type='news', is_active=True).first()
-    word_of_truth_card = InfoCard.objects.filter(card_type='word_of_truth', is_active=True).first()
-    cta_card = CTACard.load()
-    
-    # Get active FAQs
-    faqs = FAQ.objects.filter(is_active=True)
 
-    # Sidebar image/video holders (three slots below FAQs / Verse of the Day)
-    sidebar_promos = SidebarPromo.objects.filter(is_active=True)[:3]
+    testimonials = get_optimized_testimonials(limit=6)
+    gallery_items = get_optimized_gallery_items(limit=6)
+    mens_ministry = get_optimized_mens_ministry()
+    partners = get_optimized_partners()
+    hero_settings = get_cached_hero_settings()
+    verse_of_the_day = get_optimized_verse_of_the_day()
+
+    cards = get_optimized_info_cards()
+    childrens_bread_card = cards['childrens_bread']
+    news_card = cards['news']
+    word_of_truth_card = cards['word_of_truth']
+    cta_card = get_cached_cta_card()
+
+    faqs = get_optimized_faqs()
+    sidebar_promos = get_optimized_sidebar_promos(limit=3)
 
     context = {
         'news_items': news_items,
@@ -85,8 +88,9 @@ def home_view(request):
     return render(request, 'church/home.html', context)
 
 
+@cache_page_for_anonymous(60 * 30)  # Cache for 30 minutes (anonymous users only)
 def about_view(request):
-    """About page view (driven from AboutPage singleton)."""
+    """About page view (driven from AboutPage singleton, cached)."""
     about = AboutPage.load()
     return render(request, 'church/about.html', {'about': about})
 
@@ -152,16 +156,14 @@ def news_list_view(request):
     return render(request, 'church/news_list.html', context)
 
 
+@cache_page_for_anonymous(60 * 15)  # Cache for 15 minutes (anonymous users only)
 def info_card_detail_view(request, slug):
-    """Detail view for Hero Info Cards (Children's Bread, News, Word of Truth)"""
+    """Detail view for Hero Info Cards (Children's Bread, News, Word of Truth)."""
     card = get_object_or_404(InfoCard, slug=slug, is_active=True)
-    
-    # Get sidebar context (same as homepage)
-    faqs = FAQ.objects.filter(is_active=True)
-    sidebar_promos = SidebarPromo.objects.filter(is_active=True)[:3]
-    cta_card = CTACard.load()
-    verse_of_the_day = Verse.objects.filter(is_active=True, is_featured=True).first()
-
+    faqs = get_optimized_faqs()
+    sidebar_promos = get_optimized_sidebar_promos(limit=3)
+    cta_card = get_cached_cta_card()
+    verse_of_the_day = get_optimized_verse_of_the_day()
     context = {
         'card': card,
         'faqs': faqs,
@@ -172,6 +174,7 @@ def info_card_detail_view(request, slug):
     return render(request, 'church/info_card_detail.html', context)
 
 
+@cache_page_for_anonymous(60 * 15)  # Cache for 15 minutes (anonymous users only)
 def news_detail_view(request, slug):
     """Detail view for a single news item"""
     news_item = get_object_or_404(NewsItem, slug=slug, is_published=True)
@@ -290,30 +293,39 @@ def contact_us_view(request):
     return render(request, 'church/contact_us.html')
 
 
+@cache_page_for_anonymous(60 * 10)  # Cache for 10 minutes (anonymous users only)
 def word_of_truth_view(request):
-    """Word of Truth page"""
-    # Get featured verses
-    verses = Verse.objects.filter(is_active=True, is_featured=True)
-    # Get published articles
-    articles = WordOfTruth.objects.filter(is_published=True)
+    """Word of Truth page (optimized with pagination)."""
+    verses = Verse.objects.filter(is_active=True, is_featured=True).order_by('-date_posted')
+    
+    # Paginate articles - 20 per page
+    articles_list = get_optimized_word_of_truth_list()
+    paginator = Paginator(articles_list, 20)
+    page = request.GET.get('page', 1)
+    
+    try:
+        articles = paginator.page(page)
+    except PageNotAnInteger:
+        articles = paginator.page(1)
+    except EmptyPage:
+        articles = paginator.page(paginator.num_pages)
     
     context = {
         'verses': verses,
         'articles': articles,
+        'page_obj': articles,
     }
     return render(request, 'church/word_of_truth.html', context)
 
 
+@cache_page_for_anonymous(60 * 15)  # Cache for 15 minutes (anonymous users only)
 def word_of_truth_detail_view(request, slug):
-    """Detail view for a Word of Truth article"""
+    """Detail view for a Word of Truth article (optimized sidebar)."""
     word_of_truth = get_object_or_404(WordOfTruth, slug=slug, is_published=True)
-    
-    # Get sidebar context (common sidebar items)
-    faqs = FAQ.objects.filter(is_active=True)
-    sidebar_promos = SidebarPromo.objects.filter(is_active=True)[:3]
-    cta_card = CTACard.load()
-    verse_of_the_day = Verse.objects.filter(is_active=True, is_featured=True).first()
-
+    faqs = get_optimized_faqs()
+    sidebar_promos = get_optimized_sidebar_promos(limit=3)
+    cta_card = get_cached_cta_card()
+    verse_of_the_day = get_optimized_verse_of_the_day()
     context = {
         'word_of_truth': word_of_truth,
         'faqs': faqs,
@@ -369,8 +381,8 @@ def word_of_truth_pdf_view(request, slug):
 
 
 def search_view(request):
-    """Search functionality"""
-    query = request.GET.get('q', '')
+    """Search functionality with pagination."""
+    query = request.GET.get('q', '').strip()
     results = []
     
     if query:
@@ -378,12 +390,23 @@ def search_view(request):
         news_results = NewsItem.objects.filter(
             Q(title__icontains=query) | Q(summary__icontains=query) | Q(body__icontains=query),
             is_published=True
-        )[:10]
-        results = list(news_results)
+        ).order_by('-created_at')
+        
+        # Paginate results - 12 per page
+        paginator = Paginator(news_results, 12)
+        page = request.GET.get('page', 1)
+        
+        try:
+            results = paginator.page(page)
+        except PageNotAnInteger:
+            results = paginator.page(1)
+        except EmptyPage:
+            results = paginator.page(paginator.num_pages)
     
     context = {
         'query': query,
         'results': results,
+        'page_obj': results if query else None,
     }
     return render(request, 'church/search_results.html', context)
 
