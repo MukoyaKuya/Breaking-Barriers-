@@ -18,7 +18,10 @@
                     <div class="w-full aspect-[16/9] relative bg-gray-100">
                         {% if card.image_cropping %}
                         {% thumbnail card.image "1600x900" box=card.image_cropping crop=True detail=True as cropped %}
-                        <img src="{{ cropped.url }}" alt="{{ card.title }}" loading="lazy" class="w-full h-full object-contain">
+                        <picture>
+                            <source srcset="{{ cropped.url }}.webp" type="image/webp">
+                            <img src="{{ cropped.url }}" alt="{{ card.title }}" loading="lazy" class="w-full h-full object-contain">
+                        </picture>
                         {% else %}
                         <img src="{{ card.image.url }}" alt="{{ card.title }}" loading="lazy" class="w-full h-full object-cover">
                         {% endif %}

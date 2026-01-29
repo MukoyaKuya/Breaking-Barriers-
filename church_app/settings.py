@@ -70,9 +70,19 @@ INSTALLED_APPS = [
 if os.environ.get('GS_BUCKET_NAME'):
     INSTALLED_APPS += ['storages']
 
+try:
+    import debug_toolbar  # noqa: F401
+    _debug_toolbar_available = DEBUG
+except ImportError:
+    _debug_toolbar_available = False
+
+if _debug_toolbar_available:
+    INSTALLED_APPS += ['debug_toolbar']
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    *(['debug_toolbar.middleware.DebugToolbarMiddleware'] if _debug_toolbar_available else []),
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -109,6 +119,13 @@ if os.environ.get('DATABASE_URL'):
     DATABASES = {
         'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
     }
+    if os.environ.get('REPLICA_DATABASE_URL'):
+        DATABASES['replica'] = dj_database_url.config(
+            env='REPLICA_DATABASE_URL',
+            conn_max_age=600,
+            ssl_require=True,
+        )
+        DATABASE_ROUTERS = ['church_app.db_router.ReplicaRouter']
 else:
     DATABASES = {
         'default': {
@@ -183,7 +200,7 @@ LOGGING = {
     },
     'loggers': {
         'django': {
-            'handlers': ['console'],
+            'handlers': ['console'] + (['file'] if not DEBUG else []),
             'level': 'INFO',
         },
         'django.db.backends': {
@@ -191,13 +208,18 @@ LOGGING = {
             'level': 'DEBUG' if DEBUG else 'WARNING',
             'propagate': False,
         },
+        'django.request': {
+            'handlers': ['console'] + (['file'] if not DEBUG else []),
+            'level': 'ERROR',
+            'propagate': False,
+        },
         'church': {
-            'handlers': ['console'],
+            'handlers': ['console'] + (['file'] if not DEBUG else []),
             'level': 'INFO',
         },
     },
     'root': {
-        'handlers': ['console'],
+        'handlers': ['console'] + (['file'] if not DEBUG else []),
         'level': 'WARNING',
     },
 }
@@ -298,6 +320,10 @@ THUMBNAIL_ALIASES = {
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Django Debug Toolbar (dev only - DEBUG=True and package installed)
+if _debug_toolbar_available:
+    INTERNAL_IPS = ['127.0.0.1', 'localhost', '::1']
 
 # Jazzmin Settings
 JAZZMIN_SETTINGS = {

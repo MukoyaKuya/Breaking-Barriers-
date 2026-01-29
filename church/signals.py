@@ -2,11 +2,15 @@
 Cache invalidation signals and thumbnail pre-generation.
 Clear cached singletons when related models change.
 Pre-generate thumbnails on image upload for better performance.
+Generate WebP copies of thumbnails for modern browsers (use <picture> in templates).
 """
+from io import BytesIO
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
 from django.core.cache import cache
+from django.core.files.base import ContentFile
 from easy_thumbnails.files import get_thumbnailer
+from easy_thumbnails.signals import thumbnail_created
 
 from .models import (
     NewsItem,
@@ -163,3 +167,40 @@ def pregenerate_partner_thumbnails(sender, instance, **kwargs):
         generate_thumbnails_for_image(instance.logo, [
             (300, 200),   # partner logo size
         ])
+
+
+# WebP image optimization: generate WebP copy for each thumbnail (use <picture> in templates)
+WEBP_QUALITY = 85
+
+
+@receiver(thumbnail_created)
+def store_thumbnail_webp(sender, **kwargs):
+    """
+    When a thumbnail is created, also save a WebP version for smaller file size.
+    Templates should use <picture><source srcset="{{ thumb.url }}.webp" type="image/webp"><img src="{{ thumb.url }}"></picture>
+    """
+    try:
+        from PIL import Image
+        thumb_file = sender
+        if not getattr(thumb_file, 'name', None) or not getattr(thumb_file, 'storage', None):
+            return
+        # Read thumbnail content and re-encode as WebP
+        thumb_file.open('rb')
+        try:
+            content = thumb_file.read()
+        finally:
+            thumb_file.close()
+        if not content:
+            return
+        img = Image.open(BytesIO(content))
+        if img.mode in ('RGBA', 'P'):
+            img = img.convert('RGBA')
+        else:
+            img = img.convert('RGB')
+        buf = BytesIO()
+        img.save(buf, 'WEBP', quality=WEBP_QUALITY)
+        buf.seek(0)
+        webp_name = thumb_file.name + '.webp'
+        thumb_file.storage.save(webp_name, ContentFile(buf.getvalue()))
+    except Exception:
+        pass  # Fail silently; JPEG/PNG thumbnail is still served

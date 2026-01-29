@@ -478,6 +478,110 @@ def search_view(request):
     return render(request, 'church/search_results.html', context)
 
 
+def search_autocomplete_view(request):
+    """JSON API for search autocomplete. Returns up to 8 suggestions (news + word of truth)."""
+    from django.db import connection
+    from django.http import JsonResponse
+    from django.urls import reverse
+
+    q = (request.GET.get('q') or '').strip()
+    if len(q) < 2:
+        return JsonResponse({'suggestions': []})
+
+    suggestions = []
+    try:
+        if connection.vendor == 'postgresql':
+            try:
+                from django.contrib.postgres.search import SearchVector, SearchQuery
+
+                sv = (
+                    SearchVector('title', weight='A', config='english')
+                    + SearchVector('summary', weight='B', config='english')
+                    + SearchVector('body', weight='C', config='english')
+                )
+                sq = SearchQuery(q, config='english')
+                news = (
+                    NewsItem.objects.filter(is_published=True)
+                    .annotate(search=sv)
+                    .filter(search=sq)
+                    .values('title', 'slug')[:5]
+                )
+                for n in news:
+                    suggestions.append({
+                        'title': n['title'],
+                        'url': reverse('news_detail', args=[n['slug']]),
+                        'type': 'Event',
+                    })
+            except Exception:
+                news = (
+                    NewsItem.objects.filter(
+                        Q(title__icontains=q) | Q(summary__icontains=q),
+                        is_published=True,
+                    )
+                    .values('title', 'slug')[:5]
+                )
+                for n in news:
+                    suggestions.append({
+                        'title': n['title'],
+                        'url': reverse('news_detail', args=[n['slug']]),
+                        'type': 'Event',
+                    })
+        else:
+            news = (
+                NewsItem.objects.filter(
+                    Q(title__icontains=q) | Q(summary__icontains=q),
+                    is_published=True,
+                )
+                .values('title', 'slug')[:5]
+            )
+            for n in news:
+                suggestions.append({
+                    'title': n['title'],
+                    'url': reverse('news_detail', args=[n['slug']]),
+                    'type': 'Event',
+                })
+
+        # Word of Truth suggestions (fill up to 8 total)
+        if connection.vendor == 'postgresql':
+            try:
+                from django.contrib.postgres.search import SearchVector, SearchQuery
+
+                sv = SearchVector('title', weight='A', config='english') + SearchVector('summary', weight='B', config='english')
+                sq = SearchQuery(q, config='english')
+                wot = (
+                    WordOfTruth.objects.filter(is_published=True)
+                    .annotate(search=sv)
+                    .filter(search=sq)
+                    .values('title', 'slug')[:8 - len(suggestions)]
+                )
+            except Exception:
+                wot = (
+                    WordOfTruth.objects.filter(
+                        Q(title__icontains=q) | Q(summary__icontains=q),
+                        is_published=True,
+                    )
+                    .values('title', 'slug')[:8 - len(suggestions)]
+                )
+        else:
+            wot = (
+                WordOfTruth.objects.filter(
+                    Q(title__icontains=q) | Q(summary__icontains=q),
+                    is_published=True,
+                )
+                .values('title', 'slug')[:8 - len(suggestions)]
+            )
+        for w in wot:
+            suggestions.append({
+                'title': w['title'],
+                'url': reverse('word_of_truth_detail', args=[w['slug']]),
+                'type': 'Word of Truth',
+            })
+    except Exception:
+        pass
+
+    return JsonResponse({'suggestions': suggestions[:8]})
+
+
 def calendar_event_create_view(request):
     """AJAX endpoint to create a calendar event"""
     if not request.user.is_staff:

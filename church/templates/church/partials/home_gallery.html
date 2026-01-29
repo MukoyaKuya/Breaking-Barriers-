@@ -20,8 +20,11 @@
                     @click="active = {{ forloop.counter0 }}">
                     <div class="flex-shrink-0 w-16 h-10 overflow-hidden bg-black rounded">
                         {% thumbnail item.image "100x100" crop="smart" as thumb %}
-                        <img src="{{ thumb.url }}" alt="{{ item.caption }}" loading="lazy"
-                            class="w-full h-full object-cover opacity-90">
+                        <picture>
+                            <source srcset="{{ thumb.url }}.webp" type="image/webp">
+                            <img src="{{ thumb.url }}" alt="{{ item.caption }}" loading="lazy"
+                                class="w-full h-full object-cover opacity-90">
+                        </picture>
                     </div>
                     <div class="flex-1 min-w-0 text-left">
                         <p class="text-sm text-gray-800 font-medium leading-tight line-clamp-2">
@@ -54,8 +57,11 @@
                     <div class="aspect-video w-full">
                         {% if item.image_cropping %}
                         {% thumbnail item.image "800x600" box=item.image_cropping crop=True detail=True as cropped %}
-                        <img src="{{ cropped.url }}" alt="{{ item.caption }}" loading="lazy"
-                            class="w-full h-full object-contain bg-gray-900">
+                        <picture>
+                            <source srcset="{{ cropped.url }}.webp" type="image/webp">
+                            <img src="{{ cropped.url }}" alt="{{ item.caption }}" loading="lazy"
+                                class="w-full h-full object-contain bg-gray-900">
+                        </picture>
                         {% else %}
                         <img src="{{ item.image.url }}" alt="{{ item.caption }}" loading="lazy"
                             class="w-full h-full object-contain bg-gray-900">

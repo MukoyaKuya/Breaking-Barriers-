@@ -20,11 +20,16 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import RedirectView
 from django.http import JsonResponse
+from django.db import connection
 
 
 def health_check_view(request):
     """Health check for load balancers and orchestration (e.g. Cloud Run, K8s)."""
-    return JsonResponse({'status': 'healthy'})
+    try:
+        connection.ensure_connection()
+        return JsonResponse({'status': 'healthy', 'database': 'ok'})
+    except Exception as e:
+        return JsonResponse({'status': 'unhealthy', 'database': str(e)}, status=503)
 
 
 # Customize admin site
@@ -37,9 +42,14 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('', include('church.urls')),
-    # Favicon redirect
     path('favicon.ico', RedirectView.as_view(url='/static/images/logo.png', permanent=False)),
 ]
+try:
+    import debug_toolbar
+    if getattr(settings, 'DEBUG', False):
+        urlpatterns.insert(0, path('__debug__/', include('debug_toolbar.urls')))
+except ImportError:
+    pass
 
 # Serve media files in development
 if settings.DEBUG:

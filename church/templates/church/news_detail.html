@@ -36,7 +36,10 @@
         {% if news_item.image %}
         <div class="mb-8">
             {% thumbnail news_item.image "1200x800" crop detail as cropped %}
-            <img src="{{ cropped.url }}" alt="{{ news_item.title }}" loading="lazy" class="w-full h-auto rounded-lg shadow-md">
+            <picture>
+                <source srcset="{{ cropped.url }}.webp" type="image/webp">
+                <img src="{{ cropped.url }}" alt="{{ news_item.title }}" loading="lazy" class="w-full h-auto rounded-lg shadow-md">
+            </picture>
         </div>
         {% endif %}
 

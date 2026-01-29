@@ -4,17 +4,17 @@
 {% block title %}Calendar & Events - Breaking Barriers International{% endblock %}
 
 {% block content %}
-<div class="bg-white py-16">
-    <div class="container mx-auto px-4">
+<div class="bg-white py-8 sm:py-16 overflow-x-hidden">
+    <div class="container mx-auto px-4 sm:px-6 max-w-[100vw]">
         <!-- Header with month navigation -->
-        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6 sm:mb-8">
             <div>
                 <h1 class="text-3xl md:text-4xl font-bold">Calendar & Events</h1>
                 <p class="text-gray-600 mt-1">View upcoming meetings, services and special events.</p>
             </div>
             <div class="flex items-center gap-3">
                 <a href="?year={{ prev_month_year }}&month={{ prev_month }}"
-                    class="inline-flex items-center justify-center px-3 py-2 rounded-md border border-gray-300 text-sm font-medium text-gray-700 hover:bg-gray-100">
+                    class="inline-flex items-center justify-center px-4 py-3 sm:py-2 min-h-[44px] sm:min-h-0 rounded-md border border-gray-300 text-sm font-medium text-gray-700 hover:bg-gray-100">
                     &larr; Previous
                 </a>
                 <div class="text-center">
@@ -22,7 +22,7 @@
                     <p class="text-lg font-semibold">{{ current_month_name }} {{ current_year }}</p>
                 </div>
                 <a href="?year={{ next_month_year }}&month={{ next_month }}"
-                    class="inline-flex items-center justify-center px-3 py-2 rounded-md border border-gray-300 text-sm font-medium text-gray-700 hover:bg-gray-100">
+                    class="inline-flex items-center justify-center px-4 py-3 sm:py-2 min-h-[44px] sm:min-h-0 rounded-md border border-gray-300 text-sm font-medium text-gray-700 hover:bg-gray-100">
                     Next &rarr;
                 </a>
             </div>
@@ -67,9 +67,9 @@
                 </div>
             </div>
 
-            <!-- Right column: Month grid -->
-            <div class="lg:col-span-3">
-                <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+            <!-- Right column: Month grid (scroll horizontally on very small screens) -->
+            <div class="lg:col-span-3 overflow-x-auto -mx-2 px-2 sm:mx-0 sm:px-0">
+                <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden min-w-[280px]">
                     <!-- Weekday header -->
                     <div
                         class="grid grid-cols-7 bg-gray-50 border-b border-gray-200 text-xs font-semibold uppercase tracking-wide text-center text-gray-500">

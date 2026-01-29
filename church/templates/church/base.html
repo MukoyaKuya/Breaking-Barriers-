@@ -4,7 +4,8 @@
 <head>
     {% load static %}
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="rgb(153, 0, 48)">
     <title>{% block title %}Breaking Barriers International{% endblock %}</title>
 
     <!-- Favicon -->
@@ -74,13 +75,45 @@
         .article-content li {
             margin-bottom: 0.25rem;
         }
+
+        /* Mobile responsive: prevent horizontal scroll and overflow */
+        html {
+            overflow-x: hidden;
+        }
+        body {
+            overflow-x: hidden;
+        }
+        .article-content img,
+        .prose img {
+            max-width: 100%;
+            height: auto;
+        }
+        .article-content iframe,
+        .prose iframe {
+            max-width: 100%;
+        }
+        .article-content table,
+        .prose table {
+            display: block;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .article-content p,
+        .prose p {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        .safe-area-padding {
+            padding-left: max(0.75rem, env(safe-area-inset-left));
+            padding-right: max(0.75rem, env(safe-area-inset-right));
+        }
     </style>
 
     {% block extra_head %}{% endblock %}
     {% block extra_css %}{% endblock %}
 </head>
 
-<body class="flex flex-col min-h-screen bg-gray-50">
+<body class="flex flex-col min-h-screen bg-gray-50 min-w-0">
     {% include 'church/partials/header.html' %}
 
     <main class="flex-grow">

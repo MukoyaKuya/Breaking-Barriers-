@@ -26,8 +26,11 @@
             {% if image.image %}
             {% if image.image_cropping %}
             {% thumbnail image.image "800x600" box=image.image_cropping crop=True detail=True as thumb %}
-            <img src="{{ thumb.url }}" alt="{{ image.caption }}" loading="lazy"
-                class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+            <picture>
+                <source srcset="{{ thumb.url }}.webp" type="image/webp">
+                <img src="{{ thumb.url }}" alt="{{ image.caption }}" loading="lazy"
+                    class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+            </picture>
             {% else %}
             <img src="{{ image.image.url }}" alt="{{ image.caption }}" loading="lazy"
                 class="w-full h-full object-cover group-hover:scale-110 transition duration-500">

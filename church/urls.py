@@ -23,5 +23,6 @@ urlpatterns = [
     path('privacy/', views.privacy_view, name='privacy'),
     path('donate/', views.donate_view, name='donate'),
     path('search/', views.search_view, name='search'),
+    path('search/autocomplete/', views.search_autocomplete_view, name='search_autocomplete'),
     path('newsletter/subscribe/', views.newsletter_subscribe_view, name='newsletter_subscribe'),
 ]

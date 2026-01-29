@@ -3,21 +3,21 @@
 {% block title %}Gallery - Breaking Barriers International{% endblock %}
 
 {% block content %}
-<div class="bg-white py-16">
-    <div class="container mx-auto px-4">
-        <h1 class="text-4xl md:text-5xl font-bold mb-8 text-center">Gallery</h1>
+<div class="bg-white py-8 sm:py-16 overflow-x-hidden">
+    <div class="container mx-auto px-4 sm:px-6 max-w-[100vw]">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 sm:mb-8 text-center">Gallery</h1>
 
         <!-- Category Filter -->
-        <div class="mb-8 text-center">
+        <div class="mb-6 sm:mb-8 text-center">
             <div class="inline-flex flex-wrap gap-2 justify-center">
-                <button hx-get="{% url 'gallery' %}" hx-target="#gallery-container" hx-swap="innerHTML"
-                    class="px-4 py-2 rounded-lg {% if not selected_category %}bg-brand-color text-white{% else %}bg-gray-200 text-gray-700 hover:bg-gray-300{% endif %} transition">
+                <button type="button" hx-get="{% url 'gallery' %}" hx-target="#gallery-container" hx-swap="innerHTML"
+                    class="px-4 py-3 sm:py-2 rounded-lg min-h-[44px] sm:min-h-0 {% if not selected_category %}bg-brand-color text-white{% else %}bg-gray-200 text-gray-700 hover:bg-gray-300{% endif %} transition text-sm sm:text-base">
                     All
                 </button>
                 {% for category in categories %}
-                <button hx-get="{% url 'gallery' %}?category={{ category }}" hx-target="#gallery-container"
+                <button type="button" hx-get="{% url 'gallery' %}?category={{ category }}" hx-target="#gallery-container"
                     hx-swap="innerHTML"
-                    class="px-4 py-2 rounded-lg {% if selected_category == category %}bg-brand-color text-white{% else %}bg-gray-200 text-gray-700 hover:bg-gray-300{% endif %} transition">
+                    class="px-4 py-3 sm:py-2 rounded-lg min-h-[44px] sm:min-h-0 {% if selected_category == category %}bg-brand-color text-white{% else %}bg-gray-200 text-gray-700 hover:bg-gray-300{% endif %} transition text-sm sm:text-base">
                     {{ category }}
                 </button>
                 {% endfor %}

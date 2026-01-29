@@ -458,4 +458,16 @@ After implementing these quick-start optimizations:
 
 ---
 
+## Implemented: Image, Search, Dev Tools, Monitoring, Infra
+
+The following are already implemented in the codebase:
+
+- **Image optimization (WebP):** Thumbnails get a WebP copy via `thumbnail_created` signal; templates use `<picture>` with `source type="image/webp"` and `<img>` fallback. See `church/signals.py` and thumbnail-using templates.
+- **Search autocomplete:** `GET /search/autocomplete/?q=...` returns JSON suggestions (news + Word of Truth). Header search (desktop and mobile) uses debounced autocomplete with Alpine.js.
+- **Django Debug Toolbar:** Optional when `DEBUG=True`; add `django-debug-toolbar` to `requirements.txt` and install. Toolbar is only loaded if the package is installed.
+- **Production monitoring:** `/health/` checks DB and returns 200/503. Production logging writes to `logs/django.log`. See **MONITORING.md**.
+- **Load balancing / read replicas:** Set `REPLICA_DATABASE_URL` alongside `DATABASE_URL` to send reads to replica. See **INFRA.md** and `church_app/db_router.py`.
+
+---
+
 **Note**: Test all changes in a development environment before deploying to production!

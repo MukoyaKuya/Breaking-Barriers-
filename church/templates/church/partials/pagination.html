@@ -1,8 +1,8 @@
 {% if page_obj.has_other_pages %}
-<nav class="flex justify-center items-center gap-2 mt-8 mb-4" aria-label="Pagination">
+<nav class="flex flex-wrap justify-center items-center gap-2 mt-6 sm:mt-8 mb-4" aria-label="Pagination">
     {% if page_obj.has_previous %}
     <a href="?page={{ page_obj.previous_page_number }}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}"
-       class="px-4 py-2 bg-brand-color text-white rounded-lg hover:opacity-90 transition font-semibold">
+       class="px-4 py-3 sm:py-2 min-h-[44px] sm:min-h-0 flex items-center bg-brand-color text-white rounded-lg hover:opacity-90 transition font-semibold text-sm sm:text-base">
         <i class="fas fa-chevron-left mr-1"></i> Previous
     </a>
     {% else %}
@@ -28,7 +28,7 @@
 
     {% if page_obj.has_next %}
     <a href="?page={{ page_obj.next_page_number }}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}"
-       class="px-4 py-2 bg-brand-color text-white rounded-lg hover:opacity-90 transition font-semibold">
+       class="px-4 py-3 sm:py-2 min-h-[44px] sm:min-h-0 flex items-center bg-brand-color text-white rounded-lg hover:opacity-90 transition font-semibold text-sm sm:text-base">
         Next <i class="fas fa-chevron-right ml-1"></i>
     </a>
     {% else %}

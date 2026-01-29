@@ -1,7 +1,7 @@
 {% load static %}
-<footer class="brand-color text-white mt-auto">
-    <div class="container mx-auto px-4 py-8">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 items-start">
+<footer class="brand-color text-white mt-auto safe-area-padding">
+    <div class="container mx-auto px-4 sm:px-6 py-8 max-w-[100vw] overflow-x-hidden">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 items-start">
             <!-- Logo + Ministry name + Social icons -->
             <div class="flex flex-col items-start space-y-3">
                 <div class="flex items-center space-x-3">
@@ -61,23 +61,23 @@
 
             <!-- Navigation links (center-right) -->
             <div class="space-y-1 text-sm md:text-base">
-                <a href="{% url 'about' %}" class="block hover:text-gray-200 transition">About Us</a>
-                <a href="{% url 'contact_us' %}" class="block hover:text-gray-200 transition">Contact Us</a>
-                <a href="{% url 'news_list' %}" class="block hover:text-gray-200 transition">Calendar</a>
-                <a href="{% url 'media' %}" class="block hover:text-gray-200 transition">Books</a>
-                <a href="{% url 'childrens_bread_school' %}" class="block hover:text-gray-200 transition">School</a>
-                <a href="{% url 'childrens_bread_school' %}" class="block hover:text-gray-200 transition">Children's Bread</a>
+                <a href="{% url 'about' %}" class="block hover:text-gray-200 transition py-2 sm:py-0">About Us</a>
+                <a href="{% url 'contact_us' %}" class="block hover:text-gray-200 transition py-2 sm:py-0">Contact Us</a>
+                <a href="{% url 'news_list' %}" class="block hover:text-gray-200 transition py-2 sm:py-0">Calendar</a>
+                <a href="{% url 'media' %}" class="block hover:text-gray-200 transition py-2 sm:py-0">Books</a>
+                <a href="{% url 'childrens_bread_school' %}" class="block hover:text-gray-200 transition py-2 sm:py-0">School</a>
+                <a href="{% url 'childrens_bread_school' %}" class="block hover:text-gray-200 transition py-2 sm:py-0">Children's Bread</a>
             </div>
 
             <!-- Newsletter (far right) -->
-            <div class="space-y-3 md:text-right">
-                <h3 class="text-2xl font-bold">News Letter</h3>
+            <div class="space-y-3 md:text-right sm:col-span-2 md:col-span-1">
+                <h3 class="text-xl sm:text-2xl font-bold">News Letter</h3>
                 <form action="{% url 'newsletter_subscribe' %}" method="post" class="space-y-3">
                     {% csrf_token %}
                     <input type="email" name="email" placeholder="Email"
-                        class="w-full md:w-56 px-3 py-2 rounded-sm bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white border border-gray-300" required>
+                        class="w-full md:w-56 px-3 py-3 sm:py-2 rounded-sm bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white border border-gray-300 text-base" required>
                     <button type="submit"
-                        class="w-full md:w-56 py-2 rounded-sm bg-red-700 border border-white text-white font-semibold hover:bg-red-800 transition">
+                        class="w-full md:w-56 py-3 sm:py-2 rounded-sm bg-red-700 border border-white text-white font-semibold hover:bg-red-800 transition min-h-[44px]">
                         Send
                     </button>
                 </form>

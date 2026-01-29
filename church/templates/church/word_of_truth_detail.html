@@ -35,9 +35,9 @@
 {% endblock %}
 
 {% block content %}
-<div class="bg-white py-8">
-    <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+<div class="bg-white py-6 sm:py-8 overflow-x-hidden">
+    <div class="container mx-auto px-4 sm:px-6 max-w-7xl">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 md:gap-8">
             <!-- Main Content column -->
             <div class="lg:col-span-3 space-y-10">
                 <div class="flex flex-wrap items-center gap-4 mb-6">
@@ -53,8 +53,11 @@
                     <div class="w-full max-h-[320px] md:max-h-[400px] relative bg-gray-100 group overflow-hidden">
                         {% if word_of_truth.image_cropping %}
                         {% thumbnail word_of_truth.image "800x533" box=word_of_truth.image_cropping crop detail as cropped %}
-                        <img src="{{ cropped.url }}" alt="{{ word_of_truth.title }}" loading="lazy"
-                            class="w-full h-full max-h-[320px] md:max-h-[400px] object-cover object-center transition-transform duration-700 group-hover:scale-105">
+                        <picture>
+                            <source srcset="{{ cropped.url }}.webp" type="image/webp">
+                            <img src="{{ cropped.url }}" alt="{{ word_of_truth.title }}" loading="lazy"
+                                class="w-full h-full max-h-[320px] md:max-h-[400px] object-cover object-center transition-transform duration-700 group-hover:scale-105">
+                        </picture>
                         {% else %}
                         <img src="{{ word_of_truth.image.url }}" alt="{{ word_of_truth.title }}" loading="lazy"
                             class="w-full h-full max-h-[320px] md:max-h-[400px] object-cover object-center transition-transform duration-700 group-hover:scale-105">
@@ -87,7 +90,7 @@
                     </div>
                     {% endif %}
 
-                    <div class="p-8 md:p-12">
+                    <div class="p-5 sm:p-6 md:p-8 lg:p-12">
                         <div
                             class="flex flex-col md:flex-row md:items-center justify-between mb-10 pb-8 border-b border-gray-100 gap-6">
                             <div class="flex items-center gap-5">
@@ -116,7 +119,7 @@
                             </div>
                         </div>
 
-                        <div class="prose prose-xl max-w-none text-gray-700 leading-relaxed font-normal">
+                        <div class="prose prose-sm sm:prose-base md:prose-lg lg:prose-xl max-w-none text-gray-700 leading-relaxed font-normal overflow-x-hidden">
                             {% if word_of_truth.summary %}
                             <div class="lead-text relative mb-12">
                                 <div class="absolute left-0 top-0 bottom-0 w-1.5 brand-color rounded-full"></div>
@@ -136,18 +139,17 @@
                         </div>
 
                         <div
-                            class="mt-16 pt-10 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-8">
-                            <div class="flex flex-wrap gap-4">
+                            class="mt-10 sm:mt-16 pt-8 sm:pt-10 border-t border-gray-100 flex flex-col md:flex-row justify-between items-stretch md:items-center gap-6 sm:gap-8">
+                            <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
                                 <a href="{% url 'word_of_truth_pdf' word_of_truth.slug %}"
-                                    class="group inline-flex items-center px-8 py-4 brand-color text-white rounded-2xl hover:bg-red-900 transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1">
-                                    <i
-                                        class="fas fa-file-pdf mr-3 text-xl group-hover:scale-110 transition-transform"></i>
-                                    <span class="font-bold">Download Article (PDF)</span>
+                                    class="group inline-flex items-center justify-center px-6 sm:px-8 py-3.5 sm:py-4 brand-color text-white rounded-2xl hover:bg-red-900 transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 min-h-[48px] text-sm sm:text-base font-bold">
+                                    <i class="fas fa-file-pdf mr-3 text-lg sm:text-xl group-hover:scale-110 transition-transform"></i>
+                                    <span>Download Article (PDF)</span>
                                 </a>
-                                <button onclick="window.print()"
-                                    class="group inline-flex items-center px-6 py-4 bg-white text-gray-600 border border-gray-200 rounded-2xl hover:bg-gray-50 hover:border-brand-color hover:text-brand-color transition-all duration-300 shadow-sm">
+                                <button type="button" onclick="window.print()"
+                                    class="group inline-flex items-center justify-center px-5 sm:px-6 py-3.5 sm:py-4 bg-white text-gray-600 border border-gray-200 rounded-2xl hover:bg-gray-50 hover:border-brand-color hover:text-brand-color transition-all duration-300 shadow-sm min-h-[48px] text-sm sm:text-base font-semibold">
                                     <i class="fas fa-print mr-3 group-hover:rotate-12 transition-transform"></i>
-                                    <span class="font-semibold">Print Page</span>
+                                    <span>Print Page</span>
                                 </button>
                             </div>
 
