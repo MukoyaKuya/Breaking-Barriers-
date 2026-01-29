@@ -37,7 +37,27 @@
         <!-- Main card -->
         <section class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-0">
-                <!-- Image / Video -->
+                <!-- Text -->
+                <div class="md:col-span-2 border-t md:border-t-0 md:border-r border-gray-100 bg-white">
+                    <div class="h-full p-6 md:p-10 flex flex-col">
+                        <div class="about-body prose prose-sm md:prose-base max-w-none text-gray-800 leading-relaxed">
+                            {{ about.body|safe }}
+                        </div>
+
+                        <!-- Objectives highlight strip if the body contains a list -->
+                        <div class="mt-6 md:mt-8 pt-5 md:pt-6 border-t border-gray-100">
+                            <p class="text-xs uppercase tracking-[0.3em] text-gray-500 mb-1">
+                                Our Focus
+                            </p>
+                            <p class="text-sm md:text-base text-gray-700">
+                                Through teaching, deliverance and discipleship, BBI exists to help believers
+                                identify and break invisible barriers so they can walk in the freedom Jesus purchased.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image / Video (right) -->
                 <div class="md:col-span-1 bg-gray-50 flex items-stretch justify-center p-6 md:p-8">
                     {% if about.video_url %}
                         <div class="w-full max-w-xs md:max-w-sm">
@@ -77,26 +97,6 @@
                             <span>Upload a founder / ministry image or add a YouTube video URL in the About Page admin to display it here.</span>
                         </div>
                     {% endif %}
-                </div>
-
-                <!-- Text -->
-                <div class="md:col-span-2 border-t md:border-t-0 md:border-l border-gray-100 bg-white">
-                    <div class="h-full p-6 md:p-10 flex flex-col">
-                        <div class="about-body prose prose-sm md:prose-base max-w-none text-gray-800 leading-relaxed">
-                            {{ about.body|safe }}
-                        </div>
-
-                        <!-- Objectives highlight strip if the body contains a list -->
-                        <div class="mt-6 md:mt-8 pt-5 md:pt-6 border-t border-gray-100">
-                            <p class="text-xs uppercase tracking-[0.3em] text-gray-500 mb-1">
-                                Our Focus
-                            </p>
-                            <p class="text-sm md:text-base text-gray-700">
-                                Through teaching, deliverance and discipleship, BBI exists to help believers
-                                identify and break invisible barriers so they can walk in the freedom Jesus purchased.
-                            </p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
