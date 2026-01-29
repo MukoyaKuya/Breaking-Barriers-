@@ -277,6 +277,7 @@ STATICFILES_DIRS = [
 # Media files (User uploaded content)
 if os.environ.get('GS_BUCKET_NAME'):
     DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+    THUMBNAIL_DEFAULT_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
     GS_BUCKET_NAME = os.environ.get('GS_BUCKET_NAME')
     GS_DEFAULT_ACL = os.environ.get('GS_DEFAULT_ACL', None)
     GS_QUERYSTRING_AUTH = False
