@@ -90,10 +90,9 @@
                             <div class="border-r border-gray-200 last:border-r-0 px-1 py-1 text-xs align-top relative
                                         {% if not day.in_current_month %}bg-gray-50 text-gray-400{% endif %}
                                         {% if day.is_today %}bg-blue-50{% endif %}
-                                        {% if day.in_current_month %}cursor-pointer hover:bg-gray-50{% endif %}" {% if
-                                day.in_current_month and not day.events
-                                %}onclick="showNoEventsMessage('{{ day.date|date:" Y-m-d" }}')"
-                                title="Click to view date" {% endif %}>
+                                        {% if day.in_current_month %}cursor-pointer hover:bg-gray-50{% endif %}"
+                                onclick="{% if day.in_current_month and not day.events %}showNoEventsMessage('{{ day.date|date:'Y-m-d' }}'){% endif %}"
+                                title="{% if day.in_current_month and not day.events %}Click to view date{% endif %}">
                                 <div class="flex items-center justify-between mb-1">
                                     <span
                                         class="font-semibold {% if day.is_today %}text-blue-700{% else %}text-gray-700{% endif %}">

@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from django.views.generic import RedirectView
+from django.views.generic import RedirectView, TemplateView
 from django.http import JsonResponse
 from django.db import connection
 
@@ -43,6 +43,7 @@ urlpatterns = [
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('', include('church.urls')),
     path('favicon.ico', RedirectView.as_view(url='/static/images/logo.png', permanent=False)),
+    path('offline/', TemplateView.as_view(template_name='church/offline.html'), name='offline'),
 ]
 try:
     import debug_toolbar

@@ -273,23 +273,43 @@ STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
-]# Media files (User uploaded content)
+]
+
 # Media files (User uploaded content)
+# Using Django 4.2+ STORAGES dict format for compatibility with Django 5.2
 if os.environ.get('GS_BUCKET_NAME'):
-    DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
-    THUMBNAIL_DEFAULT_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
     GS_BUCKET_NAME = os.environ.get('GS_BUCKET_NAME')
     GS_DEFAULT_ACL = os.environ.get('GS_DEFAULT_ACL', None)
     GS_QUERYSTRING_AUTH = False
     GS_FILE_OVERWRITE = False
     GS_LOCATION = os.environ.get('GS_LOCATION', '')
+    
+    STORAGES = {
+        'default': {
+            'BACKEND': 'storages.backends.gcloud.GoogleCloudStorage',
+            'OPTIONS': {
+                'bucket_name': GS_BUCKET_NAME,
+                'querystring_auth': False,
+            },
+        },
+        'staticfiles': {
+            'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage',
+        },
+    }
+    # Direct GCS URL for media in production - ensures thumbnails resolve correctly
+    MEDIA_URL = f"https://storage.googleapis.com/{GS_BUCKET_NAME}/"
+else:
+    STORAGES = {
+        'default': {
+            'BACKEND': 'django.core.files.storage.FileSystemStorage',
+        },
+        'staticfiles': {
+            'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage',
+        },
+    }
+    MEDIA_URL = '/media/'
 
-# Always use relative MEDIA_URL so Nginx can catch and serve/proxy media
-MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
-
-# Serve static files efficiently in production (Cloud Run, etc.)
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # CKEditor Configuration
 CKEDITOR_UPLOAD_PATH = 'uploads/'
@@ -302,6 +322,12 @@ CKEDITOR_CONFIGS = {
 }
 
 # Easy Thumbnails Configuration
+# Use the same storage as default media so thumbnail URLs and files match (local /media/, prod GCS)
+THUMBNAIL_DEFAULT_STORAGE = (
+    'storages.backends.gcloud.GoogleCloudStorage'
+    if os.environ.get('GS_BUCKET_NAME')
+    else 'django.core.files.storage.FileSystemStorage'
+)
 THUMBNAIL_DEBUG = DEBUG
 from easy_thumbnails.conf import Settings as thumbnail_settings
 THUMBNAIL_PROCESSORS = (

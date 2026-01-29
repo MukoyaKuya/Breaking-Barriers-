@@ -12,6 +12,13 @@
     <link rel="icon" type="image/png" href="{% static 'images/logo.png' %}">
     <link rel="shortcut icon" type="image/png" href="{% static 'images/logo.png' %}">
 
+    <!-- PWA -->
+    <link rel="manifest" href="{% static 'manifest.json' %}">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="BBI">
+    <link rel="apple-touch-icon" href="{% static 'images/icons/icon-192.png' %}">
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -80,29 +87,35 @@
         html {
             overflow-x: hidden;
         }
+
         body {
             overflow-x: hidden;
         }
+
         .article-content img,
         .prose img {
             max-width: 100%;
             height: auto;
         }
+
         .article-content iframe,
         .prose iframe {
             max-width: 100%;
         }
+
         .article-content table,
         .prose table {
             display: block;
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
         }
+
         .article-content p,
         .prose p {
             word-wrap: break-word;
             overflow-wrap: break-word;
         }
+
         .safe-area-padding {
             padding-left: max(0.75rem, env(safe-area-inset-left));
             padding-right: max(0.75rem, env(safe-area-inset-right));
@@ -171,6 +184,21 @@
     {% include 'church/partials/footer.html' %}
 
     {% block extra_js %}{% endblock %}
+
+    <!-- PWA Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/static/service-worker.js')
+                    .then(function (registration) {
+                        console.log('BBI Service Worker registered:', registration.scope);
+                    })
+                    .catch(function (error) {
+                        console.log('BBI Service Worker registration failed:', error);
+                    });
+            });
+        }
+    </script>
 </body>
 
 </html>

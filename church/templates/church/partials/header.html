@@ -2,21 +2,21 @@
     x-data="{ mobileMenuOpen: false, searchOpen: false }">
     <nav class="px-3 sm:px-4 py-3 md:py-4">
         <div class="flex items-center justify-between gap-2 max-w-[100vw]">
-            <!-- Left: Logo and Branding -->
-            <div class="flex items-center flex-shrink min-w-0">
-                <a href="{% url 'home' %}" class="flex items-center gap-2 sm:gap-3 min-h-[44px] md:min-h-0">
+            <!-- Left: Logo and Branding (text wraps on small screens so full name is readable) -->
+            <div class="flex items-center flex-shrink min-w-0 flex-1">
+                <a href="{% url 'home' %}" class="flex items-center gap-1.5 sm:gap-3 min-h-[44px] md:min-h-0 min-w-0">
                     {% load static %}
-                    <div class="flex-shrink-0 p-1 sm:p-2">
+                    <div class="flex-shrink-0 p-0.5 sm:p-2">
                         <img src="{% static 'images/logo.png' %}" alt="Breaking Barriers International Logo"
-                            class="h-10 w-auto sm:h-12 md:h-16">
+                            class="h-9 w-auto sm:h-12 md:h-16">
                     </div>
-                    <div class="flex flex-col min-w-0 max-w-[calc(100vw-8rem)] sm:max-w-none">
+                    <div class="flex flex-col min-w-0 overflow-hidden">
                         <span
-                            class="fjalla-one-regular text-sm sm:text-xl md:text-2xl text-white leading-tight underline truncate">
+                            class="fjalla-one-regular text-[0.65rem] min-[400px]:text-xs sm:text-xl md:text-2xl text-white leading-tight underline break-words">
                             BREAKING BARRIERS INTERNATIONAL
                         </span>
                         <span
-                            class="kaushan-script-regular text-xs sm:text-lg md:text-xl text-gray-300 leading-tight truncate">
+                            class="kaushan-script-regular text-[0.6rem] min-[400px]:text-[0.7rem] sm:text-lg md:text-xl text-gray-300 leading-tight break-words">
                             Breaking Bondages, Empowering People
                         </span>
                     </div>

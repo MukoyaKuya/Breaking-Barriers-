@@ -23,6 +23,21 @@ gunicorn \
   --preload \
   church_app.wsgi:application &
 
+# Wait for Gunicorn to start serving connections
+echo "Waiting for Gunicorn to be ready..."
+timeout=30
+while ! python -c "import socket; import sys; s = socket.socket(socket.AF_INET, socket.SOCK_STREAM); result = s.connect_ex(('127.0.0.1', 8000)); s.close(); sys.exit(result)" > /dev/null 2>&1; do
+    timeout=$((timeout - 1))
+    if [ $timeout -eq 0 ]; then
+        echo "Timed out waiting for Gunicorn to start."
+        exit 1
+    fi
+    echo "Waiting for Gunicorn... ($timeout)"
+    sleep 1
+done
+
+echo "Gunicorn started successfully."
+
 # Start Nginx in the foreground
 echo "Starting Nginx on port $PORT..."
 nginx -c /app/nginx.conf -g "daemon off;"

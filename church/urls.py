@@ -1,8 +1,10 @@
 from django.urls import path
+from django.views.generic import TemplateView
 from . import views
 
 urlpatterns = [
     path('', views.home_view, name='home'),
+    path('offline/', TemplateView.as_view(template_name='church/offline.html'), name='offline'),
     path('about/', views.about_view, name='about'),
     path('word-of-truth/', views.word_of_truth_view, name='word_of_truth'),
     path('word-of-truth/<slug:slug>/', views.word_of_truth_detail_view, name='word_of_truth_detail'),
