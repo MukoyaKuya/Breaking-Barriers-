@@ -20,20 +20,20 @@
                             class="block w-full">
                             {% if partner.use_cropping and partner.logo_cropping %}
                             {% thumbnail partner.logo "300x200" crop detail as cropped %}
-                            <img src="{{ cropped.url }}" alt="{{ partner.name }}"
+                            <img src="{{ cropped.url }}" alt="{{ partner.name }}" loading="lazy"
                                 class="h-24 md:h-32 w-auto max-w-full object-contain">
                             {% else %}
-                            <img src="{{ partner.logo.url }}" alt="{{ partner.name }}"
+                            <img src="{{ partner.logo.url }}" alt="{{ partner.name }}" loading="lazy"
                                 class="h-24 md:h-32 w-auto max-w-full object-contain">
                             {% endif %}
                         </a>
                         {% else %}
                         {% if partner.use_cropping and partner.logo_cropping %}
                         {% thumbnail partner.logo "300x200" crop detail as cropped %}
-                        <img src="{{ cropped.url }}" alt="{{ partner.name }}"
+                        <img src="{{ cropped.url }}" alt="{{ partner.name }}" loading="lazy"
                             class="h-24 md:h-32 w-auto max-w-full object-contain">
                         {% else %}
-                        <img src="{{ partner.logo.url }}" alt="{{ partner.name }}"
+                        <img src="{{ partner.logo.url }}" alt="{{ partner.name }}" loading="lazy"
                             class="h-24 md:h-32 w-auto max-w-full object-contain">
                         {% endif %}
                         {% endif %}
@@ -50,18 +50,18 @@
                             class="block w-full" tabindex="-1">
                             {% if partner.use_cropping and partner.logo_cropping %}
                             {% thumbnail partner.logo "300x200" crop detail as cropped %}
-                            <img src="{{ cropped.url }}" alt="" class="h-24 md:h-32 w-auto max-w-full object-contain">
+                            <img src="{{ cropped.url }}" alt="" loading="lazy" class="h-24 md:h-32 w-auto max-w-full object-contain">
                             {% else %}
-                            <img src="{{ partner.logo.url }}" alt=""
+                            <img src="{{ partner.logo.url }}" alt="" loading="lazy"
                                 class="h-24 md:h-32 w-auto max-w-full object-contain">
                             {% endif %}
                         </a>
                         {% else %}
                         {% if partner.use_cropping and partner.logo_cropping %}
                         {% thumbnail partner.logo "300x200" crop detail as cropped %}
-                        <img src="{{ cropped.url }}" alt="" class="h-24 md:h-32 w-auto max-w-full object-contain">
+                        <img src="{{ cropped.url }}" alt="" loading="lazy" class="h-24 md:h-32 w-auto max-w-full object-contain">
                         {% else %}
-                        <img src="{{ partner.logo.url }}" alt="" class="h-24 md:h-32 w-auto max-w-full object-contain">
+                        <img src="{{ partner.logo.url }}" alt="" loading="lazy" class="h-24 md:h-32 w-auto max-w-full object-contain">
                         {% endif %}
                         {% endif %}
                     </div>

@@ -4,9 +4,9 @@
     {% if news_item.image %}
     {% if news_item.image_cropping %}
     {% thumbnail news_item.image "800x600" box=news_item.image_cropping crop=True detail=True as cropped %}
-    <img src="{{ cropped.url }}" alt="{{ news_item.title }}" class="w-full h-48 object-cover">
+    <img src="{{ cropped.url }}" alt="{{ news_item.title }}" loading="lazy" class="w-full h-48 object-cover">
     {% else %}
-    <img src="{{ news_item.image.url }}" alt="{{ news_item.title }}" class="w-full h-48 object-cover">
+    <img src="{{ news_item.image.url }}" alt="{{ news_item.title }}" loading="lazy" class="w-full h-48 object-cover">
     {% endif %}
     {% endif %}
     <div class="p-6">

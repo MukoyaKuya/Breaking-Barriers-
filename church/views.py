@@ -381,28 +381,74 @@ def word_of_truth_pdf_view(request, slug):
 
 
 def search_view(request):
-    """Search functionality with pagination."""
+    """Search functionality with pagination and caching. Uses PostgreSQL full-text when available."""
+    from django.db import connection
+    from django.core.cache import cache
+    import hashlib
+
     query = request.GET.get('q', '').strip()
     results = []
-    
+    page = request.GET.get('page', 1)
+
     if query:
-        # Search in news items
-        news_results = NewsItem.objects.filter(
-            Q(title__icontains=query) | Q(summary__icontains=query) | Q(body__icontains=query),
-            is_published=True
-        ).order_by('-created_at')
+        # Cache search results for popular queries (1 hour)
+        # Use hash of query + page to create cache key (prefix added automatically)
+        cache_key = f'search_{hashlib.md5(f"{query}_{page}".encode()).hexdigest()}'
+        cached_results = cache.get(cache_key)
         
-        # Paginate results - 12 per page
-        paginator = Paginator(news_results, 12)
-        page = request.GET.get('page', 1)
-        
-        try:
-            results = paginator.page(page)
-        except PageNotAnInteger:
-            results = paginator.page(1)
-        except EmptyPage:
-            results = paginator.page(paginator.num_pages)
-    
+        if cached_results is not None:
+            results = cached_results
+        else:
+            # Use PostgreSQL full-text search when available (faster, better ranking)
+            if connection.vendor == 'postgresql':
+                try:
+                    from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
+
+                    search_vector = (
+                        SearchVector('title', weight='A', config='english')
+                        + SearchVector('summary', weight='B', config='english')
+                        + SearchVector('body', weight='C', config='english')
+                    )
+                    search_query = SearchQuery(query, config='english')
+                    news_results = (
+                        NewsItem.objects.filter(is_published=True)
+                        .annotate(
+                            search=search_vector,
+                            rank=SearchRank(search_vector, search_query),
+                        )
+                        .filter(search=search_query)
+                        .order_by('-rank', '-created_at')
+                    )
+                except Exception:
+                    # Fallback to icontains if full-text fails (e.g. extension missing)
+                    news_results = NewsItem.objects.filter(
+                        Q(title__icontains=query)
+                        | Q(summary__icontains=query)
+                        | Q(body__icontains=query),
+                        is_published=True,
+                    ).order_by('-created_at')
+            else:
+                # SQLite / other: use icontains
+                news_results = NewsItem.objects.filter(
+                    Q(title__icontains=query)
+                    | Q(summary__icontains=query)
+                    | Q(body__icontains=query),
+                    is_published=True,
+                ).order_by('-created_at')
+
+            # Paginate results - 12 per page
+            paginator = Paginator(news_results, 12)
+
+            try:
+                results = paginator.page(page)
+            except PageNotAnInteger:
+                results = paginator.page(1)
+            except EmptyPage:
+                results = paginator.page(paginator.num_pages)
+            
+            # Cache paginated results for 1 hour
+            cache.set(cache_key, results, 3600)
+
     context = {
         'query': query,
         'results': results,

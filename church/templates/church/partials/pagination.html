@@ -1,0 +1,44 @@
+{% if page_obj.has_other_pages %}
+<nav class="flex justify-center items-center gap-2 mt-8 mb-4" aria-label="Pagination">
+    {% if page_obj.has_previous %}
+    <a href="?page={{ page_obj.previous_page_number }}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}"
+       class="px-4 py-2 bg-brand-color text-white rounded-lg hover:opacity-90 transition font-semibold">
+        <i class="fas fa-chevron-left mr-1"></i> Previous
+    </a>
+    {% else %}
+    <span class="px-4 py-2 bg-gray-200 text-gray-400 rounded-lg cursor-not-allowed font-semibold">
+        <i class="fas fa-chevron-left mr-1"></i> Previous
+    </span>
+    {% endif %}
+
+    <div class="flex gap-1">
+        {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+            <span class="px-4 py-2 bg-brand-color text-white rounded-lg font-bold shadow-md">
+                {{ num }}
+            </span>
+            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+            <a href="?page={{ num }}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}"
+               class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition font-semibold">
+                {{ num }}
+            </a>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    {% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}"
+       class="px-4 py-2 bg-brand-color text-white rounded-lg hover:opacity-90 transition font-semibold">
+        Next <i class="fas fa-chevron-right ml-1"></i>
+    </a>
+    {% else %}
+    <span class="px-4 py-2 bg-gray-200 text-gray-400 rounded-lg cursor-not-allowed font-semibold">
+        Next <i class="fas fa-chevron-right ml-1"></i>
+    </span>
+    {% endif %}
+</nav>
+
+<div class="text-center text-gray-600 text-sm mb-4">
+    Showing {{ page_obj.start_index }}–{{ page_obj.end_index }} of {{ page_obj.paginator.count }} results
+</div>
+{% endif %}

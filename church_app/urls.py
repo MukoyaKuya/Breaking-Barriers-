@@ -19,6 +19,13 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import RedirectView
+from django.http import JsonResponse
+
+
+def health_check_view(request):
+    """Health check for load balancers and orchestration (e.g. Cloud Run, K8s)."""
+    return JsonResponse({'status': 'healthy'})
+
 
 # Customize admin site
 admin.site.site_header = "Breaking Barriers International"
@@ -26,6 +33,7 @@ admin.site.site_title = "Breaking Barriers International"
 admin.site.index_title = "Administration"
 
 urlpatterns = [
+    path('health/', health_check_view),
     path('admin/', admin.site.urls),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('', include('church.urls')),

@@ -18,7 +18,7 @@ In normal document flow: when FAQs expand, this block is pushed down dynamically
                     allowfullscreen></iframe>
                 {% elif promo.image %}
                 {% thumbnail promo.image "300x400" box=promo.image_cropping crop=True detail=True as cropped %}
-                <img src="{{ cropped.url }}" alt="{{ promo.caption|default:'Sidebar promo' }}"
+                <img src="{{ cropped.url }}" alt="{{ promo.caption|default:'Sidebar promo' }}" loading="lazy"
                     class="w-full h-full object-cover object-center">
                 {% else %}
                 <div class="w-full h-full flex items-center justify-center bg-gray-200">

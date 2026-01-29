@@ -17,6 +17,9 @@ class Verse(models.Model):
         ordering = ['-date_posted']
         verbose_name = 'Verse'
         verbose_name_plural = 'Verses'
+        indexes = [
+            models.Index(fields=['is_active', 'is_featured', '-date_posted']),
+        ]
 
     def __str__(self):
         return f"{self.reference} - {self.content[:50]}..."
@@ -38,6 +41,10 @@ class NewsItem(models.Model):
         ordering = ['-created_at']
         verbose_name = 'News Item'
         verbose_name_plural = 'News Items'
+        indexes = [
+            models.Index(fields=['is_published', '-created_at']),
+            models.Index(fields=['slug']),
+        ]
 
     def __str__(self):
         return self.title
@@ -92,6 +99,10 @@ class CalendarEvent(models.Model):
         ordering = ['event_date', 'title']
         verbose_name = "Calendar Event"
         verbose_name_plural = "Calendar Events"
+        indexes = [
+            models.Index(fields=['event_date', 'is_published']),
+            models.Index(fields=['event_type']),
+        ]
 
     def __str__(self):
         return f"{self.title} - {self.event_date}"
@@ -119,6 +130,9 @@ class Testimonial(models.Model):
         ordering = ['-created_at']
         verbose_name = 'Testimonial'
         verbose_name_plural = 'Testimonials'
+        indexes = [
+            models.Index(fields=['approved', '-created_at']),
+        ]
 
     def __str__(self):
         return f"{self.member_name} - {self.text[:50]}..."
@@ -157,6 +171,9 @@ class GalleryImage(models.Model):
         ordering = ['-uploaded_at']
         verbose_name = 'Gallery Image'
         verbose_name_plural = 'Gallery Images'
+        indexes = [
+            models.Index(fields=['category', '-uploaded_at']),
+        ]
 
     def __str__(self):
         return f"{self.caption} - {self.category}"
@@ -318,6 +335,10 @@ class InfoCard(models.Model):
         ordering = ['card_type']
         verbose_name = 'Info Card'
         verbose_name_plural = 'Info Cards'
+        indexes = [
+            models.Index(fields=['card_type', 'is_active']),
+            models.Index(fields=['slug']),
+        ]
 
     def __str__(self):
         return f"{self.get_card_type_display()} - {self.title}"
@@ -345,6 +366,10 @@ class WordOfTruth(models.Model):
         ordering = ['-created_at']
         verbose_name = 'Word of Truth Article'
         verbose_name_plural = 'Word of Truth Articles'
+        indexes = [
+            models.Index(fields=['is_published', '-created_at']),
+            models.Index(fields=['slug']),
+        ]
 
     def __str__(self):
         return self.title
@@ -435,6 +460,9 @@ class Partner(models.Model):
         ordering = ['display_order', 'name']
         verbose_name = 'Partner'
         verbose_name_plural = 'Partners'
+        indexes = [
+            models.Index(fields=['is_active', 'display_order']),
+        ]
 
     def __str__(self):
         return self.name
@@ -503,6 +531,9 @@ class SidebarPromo(models.Model):
         ordering = ['display_order', 'created_at']
         verbose_name = 'Sidebar Promo'
         verbose_name_plural = 'Sidebar Promos'
+        indexes = [
+            models.Index(fields=['is_active', 'display_order']),
+        ]
 
     def __str__(self):
         return self.caption or f'Sidebar Promo #{self.id}'
@@ -525,6 +556,9 @@ class FAQ(models.Model):
         ordering = ['display_order', 'question']
         verbose_name = 'FAQ'
         verbose_name_plural = 'FAQs'
+        indexes = [
+            models.Index(fields=['is_active', 'display_order']),
+        ]
 
     def __str__(self):
         return self.question[:50] + ('...' if len(self.question) > 50 else '')

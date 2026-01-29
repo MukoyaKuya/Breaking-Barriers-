@@ -22,9 +22,9 @@
                     <div class="w-full aspect-video relative bg-gray-100">
                         {% if word_of_truth.image_cropping %}
                         {% thumbnail word_of_truth.image "1200x800" box=word_of_truth.image_cropping crop detail as cropped %}
-                        <img src="{{ cropped.url }}" alt="{{ word_of_truth.title }}" class="w-full h-full object-cover">
+                        <img src="{{ cropped.url }}" alt="{{ word_of_truth.title }}" loading="lazy" class="w-full h-full object-cover">
                         {% else %}
-                        <img src="{{ word_of_truth.image.url }}" alt="{{ word_of_truth.title }}"
+                        <img src="{{ word_of_truth.image.url }}" alt="{{ word_of_truth.title }}" loading="lazy"
                             class="w-full h-full object-cover">
                         {% endif %}
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent">

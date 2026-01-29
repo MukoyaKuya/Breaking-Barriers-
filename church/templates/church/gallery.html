@@ -30,8 +30,11 @@
         </div>
         
         <!-- Gallery Grid -->
-        <div id="gallery-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div id="gallery-container">
             {% include 'church/partials/gallery_items.html' %}
+            {% if page_obj %}
+            {% include 'church/partials/pagination.html' %}
+            {% endif %}
         </div>
     </div>
 </div>

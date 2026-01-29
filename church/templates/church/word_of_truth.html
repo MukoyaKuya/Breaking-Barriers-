@@ -24,10 +24,10 @@
                     <div class="w-full aspect-video overflow-hidden">
                         {% if word_of_truth.image_cropping %}
                         {% thumbnail word_of_truth.image "800x600" box=word_of_truth.image_cropping crop detail as cropped %}
-                        <img src="{{ cropped.url }}" alt="{{ word_of_truth.title }}"
+                        <img src="{{ cropped.url }}" alt="{{ word_of_truth.title }}" loading="lazy"
                             class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
                         {% else %}
-                        <img src="{{ word_of_truth.image.url }}" alt="{{ word_of_truth.title }}"
+                        <img src="{{ word_of_truth.image.url }}" alt="{{ word_of_truth.title }}" loading="lazy"
                             class="w-full h-full object-cover">
                         {% endif %}
                     </div>
@@ -58,6 +58,7 @@
                 </div>
                 {% endfor %}
             </div>
+            {% include 'church/partials/pagination.html' %}
         </div>
         {% endif %}
 
