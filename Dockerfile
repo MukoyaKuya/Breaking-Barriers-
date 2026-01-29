@@ -5,7 +5,13 @@ FROM python:3.12-slim
 ENV PYTHONUNBUFFERED True
 
 # Install nginx and gettext (for envsubst)
-RUN apt-get update && apt-get install -y nginx gettext-base \
+RUN apt-get update && apt-get install -y \
+    nginx \
+    gettext-base \
+    libcairo2-dev \
+    pkg-config \
+    python3-dev \
+    build-essential \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy local code to the container image.
