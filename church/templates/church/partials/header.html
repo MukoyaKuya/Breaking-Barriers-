@@ -1,4 +1,5 @@
-<header class="brand-color text-white shadow-lg safe-area-padding" x-data="{ mobileMenuOpen: false, searchOpen: false }">
+<header class="brand-color text-white shadow-lg safe-area-padding"
+    x-data="{ mobileMenuOpen: false, searchOpen: false }">
     <nav class="px-3 sm:px-4 py-3 md:py-4">
         <div class="flex items-center justify-between gap-2 max-w-[100vw]">
             <!-- Left: Logo and Branding -->
@@ -10,10 +11,12 @@
                             class="h-10 w-auto sm:h-12 md:h-16">
                     </div>
                     <div class="flex flex-col min-w-0 max-w-[calc(100vw-8rem)] sm:max-w-none">
-                        <span class="fjalla-one-regular text-sm sm:text-xl md:text-2xl text-white leading-tight underline truncate">
+                        <span
+                            class="fjalla-one-regular text-sm sm:text-xl md:text-2xl text-white leading-tight underline truncate">
                             BREAKING BARRIERS INTERNATIONAL
                         </span>
-                        <span class="kaushan-script-regular text-xs sm:text-lg md:text-xl text-gray-300 leading-tight truncate">
+                        <span
+                            class="kaushan-script-regular text-xs sm:text-lg md:text-xl text-gray-300 leading-tight truncate">
                             Breaking Bondages, Empowering People
                         </span>
                     </div>
@@ -35,21 +38,23 @@
             <div class="flex items-center space-x-4">
                 <!-- Social Media Icons -->
                 <div class="hidden md:flex items-center space-x-2">
-                    <a href="#"
+                    <a href="https://facebook.com/BreakingBarriersInternational" target="_blank"
+                        rel="noopener noreferrer"
                         class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-gray-200 hover:scale-110 hover:shadow-md transition-all duration-300 relative"
                         aria-label="Facebook">
                         <div class="w-8 h-8 rounded-full brand-color flex items-center justify-center">
                             <i class="fab fa-facebook-f text-white text-xs"></i>
                         </div>
                     </a>
-                    <a href="#"
+                    <a href="https://wa.me/254716703508" target="_blank" rel="noopener noreferrer"
                         class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-gray-200 hover:scale-110 hover:shadow-md transition-all duration-300 relative"
                         aria-label="WhatsApp">
                         <div class="w-8 h-8 rounded-full brand-color flex items-center justify-center">
                             <i class="fab fa-whatsapp text-white text-xs"></i>
                         </div>
                     </a>
-                    <a href="#"
+                    <a href="https://www.youtube.com/@breakingbarriersinternatio5354" target="_blank"
+                        rel="noopener noreferrer"
                         class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-gray-200 hover:scale-110 hover:shadow-md transition-all duration-300 relative"
                         aria-label="YouTube">
                         <div class="w-8 h-8 rounded-full brand-color flex items-center justify-center">
@@ -59,8 +64,7 @@
                 </div>
 
                 <!-- Search Bar with autocomplete -->
-                <div class="relative hidden md:block"
-                    x-data="{
+                <div class="relative hidden md:block" x-data="{
                         suggestions: [],
                         open: false,
                         query: '',
@@ -81,13 +85,13 @@
                             }, 250);
                         },
                         close() { this.open = false; }
-                    }"
-                    @click.outside="close()">
+                    }" @click.outside="close()">
                     <form action="{% url 'search' %}" method="get" class="flex items-center">
                         <div class="relative">
-                            <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none"></i>
-                            <input type="text" name="q" placeholder="Type to start searching..."
-                                x-model="query" @input="onInput()" @focus="query.length >= 2 && suggestions.length && (open = true)"
+                            <i
+                                class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+                            <input type="text" name="q" placeholder="Type to start searching..." x-model="query"
+                                @input="onInput()" @focus="query.length >= 2 && suggestions.length && (open = true)"
                                 class="pl-10 pr-4 py-2 rounded-lg bg-white text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white w-64 border-0 shadow-sm"
                                 autocomplete="off">
                         </div>
@@ -95,7 +99,8 @@
                     <div x-show="open && (suggestions.length || loading)" x-cloak
                         class="absolute top-full left-0 right-0 mt-1 py-1 bg-white rounded-lg shadow-xl border border-gray-200 max-h-72 overflow-y-auto z-50">
                         <template x-if="loading">
-                            <div class="px-4 py-3 text-gray-500 text-sm"><i class="fas fa-spinner fa-spin mr-2"></i> Searching...</div>
+                            <div class="px-4 py-3 text-gray-500 text-sm"><i class="fas fa-spinner fa-spin mr-2"></i>
+                                Searching...</div>
                         </template>
                         <template x-for="s in suggestions" :key="s.url">
                             <a :href="s.url" class="block px-4 py-2.5 text-gray-800 hover:bg-gray-100 text-left text-sm"
@@ -105,8 +110,9 @@
                 </div>
 
                 <!-- Mobile Menu Button (touch-friendly 44px) -->
-                <button type="button" class="md:hidden text-white focus:outline-none focus:ring-2 focus:ring-white/50 rounded p-3 -mr-2 min-h-[44px] min-w-[44px] flex items-center justify-center" @click="mobileMenuOpen = !mobileMenuOpen"
-                    :aria-expanded="mobileMenuOpen" aria-label="Toggle menu">
+                <button type="button"
+                    class="md:hidden text-white focus:outline-none focus:ring-2 focus:ring-white/50 rounded p-3 -mr-2 min-h-[44px] min-w-[44px] flex items-center justify-center"
+                    @click="mobileMenuOpen = !mobileMenuOpen" :aria-expanded="mobileMenuOpen" aria-label="Toggle menu">
                     <i class="fas fa-bars text-xl" x-show="!mobileMenuOpen"></i>
                     <i class="fas fa-times text-xl" x-show="mobileMenuOpen" x-cloak></i>
                 </button>
@@ -115,14 +121,12 @@
 
         <!-- Mobile Navigation -->
         <div x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-200"
-            x-transition:enter-start="opacity-0 -translate-y-2"
-            x-transition:enter-end="opacity-100 translate-y-0"
-            x-transition:leave="transition ease-in duration-150"
-            x-transition:leave-start="opacity-100 translate-y-0"
-            x-transition:leave-end="opacity-0 -translate-y-2" class="md:hidden mt-2 pb-4 border-t border-red-900/50" x-cloak>
+            x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
+            x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0"
+            x-transition:leave-end="opacity-0 -translate-y-2" class="md:hidden mt-2 pb-4 border-t border-red-900/50"
+            x-cloak>
             <!-- Mobile Search with autocomplete -->
-            <div class="pt-4 px-2"
-                x-data="{
+            <div class="pt-4 px-2" x-data="{
                     suggestions: [],
                     open: false,
                     query: '',
@@ -143,19 +147,19 @@
                         }, 250);
                     },
                     close() { this.open = false; }
-                }"
-                @click.outside="close()">
+                }" @click.outside="close()">
                 <form action="{% url 'search' %}" method="get" class="relative">
-                    <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
-                    <input type="text" name="q" placeholder="Search..."
-                        x-model="query" @input="onInput()"
+                    <i
+                        class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+                    <input type="text" name="q" placeholder="Search..." x-model="query" @input="onInput()"
                         class="w-full pl-10 pr-4 py-3 rounded-lg bg-white/10 text-white placeholder-gray-300 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50 text-base"
                         autocomplete="off">
                 </form>
                 <div x-show="open && (suggestions.length || loading)" x-cloak
                     class="mt-1 py-1 bg-white rounded-lg shadow-xl border border-gray-200 max-h-56 overflow-y-auto z-50 text-gray-800">
                     <template x-if="loading">
-                        <div class="px-4 py-3 text-gray-500 text-sm"><i class="fas fa-spinner fa-spin mr-2"></i> Searching...</div>
+                        <div class="px-4 py-3 text-gray-500 text-sm"><i class="fas fa-spinner fa-spin mr-2"></i>
+                            Searching...</div>
                     </template>
                     <template x-for="s in suggestions" :key="s.url">
                         <a :href="s.url" class="block px-4 py-2.5 hover:bg-gray-100 text-sm" x-text="s.title"
@@ -170,7 +174,8 @@
                     @click="mobileMenuOpen = false">About Us</a>
                 <a href="{% url 'word_of_truth' %}" class="hover:bg-white/10 transition py-3 px-4 rounded-lg text-base"
                     @click="mobileMenuOpen = false">Word of Truth</a>
-                <a href="{% url 'childrens_bread_school' %}" class="hover:bg-white/10 transition py-3 px-4 rounded-lg text-base"
+                <a href="{% url 'childrens_bread_school' %}"
+                    class="hover:bg-white/10 transition py-3 px-4 rounded-lg text-base"
                     @click="mobileMenuOpen = false">Children's Bread School</a>
                 <a href="{% url 'media' %}" class="hover:bg-white/10 transition py-3 px-4 rounded-lg text-base"
                     @click="mobileMenuOpen = false">Media</a>
@@ -179,30 +184,31 @@
             </div>
 
             <!-- Mobile Social Media Icons -->
-                <div class="flex items-center space-x-4 pt-4 border-t border-red-900 mt-4">
-                    <a href="#"
-                        class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-gray-200 hover:scale-110 hover:shadow-md transition-all duration-300 relative"
-                        aria-label="Facebook">
-                        <div class="w-8 h-8 rounded-full brand-color flex items-center justify-center">
-                            <i class="fab fa-facebook-f text-white text-xs"></i>
-                        </div>
-                    </a>
-                    <a href="#"
-                        class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-gray-200 hover:scale-110 hover:shadow-md transition-all duration-300 relative"
-                        aria-label="WhatsApp">
-                        <div class="w-8 h-8 rounded-full brand-color flex items-center justify-center">
-                            <i class="fab fa-whatsapp text-white text-xs"></i>
-                        </div>
-                    </a>
-                    <a href="#"
-                        class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-gray-200 hover:scale-110 hover:shadow-md transition-all duration-300 relative"
-                        aria-label="YouTube">
-                        <div class="w-8 h-8 rounded-full brand-color flex items-center justify-center">
-                            <i class="fab fa-youtube text-white text-xs"></i>
-                        </div>
-                    </a>
-                </div>
+            <div class="flex items-center space-x-4 pt-4 border-t border-red-900 mt-4">
+                <a href="https://facebook.com/BreakingBarriersInternational" target="_blank" rel="noopener noreferrer"
+                    class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-gray-200 hover:scale-110 hover:shadow-md transition-all duration-300 relative"
+                    aria-label="Facebook">
+                    <div class="w-8 h-8 rounded-full brand-color flex items-center justify-center">
+                        <i class="fab fa-facebook-f text-white text-xs"></i>
+                    </div>
+                </a>
+                <a href="https://wa.me/254716703508" target="_blank" rel="noopener noreferrer"
+                    class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-gray-200 hover:scale-110 hover:shadow-md transition-all duration-300 relative"
+                    aria-label="WhatsApp">
+                    <div class="w-8 h-8 rounded-full brand-color flex items-center justify-center">
+                        <i class="fab fa-whatsapp text-white text-xs"></i>
+                    </div>
+                </a>
+                <a href="https://www.youtube.com/@breakingbarriersinternatio5354" target="_blank"
+                    rel="noopener noreferrer"
+                    class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-gray-200 hover:scale-110 hover:shadow-md transition-all duration-300 relative"
+                    aria-label="YouTube">
+                    <div class="w-8 h-8 rounded-full brand-color flex items-center justify-center">
+                        <i class="fab fa-youtube text-white text-xs"></i>
+                    </div>
+                </a>
             </div>
+        </div>
         </div>
     </nav>
 </header>
