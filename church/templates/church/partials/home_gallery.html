@@ -19,12 +19,14 @@
                     :class="active === {{ forloop.counter0 }} ? 'border-brand-color bg-gray-100 shadow-sm' : 'border-transparent hover:bg-gray-50'"
                     @click="active = {{ forloop.counter0 }}">
                     <div class="flex-shrink-0 w-16 h-10 overflow-hidden bg-black rounded">
-                        {% thumbnail item.image "100x100" crop="smart" as thumb %}
+                        {% thumbnail item.image "200x150" crop="detail" as thumb %}
+                        {% with img_url=thumb.url|default:item.image.url %}
                         <picture>
-                            <source srcset="{{ thumb.url }}.webp" type="image/webp">
-                            <img src="{{ thumb.url }}" alt="{{ item.caption }}" loading="lazy"
+                            <source srcset="{{ img_url }}.webp" type="image/webp">
+                            <img src="{{ img_url }}" alt="{{ item.caption }}" loading="lazy"
                                 class="w-full h-full object-cover opacity-90">
                         </picture>
+                        {% endwith %}
                     </div>
                     <div class="flex-1 min-w-0 text-left">
                         <p class="text-sm text-gray-800 font-medium leading-tight line-clamp-2">
