@@ -23,7 +23,11 @@
 
         <!-- Media Container -->
         <div class="relative aspect-[4/3] overflow-hidden bg-gray-100">
-            {% if image.image %}
+            {% if image.video_url and image.get_youtube_thumbnail_url %}
+            <img src="{{ image.get_youtube_thumbnail_url }}" alt="{{ image.caption }}" loading="lazy"
+                class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                referrerpolicy="no-referrer">
+            {% elif image.image %}
             {% if image.image_cropping %}
             {% thumbnail image.image "800x600" box=image.image_cropping crop=True detail=True as thumb %}
             <picture>

@@ -10,7 +10,7 @@
                     <h2 class="text-2xl font-bold brand-text text-center">{% if childrens_bread_card %}{{ childrens_bread_card.title }}{% else %}Children's Bread{% endif %}</h2>
                 </div>
                 {% if childrens_bread_card %}
-                <a href="{% if childrens_bread_card.link_url %}{{ childrens_bread_card.link_url }}{% else %}{% url 'info_card_detail' childrens_bread_card.slug %}{% endif %}"
+                <a href="{% url 'childrens_bread_list' %}"
                     class="flex flex-col flex-grow">
                     <div class="relative w-full h-56 md:h-60 overflow-hidden group bg-gray-100">
                         {% if childrens_bread_card.image %}
@@ -59,7 +59,7 @@
                     <h2 class="text-2xl font-bold brand-text text-center">{% if news_card %}{{ news_card.title }}{% else %}News{% endif %}</h2>
                 </div>
                 {% if news_card %}
-                <a href="{% if news_card.link_url %}{{ news_card.link_url }}{% else %}{% url 'info_card_detail' news_card.slug %}{% endif %}"
+                <a href="{% url 'news_line_list' %}"
                     class="flex flex-col flex-grow">
                     <div class="relative w-full h-56 md:h-60 overflow-hidden group bg-gray-100">
                         {% if news_card.image %}
@@ -108,7 +108,7 @@
                     <h2 class="text-2xl font-bold brand-text text-center">{% if word_of_truth_card %}{{ word_of_truth_card.title }}{% else %}Word of Truth{% endif %}</h2>
                 </div>
                 {% if word_of_truth_card %}
-                <a href="{% if word_of_truth_card.link_url %}{{ word_of_truth_card.link_url }}{% else %}{% url 'info_card_detail' word_of_truth_card.slug %}{% endif %}"
+                <a href="{% url 'word_of_truth_list' %}"
                     class="flex flex-col flex-grow">
                     <div class="relative w-full h-56 md:h-60 overflow-hidden group bg-gray-100">
                         {% if word_of_truth_card.image %}

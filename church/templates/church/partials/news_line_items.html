@@ -1,0 +1,71 @@
+{% load thumbnail %}
+{% for article in articles %}
+<div
+    class="group bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-500 flex flex-col h-full transform hover:-translate-y-1">
+    <!-- Article Banner/Image -->
+    <a href="{% url 'news_detail' article.slug %}" class="relative aspect-[16/10] overflow-hidden bg-gray-100 block">
+        {% if article.image %}
+        {% if article.image_cropping %}
+        {% thumbnail article.image "800x600" box=article.image_cropping crop detail as cropped %}
+        <img src="{{ cropped.url }}" alt="{{ article.title }}" loading="lazy"
+            class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+        {% else %}
+        {% thumbnail article.image "800x600" crop detail as thumb %}
+        <img src="{{ thumb.url }}" alt="{{ article.title }}" loading="lazy"
+            class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+        {% endif %}
+        {% else %}
+        <div class="w-full h-full brand-color opacity-90 flex items-center justify-center">
+            <i class="fas fa-newspaper text-white/30 text-6xl"></i>
+        </div>
+        {% endif %}
+
+        <!-- Date Badge -->
+        <div
+            class="absolute top-4 right-4 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-xl shadow-lg border border-white/50 text-center min-w-[50px]">
+            <span class="block text-xs font-bold text-brand-color uppercase tracking-tighter">{{ article.created_at|date:"M" }}</span>
+            <span class="block text-lg font-black text-gray-900 leading-none">{{ article.created_at|date:"d" }}</span>
+        </div>
+    </a>
+
+    <!-- Content Area -->
+    <div class="p-6 flex flex-col flex-grow">
+        <div class="flex-grow">
+            <h3
+                class="text-xl font-bold text-gray-900 mb-3 group-hover:text-brand-color transition-colors line-clamp-2 leading-snug">
+                <a href="{% url 'news_detail' article.slug %}">{{ article.title }}</a>
+            </h3>
+            {% if article.event_date %}
+            <p class="text-xs text-gray-400 font-bold uppercase tracking-widest mb-4 flex items-center gap-2">
+                <span class="w-6 h-px bg-gray-200"></span>
+                Event: {{ article.event_date|date:"M d, Y" }}
+            </p>
+            {% endif %}
+            <p class="text-gray-600 text-sm leading-relaxed line-clamp-3 mb-6 font-light">
+                {{ article.summary }}
+            </p>
+        </div>
+
+        <!-- Action Button -->
+        <div class="pt-6 border-t border-gray-50 mt-auto">
+            <a href="{% url 'news_detail' article.slug %}"
+                class="flex items-center justify-center gap-2 py-2.5 bg-gray-50 text-gray-700 text-xs font-bold rounded-xl hover:bg-brand-color hover:text-white transition-all shadow-sm w-full">
+                <i class="fas fa-book-open text-[10px]"></i> Read More
+            </a>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% if has_more %}
+<div class="text-center mt-12 col-span-full" id="load-more-wrapper">
+    <button 
+        hx-get="{% url 'load_more_news_line' %}?offset={{ next_offset }}" 
+        hx-target="#articles-container" 
+        hx-swap="beforeend"
+        hx-on::after-swap="if (event.detail.target.querySelector('#load-more-wrapper')) { event.detail.target.querySelector('#load-more-wrapper').remove(); }"
+        class="bg-brand-color text-white px-8 py-3.5 rounded-xl hover:bg-red-900 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl hover:-translate-y-1 min-h-[48px]">
+        Load More Articles
+    </button>
+</div>
+{% endif %}

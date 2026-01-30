@@ -182,6 +182,13 @@ class GalleryImage(models.Model):
         """Return a YouTube embed URL if possible, or the raw URL as fallback."""
         return _to_youtube_embed(self.video_url)
 
+    def get_youtube_thumbnail_url(self) -> str:
+        """Return YouTube thumbnail URL (hqdefault) when video_url is a YouTube link. Empty string otherwise."""
+        video_id = _youtube_video_id(self.video_url)
+        if video_id:
+            return f'https://img.youtube.com/vi/{video_id}/hqdefault.jpg'
+        return ''
+
     def get_image_url(self) -> str:
         """
         Return a usable image URL if the image is set.
@@ -350,6 +357,37 @@ class WordOfTruth(models.Model):
         ordering = ['-created_at']
         verbose_name = 'Word of Truth Article'
         verbose_name_plural = 'Word of Truth Articles'
+        indexes = [
+            models.Index(fields=['is_published', '-created_at']),
+            models.Index(fields=['slug']),
+        ]
+
+    def __str__(self):
+        return self.title
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
+
+
+class ChildrensBread(models.Model):
+    """Articles for Children's Bread section"""
+    title = models.CharField(max_length=200)
+    slug = models.SlugField(unique=True, max_length=200)
+    summary = models.TextField(help_text='Short summary for the listing page')
+    author_name = models.CharField(max_length=100, default='Pst. Nellie Shani', help_text='Name of the article writer')
+    image = models.ImageField(upload_to='childrens_bread/', blank=True, null=True, help_text='Featured image for the article')
+    image_cropping = ImageRatioField('image', '800x600', size_warning=True, help_text='Crop the image for proper display (800x600)')
+    body = RichTextField(help_text='Full article content')
+    is_published = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = "Children's Bread Article"
+        verbose_name_plural = "Children's Bread Articles"
         indexes = [
             models.Index(fields=['is_published', '-created_at']),
             models.Index(fields=['slug']),
@@ -538,14 +576,56 @@ class FAQ(models.Model):
 
     class Meta:
         ordering = ['display_order', 'question']
-        verbose_name = 'FAQ'
-        verbose_name_plural = 'FAQs'
+        verbose_name = 'Common Question'
+        verbose_name_plural = 'Common Questions'
         indexes = [
             models.Index(fields=['is_active', 'display_order']),
         ]
 
     def __str__(self):
         return self.question[:50] + ('...' if len(self.question) > 50 else '')
+
+
+class PageView(models.Model):
+    """Tracks page views for analytics: visits per month and most-read articles."""
+    viewed_at = models.DateTimeField(auto_now_add=True, db_index=True)
+    path = models.CharField(max_length=500, db_index=True)
+    content_type = models.CharField(max_length=50, null=True, blank=True, db_index=True,
+        help_text='Model name for article views: wordoftruth, childrensbread, news')
+    object_id = models.PositiveIntegerField(null=True, blank=True, db_index=True,
+        help_text='PK of the article for most-read stats')
+
+    class Meta:
+        ordering = ['-viewed_at']
+        verbose_name = 'Page View'
+        verbose_name_plural = 'Page Views'
+        indexes = [
+            models.Index(fields=['content_type', 'object_id']),
+            models.Index(fields=['-viewed_at']),
+        ]
+
+
+def _youtube_video_id(raw_url: str) -> str:
+    """Extract YouTube video ID from watch, youtu.be, shorts, or embed URL. Returns empty string if not a YouTube URL."""
+    if not raw_url:
+        return ''
+    try:
+        parsed = urlparse(raw_url)
+        host = parsed.netloc.lower()
+        video_id = ''
+        if 'youtube.com' in host and parsed.path.startswith('/embed/'):
+            video_id = (parsed.path.rstrip('/').split('/embed/')[-1].split('/')[0] or '').split('?')[0]
+        elif host == 'youtu.be':
+            video_id = ((parsed.path or '').lstrip('/').split('/')[0] or '').split('?')[0]
+        elif 'youtube.com' in host and parsed.path == '/watch':
+            qs = parse_qs(parsed.query)
+            video_id = (qs.get('v', ['']) or [''])[0] or ''
+        elif 'youtube.com' in host and parsed.path.startswith('/shorts/'):
+            video_id = (parsed.path.split('/shorts/', 1)[-1].split('/')[0] or '').split('?')[0]
+        return (video_id or '').strip()
+    except Exception:
+        pass
+    return ''
 
 
 def _to_youtube_embed(raw_url: str) -> str:
@@ -555,34 +635,13 @@ def _to_youtube_embed(raw_url: str) -> str:
     """
     if not raw_url:
         return ''
-
+    video_id = _youtube_video_id(raw_url)
+    if video_id:
+        return f'https://www.youtube.com/embed/{video_id}'
     try:
         parsed = urlparse(raw_url)
-        host = parsed.netloc.lower()
-
-        # Already an embed URL
-        if 'youtube.com' in host and parsed.path.startswith('/embed/'):
+        if 'youtube.com' in parsed.netloc.lower() and parsed.path.startswith('/embed/'):
             return raw_url
-
-        video_id = ''
-
-        # youtu.be/<id>
-        if host == 'youtu.be':
-            video_id = parsed.path.lstrip('/')
-
-        # youtube.com/watch?v=<id>
-        elif 'youtube.com' in host and parsed.path == '/watch':
-            qs = parse_qs(parsed.query)
-            video_id = qs.get('v', [''])[0]
-
-        # youtube.com/shorts/<id>
-        elif 'youtube.com' in host and parsed.path.startswith('/shorts/'):
-            video_id = parsed.path.split('/shorts/', 1)[-1].split('/')[0]
-
-        if video_id:
-            return f'https://www.youtube.com/embed/{video_id}'
     except Exception:
-        # If anything fails, just fall back to the original URL
         pass
-
     return raw_url

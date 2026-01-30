@@ -19,6 +19,10 @@
                     :class="active === {{ forloop.counter0 }} ? 'border-brand-color bg-gray-100 shadow-sm' : 'border-transparent hover:bg-gray-50'"
                     @click="active = {{ forloop.counter0 }}">
                     <div class="flex-shrink-0 w-16 h-10 overflow-hidden bg-black rounded">
+                        {% if item.video_url and item.get_youtube_thumbnail_url %}
+                        <img src="{{ item.get_youtube_thumbnail_url }}" alt="{{ item.caption }}" loading="lazy"
+                            class="w-full h-full object-cover opacity-90" referrerpolicy="no-referrer">
+                        {% elif item.image %}
                         {% thumbnail item.image "200x150" crop="detail" as thumb %}
                         {% with img_url=thumb.url|default:item.image.url %}
                         <picture>
@@ -27,6 +31,11 @@
                                 class="w-full h-full object-cover opacity-90">
                         </picture>
                         {% endwith %}
+                        {% else %}
+                        <div class="w-full h-full bg-gray-700 flex items-center justify-center">
+                            <i class="fas fa-play text-white/60 text-xs"></i>
+                        </div>
+                        {% endif %}
                     </div>
                     <div class="flex-1 min-w-0 text-left">
                         <p class="text-sm text-gray-800 font-medium leading-tight line-clamp-2">

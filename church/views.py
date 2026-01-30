@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import Http404, JsonResponse, HttpResponse
-from django.db.models import Q
+from django.db.models import Q, Count
+from django.db.models.functions import TruncMonth
 from django.utils import timezone
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import calendar
@@ -20,7 +21,9 @@ from .models import (
     FAQ,
     SidebarPromo,
     WordOfTruth,
+    ChildrensBread,
     SchoolMinistryEnrollment,
+    PageView,
 )
 from .query_utils import (
     get_cached_hero_settings,
@@ -41,7 +44,9 @@ from django.template.loader import get_template
 from io import BytesIO
 from easy_thumbnails.files import get_thumbnailer
 from django.contrib import messages
+from django.contrib.admin.views.decorators import staff_member_required
 from django.views.decorators.csrf import csrf_exempt
+from django.utils import timezone
 from .cache_decorators import cache_page_for_anonymous
 
 
@@ -178,6 +183,14 @@ def info_card_detail_view(request, slug):
 def news_detail_view(request, slug):
     """Detail view for a single news item"""
     news_item = get_object_or_404(NewsItem, slug=slug, is_published=True)
+    try:
+        PageView.objects.create(
+            path=request.path[:500],
+            content_type='news',
+            object_id=news_item.pk,
+        )
+    except Exception:
+        pass
     context = {
         'news_item': news_item,
     }
@@ -306,34 +319,60 @@ def contact_us_view(request):
 
 
 @cache_page_for_anonymous(60 * 10)  # Cache for 10 minutes (anonymous users only)
-def word_of_truth_view(request):
-    """Word of Truth page (optimized with pagination)."""
-    verses = Verse.objects.filter(is_active=True, is_featured=True).order_by('-date_posted')
+def word_of_truth_list_view(request):
+    """Word of Truth listing page - shows 9 articles initially with load more."""
+    # Get first 9 articles
+    initial_limit = 9
+    articles_list = WordOfTruth.objects.filter(is_published=True).order_by('-created_at')
+    total_count = articles_list.count()
     
-    # Paginate articles - 20 per page
-    articles_list = get_optimized_word_of_truth_list()
-    paginator = Paginator(articles_list, 20)
-    page = request.GET.get('page', 1)
-    
-    try:
-        articles = paginator.page(page)
-    except PageNotAnInteger:
-        articles = paginator.page(1)
-    except EmptyPage:
-        articles = paginator.page(paginator.num_pages)
+    initial_articles = articles_list[:initial_limit]
+    has_more = total_count > initial_limit
     
     context = {
-        'verses': verses,
-        'articles': articles,
-        'page_obj': articles,
+        'articles': initial_articles,
+        'has_more': has_more,
+        'next_offset': initial_limit,
+        'total_count': total_count,
     }
-    return render(request, 'church/word_of_truth.html', context)
+    
+    # If HTMX request for loading more, return partial
+    if request.headers.get('HX-Request'):
+        return render(request, 'church/partials/word_of_truth_items.html', context)
+    
+    return render(request, 'church/word_of_truth_list.html', context)
+
+
+def load_more_word_of_truth_view(request):
+    """HTMX endpoint to load more Word of Truth articles"""
+    offset = int(request.GET.get('offset', 0))
+    limit = 9
+    
+    articles = WordOfTruth.objects.filter(is_published=True).order_by('-created_at')[offset:offset + limit]
+    total_count = WordOfTruth.objects.filter(is_published=True).count()
+    next_offset = offset + len(articles)
+    has_more = next_offset < total_count
+    
+    context = {
+        'articles': articles,
+        'has_more': has_more,
+        'next_offset': next_offset,
+    }
+    return render(request, 'church/partials/word_of_truth_items.html', context)
 
 
 @cache_page_for_anonymous(60 * 15)  # Cache for 15 minutes (anonymous users only)
 def word_of_truth_detail_view(request, slug):
     """Detail view for a Word of Truth article (optimized sidebar)."""
     word_of_truth = get_object_or_404(WordOfTruth, slug=slug, is_published=True)
+    try:
+        PageView.objects.create(
+            path=request.path[:500],
+            content_type='wordoftruth',
+            object_id=word_of_truth.pk,
+        )
+    except Exception:
+        pass
     faqs = get_optimized_faqs()
     sidebar_promos = get_optimized_sidebar_promos(limit=3)
     cta_card = get_cached_cta_card()
@@ -723,3 +762,219 @@ def newsletter_subscribe_view(request):
     # Redirect back to the page the user came from (usually the homepage)
     next_url = request.META.get('HTTP_REFERER') or '/'
     return redirect(next_url)
+
+
+@cache_page_for_anonymous(60 * 15)  # Cache for 15 minutes (anonymous users only)
+def childrens_bread_list_view(request):
+    """Children's Bread listing page - shows 9 articles initially with load more."""
+    initial_limit = 9
+    articles_list = ChildrensBread.objects.filter(is_published=True).order_by('-created_at')
+    total_count = articles_list.count()
+    
+    initial_articles = articles_list[:initial_limit]
+    has_more = total_count > initial_limit
+    
+    context = {
+        'articles': initial_articles,
+        'has_more': has_more,
+        'next_offset': initial_limit,
+        'total_count': total_count,
+    }
+    
+    # If HTMX request for loading more, return partial
+    if request.headers.get('HX-Request'):
+        return render(request, 'church/partials/childrens_bread_items.html', context)
+    
+    return render(request, 'church/childrens_bread_list.html', context)
+
+
+def load_more_childrens_bread_view(request):
+    """HTMX endpoint to load more Children's Bread articles"""
+    offset = int(request.GET.get('offset', 0))
+    limit = 9
+    
+    articles = ChildrensBread.objects.filter(is_published=True).order_by('-created_at')[offset:offset + limit]
+    total_count = ChildrensBread.objects.filter(is_published=True).count()
+    next_offset = offset + len(articles)
+    has_more = next_offset < total_count
+    
+    context = {
+        'articles': articles,
+        'has_more': has_more,
+        'next_offset': next_offset,
+    }
+    return render(request, 'church/partials/childrens_bread_items.html', context)
+
+
+@cache_page_for_anonymous(60 * 15)  # Cache for 15 minutes (anonymous users only)
+def childrens_bread_detail_view(request, slug):
+    """Detail view for a Children's Bread article (optimized sidebar)."""
+    article = get_object_or_404(ChildrensBread, slug=slug, is_published=True)
+    try:
+        PageView.objects.create(
+            path=request.path[:500],
+            content_type='childrensbread',
+            object_id=article.pk,
+        )
+    except Exception:
+        pass
+    faqs = get_optimized_faqs()
+    sidebar_promos = get_optimized_sidebar_promos(limit=3)
+    cta_card = get_cached_cta_card()
+    verse_of_the_day = get_optimized_verse_of_the_day()
+    context = {
+        'article': article,
+        'faqs': faqs,
+        'sidebar_promos': sidebar_promos,
+        'cta_card': cta_card,
+        'verse_of_the_day': verse_of_the_day,
+    }
+    return render(request, 'church/childrens_bread_detail.html', context)
+
+
+@cache_page_for_anonymous(60 * 15)  # Cache for 15 minutes (anonymous users only)
+def news_line_list_view(request):
+    """News Line listing page - shows 9 articles initially with load more."""
+    initial_limit = 9
+    articles_list = NewsItem.objects.filter(is_published=True).order_by('-created_at')
+    total_count = articles_list.count()
+    
+    initial_articles = articles_list[:initial_limit]
+    has_more = total_count > initial_limit
+    
+    context = {
+        'articles': initial_articles,
+        'has_more': has_more,
+        'next_offset': initial_limit,
+        'total_count': total_count,
+    }
+    
+    # If HTMX request for loading more, return partial
+    if request.headers.get('HX-Request'):
+        return render(request, 'church/partials/news_line_items.html', context)
+    
+    return render(request, 'church/news_line_list.html', context)
+
+
+def load_more_news_line_view(request):
+    """HTMX endpoint to load more News Line articles"""
+    offset = int(request.GET.get('offset', 0))
+    limit = 9
+    
+    articles = NewsItem.objects.filter(is_published=True).order_by('-created_at')[offset:offset + limit]
+    total_count = NewsItem.objects.filter(is_published=True).count()
+    next_offset = offset + len(articles)
+    has_more = next_offset < total_count
+    
+    context = {
+        'articles': articles,
+        'has_more': has_more,
+        'next_offset': next_offset,
+    }
+    return render(request, 'church/partials/news_line_items.html', context)
+
+
+def _resolve_article_title_url(content_type, object_id):
+    """Return (title, url) for a PageView content_type/object_id, or (None, None) if not found."""
+    from django.urls import reverse
+    if content_type == 'wordoftruth':
+        obj = WordOfTruth.objects.filter(pk=object_id).first()
+        if obj:
+            return obj.title, reverse('word_of_truth_detail', args=[obj.slug])
+    elif content_type == 'childrensbread':
+        obj = ChildrensBread.objects.filter(pk=object_id).first()
+        if obj:
+            return obj.title, reverse('childrens_bread_detail', args=[obj.slug])
+    elif content_type == 'news':
+        obj = NewsItem.objects.filter(pk=object_id).first()
+        if obj:
+            return obj.title, reverse('news_detail', args=[obj.slug])
+    return None, None
+
+
+@staff_member_required
+def analytics_view(request):
+    """Platform analytics dashboard (staff only)."""
+    today = timezone.now().date()
+
+    # Content stats
+    stats = {
+        'verses_total': Verse.objects.count(),
+        'verses_active': Verse.objects.filter(is_active=True).count(),
+        'news_total': NewsItem.objects.count(),
+        'news_published': NewsItem.objects.filter(is_published=True).count(),
+        'word_of_truth_total': WordOfTruth.objects.count(),
+        'word_of_truth_published': WordOfTruth.objects.filter(is_published=True).count(),
+        'childrens_bread_total': ChildrensBread.objects.count(),
+        'childrens_bread_published': ChildrensBread.objects.filter(is_published=True).count(),
+        'gallery_images': GalleryImage.objects.count(),
+        'testimonials': Testimonial.objects.count(),
+        'info_cards_active': InfoCard.objects.filter(is_active=True).count(),
+        'common_questions': FAQ.objects.filter(is_active=True).count(),
+        'partners': Partner.objects.filter(is_active=True).count(),
+        'calendar_events_total': CalendarEvent.objects.count(),
+        'calendar_events_upcoming': CalendarEvent.objects.filter(event_date__gte=today).count(),
+        'newsletter_subscribers': NewsletterSubscriber.objects.count(),
+        'school_enrollments': SchoolMinistryEnrollment.objects.count(),
+    }
+
+    # Visits per month (last 12 months) for graph
+    twelve_months_ago = timezone.now() - timezone.timedelta(days=365)
+    visits_by_month = (
+        PageView.objects.filter(viewed_at__gte=twelve_months_ago)
+        .annotate(month=TruncMonth('viewed_at'))
+        .values('month')
+        .annotate(count=Count('id'))
+        .order_by('month')
+    )
+    visits_per_month_labels = []
+    visits_per_month_data = []
+    for row in visits_by_month:
+        visits_per_month_labels.append(row['month'].strftime('%b %Y'))
+        visits_per_month_data.append(row['count'])
+
+    # Most read articles (content_type + object_id with count)
+    most_read_qs = (
+        PageView.objects.filter(content_type__isnull=False, object_id__isnull=False)
+        .values('content_type', 'object_id')
+        .annotate(read_count=Count('id'))
+        .order_by('-read_count')[:20]
+    )
+    most_read_articles = []
+    most_read_titles = []
+    most_read_counts = []
+    for row in most_read_qs:
+        title, url = _resolve_article_title_url(row['content_type'], row['object_id'])
+        if title:
+            most_read_articles.append({
+                'title': title,
+                'url': url,
+                'read_count': row['read_count'],
+                'content_type': row['content_type'],
+            })
+            most_read_titles.append((title[:40] + '…') if len(title) > 40 else title)
+            most_read_counts.append(row['read_count'])
+    stats['total_page_views'] = PageView.objects.count()
+    stats['page_views_last_30_days'] = PageView.objects.filter(
+        viewed_at__gte=timezone.now() - timezone.timedelta(days=30)
+    ).count()
+
+    # Recent activity: last 5 updated/created items across key models
+    recent_news = NewsItem.objects.order_by('-created_at')[:5]
+    recent_wot = WordOfTruth.objects.order_by('-updated_at')[:5]
+    recent_cb = ChildrensBread.objects.order_by('-updated_at')[:5]
+    upcoming_events = CalendarEvent.objects.filter(event_date__gte=today).order_by('event_date')[:5]
+
+    context = {
+        'stats': stats,
+        'visits_per_month_labels': visits_per_month_labels,
+        'visits_per_month_data': visits_per_month_data,
+        'most_read_articles': most_read_articles,
+        'most_read_titles': most_read_titles,
+        'most_read_counts': most_read_counts,
+        'recent_news': recent_news,
+        'recent_word_of_truth': recent_wot,
+        'recent_childrens_bread': recent_cb,
+        'upcoming_events': upcoming_events,
+    }
+    return render(request, 'church/analytics.html', context)

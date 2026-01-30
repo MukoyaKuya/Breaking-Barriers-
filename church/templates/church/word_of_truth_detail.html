@@ -41,7 +41,7 @@
             <!-- Main Content column -->
             <div class="lg:col-span-3 space-y-10">
                 <div class="flex flex-wrap items-center gap-4 mb-6">
-                    <a href="{% url 'word_of_truth' %}"
+                    <a href="{% url 'word_of_truth_list' %}"
                         class="group inline-flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-brand-color text-gray-700 hover:text-white rounded-full transition-all duration-300 shadow-sm hover:shadow-md">
                         <i class="fas fa-arrow-left transition-transform group-hover:-translate-x-1"></i>
                         <span class="font-medium">Back to Word of Truth</span>
@@ -53,13 +53,11 @@
                     <div class="w-full max-h-[320px] md:max-h-[400px] relative bg-gray-100 group overflow-hidden">
                         {% if word_of_truth.image_cropping %}
                         {% thumbnail word_of_truth.image "800x533" box=word_of_truth.image_cropping crop detail as cropped %}
-                        <picture>
-                            <source srcset="{{ cropped.url }}.webp" type="image/webp">
-                            <img src="{{ cropped.url }}" alt="{{ word_of_truth.title }}" loading="lazy"
-                                class="w-full h-full max-h-[320px] md:max-h-[400px] object-cover object-center transition-transform duration-700 group-hover:scale-105">
-                        </picture>
+                        <img src="{{ cropped.url }}" alt="{{ word_of_truth.title }}" loading="lazy"
+                            class="w-full h-full max-h-[320px] md:max-h-[400px] object-cover object-center transition-transform duration-700 group-hover:scale-105">
                         {% else %}
-                        <img src="{{ word_of_truth.image.url }}" alt="{{ word_of_truth.title }}" loading="lazy"
+                        {% thumbnail word_of_truth.image "800x533" crop detail as thumb %}
+                        <img src="{{ thumb.url }}" alt="{{ word_of_truth.title }}" loading="lazy"
                             class="w-full h-full max-h-[320px] md:max-h-[400px] object-cover object-center transition-transform duration-700 group-hover:scale-105">
                         {% endif %}
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent">

@@ -1085,3 +1085,204 @@ input[type="date"],
     height: auto !important;
     min-height: 36px !important;
 }
+
+/* ===== Admin top menu: differentiate groups ===== */
+/* Hero & Homepage */
+.main-header .navbar-nav .nav-item.dropdown:nth-of-type(2) .dropdown-menu {
+    border-left: 4px solid #28a745;
+    margin-top: 4px;
+}
+.main-header .navbar-nav .nav-item.dropdown:nth-of-type(2) .dropdown-item i {
+    color: #28a745;
+    margin-right: 8px;
+}
+/* Content */
+.main-header .navbar-nav .nav-item.dropdown:nth-of-type(3) .dropdown-menu {
+    border-left: 4px solid #17a2b8;
+    margin-top: 4px;
+}
+.main-header .navbar-nav .nav-item.dropdown:nth-of-type(3) .dropdown-item i {
+    color: #17a2b8;
+    margin-right: 8px;
+}
+/* Calendar & Events */
+.main-header .navbar-nav .nav-item.dropdown:nth-of-type(4) .dropdown-menu {
+    border-left: 4px solid #fd7e14;
+    margin-top: 4px;
+}
+.main-header .navbar-nav .nav-item.dropdown:nth-of-type(4) .dropdown-item i {
+    color: #fd7e14;
+    margin-right: 8px;
+}
+/* Site & Settings */
+.main-header .navbar-nav .nav-item.dropdown:nth-of-type(5) .dropdown-menu {
+    border-left: 4px solid #6c757d;
+    margin-top: 4px;
+}
+.main-header .navbar-nav .nav-item.dropdown:nth-of-type(5) .dropdown-item i {
+    color: #6c757d;
+    margin-right: 8px;
+}
+/* Dropdown menu spacing and clarity */
+.main-header .navbar .dropdown-menu {
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    padding: 8px 0;
+    min-width: 220px;
+}
+.main-header .navbar .dropdown-item {
+    padding: 10px 20px;
+    font-weight: 500;
+    transition: background 0.2s ease, padding-left 0.2s ease;
+}
+.main-header .navbar .dropdown-item:hover {
+    padding-left: 24px;
+}
+/* Sidebar: clear section separation when Church is hidden */
+.main-sidebar .nav-sidebar .nav-item {
+    margin-bottom: 2px;
+}
+.main-sidebar .nav-sidebar .nav-header {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 12px 16px 6px;
+    color: rgba(255, 255, 255, 0.6);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    margin-bottom: 4px;
+}
+
+/* ===== Dashboard UI improvements ===== */
+/* Dashboard content area - more breathing room */
+body.dashboard #content,
+#content.dashboard,
+.content-wrapper .content .row:first-of-type {
+    padding: 28px 24px 32px !important;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Dashboard page title / breadcrumb area */
+.content-header {
+    padding: 16px 0 20px !important;
+    margin-bottom: 24px !important;
+    border-bottom: 2px solid rgba(153, 0, 48, 0.15) !important;
+}
+.content-header h1 {
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    color: #1f2937 !important;
+    margin: 0 !important;
+}
+.content-header .breadcrumb {
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 4px 0 0 !important;
+}
+
+/* Dashboard cards (AdminLTE/Jazzmin) */
+.content-wrapper .card,
+.dashboard .card {
+    border: 1px solid #e5e7eb !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06) !important;
+    margin-bottom: 24px !important;
+    overflow: hidden !important;
+    transition: box-shadow 0.25s ease, transform 0.2s ease !important;
+}
+.content-wrapper .card:hover,
+.dashboard .card:hover {
+    box-shadow: 0 8px 24px rgba(153, 0, 48, 0.12) !important;
+}
+.content-wrapper .card-header,
+.dashboard .card-header {
+    background: linear-gradient(135deg, #990030 0%, #7a0026 100%) !important;
+    color: #fff !important;
+    border-bottom: none !important;
+    padding: 14px 20px !important;
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+}
+.content-wrapper .card-body,
+.dashboard .card-body {
+    padding: 20px !important;
+}
+
+/* Dashboard modules (Django default index) - enhanced */
+.dashboard #content-main {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)) !important;
+    gap: 24px !important;
+    align-items: start !important;
+}
+.dashboard .module {
+    margin-bottom: 0 !important;
+    border-left: 4px solid #990030 !important;
+    transition: box-shadow 0.25s ease, transform 0.2s ease !important;
+}
+.dashboard .module:hover {
+    box-shadow: 0 10px 28px rgba(153, 0, 48, 0.14) !important;
+}
+
+/* Recent actions / timeline */
+.timeline {
+    padding-left: 8px !important;
+}
+.timeline-item {
+    margin-bottom: 20px !important;
+    padding-left: 24px !important;
+    border-left: 3px solid #e5e7eb !important;
+    position: relative !important;
+}
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #990030 !important;
+    box-shadow: 0 0 0 3px rgba(153, 0, 48, 0.2);
+}
+.timeline-time {
+    font-size: 0.8rem !important;
+    color: #6b7280 !important;
+    margin-bottom: 4px !important;
+}
+.timeline-body {
+    color: #1f2937 !important;
+    font-size: 0.95rem !important;
+}
+
+/* Small boxes / stats if present */
+.small-box {
+    border-radius: 12px !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
+    overflow: hidden !important;
+    transition: transform 0.2s ease !important;
+}
+.small-box:hover {
+    transform: translateY(-4px) !important;
+}
+.small-box .inner h3 {
+    font-weight: 700 !important;
+}
+.small-box.bg-danger,
+.small-box.bg-maroon {
+    background: linear-gradient(135deg, #990030 0%, #7a0026 100%) !important;
+}
+
+/* Dashboard quick links / buttons */
+.dashboard .module table td a.addlink,
+.dashboard .module table td a.changelink,
+.content-wrapper .btn-primary {
+    padding: 8px 16px !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    transition: all 0.2s ease !important;
+}
+.dashboard .module table td a.addlink:hover,
+.dashboard .module table td a.changelink:hover {
+    transform: translateX(2px);
+}

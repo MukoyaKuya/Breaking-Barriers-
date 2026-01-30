@@ -1,0 +1,328 @@
+{% extends 'church/base.html' %}
+
+{% block title %}Platform Analytics - Breaking Barriers International{% endblock %}
+
+{% block content %}
+<div class="bg-gray-50 min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Page header -->
+        <header class="mb-8 flex flex-wrap items-center justify-between gap-4 border-b border-gray-200 pb-6">
+            <div>
+                <p class="text-xs font-medium uppercase tracking-wider text-gray-500">Staff only</p>
+                <h1 class="mt-1 text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl fjalla-one-regular">
+                    Platform Analytics
+                </h1>
+                <p class="mt-1 text-sm text-gray-600">
+                    Content overview, traffic, and most-read articles.
+                </p>
+            </div>
+            <a href="{% url 'admin:index' %}" class="inline-flex items-center gap-2 rounded-lg bg-gray-800 px-4 py-2.5 text-sm font-medium text-white shadow-sm transition hover:bg-gray-700">
+                <i class="fas fa-cog"></i>
+                <span>Admin</span>
+            </a>
+        </header>
+
+        <!-- Traffic summary (page views) -->
+        <section class="mb-8">
+            <h2 class="text-sm font-semibold uppercase tracking-wider text-gray-500 mb-4">Traffic</h2>
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                <div class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+                    <div class="p-5">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 rounded-lg bg-brand-color/10 p-3">
+                                <i class="fas fa-eye text-brand-color text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-sm font-medium text-gray-500">Total page views</p>
+                                <p class="text-2xl font-bold text-gray-900">{{ stats.total_page_views|default:0 }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+                    <div class="p-5">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 rounded-lg bg-emerald-100 p-3">
+                                <i class="fas fa-chart-line text-emerald-600 text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-sm font-medium text-gray-500">Last 30 days</p>
+                                <p class="text-2xl font-bold text-gray-900">{{ stats.page_views_last_30_days|default:0 }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Visits per month graph -->
+        <section class="mb-10">
+            <h2 class="text-sm font-semibold uppercase tracking-wider text-gray-500 mb-4">Visits per month</h2>
+            <div class="overflow-hidden rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+                <div class="h-80">
+                    <canvas id="visitsPerMonthChart" width="400" height="300"></canvas>
+                </div>
+                {% if not visits_per_month_data %}
+                <p class="mt-4 text-center text-sm text-gray-500">No visit data yet. Page views will appear here over time.</p>
+                {% endif %}
+            </div>
+        </section>
+
+        <!-- Most read articles graph + table -->
+        <section class="mb-10">
+            <h2 class="text-sm font-semibold uppercase tracking-wider text-gray-500 mb-4">Most read articles</h2>
+            <div class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+                <div class="p-6">
+                    {% if most_read_articles %}
+                    <div class="h-80 mb-6">
+                        <canvas id="mostReadArticlesChart" width="400" height="300"></canvas>
+                    </div>
+                    {% endif %}
+                    <div class="{% if most_read_articles %}border-t border-gray-100 pt-4{% endif %}">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="py-3 pl-0 pr-4 text-left text-xs font-medium uppercase tracking-wider text-gray-500">#</th>
+                                    <th scope="col" class="py-3 px-4 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Article</th>
+                                    <th scope="col" class="py-3 px-4 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Section</th>
+                                    <th scope="col" class="py-3 pl-4 pr-0 text-right text-xs font-medium uppercase tracking-wider text-gray-500">Reads</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-100">
+                                {% for item in most_read_articles %}
+                                <tr class="hover:bg-gray-50/50">
+                                    <td class="whitespace-nowrap py-3 pl-0 pr-4 text-sm font-medium text-gray-500">{{ forloop.counter }}</td>
+                                    <td class="py-3 px-4">
+                                        <a href="{{ item.url }}" class="font-medium text-gray-900 hover:text-brand-color hover:underline" target="_blank" rel="noopener">{{ item.title }}</a>
+                                    </td>
+                                    <td class="whitespace-nowrap py-3 px-4 text-sm text-gray-500">
+                                        {% if item.content_type == 'wordoftruth' %}Word of Truth{% elif item.content_type == 'childrensbread' %}Children's Bread{% else %}News Line{% endif %}
+                                    </td>
+                                    <td class="whitespace-nowrap py-3 pl-4 pr-0 text-right text-sm font-semibold text-gray-900">{{ item.read_count }}</td>
+                                </tr>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="4" class="py-8 text-center text-sm text-gray-500">No article reads recorded yet.</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                {% if not most_read_articles %}
+                <p class="px-6 pb-6 text-center text-sm text-gray-500">Article views are tracked when visitors open Word of Truth, Children's Bread, or News Line articles.</p>
+                {% endif %}
+            </div>
+        </section>
+
+        <!-- Content overview -->
+        <section class="mb-10">
+            <h2 class="text-sm font-semibold uppercase tracking-wider text-gray-500 mb-4">Content overview</h2>
+            <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+                <div class="rounded-xl border border-gray-200 bg-white p-4 shadow-sm transition hover:shadow">
+                    <p class="text-xs font-medium uppercase tracking-wider text-gray-500">Verses</p>
+                    <p class="mt-1 text-xl font-bold text-gray-900">{{ stats.verses_total }}</p>
+                    <p class="text-xs text-gray-500">{{ stats.verses_active }} active</p>
+                </div>
+                <div class="rounded-xl border border-gray-200 bg-white p-4 shadow-sm transition hover:shadow">
+                    <p class="text-xs font-medium uppercase tracking-wider text-gray-500">News Line</p>
+                    <p class="mt-1 text-xl font-bold text-gray-900">{{ stats.news_published }}</p>
+                    <p class="text-xs text-gray-500">{{ stats.news_total }} total</p>
+                </div>
+                <div class="rounded-xl border border-gray-200 bg-white p-4 shadow-sm transition hover:shadow">
+                    <p class="text-xs font-medium uppercase tracking-wider text-gray-500">Word of Truth</p>
+                    <p class="mt-1 text-xl font-bold text-gray-900">{{ stats.word_of_truth_published }}</p>
+                    <p class="text-xs text-gray-500">{{ stats.word_of_truth_total }} total</p>
+                </div>
+                <div class="rounded-xl border border-gray-200 bg-white p-4 shadow-sm transition hover:shadow">
+                    <p class="text-xs font-medium uppercase tracking-wider text-gray-500">Children's Bread</p>
+                    <p class="mt-1 text-xl font-bold text-gray-900">{{ stats.childrens_bread_published }}</p>
+                    <p class="text-xs text-gray-500">{{ stats.childrens_bread_total }} total</p>
+                </div>
+                <div class="rounded-xl border border-gray-200 bg-white p-4 shadow-sm transition hover:shadow">
+                    <p class="text-xs font-medium uppercase tracking-wider text-gray-500">Gallery</p>
+                    <p class="mt-1 text-xl font-bold text-gray-900">{{ stats.gallery_images }}</p>
+                </div>
+                <div class="rounded-xl border border-gray-200 bg-white p-4 shadow-sm transition hover:shadow">
+                    <p class="text-xs font-medium uppercase tracking-wider text-gray-500">Testimonials</p>
+                    <p class="mt-1 text-xl font-bold text-gray-900">{{ stats.testimonials }}</p>
+                </div>
+                <div class="rounded-xl border border-gray-200 bg-white p-4 shadow-sm transition hover:shadow">
+                    <p class="text-xs font-medium uppercase tracking-wider text-gray-500">Hero cards</p>
+                    <p class="mt-1 text-xl font-bold text-gray-900">{{ stats.info_cards_active }}</p>
+                </div>
+                <div class="rounded-xl border border-gray-200 bg-white p-4 shadow-sm transition hover:shadow">
+                    <p class="text-xs font-medium uppercase tracking-wider text-gray-500">Common questions</p>
+                    <p class="mt-1 text-xl font-bold text-gray-900">{{ stats.common_questions }}</p>
+                </div>
+                <div class="rounded-xl border border-gray-200 bg-white p-4 shadow-sm transition hover:shadow">
+                    <p class="text-xs font-medium uppercase tracking-wider text-gray-500">Partners</p>
+                    <p class="mt-1 text-xl font-bold text-gray-900">{{ stats.partners }}</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events & engagement -->
+        <section class="mb-10">
+            <h2 class="text-sm font-semibold uppercase tracking-wider text-gray-500 mb-4">Events & engagement</h2>
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+                <div class="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+                    <p class="text-xs font-medium uppercase tracking-wider text-gray-500">Calendar events</p>
+                    <p class="mt-1 text-2xl font-bold text-gray-900">{{ stats.calendar_events_upcoming }} upcoming</p>
+                    <p class="text-xs text-gray-500">{{ stats.calendar_events_total }} total</p>
+                </div>
+                <div class="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+                    <p class="text-xs font-medium uppercase tracking-wider text-gray-500">Newsletter subscribers</p>
+                    <p class="mt-1 text-2xl font-bold text-gray-900">{{ stats.newsletter_subscribers }}</p>
+                </div>
+                <div class="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+                    <p class="text-xs font-medium uppercase tracking-wider text-gray-500">School enrollments</p>
+                    <p class="mt-1 text-2xl font-bold text-gray-900">{{ stats.school_enrollments }}</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent activity & upcoming -->
+        <section class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+            <div class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+                <div class="border-b border-gray-100 bg-gray-50 px-4 py-3">
+                    <h3 class="font-semibold text-gray-800"><i class="fas fa-newspaper mr-2 text-gray-500"></i>Recent News Line</h3>
+                </div>
+                <ul class="divide-y divide-gray-100">
+                    {% for item in recent_news %}
+                    <li class="px-4 py-3 transition hover:bg-gray-50/50">
+                        <a href="{% url 'news_detail' item.slug %}" class="font-medium text-gray-800 hover:text-brand-color">{{ item.title }}</a>
+                        <span class="block text-xs text-gray-500">{{ item.created_at|date:"M j, Y" }}{% if not item.is_published %} <span class="text-amber-600">(draft)</span>{% endif %}</span>
+                    </li>
+                    {% empty %}
+                    <li class="px-4 py-6 text-sm text-gray-500">No news items yet.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+                <div class="border-b border-gray-100 bg-gray-50 px-4 py-3">
+                    <h3 class="font-semibold text-gray-800"><i class="fas fa-bible mr-2 text-gray-500"></i>Recent Word of Truth</h3>
+                </div>
+                <ul class="divide-y divide-gray-100">
+                    {% for item in recent_word_of_truth %}
+                    <li class="px-4 py-3 transition hover:bg-gray-50/50">
+                        <a href="{% url 'word_of_truth_detail' item.slug %}" class="font-medium text-gray-800 hover:text-brand-color">{{ item.title }}</a>
+                        <span class="block text-xs text-gray-500">{{ item.updated_at|date:"M j, Y" }}{% if not item.is_published %} <span class="text-amber-600">(draft)</span>{% endif %}</span>
+                    </li>
+                    {% empty %}
+                    <li class="px-4 py-6 text-sm text-gray-500">No articles yet.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+                <div class="border-b border-gray-100 bg-gray-50 px-4 py-3">
+                    <h3 class="font-semibold text-gray-800"><i class="fas fa-bread-slice mr-2 text-gray-500"></i>Recent Children's Bread</h3>
+                </div>
+                <ul class="divide-y divide-gray-100">
+                    {% for item in recent_childrens_bread %}
+                    <li class="px-4 py-3 transition hover:bg-gray-50/50">
+                        <a href="{% url 'childrens_bread_detail' item.slug %}" class="font-medium text-gray-800 hover:text-brand-color">{{ item.title }}</a>
+                        <span class="block text-xs text-gray-500">{{ item.updated_at|date:"M j, Y" }}{% if not item.is_published %} <span class="text-amber-600">(draft)</span>{% endif %}</span>
+                    </li>
+                    {% empty %}
+                    <li class="px-4 py-6 text-sm text-gray-500">No articles yet.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+                <div class="border-b border-gray-100 bg-gray-50 px-4 py-3">
+                    <h3 class="font-semibold text-gray-800"><i class="fas fa-calendar-alt mr-2 text-gray-500"></i>Upcoming events</h3>
+                </div>
+                <ul class="divide-y divide-gray-100">
+                    {% for event in upcoming_events %}
+                    <li class="px-4 py-3 transition hover:bg-gray-50/50">
+                        <p class="font-medium text-gray-800">{{ event.title }}</p>
+                        <span class="text-xs text-gray-500">{{ event.event_date|date:"l, M j, Y" }} · {{ event.get_event_type_display }}{% if event.location %} · {{ event.location }}{% endif %}</span>
+                    </li>
+                    {% empty %}
+                    <li class="px-4 py-6 text-sm text-gray-500">No upcoming events.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+    </div>
+</div>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+{{ visits_per_month_labels|json_script:"visits-month-labels" }}
+{{ visits_per_month_data|json_script:"visits-month-data" }}
+{{ most_read_titles|json_script:"most-read-titles" }}
+{{ most_read_counts|json_script:"most-read-counts" }}
+
+<script>
+(function() {
+    const labelsEl = document.getElementById('visits-month-labels');
+    const dataEl = document.getElementById('visits-month-data');
+    const labels = labelsEl ? JSON.parse(labelsEl.textContent) : [];
+    const data = dataEl ? JSON.parse(dataEl.textContent) : [];
+
+    if (labels.length && data.length) {
+        const ctx = document.getElementById('visitsPerMonthChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Page views',
+                    data: data,
+                    backgroundColor: 'rgba(153, 0, 48, 0.7)',
+                    borderColor: 'rgb(153, 0, 48)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: { precision: 0 }
+                    }
+                }
+            }
+        });
+    }
+
+    const titlesEl = document.getElementById('most-read-titles');
+    const countsEl = document.getElementById('most-read-counts');
+    const articleTitles = titlesEl ? JSON.parse(titlesEl.textContent) : [];
+    const articleReads = countsEl ? JSON.parse(countsEl.textContent) : [];
+    const ctx2 = document.getElementById('mostReadArticlesChart');
+    if (ctx2 && articleTitles.length && articleReads.length) {
+        new Chart(ctx2.getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: articleTitles,
+                datasets: [{
+                    label: 'Reads',
+                    data: articleReads,
+                    backgroundColor: 'rgba(17, 24, 39, 0.75)',
+                    borderColor: 'rgb(55, 65, 81)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    x: { beginAtZero: true, ticks: { precision: 0 } }
+                }
+            }
+        });
+    }
+})();
+</script>
+{% endblock %}

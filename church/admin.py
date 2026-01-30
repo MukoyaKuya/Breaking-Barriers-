@@ -4,7 +4,7 @@ from django.utils.html import format_html
 from django.forms import ModelForm
 from django.forms.widgets import ColorInput
 from image_cropping import ImageCroppingMixin
-from .models import Verse, NewsItem, CalendarEvent, Testimonial, GalleryImage, HeroSettings, AboutPage, InfoCard, CTACard, MensMinistry, Partner, NewsletterSubscriber, SchoolMinistryEnrollment, FAQ, SidebarPromo, WordOfTruth
+from .models import Verse, NewsItem, CalendarEvent, Testimonial, GalleryImage, HeroSettings, AboutPage, InfoCard, CTACard, MensMinistry, Partner, NewsletterSubscriber, SchoolMinistryEnrollment, FAQ, SidebarPromo, WordOfTruth, ChildrensBread
 
 
 @admin.register(Verse)
@@ -21,16 +21,23 @@ class VerseAdmin(admin.ModelAdmin):
 
 @admin.register(NewsItem)
 class NewsItemAdmin(ImageCroppingMixin, admin.ModelAdmin):
-    list_display = ('title', 'is_published', 'event_date', 'created_at')
+    list_display = ('title', 'is_published', 'event_date', 'created_at', 'view_listing_link')
     list_filter = ('is_published', 'event_date', 'created_at')
     search_fields = ('title', 'summary', 'body')
     prepopulated_fields = {'slug': ('title',)}
     date_hierarchy = 'created_at'
     list_editable = ('is_published',)
     readonly_fields = ('created_at',)
+
+    def view_listing_link(self, obj):
+        url = reverse('news_line_list')
+        return format_html('<a href="{}" target="_blank" rel="noopener">View listing</a>', url)
+    view_listing_link.short_description = 'News Line'
+
     fieldsets = (
         (None, {
-            'fields': ('title', 'slug', 'is_published')
+            'fields': ('title', 'slug', 'is_published'),
+            'description': 'Articles shown on the News Line listing page (linked from the hero section).',
         }),
         ('Content', {
             'fields': ('image', 'image_cropping', 'summary', 'body')
@@ -206,23 +213,48 @@ class AboutPageAdmin(ImageCroppingMixin, admin.ModelAdmin):
 
 @admin.register(InfoCard)
 class InfoCardAdmin(ImageCroppingMixin, admin.ModelAdmin):
-    list_display = ('card_type', 'title', 'headline', 'is_active', 'updated_at')
+    list_display = ('card_type', 'title', 'headline', 'listing_link', 'is_active', 'updated_at')
     list_filter = ('card_type', 'is_active', 'created_at', 'updated_at')
     search_fields = ('title', 'headline', 'summary', 'author_name')
     list_editable = ('is_active',)
     prepopulated_fields = {'slug': ('title',)}
     readonly_fields = ('created_at', 'updated_at')
+
+    class Media:
+        css = {'all': ()}
+        js = ()
+
+    def listing_link(self, obj):
+        """Link to the article listing page this card leads to."""
+        if not obj:
+            return '-'
+        from django.urls import reverse
+        if obj.card_type == 'childrens_bread':
+            url = reverse('childrens_bread_list')
+            label = 'Children\'s Bread'
+        elif obj.card_type == 'word_of_truth':
+            url = reverse('word_of_truth_list')
+            label = 'Word of Truth'
+        elif obj.card_type == 'news':
+            url = reverse('news_line_list')
+            label = 'News Line'
+        else:
+            return '-'
+        return format_html('<a href="{}" target="_blank" rel="noopener">View {} listing</a>', url, label)
+    listing_link.short_description = 'Listing page'
+
     fieldsets = (
         ('Card Information', {
-            'fields': ('card_type', 'title', 'slug', 'is_active')
+            'fields': ('card_type', 'title', 'slug', 'is_active'),
+            'description': 'Hero section card shown on the homepage. Each card links to its article listing (Children\'s Bread, Word of Truth, or News Line). Edit those articles under Church in the sidebar.',
         }),
         ('Content', {
             'fields': ('image', 'image_cropping', 'headline', 'summary', 'content', 'author_name'),
-            'description': 'Use the image cropper to crop the image to 16:9 aspect ratio for proper alignment and to prevent cropping issues.',
+            'description': 'Image, headline and summary shown on the hero card. Use the image cropper for 16:9 (1600x900) for best display.',
         }),
-        ('Link', {
+        ('Link override', {
             'fields': ('link_url',),
-            'description': 'Leave blank to use the internal detail page (recommended if content is provided).'
+            'description': 'Leave blank so the card links to the article listing page (Children\'s Bread, Word of Truth, or News Line). Set a URL here only to override that default.',
         }),
         ('Timestamps', {
             'fields': ('created_at', 'updated_at'),
@@ -333,14 +365,52 @@ class FAQAdmin(admin.ModelAdmin):
 
 @admin.register(WordOfTruth)
 class WordOfTruthAdmin(ImageCroppingMixin, admin.ModelAdmin):
-    list_display = ('title', 'author_name', 'is_published', 'created_at')
+    list_display = ('title', 'author_name', 'is_published', 'created_at', 'view_listing_link')
     list_filter = ('is_published', 'created_at')
     search_fields = ('title', 'summary', 'author_name', 'body')
     prepopulated_fields = {'slug': ('title',)}
     readonly_fields = ('created_at', 'updated_at')
+    date_hierarchy = 'created_at'
+
+    def view_listing_link(self, obj):
+        url = reverse('word_of_truth_list')
+        return format_html('<a href="{}" target="_blank" rel="noopener">View listing</a>', url)
+    view_listing_link.short_description = 'Listing'
+
     fieldsets = (
         (None, {
-            'fields': ('title', 'slug', 'is_published')
+            'fields': ('title', 'slug', 'is_published'),
+            'description': 'Articles shown on the Word of Truth listing page (linked from the hero section).',
+        }),
+        ('Content & Media', {
+            'fields': ('author_name', 'image', 'image_cropping', 'summary', 'body'),
+            'description': 'Images are cropped to 800x600 for consistency.'
+        }),
+        ('Timestamps', {
+            'fields': ('created_at', 'updated_at'),
+            'classes': ('collapse',)
+        }),
+    )
+
+
+@admin.register(ChildrensBread)
+class ChildrensBreadAdmin(ImageCroppingMixin, admin.ModelAdmin):
+    list_display = ('title', 'author_name', 'is_published', 'created_at', 'view_listing_link')
+    list_filter = ('is_published', 'created_at')
+    search_fields = ('title', 'summary', 'author_name', 'body')
+    prepopulated_fields = {'slug': ('title',)}
+    readonly_fields = ('created_at', 'updated_at')
+    date_hierarchy = 'created_at'
+
+    def view_listing_link(self, obj):
+        url = reverse('childrens_bread_list')
+        return format_html('<a href="{}" target="_blank" rel="noopener">View listing</a>', url)
+    view_listing_link.short_description = 'Listing'
+
+    fieldsets = (
+        (None, {
+            'fields': ('title', 'slug', 'is_published'),
+            'description': 'Articles shown on the Children\'s Bread listing page (linked from the hero section).',
         }),
         ('Content & Media', {
             'fields': ('author_name', 'image', 'image_cropping', 'summary', 'body'),

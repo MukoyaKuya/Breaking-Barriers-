@@ -8,15 +8,15 @@
                     {% load static %}
                     <div class="flex-shrink-0 p-0.5 sm:p-2">
                         <img src="{% static 'images/logo.png' %}" alt="Breaking Barriers International Logo"
-                            class="h-9 w-auto sm:h-12 md:h-16">
+                            class="h-7 w-auto sm:h-9 md:h-10">
                     </div>
                     <div class="flex flex-col min-w-0 overflow-hidden">
                         <span
-                            class="fjalla-one-regular text-[0.65rem] min-[400px]:text-xs sm:text-xl md:text-2xl text-white leading-tight underline break-words">
+                            class="fjalla-one-regular text-[0.5rem] min-[360px]:text-[0.6rem] min-[400px]:text-xs sm:text-sm md:text-base text-white leading-tight whitespace-nowrap">
                             BREAKING BARRIERS INTERNATIONAL
                         </span>
                         <span
-                            class="kaushan-script-regular text-[0.6rem] min-[400px]:text-[0.7rem] sm:text-lg md:text-xl text-gray-300 leading-tight break-words">
+                            class="kaushan-script-regular text-[0.5rem] min-[400px]:text-[0.6rem] sm:text-xs md:text-sm text-gray-300 leading-tight break-words">
                             Breaking Bondages, Empowering People
                         </span>
                     </div>
@@ -28,7 +28,7 @@
                 <a href="{% url 'about' %}" class="text-white hover:text-gray-200 transition text-lg font-medium">
                     About Us
                 </a>
-                <a href="{% url 'word_of_truth' %}"
+                <a href="{% url 'word_of_truth_list' %}"
                     class="text-white hover:text-gray-200 transition text-lg font-medium">
                     Word of Truth
                 </a>
@@ -172,7 +172,7 @@
                     @click="mobileMenuOpen = false">Home</a>
                 <a href="{% url 'about' %}" class="hover:bg-white/10 transition py-3 px-4 rounded-lg text-base"
                     @click="mobileMenuOpen = false">About Us</a>
-                <a href="{% url 'word_of_truth' %}" class="hover:bg-white/10 transition py-3 px-4 rounded-lg text-base"
+                <a href="{% url 'word_of_truth_list' %}" class="hover:bg-white/10 transition py-3 px-4 rounded-lg text-base"
                     @click="mobileMenuOpen = false">Word of Truth</a>
                 <a href="{% url 'childrens_bread_school' %}"
                     class="hover:bg-white/10 transition py-3 px-4 rounded-lg text-base"
