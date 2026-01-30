@@ -34,4 +34,5 @@ urlpatterns = [
     path('search/autocomplete/', views.search_autocomplete_view, name='search_autocomplete'),
     path('newsletter/subscribe/', views.newsletter_subscribe_view, name='newsletter_subscribe'),
     path('analytics/', views.analytics_view, name='analytics'),
+    path('analytics/reset/', views.analytics_reset_view, name='analytics_reset'),
 ]

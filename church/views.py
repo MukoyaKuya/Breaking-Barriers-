@@ -1003,3 +1003,13 @@ def analytics_view(request):
         'upcoming_events': upcoming_events,
     }
     return render(request, 'church/analytics.html', context)
+
+
+@staff_member_required
+def analytics_reset_view(request):
+    """Resets all analytics data (PageViews)."""
+    if request.method == 'POST':
+        PageView.objects.all().delete()
+        from django.contrib import messages
+        messages.success(request, 'Analytics data has been successfully reset.')
+    return redirect('analytics')
