@@ -4,7 +4,7 @@ from django.utils.html import format_html
 from django.forms import ModelForm
 from django.forms.widgets import ColorInput
 from image_cropping import ImageCroppingMixin
-from .models import Verse, NewsItem, CalendarEvent, Testimonial, GalleryImage, HeroSettings, AboutPage, InfoCard, CTACard, MensMinistry, Partner, NewsletterSubscriber, SchoolMinistryEnrollment, FAQ, SidebarPromo, WordOfTruth, ChildrensBread
+from .models import Verse, NewsItem, CalendarEvent, Testimonial, GalleryImage, HeroSettings, AboutPage, InfoCard, CTACard, MensMinistry, Partner, NewsletterSubscriber, SchoolMinistryEnrollment, FAQ, SidebarPromo, WordOfTruth, ChildrensBread, PageView
 
 
 @admin.register(Verse)
