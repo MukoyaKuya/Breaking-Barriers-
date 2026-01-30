@@ -372,6 +372,7 @@ JAZZMIN_SETTINGS = {
     "topmenu_links": [
         {"name": "Dashboard", "url": "admin:index", "permissions": ["auth.view_user"], "icon": "fas fa-tachometer-alt"},
         {"name": "Analytics", "url": "/analytics/", "icon": "fas fa-chart-line"},
+        {"name": "News Line", "url": "/news-line/", "icon": "fas fa-newspaper", "new_window": True},
         {
             "name": "Hero & Homepage",
             "children": [
