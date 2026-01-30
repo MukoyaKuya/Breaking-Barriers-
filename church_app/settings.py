@@ -411,7 +411,7 @@ JAZZMIN_SETTINGS = {
             ],
             "icon": "fas fa-cog",
         },
-        {"name": "Support", "url": "https://github.com/f1ames/django-jazzmin/issues", "new_window": True, "icon": "fas fa-life-ring"},
+        {"name": "Support", "url": "https://wa.me/254717157165", "new_window": True, "icon": "fab fa-whatsapp"},
         {"model": "auth.User", "icon": "fas fa-user"},
         {"app": "church", "icon": "fas fa-church"},
     ],
