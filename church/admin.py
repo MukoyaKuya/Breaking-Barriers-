@@ -421,3 +421,10 @@ class ChildrensBreadAdmin(ImageCroppingMixin, admin.ModelAdmin):
             'classes': ('collapse',)
         }),
     )
+
+
+@admin.register(PageView)
+class PageViewAdmin(admin.ModelAdmin):
+    list_display = ('viewed_at', 'ip_address', 'path', 'content_type')
+    list_filter = ('viewed_at', 'content_type')
+    search_fields = ('ip_address', 'path')
