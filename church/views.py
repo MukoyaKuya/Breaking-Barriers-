@@ -48,6 +48,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.views.decorators.csrf import csrf_exempt
 from django.utils import timezone
 from .cache_decorators import cache_page_for_anonymous
+from .middleware import get_client_ip
 
 
 @cache_page_for_anonymous(60 * 15)  # Cache for 15 minutes (anonymous users only)
@@ -186,6 +187,7 @@ def news_detail_view(request, slug):
     try:
         PageView.objects.create(
             path=request.path[:500],
+            ip_address=get_client_ip(request),
             content_type='news',
             object_id=news_item.pk,
         )
@@ -368,6 +370,7 @@ def word_of_truth_detail_view(request, slug):
     try:
         PageView.objects.create(
             path=request.path[:500],
+            ip_address=get_client_ip(request),
             content_type='wordoftruth',
             object_id=word_of_truth.pk,
         )
@@ -813,6 +816,7 @@ def childrens_bread_detail_view(request, slug):
     try:
         PageView.objects.create(
             path=request.path[:500],
+            ip_address=get_client_ip(request),
             content_type='childrensbread',
             object_id=article.pk,
         )
@@ -918,7 +922,17 @@ def analytics_view(request):
         'school_enrollments': SchoolMinistryEnrollment.objects.count(),
     }
 
-    # Visits per month (last 12 months) for graph
+    # Page views vs page visits (unique IPs)
+    stats['unique_visitors_today'] = PageView.objects.filter(
+        viewed_at__date=timezone.now().date(),
+        ip_address__isnull=False,
+    ).values('ip_address').distinct().count()
+    stats['unique_visitors_last_30_days'] = PageView.objects.filter(
+        viewed_at__gte=timezone.now() - timezone.timedelta(days=30),
+        ip_address__isnull=False,
+    ).values('ip_address').distinct().count()
+
+    # Visits per month (last 12 months) for graph: page views + unique visitors per month
     twelve_months_ago = timezone.now() - timezone.timedelta(days=365)
     visits_by_month = (
         PageView.objects.filter(viewed_at__gte=twelve_months_ago)
@@ -927,11 +941,21 @@ def analytics_view(request):
         .annotate(count=Count('id'))
         .order_by('month')
     )
+    unique_by_month = (
+        PageView.objects.filter(viewed_at__gte=twelve_months_ago, ip_address__isnull=False)
+        .annotate(month=TruncMonth('viewed_at'))
+        .values('month')
+        .annotate(count=Count('ip_address', distinct=True))
+        .order_by('month')
+    )
+    month_to_unique = {row['month']: row['count'] for row in unique_by_month}
     visits_per_month_labels = []
     visits_per_month_data = []
+    visits_per_month_unique_data = []
     for row in visits_by_month:
         visits_per_month_labels.append(row['month'].strftime('%b %Y'))
         visits_per_month_data.append(row['count'])
+        visits_per_month_unique_data.append(month_to_unique.get(row['month'], 0))
 
     # Most read articles (content_type + object_id with count)
     most_read_qs = (
@@ -969,6 +993,7 @@ def analytics_view(request):
         'stats': stats,
         'visits_per_month_labels': visits_per_month_labels,
         'visits_per_month_data': visits_per_month_data,
+        'visits_per_month_unique_data': visits_per_month_unique_data,
         'most_read_articles': most_read_articles,
         'most_read_titles': most_read_titles,
         'most_read_counts': most_read_counts,

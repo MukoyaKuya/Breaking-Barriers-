@@ -587,9 +587,15 @@ class FAQ(models.Model):
 
 
 class PageView(models.Model):
-    """Tracks page views for analytics: visits per month and most-read articles."""
+    """Tracks page views for analytics: visits per month, unique visitors (by IP), and most-read articles."""
     viewed_at = models.DateTimeField(auto_now_add=True, db_index=True)
     path = models.CharField(max_length=500, db_index=True)
+    ip_address = models.GenericIPAddressField(
+        null=True,
+        blank=True,
+        db_index=True,
+        help_text='Visitor IP for unique visit tracking (one visit per IP per day)',
+    )
     content_type = models.CharField(max_length=50, null=True, blank=True, db_index=True,
         help_text='Model name for article views: wordoftruth, childrensbread, news')
     object_id = models.PositiveIntegerField(null=True, blank=True, db_index=True,
@@ -602,6 +608,7 @@ class PageView(models.Model):
         indexes = [
             models.Index(fields=['content_type', 'object_id']),
             models.Index(fields=['-viewed_at']),
+            models.Index(fields=['ip_address', '-viewed_at']),
         ]
 
 
