@@ -29,7 +29,7 @@
                     About Us
                 </a>
                 <a href="{% url 'word_of_truth_list' %}"
-                    class="text-white hover:text-gray-200 transition text-lg font-medium">
+                    class="text-gray-300 hover:text-white transition text-lg font-medium">
                     Word of Truth
                 </a>
             </div>
@@ -172,7 +172,8 @@
                     @click="mobileMenuOpen = false">Home</a>
                 <a href="{% url 'about' %}" class="hover:bg-white/10 transition py-3 px-4 rounded-lg text-base"
                     @click="mobileMenuOpen = false">About Us</a>
-                <a href="{% url 'word_of_truth_list' %}" class="hover:bg-white/10 transition py-3 px-4 rounded-lg text-base"
+                <a href="{% url 'word_of_truth_list' %}"
+                    class="text-gray-300 hover:bg-white/10 transition py-3 px-4 rounded-lg text-base"
                     @click="mobileMenuOpen = false">Word of Truth</a>
                 <a href="{% url 'childrens_bread_school' %}"
                     class="hover:bg-white/10 transition py-3 px-4 rounded-lg text-base"
