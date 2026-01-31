@@ -1,113 +1,193 @@
-{% extends "admin/base_site.html" %}
-{% load i18n static %}
+{% extends "registration/base.html" %}
+{% load i18n jazzmin %}
+{% get_jazzmin_settings request as jazzmin_settings %}
+{% get_jazzmin_ui_tweaks as jazzmin_ui %}
 
-{% block extrastyle %}{{ block.super }}
-<link rel="stylesheet" type="text/css" href="{% static 'admin/css/login.css' %}">
+{% block extrastyle %}
+{{ block.super }}
 <style>
-    /* Inline styles to ensure visibility */
-    #login-container {
-        display: block !important;
-        visibility: visible !important;
-        width: 100% !important;
-        max-width: 450px !important;
-        margin: 0 auto !important;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15) !important;
-        border-radius: 12px !important;
-        overflow: hidden !important;
-        background: #ffffff !important;
+    body.login-page {
+        background: linear-gradient(135deg, #1a1a1a 0%, #4a0010 100%) !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
     }
-    #login-header {
-        display: block !important;
-        visibility: visible !important;
-        background: linear-gradient(135deg, #990030 0%, #7a0026 100%) !important;
-        padding: 35px 40px !important;
-        text-align: center !important;
-    }
-    #login-branding {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        gap: 15px !important;
-    }
-    #login-branding img {
-        display: block !important;
-        visibility: visible !important;
-        height: 60px !important;
-        width: auto !important;
-    }
-    #login-branding h1 {
-        display: block !important;
-        visibility: visible !important;
-        color: white !important;
-        font-size: 24px !important;
-        font-weight: 700 !important;
+
+    .login-box {
+        width: 420px !important;
         margin: 0 !important;
+        padding: 0 20px;
     }
-    #login-form-container {
-        display: block !important;
-        visibility: visible !important;
-        background: #ffffff !important;
-        padding: 45px 40px !important;
+
+    .login-logo {
+        margin-bottom: 25px !important;
+    }
+
+    .login-logo img {
+        max-width: 100%;
+        max-height: 100px !important;
+        /* Fix logo size */
+        width: auto !important;
+        height: auto !important;
+        filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+    }
+
+    .login-logo a {
+        color: #fff !important;
+        font-family: 'Fjalla One', sans-serif;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .card {
+        border: none !important;
+        border-radius: 16px !important;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3) !important;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.95) !important;
+        backdrop-filter: blur(10px);
+        border-top: 6px solid #990030 !important;
+    }
+
+    .card-body {
+        padding: 40px 30px !important;
+    }
+
+    .login-box-msg {
+        font-weight: 600;
+        color: #333;
+        font-size: 1.1em;
+        margin-bottom: 25px !important;
+    }
+
+    .form-control {
+        border-radius: 8px !important;
+        padding: 12px 15px !important;
+        height: auto !important;
+        border: 1px solid #ddd;
+        background-color: #f8f9fa;
+        font-size: 15px;
+    }
+
+    .form-control:focus {
+        border-color: #990030 !important;
+        box-shadow: 0 0 0 3px rgba(153, 0, 48, 0.1) !important;
+        background-color: #fff;
+    }
+
+    .input-group-text {
+        border-radius: 0 8px 8px 0 !important;
+        background-color: #fff !important;
+        border-left: none;
+        color: #990030;
+    }
+
+    .btn-primary {
+        background-color: #990030 !important;
+        border-color: #990030 !important;
+        border-radius: 8px !important;
+        padding: 12px !important;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        margin-top: 15px;
+    }
+
+    .btn-primary:hover {
+        background-color: #7a0026 !important;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(153, 0, 48, 0.3);
+    }
+
+    .password-reset-link a {
+        color: #666 !important;
+        font-size: 0.9em;
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+
+    .password-reset-link a:hover {
+        color: #990030 !important;
+        text-decoration: underline;
+    }
+
+    .callout-danger {
+        border-left-color: #d9534f;
+        background-color: #fdf7f7;
+        border-radius: 6px;
     }
 </style>
 {% endblock %}
 
-{% block bodyclass %}{{ block.super }} login{% endblock %}
-
-{% block usertools %}{% endblock %}
-
-{% block nav-global %}{% endblock %}
-
-{% block nav-sidebar %}{% endblock %}
-
-{% block content_title %}{% endblock %}
-
-{% block breadcrumbs %}{% endblock %}
-
 {% block content %}
-<div id="login-container">
-    <div id="login-header">
-        <div id="login-branding">
-            <img src="{% static 'images/logo.png' %}" alt="Breaking Barriers International Logo" />
-            <h1>Breaking Barriers International</h1>
+<p class="login-box-msg">{{ jazzmin_settings.welcome_sign }}</p>
+<form action="{{ app_path }}" method="post">
+    {% csrf_token %}
+    {% if user.is_authenticated %}
+    <p class="errornote">
+    <div class="callout callout-danger">
+        <p>
+            {% blocktrans trimmed %}
+            You are authenticated as {{ username }}, but are not authorized to
+            access this page. Would you like to login to a different account?
+            {% endblocktrans %}
+        </p>
+    </div>
+    </p>
+    {% endif %}
+    {% if form.errors %}
+    {% if form.username.errors %}
+    <div class="callout callout-danger">
+        <p>{{ form.username.label }}: {{ form.username.errors|join:', ' }}</p>
+    </div>
+    {% endif %}
+    {% if form.password.errors %}
+    <div class="callout callout-danger">
+        <p>{{ form.password.label }}: {{ form.password.errors|join:', ' }}</p>
+    </div>
+    {% endif %}
+    {% if form.non_field_errors %}
+    <div class="callout callout-danger">
+        {% for error in form.non_field_errors %}
+        <p>{{ error }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endif %}
+    <div class="input-group mb-3">
+        <input type="text" name="username" class="form-control" placeholder="{{ form.username.label }}" required>
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-user"></span>
+            </div>
         </div>
     </div>
-    
-    <div id="login-form-container">
-        {% if form.errors and not form.non_field_errors %}
-            <p class="errornote">
-                {% if form.errors.items|length == 1 %}{% translate "Please correct the error below." %}{% else %}{% translate "Please correct the errors below." %}{% endif %}
-            </p>
-        {% endif %}
-
-        {% if form.non_field_errors %}
-            {% for error in form.non_field_errors %}
-                <p class="errornote">{{ error }}</p>
-            {% endfor %}
-        {% endif %}
-
-        <div id="login-form">
-            <form action="{{ app_path }}" method="post" id="login-form-inner">{% csrf_token %}
-                <div class="form-row">
-                    {{ form.username.errors }}
-                    {{ form.username.label_tag }} {{ form.username }}
-                </div>
-                <div class="form-row">
-                    {{ form.password.errors }}
-                    {{ form.password.label_tag }} {{ form.password }}
-                    <input type="hidden" name="next" value="{{ next }}">
-                </div>
-                {% url 'admin:password_reset' as password_reset_url %}
-                {% if password_reset_url %}
-                <div class="password-reset-link">
-                    <a href="{{ password_reset_url }}">{% translate 'Forgotten your password or username?' %}</a>
-                </div>
-                {% endif %}
-                <div class="submit-row">
-                    <input type="submit" value="{% translate 'Log in' %}">
-                </div>
-            </form>
+    <div class="input-group mb-3">
+        <input type="password" name="password" class="form-control" placeholder="{{ form.password.label }}" required>
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+            </div>
         </div>
     </div>
-</div>
+    {% url 'admin_password_reset' as password_reset_url %}
+    {% if password_reset_url %}
+    <div class="mb-3">
+        <div class="password-reset-link" style="text-align: center;">
+            <a href="{{ password_reset_url }}">
+                {% trans 'Forgotten your password or username?' %}
+            </a>
+        </div>
+    </div>
+    {% endif %}
+    <div class="row">
+        <div class="col-12">
+            <button type="submit" class="btn {{ jazzmin_ui.button_classes.primary }} btn-block">
+                {% trans "Log in" %}
+            </button>
+        </div>
+    </div>
+</form>
 {% endblock %}
