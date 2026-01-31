@@ -1,0 +1,90 @@
+{% extends 'church/base.html' %}
+{% load thumbnail %}
+
+{% block title %}{{ article.title }} - News Line - Breaking Barriers International{% endblock %}
+
+{% block content %}
+<div class="bg-gray-50/50 pt-6 pb-12 sm:pt-10 sm:pb-20">
+    <div class="container mx-auto px-4 sm:px-6 max-w-7xl">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+
+            <!-- Main Content Column -->
+            <article class="lg:col-span-8 bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                <!-- Media Section (Video or Image) -->
+                {% if article.video_url %}
+                <div class="aspect-w-16 aspect-h-9 bg-black">
+                    <iframe src="{{ article.get_embed_url }}" title="{{ article.title }}" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen class="w-full h-full object-cover"></iframe>
+                </div>
+                {% elif article.image %}
+                <div class="w-full relative aspect-w-16 aspect-h-9 bg-gray-100">
+                    <img src="{% thumbnail article.image 800x600 crop detail %}" alt="{{ article.title }}"
+                        class="absolute inset-0 w-full h-full object-cover">
+                </div>
+                {% endif %}
+
+                <div class="p-6 sm:p-8 md:p-10">
+                    <!-- Header -->
+                    <div class="mb-8">
+                        <div class="flex flex-wrap items-center gap-3 text-sm text-gray-500 mb-4">
+                            <span class="bg-red-50 text-brand-red px-3 py-1 rounded-full font-medium">News Line</span>
+                            <span>&bull;</span>
+                            <span>{{ article.created_at|date:"F j, Y" }}</span>
+                        </div>
+                        <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-6 leading-tight">
+                            {{ article.title }}
+                        </h1>
+                    </div>
+
+                    <!-- Content -->
+                    <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed font-light">
+                        <!-- Summary (Lead Text) -->
+                        {% if article.summary %}
+                        <div
+                            class="text-xl text-gray-800 mb-8 font-normal leading-relaxed border-l-4 border-brand-red pl-4 italic bg-gray-50 p-4 rounded-r-lg">
+                            {{ article.summary|linebreaks }}
+                        </div>
+                        {% endif %}
+
+                        <!-- Main Body -->
+                        {% if article.body %}
+                        {{ article.body|safe }}
+                        {% else %}
+                        <p class="text-gray-500 italic">No further details available.</p>
+                        {% endif %}
+                    </div>
+
+                    <!-- Share Section -->
+                    <div class="mt-12 pt-8 border-t border-gray-100">
+                        <h3 class="text-lg font-bold text-gray-900 mb-4">Share this update</h3>
+                        <div class="flex gap-2">
+                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}"
+                                target="_blank" rel="noopener noreferrer"
+                                class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700 transition">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}&text={{ article.title }}"
+                                target="_blank" rel="noopener noreferrer"
+                                class="w-10 h-10 rounded-full bg-sky-500 text-white flex items-center justify-center hover:bg-sky-600 transition">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="whatsapp://send?text={{ article.title }} {{ request.build_absolute_uri }}"
+                                target="_blank" rel="noopener noreferrer"
+                                class="w-10 h-10 rounded-full bg-green-500 text-white flex items-center justify-center hover:bg-green-600 transition">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Sidebar -->
+            <aside class="lg:col-span-4 space-y-8 sticky top-4">
+                {% include 'church/partials/sidebar.html' %}
+            </aside>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -67,6 +67,7 @@ class NewsLine(models.Model):
         help_text='Optional YouTube video URL (e.g. https://www.youtube.com/watch?v=VIDEO_ID). If provided, video will be shown.',
     )
     summary = models.TextField(help_text='Short description or summary')
+    body = RichTextField(blank=True, help_text='Full article content')
     is_published = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

@@ -21,6 +21,7 @@ urlpatterns = [
     path('news/<slug:slug>/', views.news_detail_view, name='news_detail'),
     path('news/load-more/', views.load_more_news_view, name='load_more_news'),
     path('news-line/', views.news_line_list_view, name='news_line_list'),
+    path('news-line/<slug:slug>/', views.news_line_detail_view, name='news_line_detail'),
     path('news-line/load-more/', views.load_more_news_line_view, name='load_more_news_line'),
     path('info-card/<slug:slug>/', views.info_card_detail_view, name='info_card_detail'),
     path('api/calendar-event/create/', views.calendar_event_create_view, name='calendar_event_create'),

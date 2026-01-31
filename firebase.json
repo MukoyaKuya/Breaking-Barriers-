@@ -1,0 +1,20 @@
+{
+  "hosting": {
+    "site": "gen-lang-client-0549116861",
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "run": {
+          "serviceId": "bbi-international",
+          "region": "europe-west1"
+        }
+      }
+    ]
+  }
+}

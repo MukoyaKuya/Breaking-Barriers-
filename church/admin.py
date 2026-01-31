@@ -44,7 +44,7 @@ class NewsLineAdmin(ImageCroppingMixin, admin.ModelAdmin):
             'description': 'Upload a poster image or provide a YouTube video URL. If a video is provided, it will be displayed instead of the poster on the detail view, but the poster is still used as a thumbnail.',
         }),
         ('Content', {
-            'fields': ('summary',)
+            'fields': ('summary', 'body')
         }),
         ('Timestamps', {
             'fields': ('created_at', 'updated_at'),

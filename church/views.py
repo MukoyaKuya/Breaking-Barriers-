@@ -874,6 +874,42 @@ def news_line_list_view(request):
     return render(request, 'church/news_line_list.html', context)
 
 
+@cache_page_for_anonymous(60 * 15)  # Cache for 15 minutes (anonymous users only)
+def news_line_detail_view(request, slug):
+    """Detail view for a News Line article (optimized sidebar)."""
+    # Use 'slug' instead of 'id' which is standard for our detail views
+    article = get_object_or_404(NewsLine, slug=slug, is_published=True)
+    
+    # Track page view
+    try:
+        PageView.objects.create(
+            path=request.path[:500],
+            ip_address=get_client_ip(request),
+            # We don't have a content_type for NewsLine separately in PageView model yet,
+            # but we can reuse 'news' or add a new one. Let's add 'newsline' for clarity if needed,
+            # but for now let's just track it generically or skip content_type if strict.
+            # actually PageView.content_type is a CharField, so we can pass 'newsline'
+            content_type='newsline',
+            object_id=article.pk,
+        )
+    except Exception:
+        pass
+
+    faqs = get_optimized_faqs()
+    sidebar_promos = get_optimized_sidebar_promos(limit=3)
+    cta_card = get_cached_cta_card()
+    verse_of_the_day = get_optimized_verse_of_the_day()
+    
+    context = {
+        'article': article,
+        'faqs': faqs,
+        'sidebar_promos': sidebar_promos,
+        'cta_card': cta_card,
+        'verse_of_the_day': verse_of_the_day,
+    }
+    return render(request, 'church/news_line_detail.html', context)
+
+
 def load_more_news_line_view(request):
     """HTMX endpoint to load more News Line articles"""
     offset = int(request.GET.get('offset', 0))
@@ -907,6 +943,10 @@ def _resolve_article_title_url(content_type, object_id):
         obj = NewsItem.objects.filter(pk=object_id).first()
         if obj:
             return obj.title, reverse('news_detail', args=[obj.slug])
+    elif content_type == 'newsline':
+        obj = NewsLine.objects.filter(pk=object_id).first()
+        if obj:
+            return obj.title, reverse('news_line_detail', args=[obj.slug])
     return None, None
 
 
