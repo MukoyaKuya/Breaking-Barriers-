@@ -142,6 +142,54 @@
             overflow-wrap: break-word;
         }
 
+        .brand-color {
+            background-color: rgb(153, 0, 48) !important;
+        }
+
+        .brand-text,
+        .text-brand-color {
+            color: rgb(153, 0, 48) !important;
+        }
+
+        /* Aggressive Light Mode Enforcement */
+        /* Override 'prefers-color-scheme: dark' styles */
+        @media (prefers-color-scheme: dark) {
+
+            html,
+            body {
+                background-color: #ffffff !important;
+                color: #111827 !important;
+            }
+
+            .bg-white {
+                background-color: #ffffff !important;
+            }
+
+            .bg-gray-50 {
+                background-color: #f9fafb !important;
+            }
+
+            .text-gray-900 {
+                color: #111827 !important;
+            }
+
+            .text-gray-800 {
+                color: #1f2937 !important;
+            }
+
+            .text-gray-700 {
+                color: #374151 !important;
+            }
+
+            .text-gray-600 {
+                color: #4b5563 !important;
+            }
+
+            .text-white {
+                color: #ffffff !important;
+            }
+        }
+
         .safe-area-padding {
             padding-left: max(0.75rem, env(safe-area-inset-left));
             padding-right: max(0.75rem, env(safe-area-inset-right));
