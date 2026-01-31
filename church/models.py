@@ -544,6 +544,9 @@ class Book(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
+        # Invalidate book list cache
+        from django.core.cache import cache
+        cache.delete('book_list_all')
 
     @property
     def whatsapp_link(self):
