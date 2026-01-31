@@ -14,7 +14,7 @@
 
         <!-- Buttons Section -->
         <div class="p-5 space-y-3 flex-grow flex flex-col justify-center">
-            <a href="{{ cta_card.button1_url|default:'#' }}"
+            <a href="{{ cta_card.button1_url|default:'/books/' }}"
                 class="block w-full brand-color text-white py-3.5 px-4 rounded-lg text-center font-semibold hover:bg-red-900 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105">
                 {{ cta_card.button1_text|default:"Books" }}
             </a>
@@ -64,26 +64,18 @@
         <ul class="divide-y divide-gray-200 text-sm">
             {% for faq in faqs %}
             <li class="px-4 py-3">
-                <button 
-                    @click="openIndex = openIndex === {{ forloop.counter0 }} ? null : {{ forloop.counter0 }}"
-                    class="w-full flex items-start gap-2 text-left hover:text-brand-color transition-colors"
-                >
-                    <span class="text-brand-color font-bold flex-shrink-0 mt-0.5 transition-transform" 
-                          x-text="openIndex === {{ forloop.counter0 }} ? '−' : '+'"
-                          :class="openIndex === {{ forloop.counter0 }} ? 'rotate-0' : ''"></span>
+                <button @click="openIndex = openIndex === {{ forloop.counter0 }} ? null : {{ forloop.counter0 }}"
+                    class="w-full flex items-start gap-2 text-left hover:text-brand-color transition-colors">
+                    <span class="text-brand-color font-bold flex-shrink-0 mt-0.5 transition-transform"
+                        x-text="openIndex === {{ forloop.counter0 }} ? '−' : '+'"
+                        :class="openIndex === {{ forloop.counter0 }} ? 'rotate-0' : ''"></span>
                     <span class="flex-grow font-medium">{{ faq.question }}</span>
                 </button>
-                <div 
-                    x-show="openIndex === {{ forloop.counter0 }}"
-                    x-transition:enter="transition ease-out duration-200"
-                    x-transition:enter-start="opacity-0 max-h-0"
-                    x-transition:enter-end="opacity-100 max-h-96"
-                    x-transition:leave="transition ease-in duration-150"
-                    x-transition:leave-start="opacity-100 max-h-96"
-                    x-transition:leave-end="opacity-0 max-h-0"
-                    x-cloak
-                    class="mt-2 ml-6 text-gray-600 text-sm leading-relaxed overflow-hidden"
-                >
+                <div x-show="openIndex === {{ forloop.counter0 }}" x-transition:enter="transition ease-out duration-200"
+                    x-transition:enter-start="opacity-0 max-h-0" x-transition:enter-end="opacity-100 max-h-96"
+                    x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 max-h-96"
+                    x-transition:leave-end="opacity-0 max-h-0" x-cloak
+                    class="mt-2 ml-6 text-gray-600 text-sm leading-relaxed overflow-hidden">
                     <div class="pb-2">{{ faq.answer|linebreaks }}</div>
                 </div>
             </li>
