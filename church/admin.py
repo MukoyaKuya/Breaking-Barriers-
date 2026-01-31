@@ -438,7 +438,7 @@ class WordOfTruthAdmin(ImageCroppingMixin, admin.ModelAdmin):
             'description': 'Articles shown on the Word of Truth listing page (linked from the hero section).',
         }),
         ('Content & Media', {
-            'fields': ('author_name', 'image', 'image_cropping', 'summary', 'body'),
+            'fields': ('image', 'image_cropping', 'summary', 'body'),
             'description': 'Images are cropped to 800x600 for consistency.'
         }),
         ('Timestamps', {
