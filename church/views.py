@@ -8,6 +8,7 @@ import calendar
 from .models import (
     Verse,
     NewsItem,
+    NewsLine,
     CalendarEvent,
     Testimonial,
     GalleryImage,
@@ -316,8 +317,21 @@ def media_view(request):
 
 
 def contact_us_view(request):
-    """Contact Us page"""
-    return render(request, 'church/contact_us.html')
+    """Contact Us page with form submission."""
+    from .forms import ContactForm
+    
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Thank you for your message! We will get back to you soon.')
+            return redirect('contact_us')
+        else:
+            messages.error(request, 'Please correct the errors below.')
+    else:
+        form = ContactForm()
+    
+    return render(request, 'church/contact_us.html', {'form': form})
 
 
 @cache_page_for_anonymous(60 * 10)  # Cache for 10 minutes (anonymous users only)
@@ -836,11 +850,11 @@ def childrens_bread_detail_view(request, slug):
     return render(request, 'church/childrens_bread_detail.html', context)
 
 
-@cache_page_for_anonymous(60 * 15)  # Cache for 15 minutes (anonymous users only)
+# @cache_page_for_anonymous(60 * 15)  # Cache disabled to ensure template fix is seen
 def news_line_list_view(request):
     """News Line listing page - shows 9 articles initially with load more."""
     initial_limit = 9
-    articles_list = NewsItem.objects.filter(is_published=True).order_by('-created_at')
+    articles_list = NewsLine.objects.filter(is_published=True).order_by('-created_at')
     total_count = articles_list.count()
     
     initial_articles = articles_list[:initial_limit]
@@ -865,8 +879,8 @@ def load_more_news_line_view(request):
     offset = int(request.GET.get('offset', 0))
     limit = 9
     
-    articles = NewsItem.objects.filter(is_published=True).order_by('-created_at')[offset:offset + limit]
-    total_count = NewsItem.objects.filter(is_published=True).count()
+    articles = NewsLine.objects.filter(is_published=True).order_by('-created_at')[offset:offset + limit]
+    total_count = NewsLine.objects.filter(is_published=True).count()
     next_offset = offset + len(articles)
     has_more = next_offset < total_count
     

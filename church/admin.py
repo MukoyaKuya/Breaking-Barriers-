@@ -4,7 +4,7 @@ from django.utils.html import format_html
 from django.forms import ModelForm
 from django.forms.widgets import ColorInput
 from image_cropping import ImageCroppingMixin
-from .models import Verse, NewsItem, CalendarEvent, Testimonial, GalleryImage, HeroSettings, AboutPage, InfoCard, CTACard, MensMinistry, Partner, NewsletterSubscriber, SchoolMinistryEnrollment, FAQ, SidebarPromo, WordOfTruth, ChildrensBread, PageView
+from .models import Verse, NewsItem, NewsLine, CalendarEvent, Testimonial, GalleryImage, HeroSettings, AboutPage, InfoCard, CTACard, MensMinistry, Partner, NewsletterSubscriber, SchoolMinistryEnrollment, FAQ, SidebarPromo, WordOfTruth, ChildrensBread, PageView, ContactMessage
 
 
 @admin.register(Verse)
@@ -17,6 +17,40 @@ class VerseAdmin(admin.ModelAdmin):
     def content_preview(self, obj):
         return obj.content[:50] + '...' if len(obj.content) > 50 else obj.content
     content_preview.short_description = 'Content'
+
+
+@admin.register(NewsLine)
+class NewsLineAdmin(ImageCroppingMixin, admin.ModelAdmin):
+    list_display = ('title', 'is_published', 'has_video', 'created_at')
+    list_filter = ('is_published', 'created_at')
+    search_fields = ('title', 'summary')
+    prepopulated_fields = {'slug': ('title',)}
+    date_hierarchy = 'created_at'
+    list_editable = ('is_published',)
+    readonly_fields = ('created_at', 'updated_at')
+
+    def has_video(self, obj):
+        return bool(obj.video_url)
+    has_video.boolean = True
+    has_video.short_description = 'Video?'
+
+    fieldsets = (
+        (None, {
+            'fields': ('title', 'slug', 'is_published'),
+            'description': 'Articles and videos shown on the News Line page.',
+        }),
+        ('Media', {
+            'fields': ('image', 'image_cropping', 'video_url'),
+            'description': 'Upload a poster image or provide a YouTube video URL. If a video is provided, it will be displayed instead of the poster on the detail view, but the poster is still used as a thumbnail.',
+        }),
+        ('Content', {
+            'fields': ('summary',)
+        }),
+        ('Timestamps', {
+            'fields': ('created_at', 'updated_at'),
+            'classes': ('collapse',)
+        }),
+    )
 
 
 @admin.register(NewsItem)
@@ -428,3 +462,28 @@ class PageViewAdmin(admin.ModelAdmin):
     list_display = ('viewed_at', 'ip_address', 'path', 'content_type')
     list_filter = ('viewed_at', 'content_type')
     search_fields = ('ip_address', 'path')
+
+
+@admin.register(ContactMessage)
+class ContactMessageAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'phone', 'subject', 'is_read', 'created_at')
+    list_filter = ('is_read', 'created_at')
+    search_fields = ('name', 'email', 'phone', 'subject', 'message')
+    readonly_fields = ('created_at',)
+    list_editable = ('is_read',)
+    
+    fieldsets = (
+        ('Contact Information', {
+            'fields': ('name', 'email', 'phone', 'subject')
+        }),
+        ('Message', {
+            'fields': ('message',)
+        }),
+        ('Status', {
+            'fields': ('is_read', 'created_at')
+        }),
+    )
+    
+    def has_add_permission(self, request):
+        # Disable manual creation - messages come from the form
+        return False

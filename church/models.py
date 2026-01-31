@@ -55,7 +55,80 @@ class NewsItem(models.Model):
         super().save(*args, **kwargs)
 
 
+
+class NewsLine(models.Model):
+    """Model for News Line items (posters and videos)"""
+    title = models.CharField(max_length=200)
+    slug = models.SlugField(unique=True, max_length=200)
+    image = models.ImageField(upload_to='news_line/', help_text='Poster image')
+    image_cropping = ImageRatioField('image', '800x600', size_warning=True, help_text='Crop the image to your desired size')
+    video_url = models.URLField(
+        blank=True,
+        help_text='Optional YouTube video URL (e.g. https://www.youtube.com/watch?v=VIDEO_ID). If provided, video will be shown.',
+    )
+    summary = models.TextField(help_text='Short description or summary')
+    is_published = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = 'News Line Item'
+        verbose_name_plural = 'News Line Items'
+        indexes = [
+            models.Index(fields=['is_published', '-created_at']),
+            models.Index(fields=['slug']),
+        ]
+
+    def __str__(self):
+        return self.title
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
+
+    def get_embed_url(self):
+        """Return a YouTube embed URL if possible, or the raw URL as fallback."""
+        return _to_youtube_embed(self.video_url)
+
+    @property
+    def created_at_month(self):
+        """Month abbreviation (e.g. Jan) for badge display. Avoids date filter issues in templates."""
+        return self.created_at.strftime('%b') if self.created_at else ''
+
+    @property
+    def created_at_day(self):
+        """Day number (e.g. 01) for badge display."""
+        return self.created_at.strftime('%d') if self.created_at else ''
+
+    @property
+    def created_at_long(self):
+        """Full date string for video items."""
+        return self.created_at.strftime('%B %d, %Y') if self.created_at else ''
+
+
+class ContactMessage(models.Model):
+    """Model for storing contact form submissions."""
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    phone = models.CharField(max_length=20, help_text='Phone number')
+    subject = models.CharField(max_length=200)
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    is_read = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = 'Contact Message'
+        verbose_name_plural = 'Contact Messages'
+
+    def __str__(self):
+        return f"Message from {self.name}: {self.subject}"
+
+
 class CalendarEvent(models.Model):
+
     """Interactive calendar event/task model"""
     EVENT_TYPE_CHOICES = [
         ('Service', 'Service'),
@@ -369,6 +442,16 @@ class WordOfTruth(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
+
+    @property
+    def created_at_month(self):
+        """Month abbreviation (e.g. Jan) for badge display."""
+        return self.created_at.strftime('%b') if self.created_at else ''
+
+    @property
+    def created_at_day(self):
+        """Day number (e.g. 01) for badge display."""
+        return self.created_at.strftime('%d') if self.created_at else ''
 
 
 class ChildrensBread(models.Model):
