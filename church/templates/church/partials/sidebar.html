@@ -14,7 +14,7 @@
 
         <!-- Buttons Section -->
         <div class="p-5 space-y-3 flex-grow flex flex-col justify-center">
-            <a href="{{ cta_card.button1_url|default:'/books/' }}"
+            <a href="{% url 'book_list' %}"
                 class="block w-full brand-color text-white py-3.5 px-4 rounded-lg text-center font-semibold hover:bg-red-900 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105">
                 {{ cta_card.button1_text|default:"Books" }}
             </a>
