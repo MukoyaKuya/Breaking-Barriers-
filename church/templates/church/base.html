@@ -4,6 +4,7 @@
 <head>
     {% load static %}
     <meta charset="UTF-8">
+    <meta name="color-scheme" content="only light">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="theme-color" content="rgb(153, 0, 48)">
     <title>{% block title %}Breaking Barriers International{% endblock %}</title>
@@ -19,7 +20,19 @@
     <meta name="apple-mobile-web-app-title" content="BBI">
     <link rel="apple-touch-icon" href="{% static 'images/icons/icon-192.png' %}">
 
-    <!-- Tailwind CSS CDN -->
+    <!-- Tailwind CSS Config (Force Light Mode) -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class', // Disables automatic system dark mode matching
+            theme: {
+                extend: {
+                    colors: {
+                        brand: 'rgb(153, 0, 48)',
+                    }
+                }
+            }
+        }
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- HTMX -->
@@ -39,6 +52,19 @@
 
     <!-- Custom styles for brand color -->
     <style>
+        :root {
+            color-scheme: light only;
+            forced-color-adjust: none;
+        }
+
+        /* Force light mode background and text for body */
+        body {
+            background-color: #f9fafb;
+            /* gray-50 */
+            color: #111827;
+            /* gray-900 */
+        }
+
         .brand-color {
             background-color: rgb(153, 0, 48);
         }
