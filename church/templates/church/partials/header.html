@@ -32,9 +32,6 @@
                     class="text-gray-300 hover:text-white transition text-lg font-medium">
                     Word of Truth
                 </a>
-                <a href="{% url 'book_list' %}" class="text-gray-300 hover:text-white transition text-lg font-medium">
-                    Books
-                </a>
             </div>
 
             <!-- Right: Social Media Icons and Search -->
@@ -178,8 +175,6 @@
                 <a href="{% url 'word_of_truth_list' %}"
                     class="text-gray-300 hover:bg-white/10 transition py-3 px-4 rounded-lg text-base"
                     @click="mobileMenuOpen = false">Word of Truth</a>
-                <a href="{% url 'book_list' %}" class="hover:bg-white/10 transition py-3 px-4 rounded-lg text-base"
-                    @click="mobileMenuOpen = false">Books</a>
                 <a href="{% url 'childrens_bread_school' %}"
                     class="hover:bg-white/10 transition py-3 px-4 rounded-lg text-base"
                     @click="mobileMenuOpen = false">Children's Bread School</a>
