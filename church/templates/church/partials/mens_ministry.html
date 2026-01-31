@@ -1,14 +1,11 @@
 <section class="py-16 bg-gray-100">
     <div class="container mx-auto px-4">
-        <div class="flex items-center justify-between mb-10">
-            <h2 class="text-3xl md:text-4xl font-bold brand-text kaushan-script-regular">
-                ManTalk
+        <div class="flex items-center justify-center mb-10">
+            <h2 class="text-3xl md:text-4xl font-bold brand-text">
+                <a href="{% url 'mantalk_list' %}" class="hover:underline">
+                    ManTalk
+                </a>
             </h2>
-            <a href="{% url 'mantalk_list' %}"
-                class="text-brand-color font-bold hover:text-red-800 transition flex items-center gap-2">
-                <span>View All</span>
-                <i class="fas fa-arrow-right"></i>
-            </a>
         </div>
 
         {% if man_talk_items %}
