@@ -1,0 +1,98 @@
+{% extends 'church/base.html' %}
+{% load thumbnail %}
+
+{% block title %}Books - Breaking Barriers International{% endblock %}
+
+{% block content %}
+<div class="bg-gray-50/50 py-8 sm:py-12 md:py-16 overflow-x-hidden">
+    <div class="container mx-auto px-4 sm:px-6 max-w-7xl">
+        <div class="max-w-4xl mx-auto text-center mb-10 sm:mb-16">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 brand-text">
+                Books</h1>
+            <p class="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed font-light px-2">
+                Resources to empower and equip you.
+            </p>
+            <div class="w-24 h-1 brand-color mx-auto mt-8 rounded-full opacity-30"></div>
+        </div>
+
+        {% if books %}
+        <div class="mb-20">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                {% for book in books %}
+                <div
+                    class="group bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-500 flex flex-col h-full transform hover:-translate-y-1">
+                    <!-- Book Cover -->
+                    <a href="{% url 'book_detail' book.slug %}"
+                        class="relative aspect-[2/3] overflow-hidden bg-gray-100 block">
+                        {% if book.cover_image %}
+                        {% if book.image_cropping %}
+                        {% thumbnail book.cover_image "600x900" box=book.image_cropping crop detail as cropped %}
+                        <img src="{{ cropped.url }}" alt="{{ book.title }}" loading="lazy"
+                            class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                        {% else %}
+                        {% thumbnail book.cover_image "600x900" crop detail as thumb %}
+                        <img src="{{ thumb.url }}" alt="{{ book.title }}" loading="lazy"
+                            class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                        {% endif %}
+                        {% else %}
+                        <div class="w-full h-full bg-gray-200 flex items-center justify-center">
+                            <i class="fas fa-book text-gray-400 text-6xl"></i>
+                        </div>
+                        {% endif %}
+                    </a>
+
+                    <!-- Content -->
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3
+                            class="text-xl font-bold text-gray-900 mb-2 group-hover:text-brand-color transition-colors leading-snug">
+                            <a href="{% url 'book_detail' book.slug %}">{{ book.title }}</a>
+                        </h3>
+                        {% if book.author %}
+                        <p class="text-sm text-gray-500 font-medium mb-4">By {{ book.author }}</p>
+                        {% endif %}
+
+                        <p class="text-gray-600 text-sm leading-relaxed line-clamp-3 mb-6 font-light flex-grow">
+                            {{ book.description }}
+                        </p>
+
+                        <div class="pt-4 border-t border-gray-50 mt-auto">
+                            <a href="{% url 'book_detail' book.slug %}"
+                                class="block w-full text-center py-2.5 bg-brand-color text-white text-sm font-bold rounded-lg hover:bg-red-800 transition-all shadow-sm">
+                                View Details & Review
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Pagination -->
+            {% if books.has_other_pages %}
+            <div class="mt-12 flex justify-center">
+                <nav class="flex items-center gap-2">
+                    {% if books.has_previous %}
+                    <a href="?page={{ books.previous_page_number }}{% if search_query %}&q={{ search_query }}{% endif %}"
+                        class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 text-gray-700 transition">Previous</a>
+                    {% endif %}
+                    <span class="px-4 py-2 text-gray-500">Page {{ books.number }} of {{ books.paginator.num_pages
+                        }}</span>
+                    {% if books.has_next %}
+                    <a href="?page={{ books.next_page_number }}{% if search_query %}&q={{ search_query }}{% endif %}"
+                        class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 text-gray-700 transition">Next</a>
+                    {% endif %}
+                </nav>
+            </div>
+            {% endif %}
+
+        </div>
+        {% else %}
+        <div class="text-center py-20 bg-white rounded-3xl border border-gray-100 shadow-sm">
+            <div class="mb-4">
+                <i class="fas fa-book text-5xl text-gray-200"></i>
+            </div>
+            <p class="text-gray-500 font-light italic">No books available at the moment.</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

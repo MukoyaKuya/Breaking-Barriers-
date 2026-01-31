@@ -4,7 +4,7 @@ from django.utils.html import format_html
 from django.forms import ModelForm
 from django.forms.widgets import ColorInput
 from image_cropping import ImageCroppingMixin
-from .models import Verse, NewsItem, NewsLine, CalendarEvent, Testimonial, GalleryImage, HeroSettings, AboutPage, InfoCard, CTACard, MensMinistry, Partner, NewsletterSubscriber, SchoolMinistryEnrollment, FAQ, SidebarPromo, WordOfTruth, ManTalk, ChildrensBread, PageView, ContactMessage, PartnerInquiry
+from .models import Verse, NewsItem, NewsLine, CalendarEvent, Testimonial, GalleryImage, HeroSettings, AboutPage, InfoCard, CTACard, MensMinistry, Partner, NewsletterSubscriber, SchoolMinistryEnrollment, FAQ, SidebarPromo, WordOfTruth, ManTalk, ChildrensBread, PageView, ContactMessage, PartnerInquiry, Book
 
 
 @admin.register(Verse)
@@ -434,7 +434,7 @@ class WordOfTruthAdmin(ImageCroppingMixin, admin.ModelAdmin):
 
     fieldsets = (
         (None, {
-            'fields': ('title', 'slug', 'is_published'),
+            'fields': ('title', 'slug', 'is_published', 'author_name'),
             'description': 'Articles shown on the Word of Truth listing page (linked from the hero section).',
         }),
         ('Content & Media', {
@@ -533,3 +533,41 @@ class PartnerInquiryAdmin(admin.ModelAdmin):
     def has_add_permission(self, request):
         # Disable manual creation
         return False
+
+
+@admin.register(Book)
+class BookAdmin(ImageCroppingMixin, admin.ModelAdmin):
+    list_display = ('title', 'author', 'is_published', 'created_at', 'view_listing_link')
+    list_filter = ('is_published', 'created_at')
+    search_fields = ('title', 'description', 'review', 'author')
+    prepopulated_fields = {'slug': ('title',)}
+    readonly_fields = ('created_at', 'updated_at')
+    date_hierarchy = 'created_at'
+
+    def view_listing_link(self, obj):
+        try:
+            url = reverse('book_list')
+            return format_html('<a href="{}" target="_blank" rel="noopener">View listing</a>', url)
+        except:
+            return '-'
+    view_listing_link.short_description = 'Listing'
+
+    fieldsets = (
+        (None, {
+            'fields': ('title', 'slug', 'author', 'is_published'),
+        }),
+        ('Media', {
+            'fields': ('cover_image', 'image_cropping'),
+        }),
+        ('Content', {
+            'fields': ('description', 'review'),
+        }),
+        ('Contact', {
+            'fields': ('whatsapp_number',),
+            'description': 'Format: +254...'
+        }),
+        ('Timestamps', {
+            'fields': ('created_at', 'updated_at'),
+            'classes': ('collapse',)
+        }),
+    )

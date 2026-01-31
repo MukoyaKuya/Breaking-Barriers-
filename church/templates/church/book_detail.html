@@ -1,0 +1,106 @@
+{% extends 'church/base.html' %}
+{% load thumbnail %}
+
+{% block title %}{{ book.title }} - Books - Breaking Barriers International{% endblock %}
+
+{% block content %}
+<div class="bg-gray-50/50 py-10 md:py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+
+        <!-- Breadcrumb -->
+        <nav class="flex mb-8 text-sm text-gray-500">
+            <a href="{% url 'home' %}" class="hover:text-brand-color transition">Home</a>
+            <span class="mx-2">/</span>
+            <a href="{% url 'book_list' %}" class="hover:text-brand-color transition">Books</a>
+            <span class="mx-2">/</span>
+            <span class="text-gray-800 font-medium truncate max-w-xs">{{ book.title }}</span>
+        </nav>
+
+        <div class="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-8">
+
+                <!-- Book Cover Side -->
+                <div class="md:col-span-1 bg-gray-50 p-6 md:p-8 flex flex-col items-center">
+                    <div class="w-full max-w-[300px] shadow-2xl rounded-lg overflow-hidden mb-6">
+                        {% if book.cover_image %}
+                        {% if book.image_cropping %}
+                        {% thumbnail book.cover_image "600x900" box=book.image_cropping crop detail as cropped %}
+                        <img src="{{ cropped.url }}" alt="{{ book.title }}" class="w-full h-auto">
+                        {% else %}
+                        {% thumbnail book.cover_image "600x900" crop detail as thumb %}
+                        <img src="{{ thumb.url }}" alt="{{ book.title }}" class="w-full h-auto">
+                        {% endif %}
+                        {% else %}
+                        <div class="aspect-[2/3] bg-gray-200 flex items-center justify-center">
+                            <i class="fas fa-book text-gray-400 text-6xl"></i>
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- WhatsApp Button -->
+                    <a href="{{ book.whatsapp_link }}" target="_blank" rel="noopener"
+                        class="w-full max-w-[300px] flex items-center justify-center gap-2 bg-[#25D366] text-white font-bold py-3 px-6 rounded-xl hover:bg-[#20bd5a] transition shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                        <i class="fab fa-whatsapp text-xl"></i>
+                        <span>Inquire on WhatsApp</span>
+                    </a>
+                    <p class="text-xs text-gray-400 mt-2 text-center">Contact us directly for orders.</p>
+                </div>
+
+                <!-- Content Side -->
+                <div class="md:col-span-2 p-6 md:p-10 md:pl-0 flex flex-col">
+                    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2 leading-tight brand-text">{{ book.title
+                        }}</h1>
+                    {% if book.author %}
+                    <p class="text-lg text-gray-600 font-medium mb-8">By {{ book.author }}</p>
+                    {% endif %}
+
+                    <div class="prose prose-lg prose-red max-w-none text-gray-700">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Book Review</h3>
+                        <div class="font-normal leading-relaxed">
+                            {{ book.review|safe }}
+                        </div>
+                    </div>
+
+                    {% if not book.review %}
+                    <div class="p-6 bg-gray-50 rounded-xl mt-6">
+                        <p class="text-gray-600 italic">{{ book.description }}</p>
+                    </div>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent/Other Books -->
+        {% if recent_books %}
+        <div class="mt-16">
+            <h3 class="text-2xl font-bold text-gray-800 mb-6">Other Books</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                {% for item in recent_books %}
+                <a href="{% url 'book_detail' item.slug %}"
+                    class="group block bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
+                    <div class="flex items-center gap-4 p-4">
+                        <div class="w-16 h-24 flex-shrink-0 bg-gray-100 rounded overflow-hidden">
+                            {% if item.cover_image %}
+                            {% thumbnail item.cover_image "200x300" crop detail as thumb %}
+                            <img src="{{ thumb.url }}" alt="{{ item.title }}" class="w-full h-full object-cover">
+                            {% else %}
+                            <div class="w-full h-full flex items-center justify-center text-gray-300"><i
+                                    class="fas fa-book"></i></div>
+                            {% endif %}
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 group-hover:text-brand-color transition line-clamp-2">{{
+                                item.title }}</h4>
+                            <p class="text-xs text-gray-500 mt-1">View Review &rarr;</p>
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+    </div>
+</div>
+{% endblock %}

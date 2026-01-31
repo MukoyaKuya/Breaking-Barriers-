@@ -18,6 +18,7 @@ from .models import (
     InfoCard,
     CTACard,
     MensMinistry,
+    Book,
     Partner,
     NewsletterSubscriber,
     FAQ,
@@ -1182,3 +1183,64 @@ def man_talk_detail_view(request, slug):
         'recent_articles': recent_articles,
     }
     return render(request, 'church/mantalk_detail.html', context)
+
+
+def book_list_view(request):
+    """List view for Books with pagination."""
+    # Cache the base query set for 5 minutes if no search
+    search_query = request.GET.get('q', '')
+    
+    if search_query:
+        books_list = Book.objects.filter(is_published=True).filter(
+             Q(title__icontains=search_query) |
+             Q(description__icontains=search_query) |
+             Q(author__icontains=search_query)
+        ).order_by('-created_at')
+    else:
+        # Check cache
+        cache_key = 'book_list_all'
+        books_list = cache.get(cache_key)
+        if not books_list:
+            books_list = Book.objects.filter(is_published=True).order_by('-created_at')
+            cache.set(cache_key, books_list, 300)
+
+    # Padding/Pagination
+    page = request.GET.get('page', 1)
+    paginator = Paginator(books_list, 9)  # 9 cards per page
+
+    try:
+        books_page = paginator.page(page)
+    except PageNotAnInteger:
+        books_page = paginator.page(1)
+    except EmptyPage:
+        books_page = paginator.page(paginator.num_pages)
+
+    context = {
+        'books': books_page,
+        'search_query': search_query,
+        'page_obj': books_page,
+    }
+    return render(request, 'church/book_list.html', context)
+
+
+def book_detail_view(request, slug):
+    """Detail view for a Book."""
+    cache_key = f'book_detail_{slug}'
+    book = cache.get(cache_key)
+
+    if not book:
+        book = get_object_or_404(Book, slug=slug, is_published=True)
+        cache.set(cache_key, book, 600)
+
+    # Recent books for sidebar or bottom
+    recent_cache_key = 'books_recent'
+    recent_books = cache.get(recent_cache_key)
+    if not recent_books:
+        recent_books = Book.objects.filter(is_published=True).exclude(id=book.id).order_by('-created_at')[:3]
+        cache.set(recent_cache_key, recent_books, 300)
+
+    context = {
+        'book': book,
+        'recent_books': recent_books,
+    }
+    return render(request, 'church/book_detail.html', context)

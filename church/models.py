@@ -517,6 +517,43 @@ class ManTalk(models.Model):
         return self.created_at.strftime('%d') if self.created_at else ''
 
 
+
+class Book(models.Model):
+    """Books with reviews and WhatsApp inquiry link"""
+    title = models.CharField(max_length=200)
+    slug = models.SlugField(unique=True, max_length=200)
+    author = models.CharField(max_length=100, default='Pst. Nellie Shani', help_text='Author name', blank=True)
+    cover_image = models.ImageField(upload_to='books/', help_text='Book cover image')
+    image_cropping = ImageRatioField('cover_image', '600x900', size_warning=True, help_text='Crop for vertical book display (600x900)')
+    description = models.TextField(help_text='Short description/summary for the card')
+    review = RichTextField(help_text='Full book review and details')
+    whatsapp_number = models.CharField(max_length=20, default='+254716703508', help_text='WhatsApp number for inquiries')
+    is_published = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = 'Book'
+        verbose_name_plural = 'Books'
+
+    def __str__(self):
+        return self.title
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
+
+    @property
+    def whatsapp_link(self):
+        """Generate WhatsApp link for inquiries."""
+        # Clean number (remove + or spaces if needed, but basic format works for wa.me)
+        phone = self.whatsapp_number.replace('+', '').replace(' ', '')
+        text = f"Hi, I'm interested in the book '{self.title}'."
+        return f"https://wa.me/{phone}?text={text}"
+
+
 class ChildrensBread(models.Model):
     """Articles for Children's Bread section"""
     title = models.CharField(max_length=200)
