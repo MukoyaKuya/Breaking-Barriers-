@@ -4,7 +4,7 @@ from django.utils.html import format_html
 from django.forms import ModelForm
 from django.forms.widgets import ColorInput
 from image_cropping import ImageCroppingMixin
-from .models import Verse, NewsItem, NewsLine, CalendarEvent, Testimonial, GalleryImage, HeroSettings, AboutPage, InfoCard, CTACard, MensMinistry, Partner, NewsletterSubscriber, SchoolMinistryEnrollment, FAQ, SidebarPromo, WordOfTruth, ChildrensBread, PageView, ContactMessage
+from .models import Verse, NewsItem, NewsLine, CalendarEvent, Testimonial, GalleryImage, HeroSettings, AboutPage, InfoCard, CTACard, MensMinistry, Partner, NewsletterSubscriber, SchoolMinistryEnrollment, FAQ, SidebarPromo, WordOfTruth, ChildrensBread, PageView, ContactMessage, PartnerInquiry
 
 
 @admin.register(Verse)
@@ -486,4 +486,29 @@ class ContactMessageAdmin(admin.ModelAdmin):
     
     def has_add_permission(self, request):
         # Disable manual creation - messages come from the form
+        return False
+
+
+@admin.register(PartnerInquiry)
+class PartnerInquiryAdmin(admin.ModelAdmin):
+    list_display = ('first_name', 'last_name', 'email', 'phone', 'company_name', 'is_read', 'created_at')
+    list_filter = ('is_read', 'created_at')
+    search_fields = ('first_name', 'last_name', 'email', 'message', 'company_name')
+    readonly_fields = ('created_at',)
+    list_editable = ('is_read',)
+
+    fieldsets = (
+        ('Contact Information', {
+            'fields': ('first_name', 'last_name', 'email', 'phone', 'company_name')
+        }),
+        ('Message', {
+            'fields': ('message',)
+        }),
+        ('Status', {
+            'fields': ('is_read', 'created_at')
+        }),
+    )
+
+    def has_add_permission(self, request):
+        # Disable manual creation
         return False

@@ -109,6 +109,27 @@ class NewsLine(models.Model):
         return self.created_at.strftime('%B %d, %Y') if self.created_at else ''
 
 
+
+class PartnerInquiry(models.Model):
+    """Model for partnership inquiries from the Donate page."""
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    company_name = models.CharField(max_length=200, blank=True)
+    phone = models.CharField(max_length=20, help_text='Phone number')
+    email = models.EmailField()
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    is_read = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = 'Partner Inquiry'
+        verbose_name_plural = 'Partner Inquiries'
+
+    def __str__(self):
+        return f"Partner Inquiry from {self.first_name} {self.last_name}"
+
+
 class ContactMessage(models.Model):
     """Model for storing contact form submissions."""
     name = models.CharField(max_length=100)

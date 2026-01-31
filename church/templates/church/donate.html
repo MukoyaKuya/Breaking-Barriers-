@@ -1,87 +1,163 @@
 {% extends 'church/base.html' %}
 
-{% block title %}Give - GraceCommunity Church{% endblock %}
+{% block title %}Partner with Us - Breaking Barriers International{% endblock %}
 
 {% block content %}
-<div class="bg-white py-16">
-    <div class="container mx-auto px-4 max-w-4xl">
-        <h1 class="text-4xl md:text-5xl font-bold mb-12 text-center">Give</h1>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <!-- Giving Information -->
-            <div class="bg-gray-50 p-8 rounded-lg shadow-md">
-                <h2 class="text-2xl font-bold mb-4">
-                    <i class="fas fa-heart brand-text mr-2"></i>
-                    Why We Give
-                </h2>
-                <p class="text-gray-700 leading-relaxed mb-4">
-                    Giving is an act of worship and a way to support the ministry and mission 
-                    of GraceCommunity Church. Your generous contributions enable us to:
-                </p>
-                <ul class="list-disc pl-6 text-gray-700 mb-4">
-                    <li>Support our community outreach programs</li>
-                    <li>Maintain our facilities and resources</li>
-                    <li>Provide pastoral care and counseling</li>
-                    <li>Fund missions and global ministry</li>
-                    <li>Equip believers for service</li>
-                </ul>
+<div class="bg-white py-12 md:py-20">
+    <div class="container mx-auto px-4 max-w-6xl">
+
+        <!-- Header -->
+        <div class="text-center mb-16">
+            <h1 class="text-3xl md:text-4xl font-bold text-brand-color mb-4">Need to talk to someone?</h1>
+        </div>
+
+        {% if messages %}
+        <div class="mb-12 max-w-4xl mx-auto">
+            {% for message in messages %}
+            <div
+                class="p-4 rounded-lg {% if message.tags == 'success' %}bg-green-100 text-green-700{% else %}bg-red-100 text-red-700{% endif %}">
+                {{ message }}
             </div>
-            
-            <!-- Ways to Give -->
-            <div class="bg-gray-50 p-8 rounded-lg shadow-md">
-                <h2 class="text-2xl font-bold mb-4">
-                    <i class="fas fa-hand-holding-heart brand-text mr-2"></i>
-                    Ways to Give
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Top Section: Contact Info & Form -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 mb-20">
+
+            <!-- Left: Contact Details -->
+            <div class="bg-gray-50 p-8 rounded-xl shadow-sm border border-gray-100 h-full">
+                <h2 class="text-xl font-bold text-brand-color mb-8 text-center border-b border-gray-200 pb-4">Contact Us
                 </h2>
-                <div class="space-y-4">
+
+                <div class="space-y-8 pl-4">
                     <div>
-                        <h3 class="font-semibold text-lg mb-2">Online Giving</h3>
-                        <p class="text-gray-700 mb-4">
-                            Secure online giving is available through our payment gateway. 
-                            You can set up one-time or recurring donations.
-                        </p>
-                        <button class="bg-brand-color text-white px-6 py-3 rounded-lg hover:bg-red-900 transition font-semibold">
-                            Donate Online
-                        </button>
+                        <p class="font-bold text-gray-900 mb-1">Call us on : <span
+                                class="font-normal text-gray-700">+254716 703 508</span></p>
                     </div>
-                    
-                    <div class="pt-4 border-t">
-                        <h3 class="font-semibold text-lg mb-2">In Person</h3>
-                        <p class="text-gray-700">
-                            You can give during our Sunday services or visit our office during 
-                            business hours. We accept cash, checks, and card payments.
-                        </p>
-                    </div>
-                    
-                    <div class="pt-4 border-t">
-                        <h3 class="font-semibold text-lg mb-2">By Mail</h3>
-                        <p class="text-gray-700">
-                            Send your contribution to our church address. Please make checks 
-                            payable to GraceCommunity Church.
-                        </p>
+
+                    <div>
+                        <p class="font-bold text-gray-900 mb-1">Email : <span
+                                class="font-normal text-gray-700">info@bb-international.org</span></p>
                     </div>
                 </div>
             </div>
+
+            <!-- Right: Contact Form -->
+            <div class="bg-gray-50 p-8 rounded-xl shadow-sm border border-gray-100 h-full">
+                <h2 class="text-xl font-bold text-brand-color mb-6 text-center border-b border-gray-200 pb-4">Get in
+                    Touch</h2>
+
+                <form method="post" action="{% url 'donate' %}">
+                    {% csrf_token %}
+                    <div class="space-y-4">
+                        <div>
+                            {{ contact_form.name }}
+                            {% if contact_form.name.errors %}
+                            <p class="text-red-500 text-sm mt-1">{{ contact_form.name.errors.0 }}</p>
+                            {% endif %}
+                        </div>
+
+                        <div>
+                            {{ contact_form.email }}
+                            {% if contact_form.email.errors %}
+                            <p class="text-red-500 text-sm mt-1">{{ contact_form.email.errors.0 }}</p>
+                            {% endif %}
+                        </div>
+
+                        <!-- Hidden fields for ContactForm requirement -->
+                        <input type="hidden" name="{{ contact_form.subject.name }}" value="From Donate Page">
+                        <input type="hidden" name="{{ contact_form.phone.name }}" value="0000000000">
+
+                        <div>
+                            {{ contact_form.message }}
+                            {% if contact_form.message.errors %}
+                            <p class="text-red-500 text-sm mt-1">{{ contact_form.message.errors.0 }}</p>
+                            {% endif %}
+                        </div>
+
+                        <button type="submit" name="contact-submit"
+                            class="w-full bg-brand-color text-white py-3 rounded-lg font-bold hover:bg-red-900 transition duration-300">
+                            Send
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
-        
-        <!-- Scripture Reference -->
-        <div class="bg-gray-50 p-8 rounded-lg shadow-md text-center">
-            <p class="text-xl italic text-gray-700 mb-2">
-                "Each of you should give what you have decided in your heart to give, 
-                not reluctantly or under compulsion, for God loves a cheerful giver."
-            </p>
-            <p class="text-brand-color font-semibold">— 2 Corinthians 9:7</p>
+
+        <!-- Bottom Section: Partner with Us -->
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl font-bold text-brand-color mb-6 text-center">Partner with us</h2>
+
+            <div class="text-center text-gray-700 leading-relaxed mb-10 max-w-3xl mx-auto space-y-4">
+                <p>
+                    It is impossible to run a ministry without funding. Our group sessions for women, men and children
+                    are given free.
+                    We would want to continue not to charge but that would be impossible without our partners.
+                </p>
+                <p>
+                    Our ministry is a non-profit and we depend on financial support from partners. Please consider
+                    becoming a partner.
+                    We have different categories depending on how much you are able to give. So far the lord has been
+                    faithful and we thank those who are already BBI partners.
+                </p>
+            </div>
+
+            <div class="bg-gray-50 p-8 md:p-10 rounded-xl shadow-sm border border-gray-100">
+                <form method="post" action="{% url 'donate' %}">
+                    {% csrf_token %}
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            {{ partner_form.first_name }}
+                            {% if partner_form.first_name.errors %}
+                            <p class="text-red-500 text-sm mt-1">{{ partner_form.first_name.errors.0 }}</p>
+                            {% endif %}
+                        </div>
+                        <div>
+                            {{ partner_form.last_name }}
+                            {% if partner_form.last_name.errors %}
+                            <p class="text-red-500 text-sm mt-1">{{ partner_form.last_name.errors.0 }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            {{ partner_form.company_name }}
+                            {% if partner_form.company_name.errors %}
+                            <p class="text-red-500 text-sm mt-1">{{ partner_form.company_name.errors.0 }}</p>
+                            {% endif %}
+                        </div>
+                        <div>
+                            {{ partner_form.phone }}
+                            {% if partner_form.phone.errors %}
+                            <p class="text-red-500 text-sm mt-1">{{ partner_form.phone.errors.0 }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="mb-6">
+                        {{ partner_form.email }}
+                        {% if partner_form.email.errors %}
+                        <p class="text-red-500 text-sm mt-1">{{ partner_form.email.errors.0 }}</p>
+                        {% endif %}
+                    </div>
+
+                    <div class="mb-8">
+                        {{ partner_form.message }}
+                        {% if partner_form.message.errors %}
+                        <p class="text-red-500 text-sm mt-1">{{ partner_form.message.errors.0 }}</p>
+                        {% endif %}
+                    </div>
+
+                    <button type="submit" name="partner-submit"
+                        class="w-full bg-brand-color text-white py-4 rounded-lg font-bold hover:bg-red-900 transition duration-300">
+                        Send
+                    </button>
+                </form>
+            </div>
         </div>
-        
-        <!-- Contact Information -->
-        <div class="mt-12 text-center">
-            <p class="text-gray-700 mb-4">
-                Questions about giving? Contact our office or speak with one of our pastors.
-            </p>
-            <a href="{% url 'about' %}" class="text-brand-color hover:underline font-semibold">
-                Contact Us <i class="fas fa-arrow-right ml-1"></i>
-            </a>
-        </div>
+
     </div>
 </div>
 {% endblock %}

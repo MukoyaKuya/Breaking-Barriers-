@@ -261,8 +261,38 @@ def privacy_view(request):
 
 
 def donate_view(request):
-    """Donations page"""
-    return render(request, 'church/donate.html')
+    """Donations page with contact and partner inquiry forms."""
+    from .forms import ContactForm, PartnerInquiryForm
+
+    # Initialize forms with None (or data)
+    contact_form = ContactForm(prefix='contact')
+    partner_form = PartnerInquiryForm(prefix='partner')
+
+    if request.method == 'POST':
+        # Determine which form was submitted based on the button name or prefix presence
+        if 'contact-submit' in request.POST:
+            contact_form = ContactForm(request.POST, prefix='contact')
+            if contact_form.is_valid():
+                contact_form.save()
+                messages.success(request, 'Thank you for your message! We will get back to you soon.')
+                return redirect('donate')
+            else:
+                messages.error(request, 'Please correct the errors in the Contact form.')
+
+        elif 'partner-submit' in request.POST:
+            partner_form = PartnerInquiryForm(request.POST, prefix='partner')
+            if partner_form.is_valid():
+                partner_form.save()
+                messages.success(request, 'Thank you for your partnership inquiry! We will contact you shortly.')
+                return redirect('donate')
+            else:
+                messages.error(request, 'Please correct the errors in the Partner form.')
+
+    context = {
+        'contact_form': contact_form,
+        'partner_form': partner_form,
+    }
+    return render(request, 'church/donate.html', context)
 
 
 def childrens_bread_school_view(request):
