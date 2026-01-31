@@ -476,6 +476,47 @@ class WordOfTruth(models.Model):
         return self.created_at.strftime('%d') if self.created_at else ''
 
 
+class ManTalk(models.Model):
+    """Articles for ManTalk (formerly Men's Ministry)"""
+    title = models.CharField(max_length=200)
+    slug = models.SlugField(unique=True, max_length=200)
+    summary = models.TextField(help_text='Short summary for the listing page')
+    author_name = models.CharField(max_length=100, default='Breaking Barriers International', help_text='Name of the article writer')
+    image = models.ImageField(upload_to='man_talk/', blank=True, null=True, help_text='Featured image for the article')
+    image_cropping = ImageRatioField('image', '800x600', size_warning=True, help_text='Crop the image for proper display (800x600)')
+    body = RichTextField(help_text='Full article content')
+    is_published = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = 'ManTalk Article'
+        verbose_name_plural = 'ManTalk Articles'
+        indexes = [
+            models.Index(fields=['is_published', '-created_at']),
+            models.Index(fields=['slug']),
+        ]
+
+    def __str__(self):
+        return self.title
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
+
+    @property
+    def created_at_month(self):
+        """Month abbreviation (e.g. Jan) for badge display."""
+        return self.created_at.strftime('%b') if self.created_at else ''
+
+    @property
+    def created_at_day(self):
+        """Day number (e.g. 01) for badge display."""
+        return self.created_at.strftime('%d') if self.created_at else ''
+
+
 class ChildrensBread(models.Model):
     """Articles for Children's Bread section"""
     title = models.CharField(max_length=200)

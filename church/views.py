@@ -3,6 +3,7 @@ from django.http import Http404, JsonResponse, HttpResponse
 from django.db.models import Q, Count
 from django.db.models.functions import TruncMonth
 from django.utils import timezone
+from django.core.cache import cache
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import calendar
 from .models import (
@@ -22,6 +23,7 @@ from .models import (
     FAQ,
     SidebarPromo,
     WordOfTruth,
+    ManTalk,
     ChildrensBread,
     SchoolMinistryEnrollment,
     PageView,
@@ -39,7 +41,9 @@ from .query_utils import (
     get_optimized_info_cards,
     get_optimized_faqs,
     get_optimized_sidebar_promos,
+    get_optimized_sidebar_promos,
     get_optimized_word_of_truth_list,
+    get_optimized_man_talk_list,
 )
 from django.template.loader import get_template
 from io import BytesIO
@@ -63,6 +67,7 @@ def home_view(request):
     testimonials = get_optimized_testimonials(limit=6)
     gallery_items = get_optimized_gallery_items(limit=6)
     mens_ministry = get_optimized_mens_ministry()
+    man_talk_items = get_optimized_man_talk_list(limit=3)
     partners = get_optimized_partners()
     hero_settings = get_cached_hero_settings()
     verse_of_the_day = get_optimized_verse_of_the_day()
@@ -82,6 +87,7 @@ def home_view(request):
         'testimonials': testimonials,
         'gallery_items': gallery_items,
         'mens_ministry': mens_ministry,
+        'man_talk_items': man_talk_items,
         'partners': partners,
         'hero_settings': hero_settings,
         'verse_of_the_day': verse_of_the_day,
@@ -1097,3 +1103,82 @@ def analytics_reset_view(request):
         from django.contrib import messages
         messages.success(request, 'Analytics data has been successfully reset.')
     return redirect('analytics')
+
+
+def man_talk_list_view(request):
+    """List all ManTalk articles."""
+    from django.db import connection
+    import hashlib
+
+    search_query = request.GET.get('q', '').strip()
+    page = request.GET.get('page', 1)
+
+    # Use cache for listing pages (5 mins)
+    cache_key = f'man_talk_list_{hashlib.md5(f"{search_query}_{page}".encode()).hexdigest()}' if search_query else f'man_talk_list_page_{page}'
+    cached_context = cache.get(cache_key)
+    
+    # Skipping complex object caching for now to avoid serialization issues
+    
+    articles = ManTalk.objects.filter(is_published=True).order_by('-created_at')
+
+    if search_query:
+        if connection.vendor == 'postgresql':
+            try:
+                from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
+                vector = SearchVector('title', weight='A') + \
+                         SearchVector('summary', weight='B') + \
+                         SearchVector('body', weight='C')
+                query = SearchQuery(search_query)
+                articles = articles.annotate(rank=SearchRank(vector, query)).filter(rank__gte=0.1).order_by('-rank')
+            except Exception:
+                 articles = articles.filter(
+                    Q(title__icontains=search_query) |
+                    Q(summary__icontains=search_query) | 
+                    Q(body__icontains=search_query)
+                )
+        else:
+            articles = articles.filter(
+                Q(title__icontains=search_query) |
+                Q(summary__icontains=search_query) | 
+                Q(body__icontains=search_query)
+            )
+
+    paginator = Paginator(articles, 9)
+    try:
+        articles_page = paginator.page(page)
+    except PageNotAnInteger:
+        articles_page = paginator.page(1)
+    except EmptyPage:
+        articles_page = paginator.page(paginator.num_pages)
+
+    context = {
+        'articles': articles_page,
+        'search_query': search_query,
+        'page_obj': articles_page,  # For pagination template
+    }
+    return render(request, 'church/mantalk_list.html', context)
+
+
+def man_talk_detail_view(request, slug):
+    """Detail view for a Man Talk article."""
+    # Try to get from cache first
+    cache_key = f'man_talk_detail_{slug}'
+    article = cache.get(cache_key)
+
+    if not article:
+        article = get_object_or_404(ManTalk, slug=slug, is_published=True)
+        cache.set(cache_key, article, 600)  # Cache for 10 mins
+
+    # Get recent/related articles (excluding current)
+    # Cache recent articles list too
+    recent_cache_key = 'man_talk_recent'
+    recent_articles = cache.get(recent_cache_key)
+    if not recent_articles:
+        recent_articles = ManTalk.objects.filter(is_published=True).exclude(id=article.id).order_by('-created_at')[:3]
+        cache.set(recent_cache_key, recent_articles, 300) # 5 mins
+
+    context = {
+        'article': article,
+        'recent_articles': recent_articles,
+    }
+    return render(request, 'church/mantalk_detail.html', context)

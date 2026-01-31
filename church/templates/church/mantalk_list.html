@@ -1,0 +1,118 @@
+{% extends 'church/base.html' %}
+{% load thumbnail %}
+
+{% block title %}ManTalk - Breaking Barriers International{% endblock %}
+
+{% block content %}
+<div class="bg-gray-50/50 py-8 sm:py-12 md:py-16 overflow-x-hidden">
+    <div class="container mx-auto px-4 sm:px-6 max-w-7xl">
+        <div class="max-w-4xl mx-auto text-center mb-10 sm:mb-16">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 brand-text kaushan-script-regular">
+                ManTalk</h1>
+            <p class="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed font-light px-2">
+                Biblical insights and real conversations for men. Discover your purpose and identity in Christ.
+            </p>
+            <div class="w-24 h-1 brand-color mx-auto mt-8 rounded-full opacity-30"></div>
+        </div>
+
+        {% if articles %}
+        <div class="mb-20">
+            <div class="flex items-center justify-between mb-10 border-b border-gray-100 pb-6">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-800">Latest Articles</h2>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8" id="articles-container">
+                {% for article in articles %}
+                <div
+                    class="group bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-500 flex flex-col h-full transform hover:-translate-y-1">
+                    <!-- Article Banner/Image -->
+                    <a href="{% url 'mantalk_detail' article.slug %}"
+                        class="relative aspect-[16/10] overflow-hidden bg-gray-100 block">
+                        {% if article.image %}
+                        {% if article.image_cropping %}
+                        {% thumbnail article.image "800x600" box=article.image_cropping crop detail as cropped %}
+                        <img src="{{ cropped.url }}" alt="{{ article.title }}" loading="lazy"
+                            class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        {% else %}
+                        {% thumbnail article.image "800x600" crop detail as thumb %}
+                        <img src="{{ thumb.url }}" alt="{{ article.title }}" loading="lazy"
+                            class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        {% endif %}
+                        {% else %}
+                        <div class="w-full h-full brand-color opacity-90 flex items-center justify-center">
+                            <i class="fas fa-users text-white/30 text-6xl"></i>
+                        </div>
+                        {% endif %}
+
+                        <!-- Date Badge -->
+                        <div
+                            class="absolute top-4 right-4 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-xl shadow-lg border border-white/50 text-center min-w-[50px]">
+                            <span class="block text-xs font-bold text-brand-color uppercase tracking-tighter">{{
+                                article.created_at_month }}</span>
+                            <span class="block text-lg font-black text-gray-900 leading-none">{{ article.created_at_day
+                                }}</span>
+                        </div>
+                    </a>
+
+                    <!-- Content Area -->
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex-grow">
+                            <h3
+                                class="text-xl font-bold text-gray-900 mb-3 group-hover:text-brand-color transition-colors line-clamp-2 leading-snug">
+                                <a href="{% url 'mantalk_detail' article.slug %}">{{ article.title }}</a>
+                            </h3>
+                            <p
+                                class="text-xs text-gray-400 font-bold uppercase tracking-widest mb-4 flex items-center gap-2">
+                                <span class="w-6 h-px bg-gray-200"></span>
+                                {{ article.author_name }}
+                            </p>
+                            <p class="text-gray-600 text-sm leading-relaxed line-clamp-3 mb-6 font-light">
+                                {{ article.summary }}
+                            </p>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="pt-6 border-t border-gray-50 mt-auto">
+                            <a href="{% url 'mantalk_detail' article.slug %}"
+                                class="flex items-center justify-center gap-2 py-2.5 bg-gray-50 text-gray-700 text-xs font-bold rounded-xl hover:bg-brand-color hover:text-white transition-all shadow-sm">
+                                <i class="fas fa-book-open text-[10px]"></i> Read Article
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Pagination -->
+            {% if articles.has_other_pages %}
+            <div class="mt-12 flex justify-center">
+                <nav class="flex items-center gap-2">
+                    {% if articles.has_previous %}
+                    <a href="?page={{ articles.previous_page_number }}{% if search_query %}&q={{ search_query }}{% endif %}"
+                        class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 text-gray-700 transition">Previous</a>
+                    {% endif %}
+
+                    <span class="px-4 py-2 text-gray-500">
+                        Page {{ articles.number }} of {{ articles.paginator.num_pages }}
+                    </span>
+
+                    {% if articles.has_next %}
+                    <a href="?page={{ articles.next_page_number }}{% if search_query %}&q={{ search_query }}{% endif %}"
+                        class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 text-gray-700 transition">Next</a>
+                    {% endif %}
+                </nav>
+            </div>
+            {% endif %}
+
+        </div>
+        {% else %}
+        <div class="text-center py-20 bg-white rounded-3xl border border-gray-100 shadow-sm">
+            <div class="mb-4">
+                <i class="fas fa-users text-5xl text-gray-200"></i>
+            </div>
+            <p class="text-gray-500 font-light italic">ManTalk articles will be available soon.</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

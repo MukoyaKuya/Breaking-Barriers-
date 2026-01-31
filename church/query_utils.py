@@ -18,6 +18,7 @@ from .models import (
     CTACard,
     AboutPage,
     WordOfTruth,
+    ManTalk,
 )
 
 # Cache timeouts (seconds)
@@ -122,6 +123,13 @@ def get_optimized_word_of_truth_list():
     return WordOfTruth.objects.filter(
         is_published=True
     ).order_by('-created_at')
+
+
+def get_optimized_man_talk_list(limit=3):
+    """Published ManTalk articles (latest)."""
+    return ManTalk.objects.filter(
+        is_published=True
+    ).order_by('-created_at')[:limit]
 
 
 def invalidate_home_caches():
