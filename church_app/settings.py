@@ -56,6 +56,7 @@ if not DEBUG:
 
 INSTALLED_APPS = [
     'jazzmin',
+    'compressor',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -74,7 +75,7 @@ if os.environ.get('GS_BUCKET_NAME'):
 
 try:
     import debug_toolbar  # noqa: F401
-    _debug_toolbar_available = DEBUG
+    _debug_toolbar_available = False # User requested removal
 except ImportError:
     _debug_toolbar_available = False
 
@@ -275,6 +276,15 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
+
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+]
+
+COMPRESS_ENABLED = True
+
 
 # Media files (User uploaded content)
 # Using Django 4.2+ STORAGES dict format for compatibility with Django 5.2

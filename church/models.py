@@ -54,6 +54,10 @@ class NewsItem(models.Model):
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
 
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('news_detail', args=[self.slug])
+
 
 
 class NewsLine(models.Model):
@@ -465,6 +469,10 @@ class WordOfTruth(models.Model):
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
 
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('word_of_truth_detail', args=[self.slug])
+
     @property
     def created_at_month(self):
         """Month abbreviation (e.g. Jan) for badge display."""
@@ -505,6 +513,10 @@ class ManTalk(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('mantalk_detail', args=[self.slug])
 
     @property
     def created_at_month(self):
@@ -586,6 +598,10 @@ class ChildrensBread(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('childrens_bread_detail', args=[self.slug])
 
 
 class CTACard(models.Model):

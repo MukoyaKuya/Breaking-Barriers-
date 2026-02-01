@@ -4,6 +4,12 @@
 
 {% block title %}{{ article.title }} - Breaking Barriers International{% endblock %}
 
+{% block og_title %}{{ article.title }}{% endblock %}
+{% block og_description %}{{ article.summary|truncatewords:40 }}{% endblock %}
+{% block og_image %}{% if article.image %}{{ article.image.url }}{% else %}{% static 'images/logo.png' %}{% endif %}{%
+endblock %}
+{% block og_type %}article{% endblock %}
+
 {% block extra_head %}
 <meta name="description"
     content="{% if article.summary %}{{ article.summary|truncatewords:30 }}{% else %}{{ article.title }} - Children's Bread by {{ article.author_name }}{% endif %}">
@@ -117,7 +123,8 @@
                             </div>
                         </div>
 
-                        <div class="prose prose-sm sm:prose-base md:prose-lg lg:prose-xl max-w-none text-gray-700 leading-relaxed font-normal overflow-x-hidden">
+                        <div
+                            class="prose prose-sm sm:prose-base md:prose-lg lg:prose-xl max-w-none text-gray-700 leading-relaxed font-normal overflow-x-hidden">
                             {% if article.summary %}
                             <div class="lead-text relative mb-12">
                                 <div class="absolute left-0 top-0 bottom-0 w-1.5 brand-color rounded-full"></div>

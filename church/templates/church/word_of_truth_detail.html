@@ -4,6 +4,12 @@
 
 {% block title %}{{ word_of_truth.title }} - Breaking Barriers International{% endblock %}
 
+{% block og_title %}{{ word_of_truth.title }}{% endblock %}
+{% block og_description %}{{ word_of_truth.summary|truncatewords:40 }}{% endblock %}
+{% block og_image %}{% if word_of_truth.image %}{{ word_of_truth.image.url }}{% else %}{% static 'images/logo.png' %}{%
+endif %}{% endblock %}
+{% block og_type %}article{% endblock %}
+
 {% block extra_head %}
 <meta name="description"
     content="{% if word_of_truth.summary %}{{ word_of_truth.summary|truncatewords:30 }}{% else %}{{ word_of_truth.title }} - Word of Truth by {{ word_of_truth.author_name }}{% endif %}">
@@ -52,7 +58,8 @@
                     {% if word_of_truth.image %}
                     <div class="w-full max-h-[320px] md:max-h-[400px] relative bg-gray-100 group overflow-hidden">
                         {% if word_of_truth.image_cropping %}
-                        {% thumbnail word_of_truth.image "800x533" box=word_of_truth.image_cropping crop detail as cropped %}
+                        {% thumbnail word_of_truth.image "800x533" box=word_of_truth.image_cropping crop detail as
+                        cropped %}
                         <img src="{{ cropped.url }}" alt="{{ word_of_truth.title }}" loading="lazy"
                             class="w-full h-full max-h-[320px] md:max-h-[400px] object-cover object-center transition-transform duration-700 group-hover:scale-105">
                         {% else %}
@@ -117,7 +124,8 @@
                             </div>
                         </div>
 
-                        <div class="prose prose-sm sm:prose-base md:prose-lg lg:prose-xl max-w-none text-gray-700 leading-relaxed font-normal overflow-x-hidden">
+                        <div
+                            class="prose prose-sm sm:prose-base md:prose-lg lg:prose-xl max-w-none text-gray-700 leading-relaxed font-normal overflow-x-hidden">
                             {% if word_of_truth.summary %}
                             <div class="lead-text relative mb-12">
                                 <div class="absolute left-0 top-0 bottom-0 w-1.5 brand-color rounded-full"></div>
@@ -141,7 +149,8 @@
                             <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
                                 <a href="{% url 'word_of_truth_pdf' word_of_truth.slug %}"
                                     class="group inline-flex items-center justify-center px-6 sm:px-8 py-3.5 sm:py-4 brand-color text-white rounded-2xl hover:bg-red-900 transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 min-h-[48px] text-sm sm:text-base font-bold">
-                                    <i class="fas fa-file-pdf mr-3 text-lg sm:text-xl group-hover:scale-110 transition-transform"></i>
+                                    <i
+                                        class="fas fa-file-pdf mr-3 text-lg sm:text-xl group-hover:scale-110 transition-transform"></i>
                                     <span>Download Article (PDF)</span>
                                 </a>
                                 <button type="button" onclick="window.print()"

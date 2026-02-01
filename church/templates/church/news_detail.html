@@ -3,6 +3,12 @@
 
 {% block title %}{{ news_item.title }} - Breaking Barriers International{% endblock %}
 
+{% block og_title %}{{ news_item.title }}{% endblock %}
+{% block og_description %}{{ news_item.summary|truncatewords:40 }}{% endblock %}
+{% block og_image %}{% if news_item.image %}{{ news_item.image.url }}{% else %}{% static 'images/logo.png' %}{% endif
+%}{% endblock %}
+{% block og_type %}article{% endblock %}
+
 {% block content %}
 <div class="bg-white py-16">
     <div class="container mx-auto px-4 max-w-4xl">
@@ -38,7 +44,8 @@
             {% thumbnail news_item.image "1200x800" crop detail as cropped %}
             <picture>
                 <source srcset="{{ cropped.url }}.webp" type="image/webp">
-                <img src="{{ cropped.url }}" alt="{{ news_item.title }}" loading="lazy" class="w-full h-auto rounded-lg shadow-md">
+                <img src="{{ cropped.url }}" alt="{{ news_item.title }}" loading="lazy"
+                    class="w-full h-auto rounded-lg shadow-md">
             </picture>
         </div>
         {% endif %}

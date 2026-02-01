@@ -5,11 +5,11 @@
 {% block content %}
 <div class="container mx-auto px-4 py-12">
     <h1 class="text-4xl font-bold mb-8 brand-text">Search Results</h1>
-    
+
     {% if query %}
     <p class="text-lg text-gray-700 mb-8">Search results for: <strong>"{{ query }}"</strong></p>
     {% endif %}
-    
+
     {% if results %}
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {% for item in results %}
@@ -19,11 +19,15 @@
             {% endif %}
             <div class="p-6">
                 <h2 class="text-xl font-bold mb-2 brand-text">
-                    <a href="{% url 'news_detail' item.slug %}" class="hover:underline">{{ item.title }}</a>
+                    <a href="{{ item.get_absolute_url }}" class="hover:underline">{{ item.title }}</a>
                 </h2>
                 <p class="text-gray-600 mb-4">{{ item.summary|truncatewords:30 }}</p>
                 {% if item.event_date %}
-                <p class="text-sm text-gray-500">{{ item.event_date|date:"F d, Y" }}</p>
+                <p class="text-sm text-gray-500"><i class="fas fa-calendar-alt mr-1"></i> {{ item.event_date|date:"F d,
+                    Y" }}</p>
+                {% elif item.created_at %}
+                <p class="text-sm text-gray-500"><i class="far fa-clock mr-1"></i> {{ item.created_at|date:"M d, Y" }}
+                </p>
                 {% endif %}
             </div>
         </div>

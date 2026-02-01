@@ -3,6 +3,7 @@
 
 <head>
     {% load static %}
+    {% load compress %}
     <meta charset="UTF-8">
     <meta name="color-scheme" content="only light">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -12,6 +13,20 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="{% static 'images/logo.png' %}">
     <link rel="shortcut icon" type="image/png" href="{% static 'images/logo.png' %}">
+
+    <!-- SEO / OpenGraph -->
+    <meta property="og:site_name" content="Breaking Barriers International">
+    <meta property="og:title" content="{% block og_title %}Breaking Barriers International{% endblock %}">
+    <meta property="og:description"
+        content="{% block og_description %}Breaking barriers in life and ministry through the power of the Holy Spirit.{% endblock %}">
+    <meta property="og:image" content="{% block og_image %}{% static 'images/logo.png' %}{% endblock %}">
+    <meta property="og:type" content="{% block og_type %}website{% endblock %}">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{% block twitter_title %}{{ self.og_title }}{% endblock %}">
+    <meta name="twitter:description" content="{% block twitter_description %}{{ self.og_description }}{% endblock %}">
+    <meta name="twitter:image" content="{% block twitter_image %}{{ self.og_image }}{% endblock %}">
 
     <!-- PWA -->
     <link rel="manifest" href="{% static 'manifest.json' %}">
@@ -51,6 +66,7 @@
         rel="stylesheet">
 
     <!-- Custom styles for brand color -->
+    {% compress css %}
     <style>
         :root {
             color-scheme: light only;
@@ -195,6 +211,7 @@
             padding-right: max(0.75rem, env(safe-area-inset-right));
         }
     </style>
+    {% endcompress %}
 
     {% block extra_head %}{% endblock %}
     {% block extra_css %}{% endblock %}

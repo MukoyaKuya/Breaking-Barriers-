@@ -506,10 +506,12 @@ def word_of_truth_pdf_view(request, slug):
 
 
 def search_view(request):
-    """Search functionality with pagination and caching. Uses PostgreSQL full-text when available."""
+    """Search functionality with pagination and caching. Searches across multiple content types."""
     from django.db import connection
     from django.core.cache import cache
     import hashlib
+    from itertools import chain
+    from operator import attrgetter
 
     query = request.GET.get('q', '').strip()
     results = []
@@ -517,52 +519,41 @@ def search_view(request):
 
     if query:
         # Cache search results for popular queries (1 hour)
-        # Use hash of query + page to create cache key (prefix added automatically)
-        cache_key = f'search_{hashlib.md5(f"{query}_{page}".encode()).hexdigest()}'
+        cache_key = f'search_multi_{hashlib.md5(f"{query}_{page}".encode()).hexdigest()}'
         cached_results = cache.get(cache_key)
         
         if cached_results is not None:
             results = cached_results
         else:
-            # Use PostgreSQL full-text search when available (faster, better ranking)
-            if connection.vendor == 'postgresql':
-                try:
-                    from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
+            # Helper to search a specific model
+            def search_model(ModelClass, search_query):
+                # Basic icontains search for compatibility (simplifies multi-model logic)
+                # In a full Postgres setup, we would use separate SearchVectors for each model
+                return list(ModelClass.objects.filter(
+                    Q(title__icontains=search_query) | 
+                    Q(summary__icontains=search_query) |
+                    Q(body__icontains=search_query),
+                    is_published=True
+                ))
 
-                    search_vector = (
-                        SearchVector('title', weight='A', config='english')
-                        + SearchVector('summary', weight='B', config='english')
-                        + SearchVector('body', weight='C', config='english')
-                    )
-                    search_query = SearchQuery(query, config='english')
-                    news_results = (
-                        NewsItem.objects.filter(is_published=True)
-                        .annotate(
-                            search=search_vector,
-                            rank=SearchRank(search_vector, search_query),
-                        )
-                        .filter(search=search_query)
-                        .order_by('-rank', '-created_at')
-                    )
-                except Exception:
-                    # Fallback to icontains if full-text fails (e.g. extension missing)
-                    news_results = NewsItem.objects.filter(
-                        Q(title__icontains=query)
-                        | Q(summary__icontains=query)
-                        | Q(body__icontains=query),
-                        is_published=True,
-                    ).order_by('-created_at')
-            else:
-                # SQLite / other: use icontains
-                news_results = NewsItem.objects.filter(
-                    Q(title__icontains=query)
-                    | Q(summary__icontains=query)
-                    | Q(body__icontains=query),
-                    is_published=True,
-                ).order_by('-created_at')
+            # Fetch results from all major content models
+            news_results = search_model(NewsItem, query)
+            wot_results = search_model(WordOfTruth, query)
+            cb_results = search_model(ChildrensBread, query)
+            mt_results = search_model(ManTalk, query)
 
-            # Paginate results - 12 per page
-            paginator = Paginator(news_results, 12)
+            # Combine and sort by creation date (newest first)
+            # Annotate with 'model_name' for display logic if needed, 
+            # or rely on duck typing (all have title, summary, created_at, get_absolute_url)
+            
+            combined_results = sorted(
+                chain(news_results, wot_results, cb_results, mt_results),
+                key=attrgetter('created_at'),
+                reverse=True
+            )
+
+            # Paginate combined results - 12 per page
+            paginator = Paginator(combined_results, 12)
 
             try:
                 results = paginator.page(page)
