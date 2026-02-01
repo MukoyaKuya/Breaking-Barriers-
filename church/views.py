@@ -45,6 +45,9 @@ from .query_utils import (
     get_optimized_sidebar_promos,
     get_optimized_word_of_truth_list,
     get_optimized_man_talk_list,
+    get_optimized_childrens_bread_preview,
+    get_optimized_news_line_preview,
+    get_optimized_word_of_truth_preview,
 )
 from django.template.loader import get_template
 from io import BytesIO
@@ -79,6 +82,11 @@ def home_view(request):
     word_of_truth_card = cards['word_of_truth']
     cta_card = get_cached_cta_card()
 
+    # Article previews for info card carousels (latest 5 per section)
+    childrens_bread_articles = get_optimized_childrens_bread_preview(limit=5)
+    news_line_articles = get_optimized_news_line_preview(limit=5)
+    word_of_truth_articles = get_optimized_word_of_truth_preview(limit=5)
+
     faqs = get_optimized_faqs()
     sidebar_promos = get_optimized_sidebar_promos(limit=3)
 
@@ -95,6 +103,9 @@ def home_view(request):
         'childrens_bread_card': childrens_bread_card,
         'news_card': news_card,
         'word_of_truth_card': word_of_truth_card,
+        'childrens_bread_articles': childrens_bread_articles,
+        'news_line_articles': news_line_articles,
+        'word_of_truth_articles': word_of_truth_articles,
         'cta_card': cta_card,
         'faqs': faqs,
         'sidebar_promos': sidebar_promos,

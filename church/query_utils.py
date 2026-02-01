@@ -19,6 +19,8 @@ from .models import (
     AboutPage,
     WordOfTruth,
     ManTalk,
+    ChildrensBread,
+    NewsLine,
 )
 
 # Cache timeouts (seconds)
@@ -123,6 +125,27 @@ def get_optimized_word_of_truth_list():
     return WordOfTruth.objects.filter(
         is_published=True
     ).order_by('-created_at')
+
+
+def get_optimized_childrens_bread_preview(limit=5):
+    """Latest Children's Bread articles for info card carousel preview."""
+    return list(
+        ChildrensBread.objects.filter(is_published=True).order_by('-created_at')[:limit]
+    )
+
+
+def get_optimized_news_line_preview(limit=5):
+    """Latest News Line articles for info card carousel preview."""
+    return list(
+        NewsLine.objects.filter(is_published=True).order_by('-created_at')[:limit]
+    )
+
+
+def get_optimized_word_of_truth_preview(limit=5):
+    """Latest Word of Truth articles for info card carousel preview."""
+    return list(
+        WordOfTruth.objects.filter(is_published=True).order_by('-created_at')[:limit]
+    )
 
 
 def get_optimized_man_talk_list(limit=3):
