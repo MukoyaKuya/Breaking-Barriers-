@@ -18,9 +18,10 @@ On Books (`/books/`), Word of Truth (`/word-of-truth/`), ManTalk (`/mantalk/`), 
 
 **Split `{% thumbnail %}` tag** — If the tag is broken across two lines (e.g. `... as cropped` on one line and `%}` on the next), Django does not recognize it as a template tag and outputs it as literal text.
 
-### Why does the error keep persisting?
+### Why does the error keep recurring?
 
-- **The tag was split again** — Code formatters (Prettier, Black, etc.) or a bad merge can re-wrap the line and put `%}` on the next line. After any fix, ensure the **entire** `{% thumbnail ... %}` (including `%}`) stays on **one line**.
+- **Formatters and editors** — Prettier, Black, Django HTML formatters, or editor "Format on Save" often wrap long lines. When they do, they can break `{% thumbnail ... %}` (putting `%}` on the next line) or `{{ variable }}` (putting `{{` or `}}` on a separate line). Django then treats the tag as literal text and shows it on the page.
+- **How to avoid it:** Keep every `{% thumbnail ... %}` and every `{{ ... }}` on a **single line**. After editing templates, avoid reformatting those files, or disable format-on-save for `church/templates/**/*.html`. If you use a formatter, add an ignore/exception for Django template tags or exclude the templates folder.
 - **Caching** — This project caches querysets and (on some views) full page output. Template changes take effect as soon as the file is saved; if you still see the old output, do a hard refresh (Ctrl+Shift+R) or clear the Django cache (see §6).
 
 ---
