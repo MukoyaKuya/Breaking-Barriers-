@@ -50,7 +50,8 @@
                         {% endif %}
 
                         <!-- Date Badge -->
-                        <div class="absolute top-4 right-4 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-xl shadow-lg border border-white/50 text-center min-w-[50px]">
+                        <div
+                            class="absolute top-4 right-4 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-xl shadow-lg border border-white/50 text-center min-w-[50px]">
                             <span class="block text-xs font-bold text-brand-color uppercase tracking-tighter">{{ word_of_truth.created_at_month }}</span>
                             <span class="block text-lg font-black text-gray-900 leading-none">{{ word_of_truth.created_at_day }}</span>
                         </div>
@@ -59,7 +60,8 @@
                     <!-- Content Area -->
                     <div class="p-6 flex flex-col flex-grow">
                         <div class="flex-grow">
-                            <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-brand-color transition-colors line-clamp-2 leading-snug">
+                            <h3
+                                class="text-xl font-bold text-gray-900 mb-3 group-hover:text-brand-color transition-colors line-clamp-2 leading-snug">
                                 <a href="{% url 'word_of_truth_detail' word_of_truth.slug %}">{{ word_of_truth.title }}</a>
                             </h3>
                             <p

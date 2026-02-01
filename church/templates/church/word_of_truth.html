@@ -34,8 +34,7 @@
                     <div class="relative aspect-[16/10] overflow-hidden bg-gray-100">
                         {% if word_of_truth.image %}
                         {% if word_of_truth.image_cropping %}
-                        {% thumbnail word_of_truth.image "800x600" box=word_of_truth.image_cropping crop=True
-                        detail=True as cropped %}
+                        {% thumbnail word_of_truth.image "800x600" box=word_of_truth.image_cropping crop=True detail=True as cropped %}
                         <picture>
                             <source srcset="{{ cropped.url }}.webp" type="image/webp">
                             <img src="{{ cropped.url }}" alt="{{ word_of_truth.title }}" loading="lazy"
@@ -55,10 +54,8 @@
                         <!-- Date Badge -->
                         <div
                             class="absolute top-4 right-4 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-xl shadow-lg border border-white/50 text-center min-w-[50px]">
-                            <span class="block text-xs font-bold text-brand-color uppercase tracking-tighter">{{
-                                word_of_truth.created_at_month }}</span>
-                            <span class="block text-lg font-black text-gray-900 leading-none">{{
-                                word_of_truth.created_at_day }}</span>
+                            <span class="block text-xs font-bold text-brand-color uppercase tracking-tighter">{{ word_of_truth.created_at_month }}</span>
+                            <span class="block text-lg font-black text-gray-900 leading-none">{{ word_of_truth.created_at_day }}</span>
                         </div>
                     </div>
 
