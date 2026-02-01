@@ -37,6 +37,11 @@ SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 X_FRAME_OPTIONS = 'DENY'
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# django-ipware: client IP for analytics (unique visitors). Checks X-Forwarded-For,
+# X-Real-IP, CF-Connecting-IP, etc., so tracking works behind load balancers/CDNs.
+# Optional: set IPWARE_PROXY_COUNT=1 if behind a single LB; or IPWARE_TRUSTED_PROXY_IPS
+# to a list of proxy IPs for stricter anti-spoofing.
 # Redirect to HTTPS in production
 # Note: SECURE_SSL_REDIRECT is disabled because Cloud Run handles SSL termination
 # and enabling it causes redirect loops

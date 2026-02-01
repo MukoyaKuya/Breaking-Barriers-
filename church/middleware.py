@@ -1,14 +1,16 @@
 """Middleware for analytics (page view tracking)."""
 from django.utils.deprecation import MiddlewareMixin
+from ipware import get_client_ip as ipware_get_client_ip
 
 
 def get_client_ip(request):
-    """Return the client IP for the request (handles X-Forwarded-For behind proxies)."""
-    xff = request.META.get('HTTP_X_FORWARDED_FOR')
-    if xff:
-        # First IP is the client when behind a proxy
-        return xff.split(',')[0].strip() or request.META.get('REMOTE_ADDR', '') or None
-    return request.META.get('REMOTE_ADDR') or None
+    """Return the client IP for the request (proxy-aware via django-ipware).
+
+    Uses multiple headers (X-Forwarded-For, X-Real-IP, CF-Connecting-IP, etc.)
+    so analytics work correctly behind load balancers and CDNs on cloud deployment.
+    """
+    client_ip, _ = ipware_get_client_ip(request)
+    return client_ip
 
 
 class PageViewMiddleware(MiddlewareMixin):
