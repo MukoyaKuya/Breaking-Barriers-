@@ -5,39 +5,21 @@
 {% block title %}{{ article.title }} - Breaking Barriers International{% endblock %}
 
 {% block og_title %}{{ article.title }}{% endblock %}
-{% block og_description %}{{ article.summary|truncatewords:40 }}{% endblock %}
-{% block og_image %}{% if article.image %}{{ article.image.url }}{% else %}{% static 'images/logo.png' %}{% endif %}{%
-endblock %}
+{% block og_description %}{{ article.summary|truncatewords:30 }}{% endblock %}
+{% block og_image %}{% if article.image %}{{ request.scheme }}://{{ request.get_host }}{{ article.image.url }}{% else
+%}{% static 'images/logo.png' %}{% endif %}{% endblock %}
 {% block og_type %}article{% endblock %}
 
+{% block twitter_title %}{{ article.title }}{% endblock %}
+{% block twitter_description %}{{ article.summary|truncatewords:30 }}{% endblock %}
+{% block twitter_image %}{% if article.image %}{{ request.scheme }}://{{ request.get_host }}{{ article.image.url }}{%
+else %}{% static 'images/logo.png' %}{% endif %}{% endblock %}
+
 {% block extra_head %}
-<meta name="description"
-    content="{% if article.summary %}{{ article.summary|truncatewords:30 }}{% else %}{{ article.title }} - Children's Bread by {{ article.author_name }}{% endif %}">
 <meta name="author" content="{{ article.author_name }}">
 <meta name="keywords" content="Children's Bread, Breaking Barriers International, {{ article.title }}">
-
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="article">
-<meta property="og:url" content="{{ request.build_absolute_uri }}">
-<meta property="og:title" content="{{ article.title }} - Breaking Barriers International">
-<meta property="og:description"
-    content="{% if article.summary %}{{ article.summary|truncatewords:30 }}{% else %}{{ article.title }} - Children's Bread by {{ article.author_name }}{% endif %}">
-{% if article.image %}
-<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ article.image.url }}">
-{% endif %}
-<meta property="og:site_name" content="Breaking Barriers International">
 <meta property="article:published_time" content="{{ article.created_at|date:'c' }}">
 <meta property="article:author" content="{{ article.author_name }}">
-
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="{{ request.build_absolute_uri }}">
-<meta name="twitter:title" content="{{ article.title }}">
-<meta name="twitter:description"
-    content="{% if article.summary %}{{ article.summary|truncatewords:30 }}{% else %}{{ article.title }} - Children's Bread by {{ article.author_name }}{% endif %}">
-{% if article.image %}
-<meta name="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{{ article.image.url }}">
-{% endif %}
 {% endblock %}
 
 {% block content %}
@@ -58,11 +40,12 @@ endblock %}
                     {% if article.image %}
                     <div class="w-full max-h-[320px] md:max-h-[400px] relative bg-gray-100 group overflow-hidden">
                         {% if article.image_cropping %}
-                        {% thumbnail article.image "800x533" box=article.image_cropping crop detail as cropped %}
+                        {% thumbnail article.image "800x533" box=article.image_cropping crop=True detail=True as cropped
+                        %}
                         <img src="{{ cropped.url }}" alt="{{ article.title }}" loading="lazy"
                             class="w-full h-full max-h-[320px] md:max-h-[400px] object-cover object-center transition-transform duration-700 group-hover:scale-105">
                         {% else %}
-                        {% thumbnail article.image "800x533" crop detail as thumb %}
+                        {% thumbnail article.image "800x533" crop=True detail=True as thumb %}
                         <img src="{{ thumb.url }}" alt="{{ article.title }}" loading="lazy"
                             class="w-full h-full max-h-[320px] md:max-h-[400px] object-cover object-center transition-transform duration-700 group-hover:scale-105">
                         {% endif %}

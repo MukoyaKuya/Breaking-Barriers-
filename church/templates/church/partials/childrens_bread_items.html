@@ -3,14 +3,15 @@
 <div
     class="group bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-500 flex flex-col h-full transform hover:-translate-y-1">
     <!-- Article Banner/Image -->
-    <a href="{% url 'childrens_bread_detail' article.slug %}" class="relative aspect-[16/10] overflow-hidden bg-gray-100 block">
+    <a href="{% url 'childrens_bread_detail' article.slug %}"
+        class="relative aspect-[16/10] overflow-hidden bg-gray-100 block">
         {% if article.image %}
         {% if article.image_cropping %}
-        {% thumbnail article.image "800x600" box=article.image_cropping crop detail as cropped %}
+        {% thumbnail article.image "800x600" box=article.image_cropping crop=True detail=True as cropped %}
         <img src="{{ cropped.url }}" alt="{{ article.title }}" loading="lazy"
             class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
         {% else %}
-        {% thumbnail article.image "800x600" crop detail as thumb %}
+        {% thumbnail article.image "800x600" crop=True detail=True as thumb %}
         <img src="{{ thumb.url }}" alt="{{ article.title }}" loading="lazy"
             class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
         {% endif %}
@@ -23,7 +24,8 @@
         <!-- Date Badge -->
         <div
             class="absolute top-4 right-4 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-xl shadow-lg border border-white/50 text-center min-w-[50px]">
-            <span class="block text-xs font-bold text-brand-color uppercase tracking-tighter">{{ article.created_at|date:"M" }}</span>
+            <span class="block text-xs font-bold text-brand-color uppercase tracking-tighter">{{
+                article.created_at|date:"M" }}</span>
             <span class="block text-lg font-black text-gray-900 leading-none">{{ article.created_at|date:"d" }}</span>
         </div>
     </a>
@@ -35,8 +37,7 @@
                 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-brand-color transition-colors line-clamp-2 leading-snug">
                 <a href="{% url 'childrens_bread_detail' article.slug %}">{{ article.title }}</a>
             </h3>
-            <p
-                class="text-xs text-gray-400 font-bold uppercase tracking-widest mb-4 flex items-center gap-2">
+            <p class="text-xs text-gray-400 font-bold uppercase tracking-widest mb-4 flex items-center gap-2">
                 <span class="w-6 h-px bg-gray-200"></span>
                 {{ article.author_name }}
             </p>
@@ -58,9 +59,7 @@
 
 {% if has_more %}
 <div class="text-center mt-12 col-span-full" id="load-more-wrapper">
-    <button 
-        hx-get="{% url 'load_more_childrens_bread' %}?offset={{ next_offset }}" 
-        hx-target="#articles-container" 
+    <button hx-get="{% url 'load_more_childrens_bread' %}?offset={{ next_offset }}" hx-target="#articles-container"
         hx-swap="beforeend"
         hx-on::after-swap="if (event.detail.target.querySelector('#load-more-wrapper')) { event.detail.target.querySelector('#load-more-wrapper').remove(); }"
         class="bg-brand-color text-white px-8 py-3.5 rounded-xl hover:bg-red-900 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl hover:-translate-y-1 min-h-[48px]">

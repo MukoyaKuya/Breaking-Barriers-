@@ -4,11 +4,16 @@
 
 {% block title %}{{ object.title }} - Breaking Barriers International{% endblock %}
 
-{% block og_title %}{{ object.title }}{% endblock %}
-{% block og_description %}{{ object.summary|truncatewords:40 }}{% endblock %}
-{% block og_image %}{% if object.image %}{{ object.image.url }}{% else %}{% static 'images/logo.png' %}{% endif %}{%
-endblock %}
+{% block og_title %}{{ article.title }}{% endblock %}
+{% block og_description %}{{ article.summary|truncatewords:30 }}{% endblock %}
+{% block og_image %}{% if article.image %}{{ request.scheme }}://{{ request.get_host }}{{ article.image.url }}{% else
+%}{% static 'images/logo.png' %}{% endif %}{% endblock %}
 {% block og_type %}article{% endblock %}
+
+{% block twitter_title %}{{ article.title }}{% endblock %}
+{% block twitter_description %}{{ article.summary|truncatewords:30 }}{% endblock %}
+{% block twitter_image %}{% if article.image %}{{ request.scheme }}://{{ request.get_host }}{{ article.image.url }}{%
+else %}{% static 'images/logo.png' %}{% endif %}{% endblock %}
 
 {% block content %}
 <div class="bg-white py-6 sm:py-8 overflow-x-hidden">
@@ -28,11 +33,12 @@ endblock %}
                     {% if article.image %}
                     <div class="w-full max-h-[320px] md:max-h-[400px] relative bg-gray-100 group overflow-hidden">
                         {% if article.image_cropping %}
-                        {% thumbnail article.image "800x533" box=article.image_cropping crop detail as cropped %}
+                        {% thumbnail article.image "800x533" box=article.image_cropping crop=True detail=True as cropped
+                        %}
                         <img src="{{ cropped.url }}" alt="{{ article.title }}" loading="lazy"
                             class="w-full h-full max-h-[320px] md:max-h-[400px] object-cover object-center transition-transform duration-700 group-hover:scale-105">
                         {% else %}
-                        {% thumbnail article.image "800x533" crop detail as thumb %}
+                        {% thumbnail article.image "800x533" crop=True detail=True as thumb %}
                         <img src="{{ thumb.url }}" alt="{{ article.title }}" loading="lazy"
                             class="w-full h-full max-h-[320px] md:max-h-[400px] object-cover object-center transition-transform duration-700 group-hover:scale-105">
                         {% endif %}

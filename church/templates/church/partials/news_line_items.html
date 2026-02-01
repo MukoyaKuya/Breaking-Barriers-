@@ -11,11 +11,11 @@
         {% elif article.image %}
         <div class="cursor-pointer group-hover:brightness-95 transition-all duration-300 h-full w-full">
             {% if article.image_cropping %}
-            {% thumbnail article.image "800x600" box=article.image_cropping crop detail as cropped %}
+            {% thumbnail article.image "800x600" box=article.image_cropping crop=True detail=True as cropped %}
             <img src="{{ cropped.url }}" alt="{{ article.title }}" loading="lazy"
                 class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
             {% else %}
-            {% thumbnail article.image "800x600" crop detail as thumb %}
+            {% thumbnail article.image "800x600" crop=True detail=True as thumb %}
             <img src="{{ thumb.url }}" alt="{{ article.title }}" loading="lazy"
                 class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
             {% endif %}

@@ -20,10 +20,13 @@
                         {% thumbnail card.image "1600x900" box=card.image_cropping crop=True detail=True as cropped %}
                         <picture>
                             <source srcset="{{ cropped.url }}.webp" type="image/webp">
-                            <img src="{{ cropped.url }}" alt="{{ card.title }}" loading="lazy" class="w-full h-full object-contain">
+                            <img src="{{ cropped.url }}" alt="{{ card.title }}" loading="lazy"
+                                class="w-full h-full object-contain">
                         </picture>
                         {% else %}
-                        <img src="{{ card.image.url }}" alt="{{ card.title }}" loading="lazy" class="w-full h-full object-cover">
+                        {% thumbnail card.image "1600x900" crop=True detail=True as thumb %}
+                        <img src="{{ thumb.url }}" alt="{{ card.title }}" loading="lazy"
+                            class="w-full h-full object-cover">
                         {% endif %}
                         <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
                         <div class="absolute bottom-6 left-8 right-8">

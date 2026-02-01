@@ -4,10 +4,15 @@
 {% block title %}{{ news_item.title }} - Breaking Barriers International{% endblock %}
 
 {% block og_title %}{{ news_item.title }}{% endblock %}
-{% block og_description %}{{ news_item.summary|truncatewords:40 }}{% endblock %}
-{% block og_image %}{% if news_item.image %}{{ news_item.image.url }}{% else %}{% static 'images/logo.png' %}{% endif
-%}{% endblock %}
+{% block og_description %}{{ news_item.summary|truncatewords:30 }}{% endblock %}
+{% block og_image %}{% if news_item.image %}{{ request.scheme }}://{{ request.get_host }}{{ news_item.image.url }}{%
+else %}{% static 'images/logo.png' %}{% endif %}{% endblock %}
 {% block og_type %}article{% endblock %}
+
+{% block twitter_title %}{{ news_item.title }}{% endblock %}
+{% block twitter_description %}{{ news_item.summary|truncatewords:30 }}{% endblock %}
+{% block twitter_image %}{% if news_item.image %}{{ request.scheme }}://{{ request.get_host }}{{ news_item.image.url
+}}{% else %}{% static 'images/logo.png' %}{% endif %}{% endblock %}
 
 {% block content %}
 <div class="bg-white py-16">
@@ -41,7 +46,7 @@
         <!-- Featured Image -->
         {% if news_item.image %}
         <div class="mb-8">
-            {% thumbnail news_item.image "1200x800" crop detail as cropped %}
+            {% thumbnail news_item.image "1200x800" crop=True detail=True as cropped %}
             <picture>
                 <source srcset="{{ cropped.url }}.webp" type="image/webp">
                 <img src="{{ cropped.url }}" alt="{{ news_item.title }}" loading="lazy"

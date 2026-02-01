@@ -35,11 +35,11 @@
                         class="relative aspect-[16/10] overflow-hidden bg-gray-100 block">
                         {% if word_of_truth.image %}
                         {% if word_of_truth.image_cropping %}
-                        {% thumbnail word_of_truth.image "800x600" box=word_of_truth.image_cropping crop detail as cropped %}
+                        {% thumbnail word_of_truth.image "800x600" box=word_of_truth.image_cropping crop=True detail=True as cropped %}
                         <img src="{{ cropped.url }}" alt="{{ word_of_truth.title }}" loading="lazy"
                             class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                         {% else %}
-                        {% thumbnail word_of_truth.image "800x600" crop detail as thumb %}
+                        {% thumbnail word_of_truth.image "800x600" crop=True detail=True as thumb %}
                         <img src="{{ thumb.url }}" alt="{{ word_of_truth.title }}" loading="lazy"
                             class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                         {% endif %}

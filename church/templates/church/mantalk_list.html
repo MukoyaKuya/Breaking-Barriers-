@@ -30,11 +30,12 @@
                         class="relative aspect-[16/10] overflow-hidden bg-gray-100 block">
                         {% if article.image %}
                         {% if article.image_cropping %}
-                        {% thumbnail article.image "800x600" box=article.image_cropping crop detail as cropped %}
+                        {% thumbnail article.image "800x600" box=article.image_cropping crop=True detail=True as cropped
+                        %}
                         <img src="{{ cropped.url }}" alt="{{ article.title }}" loading="lazy"
                             class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                         {% else %}
-                        {% thumbnail article.image "800x600" crop detail as thumb %}
+                        {% thumbnail article.image "800x600" crop=True detail=True as thumb %}
                         <img src="{{ thumb.url }}" alt="{{ article.title }}" loading="lazy"
                             class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                         {% endif %}

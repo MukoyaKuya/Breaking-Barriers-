@@ -43,7 +43,7 @@ No migration is required (these are Python-only properties).
 1. **Thumbnail tag – one line**  
    Ensure the whole `{% thumbnail ... %}` tag is on a single line.  
    - **Wrong:** `{% thumbnail ... as` on one line, `cropped %}` on the next.  
-   - **Right:** `{% thumbnail word_of_truth.image "800x600" box=word_of_truth.image_cropping crop detail as cropped %}` all on one line.
+   - **Right:** `{% thumbnail word_of_truth.image "800x600" box=word_of_truth.image_cropping crop=True detail=True as cropped %}` all on one line.
 
 2. **Date badge – use model properties**  
    Replace:

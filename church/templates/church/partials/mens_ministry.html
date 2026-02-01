@@ -18,11 +18,11 @@
                     {% load thumbnail %}
                     {% if article.image %}
                     {% if article.image_cropping %}
-                    {% thumbnail article.image "600x400" box=article.image_cropping crop detail as cropped %}
+                    {% thumbnail article.image "600x400" box=article.image_cropping crop=True detail=True as cropped %}
                     <img src="{{ cropped.url }}" alt="{{ article.title }}" loading="lazy"
                         class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                     {% else %}
-                    {% thumbnail article.image "600x400" crop detail as thumb %}
+                    {% thumbnail article.image "600x400" crop=True detail=True as thumb %}
                     <img src="{{ thumb.url }}" alt="{{ article.title }}" loading="lazy"
                         class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                     {% endif %}

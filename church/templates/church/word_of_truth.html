@@ -34,15 +34,16 @@
                     <div class="relative aspect-[16/10] overflow-hidden bg-gray-100">
                         {% if word_of_truth.image %}
                         {% if word_of_truth.image_cropping %}
-                        {% thumbnail word_of_truth.image "800x600" box=word_of_truth.image_cropping crop detail as
-                        cropped %}
+                        {% thumbnail word_of_truth.image "800x600" box=word_of_truth.image_cropping crop=True
+                        detail=True as cropped %}
                         <picture>
                             <source srcset="{{ cropped.url }}.webp" type="image/webp">
                             <img src="{{ cropped.url }}" alt="{{ word_of_truth.title }}" loading="lazy"
                                 class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                         </picture>
                         {% else %}
-                        <img src="{{ word_of_truth.image.url }}" alt="{{ word_of_truth.title }}" loading="lazy"
+                        {% thumbnail word_of_truth.image "800x600" crop=True detail=True as thumb %}
+                        <img src="{{ thumb.url }}" alt="{{ word_of_truth.title }}" loading="lazy"
                             class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                         {% endif %}
                         {% else %}
