@@ -23,7 +23,7 @@
                         <img src="{{ item.get_youtube_thumbnail_url }}" alt="{{ item.caption }}" loading="lazy"
                             class="w-full h-full object-cover opacity-90" referrerpolicy="no-referrer">
                         {% elif item.image %}
-                        {% thumbnail item.image "200x150" crop="detail" as thumb %}
+                        {% thumbnail item.image "200x150" crop=True detail=True as thumb %}
                         {% with img_url=thumb.url|default:item.image.url %}
                         <picture>
                             <source srcset="{{ img_url }}.webp" type="image/webp">

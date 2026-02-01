@@ -1,0 +1,17 @@
+ REMOTE BUILD OUTPUT -
+starting build "37e1f6ca-576b-4350-8289-0e80e9ece3a4"
+FETCHSOURCE
+From https://github.com/MukoyaKuya/Breaking-Barriers-
+ * branch            2b5ed3dff3421a30278c5d83cf366e60c4fbdf03 -> FETCH_HEAD
+HEAD is now at 2b5ed3d Fix Word of Truth and systemic thumbnail syntax issues (crop=True detail=True)
+GitCommit:
+2b5ed3dff3421a30278c5d83cf366e60c4fbdf03
+BUILD
+Starting Step #0 - "Build"
+Step #0 - "Build": Already have image (with digest): gcr.io/cloud-builders/docker
+Step #0 - "Build": invalid argument "europe-north2-docker.pkg.dev/gen-lang-client-0549116861/cloud-run-source-deploy/breaking-barriers-/bbinternational:2b5ed3dff3421a30278c5d83cf366e60c4fbdf03" for "-t, --tag" flag: invalid reference format
+Step #0 - "Build": See 'docker build --help'.
+Finished Step #0 - "Build"
+ERROR
+ERROR: build step 0 "gcr.io/cloud-builders/docker" failed: step exited with non-zero status: 125
+----------------------
