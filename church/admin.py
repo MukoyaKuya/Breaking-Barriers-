@@ -298,24 +298,12 @@ class InfoCardAdmin(ImageCroppingMixin, admin.ModelAdmin):
 
 
 @admin.register(ManTalk)
-class ManTalkAdmin(admin.ModelAdmin):
+class ManTalkAdmin(ImageCroppingMixin, admin.ModelAdmin):
     list_display = ('title', 'author_name', 'is_published', 'created_at')
     list_filter = ('is_published', 'created_at')
     search_fields = ('title', 'summary', 'body')
     prepopulated_fields = {'slug': ('title',)}
     readonly_fields = ('created_at', 'updated_at')
-    
-    # Enable image cropping in the admin
-    from image_cropping import ImageCroppingMixin
-    class Media:
-        js = (
-            '//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js',
-            'image_cropping/js/jquery.Jcrop.min.js',
-            'image_cropping/image_cropping.js',
-        )
-        css = {
-            'all': ('image_cropping/css/jquery.Jcrop.min.css',)
-        }
 
 
 @admin.register(CTACard)
