@@ -26,8 +26,7 @@
                         class="relative aspect-[2/3] overflow-hidden bg-gray-100 block">
                         {% if book.cover_image %}
                         {% if book.image_cropping %}
-                        {% thumbnail book.cover_image "600x900" box=book.image_cropping crop=True detail=True as cropped
-                        %}
+                        {% thumbnail book.cover_image "600x900" box=book.image_cropping crop=True detail=True as cropped %}
                         <img src="{{ cropped.url }}" alt="{{ book.title }}" loading="lazy"
                             class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
                         {% else %}
