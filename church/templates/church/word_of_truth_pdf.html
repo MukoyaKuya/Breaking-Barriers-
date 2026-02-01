@@ -186,8 +186,7 @@
         <div class="separator"></div>
 
         <div class="article-title">{{ article.title }}</div>
-        <div class="meta">Word of Truth <span>&middot;</span> By {{ article.author_name }} <span>&middot;</span> {{
-            article.created_at|date:"F j, Y" }}</div>
+        <div class="meta">Word of Truth <span>&middot;</span> By {{ article.author_name }} <span>&middot;</span> {{ article.created_at|date:"F j, Y" }}</div>
     </div>
 
     {% if article.summary %}
