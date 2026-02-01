@@ -71,7 +71,6 @@ def home_view(request):
     testimonials = get_optimized_testimonials(limit=6)
     gallery_items = get_optimized_gallery_items(limit=6)
     mens_ministry = get_optimized_mens_ministry()
-    man_talk_items = get_optimized_man_talk_list(limit=3)
     partners = get_optimized_partners()
     hero_settings = get_cached_hero_settings()
     verse_of_the_day = get_optimized_verse_of_the_day()
@@ -96,7 +95,6 @@ def home_view(request):
         'testimonials': testimonials,
         'gallery_items': gallery_items,
         'mens_ministry': mens_ministry,
-        'man_talk_items': man_talk_items,
         'partners': partners,
         'hero_settings': hero_settings,
         'verse_of_the_day': verse_of_the_day,

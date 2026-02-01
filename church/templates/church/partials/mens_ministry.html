@@ -8,56 +8,7 @@
             </h2>
         </div>
 
-        {% if man_talk_items %}
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {% for article in man_talk_items %}
-            <div
-                class="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden group border border-gray-100 h-full flex flex-col">
-                <a href="{% url 'mantalk_detail' article.slug %}"
-                    class="block relative aspect-video overflow-hidden bg-gray-200">
-                    {% load thumbnail %}
-                    {% if article.image %}
-                    {% if article.image_cropping %}
-                    {% thumbnail article.image "600x400" box=article.image_cropping crop=True detail=True as cropped %}
-                    <img src="{{ cropped.url }}" alt="{{ article.title }}" loading="lazy"
-                        class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                    {% else %}
-                    {% thumbnail article.image "600x400" crop=True detail=True as thumb %}
-                    <img src="{{ thumb.url }}" alt="{{ article.title }}" loading="lazy"
-                        class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                    {% endif %}
-                    {% else %}
-                    <div class="w-full h-full brand-color flex items-center justify-center">
-                        <i class="fas fa-users text-white/30 text-4xl"></i>
-                    </div>
-                    {% endif %}
-
-                    <div
-                        class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                        <span class="text-white text-xs font-bold uppercase tracking-wider">Read Article</span>
-                    </div>
-                </a>
-
-                <div class="p-6 flex flex-col flex-grow">
-                    <p class="text-xs text-gray-400 font-bold uppercase tracking-widest mb-2 flex items-center gap-2">
-                        <i class="far fa-calendar-alt"></i>
-                        {{ article.created_at|date:"M d, Y" }}
-                    </p>
-                    <h3
-                        class="text-xl font-bold text-gray-900 mb-3 leading-snug group-hover:text-brand-color transition-colors">
-                        <a href="{% url 'mantalk_detail' article.slug %}">{{ article.title }}</a>
-                    </h3>
-                    <p class="text-gray-600 text-sm line-clamp-3 mb-4 flex-grow">
-                        {{ article.summary }}
-                    </p>
-                    <a href="{% url 'mantalk_detail' article.slug %}"
-                        class="inline-block text-sm font-bold brand-text hover:underline mt-auto">Read more &rarr;</a>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-        {% elif mens_ministry %}
-        {# Fallback to old behavior if no articles but old model has content #}
+        {% if mens_ministry %}
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div class="rounded-xl overflow-hidden shadow-lg bg-black aspect-video">
                 <iframe class="w-full h-full" src="{{ mens_ministry.get_embed_url }}" title="{{ mens_ministry.title }}"
