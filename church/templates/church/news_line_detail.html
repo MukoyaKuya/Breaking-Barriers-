@@ -18,10 +18,16 @@
                         allowfullscreen class="w-full h-full object-cover"></iframe>
                 </div>
                 {% elif article.image %}
-                <div class="w-full relative aspect-w-16 aspect-h-9 bg-gray-100">
-                    {% thumbnail article.image "800x600" crop=True detail=True as cropped %}
+                <div class="w-full relative aspect-[16/9] max-h-[420px] bg-gray-100 overflow-hidden">
+                    {% if article.image_cropping %}
+                    {% thumbnail article.image "1200x630" box=article.image_cropping crop=True detail=True as cropped %}
                     <img src="{{ cropped.url }}" alt="{{ article.title }}"
-                        class="absolute inset-0 w-full h-full object-cover">
+                        class="w-full h-full object-cover">
+                    {% else %}
+                    {% thumbnail article.image "1200x630" crop=True detail=True as cropped %}
+                    <img src="{{ cropped.url }}" alt="{{ article.title }}"
+                        class="w-full h-full object-cover">
+                    {% endif %}
                 </div>
                 {% endif %}
 
