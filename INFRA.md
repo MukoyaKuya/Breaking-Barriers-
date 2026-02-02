@@ -12,7 +12,7 @@
 
 When you have a primary database and one or more read replicas, you can send reads to the replica and writes to the primary.
 
-### Setup
+### Setup.
 
 1. Set **`DATABASE_URL`** to your primary (read/write) database URL.
 2. Set **`REPLICA_DATABASE_URL`** to your read replica database URL (same format as `DATABASE_URL`).
