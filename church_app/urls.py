@@ -74,8 +74,22 @@ def staff_login_view(request):
     if request.method == 'POST':
         username = (request.POST.get('username') or '').strip()
         password = request.POST.get('password') or ''
+        logger.info(f"STAFF_LOGIN: Attempting login for username='{username}'")
+        
         if username and password:
             user = authenticate(request, username=username, password=password)
+            logger.info(f"STAFF_LOGIN: authenticate() result: {user}")
+            
+            if user is None:
+                # Debug why
+                from django.contrib.auth.models import User
+                try:
+                    u = User.objects.get(username=username)
+                    is_pword_correct = u.check_password(password)
+                    logger.warning(f"STAFF_LOGIN: User found. check_password={is_pword_correct}, is_active={u.is_active}, is_staff={u.is_staff}")
+                except User.DoesNotExist:
+                     logger.warning(f"STAFF_LOGIN: User '{username}' does not exist in DB.")
+
             if user is not None and user.is_staff:
                 login(request, user)
                 request.session.save()  # persist before redirect so cookie is set
