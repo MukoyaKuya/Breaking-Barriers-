@@ -4,6 +4,7 @@
  */
 (function($) {
     'use strict';
+    if (!$) return;
     
     function refreshImagePreview(input) {
         if (input.files && input.files[0]) {
@@ -58,4 +59,4 @@
             });
         });
     });
-})(django.jQuery);
+})(typeof django !== 'undefined' ? django.jQuery : (typeof jQuery !== 'undefined' ? jQuery : null));

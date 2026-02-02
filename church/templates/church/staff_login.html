@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Login – Breaking Barriers International</title>
+    <link rel="icon" type="image/png" href="{% static 'images/logo.png' %}">
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a1a1a 0%, #4a0010 100%);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        .box {
+            width: 100%;
+            max-width: 400px;
+            padding: 2rem;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            border-top: 6px solid #990030;
+        }
+        .logo { text-align: center; margin-bottom: 1.5rem; }
+        .logo img { max-height: 70px; width: auto; }
+        h1 { margin: 0 0 1.5rem; font-size: 1.25rem; color: #333; text-align: center; }
+        .err { background: #fdf7f7; border-left: 4px solid #c00; padding: 0.75rem 1rem; margin-bottom: 1rem; border-radius: 4px; color: #333; font-size: 0.9rem; }
+        label { display: block; margin-bottom: 0.25rem; color: #555; font-size: 0.9rem; }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        input:focus { outline: none; border-color: #990030; box-shadow: 0 0 0 2px rgba(153,0,48,0.2); }
+        button {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: #990030;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        button:hover { background: #7a0026; }
+        .next { margin-top: 1rem; }
+        .next input { margin-bottom: 0; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="logo">
+            <img src="{% static 'images/logo.png' %}" alt="BBI">
+        </div>
+        <h1>Staff login</h1>
+        {% if error %}
+        <div class="err">{{ error }}</div>
+        {% endif %}
+        <form method="post" action="">
+            {% csrf_token %}
+            <label for="id_username">Username</label>
+            <input type="text" name="username" id="id_username" required autofocus>
+            <label for="id_password">Password</label>
+            <input type="password" name="password" id="id_password" required>
+            <input type="hidden" name="next" value="{{ next_url }}">
+            <button type="submit">Log in</button>
+        </form>
+    </div>
+</body>
+</html>

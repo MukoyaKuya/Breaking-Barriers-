@@ -29,14 +29,30 @@ if not SECRET_KEY:
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '*').split(',') if os.environ.get('ALLOWED_HOSTS') else ['*']
-CSRF_TRUSTED_ORIGINS = os.environ.get('CSRF_TRUSTED_ORIGINS', '').split(',') if os.environ.get('CSRF_TRUSTED_ORIGINS') else []
+ALLOWED_HOSTS = [h.strip() for h in os.environ.get('ALLOWED_HOSTS', '*').split(',') if h.strip()] if os.environ.get('ALLOWED_HOSTS') else ['*']
+CSRF_TRUSTED_ORIGINS = [o.strip() for o in os.environ.get('CSRF_TRUSTED_ORIGINS', '').split(',') if o.strip()] if os.environ.get('CSRF_TRUSTED_ORIGINS') else []
+
+# Ensure custom domain is always trusted for CSRF (admin login). Do NOT set
+# SESSION_COOKIE_DOMAIN/CSRF_COOKIE_DOMAIN: host-only cookies (default) fix
+# redirect loops behind load balancers; Domain=.example.com can break login.
+if os.environ.get('CUSTOM_DOMAIN'):
+    custom_domain = os.environ.get('CUSTOM_DOMAIN').strip()
+    if custom_domain:
+        for origin in (f'https://{custom_domain}', f'https://www.{custom_domain}'):
+            if origin not in CSRF_TRUSTED_ORIGINS:
+                CSRF_TRUSTED_ORIGINS.append(origin)
+        SESSION_COOKIE_SAMESITE = 'Lax'
+        CSRF_COOKIE_SAMESITE = 'Lax'
+
+# Log CSRF failures (Referer/Origin) to debug admin login loop
+CSRF_FAILURE_VIEW = 'church_app.urls.csrf_failure_view'
 
 # Security Hardening
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 X_FRAME_OPTIONS = 'DENY'
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 
 # django-ipware: client IP for analytics (unique visitors). Checks X-Forwarded-For,
 # X-Real-IP, CF-Connecting-IP, etc., so tracking works behind load balancers/CDNs.
@@ -47,6 +63,35 @@ USE_X_FORWARDED_PORT = True
 # Redirect to HTTPS in production
 # Note: SECURE_SSL_REDIRECT is disabled because Cloud Run handles SSL termination
 # and enabling it causes redirect loops
+# Ensure cookies are associated with the custom domain if available - handled above
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'INFO',
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'church.diagnostic_middleware': {  # Specific logger for our middleware
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
+}
+
 if not DEBUG:
     SECURE_SSL_REDIRECT = False  # Cloud Run handles HTTPS
     SESSION_COOKIE_SECURE = True
@@ -55,11 +100,7 @@ if not DEBUG:
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
     
-    # Ensure cookies are associated with the custom domain if available
-    if os.environ.get('CUSTOM_DOMAIN'):
-        domain = os.environ.get('CUSTOM_DOMAIN')
-        SESSION_COOKIE_DOMAIN = f".{domain}"
-        CSRF_COOKIE_DOMAIN = f".{domain}"
+
 
 
 # Application definition
@@ -93,13 +134,16 @@ if _debug_toolbar_available:
     INSTALLED_APPS += ['debug_toolbar']
 
 MIDDLEWARE = [
+    'church.diagnostic_middleware.HeaderLoggingMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     *(['debug_toolbar.middleware.DebugToolbarMiddleware'] if _debug_toolbar_available else []),
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'church.proxy_fix.ProxyRefererFixMiddleware',  # before CSRF so admin login works when proxy strips Referer
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'church.diagnostic_middleware.StaffLoginRedirectMiddleware',  # /admin/login/ -> /staff-login/ (custom login)
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'church.middleware.PageViewMiddleware',

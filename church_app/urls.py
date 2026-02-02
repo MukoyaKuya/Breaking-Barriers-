@@ -14,13 +14,68 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+import logging
 from django.contrib import admin
+from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import RedirectView, TemplateView
+from django.views.csrf import csrf_failure as default_csrf_failure
 from django.http import JsonResponse
 from django.db import connection
+
+logger = logging.getLogger(__name__)
+
+
+def staff_login_view(request):
+    """
+    Custom staff login that bypasses Django admin login. Use this when admin
+    login loops behind a proxy (e.g. https://bb-international.org).
+    Same User model and session; after login you are sent to /admin/.
+    """
+    next_url = request.GET.get('next') or request.POST.get('next') or '/admin/'
+    # Ensure next is same-host and safe
+    if not next_url.startswith('/'):
+        next_url = '/admin/'
+
+    if request.user.is_authenticated and request.user.is_staff:
+        return redirect(request.build_absolute_uri(next_url))
+
+    if request.method == 'POST':
+        username = (request.POST.get('username') or '').strip()
+        password = request.POST.get('password') or ''
+        if username and password:
+            user = authenticate(request, username=username, password=password)
+            if user is not None and user.is_staff:
+                login(request, user)
+                # Redirect to same host so session cookie is sent on next request
+                return redirect(request.build_absolute_uri(next_url))
+            if user is not None and not user.is_staff:
+                return render(request, 'church/staff_login.html', {
+                    'error': 'This account does not have staff access.',
+                    'next_url': next_url,
+                })
+        return render(request, 'church/staff_login.html', {
+            'error': 'Invalid username or password.',
+            'next_url': next_url,
+        })
+
+    return render(request, 'church/staff_login.html', {'next_url': next_url})
+
+
+def csrf_failure_view(request, reason=''):
+    """Log CSRF failure (Referer/Origin) then show default 403 page. Helps debug admin login loop."""
+    logger.warning(
+        "CSRF_FAILURE: reason=%s Referer=%s Origin=%s Host=%s trusted_origins=%s",
+        reason,
+        request.META.get('HTTP_REFERER', ''),
+        request.META.get('HTTP_ORIGIN', ''),
+        request.get_host(),
+        getattr(settings, 'CSRF_TRUSTED_ORIGINS', []),
+    )
+    return default_csrf_failure(request, reason)
 
 
 def health_check_view(request):
@@ -39,6 +94,7 @@ admin.site.index_title = "Administration"
 
 urlpatterns = [
     path('health/', health_check_view),
+    path('staff-login/', staff_login_view),
     path('admin/', admin.site.urls),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('', include('church.urls')),
