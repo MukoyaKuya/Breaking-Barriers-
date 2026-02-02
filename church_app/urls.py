@@ -94,7 +94,8 @@ def staff_login_view(request):
                 login(request, user)
                 request.session.save()  # persist before redirect so cookie is set
                 host = _login_redirect_host(request)
-                scheme = 'https' if request.is_secure() else 'http'
+                # Force HTTPS in production (Cloud Run) even if is_secure() is failing due to proxy headers
+                scheme = 'https' if not settings.DEBUG else ('https' if request.is_secure() else 'http')
                 url = f'{scheme}://{host}{next_url}'
                 logger.info("STAFF_LOGIN: redirect after login to %s (host=%s)", url, host)
                 return redirect(url)
