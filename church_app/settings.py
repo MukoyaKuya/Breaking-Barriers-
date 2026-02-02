@@ -57,9 +57,11 @@ if os.environ.get('CUSTOM_DOMAIN'):
 
 # Force DB sessions to avoid cache/memory issues on Cloud Run
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+SESSION_COOKIE_NAME = 'bbi_session_id'  # Custom name to break stale cookies
 SESSION_COOKIE_AGE = 1209600  # 2 weeks
 SESSION_SAVE_EVERY_REQUEST = True
 SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_DOMAIN = None  # Standard host-only cookie (safest)
 CSRF_COOKIE_SECURE = True
 # Stick to default SameSite=Lax for compatibility
 SESSION_COOKIE_SAMESITE = 'Lax'
@@ -304,6 +306,10 @@ LOGGING = {
             'propagate': False,
         },
         'church': {
+            'handlers': ['console'] + (['file'] if not DEBUG else []),
+            'level': 'INFO',
+        },
+        'church_app': {  # Explicit logger for project-level files like urls.py
             'handlers': ['console'] + (['file'] if not DEBUG else []),
             'level': 'INFO',
         },

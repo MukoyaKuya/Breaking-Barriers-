@@ -98,8 +98,8 @@ class HeaderLoggingMiddleware:
                     except Exception:
                         pass
 
-        if request.path.startswith('/admin/'):
-            # Log headers for admin requests
+        if request.path.startswith('/admin/') or request.path.startswith('/staff-login/'):
+            # Log headers for admin and login requests
             headers = {k: v for k, v in request.META.items() if k.startswith('HTTP_') or k in ['REMOTE_ADDR', 'CONTENT_TYPE', 'CONTENT_LENGTH']}
             logger.info(f"DIAGNOSTIC: Path={request.path}, Method={request.method}")
             logger.info(f"DIAGNOSTIC Headers: {headers}")
@@ -107,7 +107,9 @@ class HeaderLoggingMiddleware:
             
         response = self.get_response(request)
         
-        if request.path.startswith('/admin/'):
+        response = self.get_response(request)
+        
+        if request.path.startswith('/admin/') or request.path.startswith('/staff-login/'):
             logger.info(f"DIAGNOSTIC Response: Status={response.status_code}")
             if 'Location' in response:
                 logger.info(f"DIAGNOSTIC Location: {response['Location']}")
