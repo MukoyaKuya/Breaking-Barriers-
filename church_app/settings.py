@@ -47,17 +47,23 @@ CSRF_TRUSTED_ORIGINS = [
     'https://www.bb-international.org',
 ]
 
-# Ensure custom domain is always trusted for CSRF (admin login). Do NOT set
-# SESSION_COOKIE_DOMAIN/CSRF_COOKIE_DOMAIN: host-only cookies (default) fix
-# redirect loops behind load balancers; Domain=.example.com can break login.
+# Ensure custom domain is always trusted for CSRF (admin login).
 if os.environ.get('CUSTOM_DOMAIN'):
     custom_domain = os.environ.get('CUSTOM_DOMAIN').strip()
     if custom_domain:
         for origin in (f'https://{custom_domain}', f'https://www.{custom_domain}'):
             if origin not in CSRF_TRUSTED_ORIGINS:
                 CSRF_TRUSTED_ORIGINS.append(origin)
-        SESSION_COOKIE_SAMESITE = 'Lax'
-        CSRF_COOKIE_SAMESITE = 'Lax'
+
+# Force DB sessions to avoid cache/memory issues on Cloud Run
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+SESSION_COOKIE_AGE = 1209600  # 2 weeks
+SESSION_SAVE_EVERY_REQUEST = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+# Stick to default SameSite=Lax for compatibility
+SESSION_COOKIE_SAMESITE = 'Lax'
+CSRF_COOKIE_SAMESITE = 'Lax'
 
 # Cloud Run / other service URLs that serve this app (so staff login works on run.app too)
 _extra_origins = os.environ.get('CSRF_EXTRA_ORIGINS', '').strip() or os.environ.get('CLOUD_RUN_URL', '').strip()
