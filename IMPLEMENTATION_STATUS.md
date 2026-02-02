@@ -74,7 +74,7 @@
 13. `church/templates/church/partials/gallery_items.html` - Lazy loading, grid wrapper
 14. Multiple template files - Added `loading="lazy"` to content images
 
-## 🚀 Next Steps (Remaining Phases)
+## Next Steps (Remaining Phases)
 
 ### Phase 4: Media & Video Optimization ✅
 - [x] **Pre-generate thumbnails on upload** ✅ (signals generate thumbnails automatically)
@@ -97,7 +97,7 @@
 - [ ] Database read replicas - Future enhancement if needed
 - [x] **Health check endpoint** ✅ (`/health/` for load balancers/orchestration)
 
-## 📝 Usage Notes
+## Usage Notes
 
 ### Running Locally (Without Redis)
 The application will automatically use in-memory caching (`LocMemCache`) if `REDIS_URL` is not set. This works fine for development but won't persist across server restarts.
@@ -119,14 +119,14 @@ Caches are automatically invalidated when:
 - Search: 12 results per page
 - All pagination preserves query parameters (category, search term, etc.)
 
-## ⚠️ Important Notes
+## Important Notes
 
 1. **Migrations Applied**: Database indexes have been created. Ensure migrations are applied in production.
 2. **Redis Optional**: App works without Redis but caching is per-process (not shared).
 3. **Cache TTLs**: Adjust cache timeouts in `views.py` if needed (currently 10-30 minutes).
 4. **Gunicorn Workers**: Default is 5 workers. Adjust via `GUNICORN_WORKERS` env var based on CPU cores.
 
-## 🎯 Success Metrics
+## Success Metrics
 
 The optimizations are working correctly if:
 - ✅ Home page loads in < 1 second (cached)
@@ -140,7 +140,7 @@ The optimizations are working correctly if:
 **Last Updated**: January 29, 2026  
 **Status**: Phases 1, 2, 3, 4, 5, 6, 7, 8 Complete ✅
 
-## 🎉 All Major Optimizations Complete!
+## All Major Optimizations Complete!
 
 ### Summary of Completed Work:
 - ✅ **Database**: Optimized queries, indexes, singleton caching
