@@ -1,0 +1,23 @@
+steps:
+- name: 'gcr.io/gen-lang-client-0549116861/bbi-international'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    # Install cloud-sql-proxy
+    apt-get update && apt-get install -y curl
+    curl -o cloud-sql-proxy https://storage.googleapis.com/cloud-sql-connectors/cloud-sql-proxy/v2.1.0/cloud-sql-proxy.linux.amd64
+    chmod +x cloud-sql-proxy
+    ./cloud-sql-proxy gen-lang-client-0549116861:europe-north2:bbinternational-db --port 5432 &
+    sleep 5
+    cp /workspace/church_app/settings.py /app/church_app/settings.py
+    cd /app
+    python manage.py shell -c "from django.contrib.auth import get_user_model; User=get_user_model(); u,c=User.objects.update_or_create(username='Roy', defaults={'email':'roy@example.com', 'is_superuser':True, 'is_staff':True}); u.set_password('RoyPass2025!'); u.save(); print(f'ADMIN_CREATED_OR_UPDATED:{u.username}')"
+  env:
+  - 'DATABASE_URL=postgres://postgres:BBI_Secure_Pass_2026!@127.0.0.1:5432/bbi_prod'
+  - 'GS_BUCKET_NAME=bbinternational-media'
+  - 'SECRET_KEY=django-insecure-prod-key'
+  - 'DEBUG=False'
+  - 'ALLOWED_HOSTS=*'
+  - 'DJANGO_SETTINGS_MODULE=church_app.settings'
+  - 'DB_SSL_REQUIRE=False'

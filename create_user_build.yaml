@@ -1,0 +1,16 @@
+steps:
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    gcloud run jobs create temporary-create-admin \
+      --image gcr.io/gen-lang-client-0549116861/bbi-international \
+      --command python \
+      --args manage.py,shell,-c,"from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.filter(username='Roy').delete(); User.objects.create_superuser('Roy', 'roy@example.com', 'Roy@2025')" \
+      --region europe-north2 \
+      --set-cloudsql-instances gen-lang-client-0549116861:europe-north2:bbinternational-db \
+      --set-env-vars DATABASE_URL="postgres://postgres:BBI_Secure_Pass_2026!@/bbi_prod?host=/cloudsql/gen-lang-client-0549116861:europe-north2:bbinternational-db",GS_BUCKET_NAME=bbinternational-media,SECRET_KEY=django-insecure-prod-key,DEBUG=False,ALLOWED_HOSTS=*,DJANGO_SETTINGS_MODULE=church_app.settings \
+      --quiet
+    gcloud run jobs execute temporary-create-admin --region europe-north2 --wait --quiet
+    gcloud run jobs delete temporary-create-admin --region europe-north2 --quiet

@@ -40,6 +40,8 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # django-ipware: client IP for analytics (unique visitors). Checks X-Forwarded-For,
 # X-Real-IP, CF-Connecting-IP, etc., so tracking works behind load balancers/CDNs.
+USE_X_FORWARDED_HOST = True
+USE_X_FORWARDED_PORT = True
 # Optional: set IPWARE_PROXY_COUNT=1 if behind a single LB; or IPWARE_TRUSTED_PROXY_IPS
 # to a list of proxy IPs for stricter anti-spoofing.
 # Redirect to HTTPS in production
@@ -52,6 +54,12 @@ if not DEBUG:
     SECURE_HSTS_SECONDS = 31536000  # 1 year
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
+    
+    # Ensure cookies are associated with the custom domain if available
+    if os.environ.get('CUSTOM_DOMAIN'):
+        domain = os.environ.get('CUSTOM_DOMAIN')
+        SESSION_COOKIE_DOMAIN = f".{domain}"
+        CSRF_COOKIE_DOMAIN = f".{domain}"
 
 
 # Application definition
