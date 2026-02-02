@@ -82,6 +82,21 @@ class HeaderLoggingMiddleware:
                 request.META['HTTP_X_FORWARDED_HOST'] = clean_host
             # Keep HTTP_HOST in sync so cookies and redirects use the public host (fixes admin login loop)
             request.META['HTTP_HOST'] = request.META['HTTP_X_FORWARDED_HOST'].strip()
+        else:
+            # No X-Forwarded-Host: for login paths, use Referer host so cookie/redirect use public host
+            path = request.path.rstrip('/')
+            if path in ('/admin/login', '/staff-login'):
+                referer = request.META.get('HTTP_REFERER') or ''
+                if referer:
+                    try:
+                        parsed = urlparse(referer)
+                        netloc = (parsed.netloc or '').strip()
+                        allowed = getattr(settings, 'ALLOWED_HOSTS', []) or []
+                        if netloc and any(netloc == h or netloc.endswith('.' + h) for h in allowed):
+                            request.META['HTTP_HOST'] = netloc
+                            logger.info("DIAGNOSTIC: Set HTTP_HOST from Referer for login path (host=%s)", netloc)
+                    except Exception:
+                        pass
 
         if request.path.startswith('/admin/'):
             # Log headers for admin requests

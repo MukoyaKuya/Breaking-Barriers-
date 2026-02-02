@@ -15,6 +15,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 import logging
+from urllib.parse import urlparse
+
 from django.contrib import admin
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
@@ -29,6 +31,29 @@ from django.db import connection
 logger = logging.getLogger(__name__)
 
 
+def _login_redirect_host(request):
+    """
+    Host to use for post-login redirect so the browser stays on the same
+    origin and sends the session cookie. Prefer X-Forwarded-Host (client-facing)
+    when present and allowed; else Referer host; else request.get_host().
+    """
+    allowed = getattr(settings, 'ALLOWED_HOSTS', []) or []
+    forwarded = request.META.get('HTTP_X_FORWARDED_HOST', '').strip()
+    if forwarded and ',' in forwarded:
+        forwarded = forwarded.split(',')[0].strip()
+    if forwarded and any(forwarded == h or forwarded.endswith('.' + h) for h in allowed):
+        return forwarded
+    referer = request.META.get('HTTP_REFERER') or ''
+    if referer:
+        try:
+            parsed = urlparse(referer)
+            if parsed.netloc and any(parsed.netloc == h or parsed.netloc.endswith('.' + h) for h in allowed):
+                return parsed.netloc
+        except Exception:
+            pass
+    return request.get_host()
+
+
 def staff_login_view(request):
     """
     Custom staff login that bypasses Django admin login. Use this when admin
@@ -41,7 +66,10 @@ def staff_login_view(request):
         next_url = '/admin/'
 
     if request.user.is_authenticated and request.user.is_staff:
-        return redirect(request.build_absolute_uri(next_url))
+        host = _login_redirect_host(request)
+        scheme = 'https' if request.is_secure() else 'http'
+        url = f'{scheme}://{host}{next_url}'
+        return redirect(url)
 
     if request.method == 'POST':
         username = (request.POST.get('username') or '').strip()
@@ -50,8 +78,12 @@ def staff_login_view(request):
             user = authenticate(request, username=username, password=password)
             if user is not None and user.is_staff:
                 login(request, user)
-                # Redirect to same host so session cookie is sent on next request
-                return redirect(request.build_absolute_uri(next_url))
+                request.session.save()  # persist before redirect so cookie is set
+                host = _login_redirect_host(request)
+                scheme = 'https' if request.is_secure() else 'http'
+                url = f'{scheme}://{host}{next_url}'
+                logger.info("STAFF_LOGIN: redirect after login to %s (host=%s)", url, host)
+                return redirect(url)
             if user is not None and not user.is_staff:
                 return render(request, 'church/staff_login.html', {
                     'error': 'This account does not have staff access.',

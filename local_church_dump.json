@@ -1,0 +1,862 @@
+[
+{
+  "model": "church.verse",
+  "pk": 1,
+  "fields": {
+    "content": "“So be strong and courageous! Do not be afraid and do not panic before them. For the Lord your God will personally go ahead of you. He will neither fail you nor abandon you.”",
+    "reference": "Deuteronomy 31:6",
+    "date_posted": "2026-01-27T12:54:16.094Z",
+    "is_active": true,
+    "is_featured": true
+  }
+},
+{
+  "model": "church.newsitem",
+  "pk": 1,
+  "fields": {
+    "title": "Word Of Truth",
+    "slug": "word-of-truth",
+    "image": "news/JEG_Themes_Matthew_600x.png",
+    "image_cropping": "34,0,567,400",
+    "summary": "In her teaching, Pastor Nellie Shani explores the vital relationship between the Holy Spirit’s presence in a believer’s life and the manifestation of both spiritual fruit and spiritual gifts. She notes that while gifts are received freely, fruit must be intentionally cultivated. Using the imagery of a tree, she explains that while the Holy Spirit provides the seeds of character at salvation, believers must \"water\" these attributes through surrender and obedience to God’s Word. This process involves the discipline of pruning—a necessary work that allows virtues like love, patience, and self-control to grow and thrive.",
+    "body": "<p><br />\r\n<strong>Prepared by Pst. Nellie Shan</strong><br />\r\n&nbsp;A gift is something that we get for free. While gifts are given freely, fruit is cultivated.&nbsp;<br />\r\nIt takes work to bear fruit. &ldquo;&hellip;While every branch that does bear fruit he prunes so that it will be even more fruitful&rdquo; &ndash; John 15:2. Pruning is work.</p>\r\n\r\n<p><br />\r\nThe Holy Spirit does not produce fruit in us. He comes in with fruit at salvation, but we only manifest it as we water the &ldquo;Tree.&rdquo; How do we water the Tree of the Holy Spirit? We do it through surrender and obedience to the Word of God!&nbsp;<br />\r\nThe fruit that we will manifest is seen in Galatians 5:22. &ldquo;But the fruit of the Spirit is love, joy, peace, patience, kindness, goodness, faithfulness, gentleness, and self-control.&rdquo; It is God&rsquo;s desire that we bear much fruit.&nbsp;<br />\r\nMost believers are quite clear about the fruit that God desires that we manifest. The problem comes when it comes to the gifts of the Holy Spirit.&nbsp;</p>\r\n\r\n<p><br />\r\nWhile it is generally accepted that all believers are to manifest the fruit of the Spirit, unfortunately a lot of people think that gifts are just for a few chosen children of God. When the Holy Spirit came upon the believers in the upper room, He fell on each and every one of them.&nbsp;</p>\r\n\r\n<p><br />\r\nEvery believer has a gift that the Holy Spirit has given them, to help them fulfil the purpose for which God created them.&nbsp;<br />\r\nRomans 12:6 says, &ldquo;We have different gifts according to the grace given us. If a man&rsquo;s gift is prophesying, let him use it in proportion to his faith. If it is serving, let him serve; if it is teaching, let him teach; if it is encouraging, let him encourage; if it is contributing to the needs of others, let him give generously; if it is leadership, let him govern diligently; if it is showing mercy, let him do it cheerfully.&rdquo;</p>\r\n\r\n<p><br />\r\nUnfortunately a lot of believers do not know what their gifts are.&nbsp;<br />\r\nThere are three things that are the enemies of us walking in our giftings. One, is focusing on others &ndash; How they look, What they have, and the impact that they are making. This results in jealousy, competition, self-rejection, and discouragement.&nbsp;<br />\r\nTwo is, ignorance of the gift that we have received. The result is that we will be tempted to run someone else&rsquo;s race, and we will certainly fail. This will lead to self-pity (poor me, I don&rsquo;t have any gift), and we will finally blame God (He is unfair).&nbsp;<br />\r\nThe third thing is the lack of prayer. When we do not pray concerning our gift, we will not grow in it, or even know what it is. Ask the Holy Spirit to reveal to you what your gift is, so that you can walk in it and be a blessing to those around you.<br />\r\nHow do we know what our spiritual gift is? Ask yourself and the people around you, what it is that &nbsp;you do without much effort, but blesses others tremendously.&nbsp;</p>\r\n\r\n<p><br />\r\nWhat is it that you do, that brings you great joy and fulfilment? Finally, what is it that you do that brings glory to God? The answer to these three questions will give you the answer to what your spiritual gift is.&nbsp;<br />\r\n&ldquo;Now about the gifts of the Spirit, brothers and sisters, I do not want you to be uninformed&rdquo; &ndash; 1 Corinthians 12:1.<br />\r\nPrayer Points:<br />\r\n1). Ask the Lord to forgive you where you have not surrendered and been obedient to God&rsquo;s work, so that you can bear much fruit.<br />\r\n2). Ask the Holy Spirit to help you answer the three questions that you need to answer for you to be able to identify your spiritual gift.<br />\r\n3). Thank the Lord that you have a gift that is a blessing to the body of Christ.</p>",
+    "event_date": null,
+    "created_at": "2026-01-27T18:59:29.232Z",
+    "is_published": false
+  }
+},
+{
+  "model": "church.newsline",
+  "pk": 1,
+  "fields": {
+    "title": "Test NewsLine Article with Rich Text",
+    "slug": "test-newsline-article-with-rich-text",
+    "image": "",
+    "image_cropping": "",
+    "video_url": "",
+    "summary": "This is a short summary of the test article.",
+    "body": "<h2>Header Level 2</h2><p>This is a <strong>bold</strong> paragraph in the rich text area.</p><ul><li>List item 1</li><li>List item 2</li></ul>",
+    "is_published": true,
+    "created_at": "2026-01-31T12:53:45.462Z",
+    "updated_at": "2026-01-31T12:53:45.462Z"
+  }
+},
+{
+  "model": "church.partnerinquiry",
+  "pk": 1,
+  "fields": {
+    "first_name": "Partner",
+    "last_name": "User",
+    "company_name": "Test Corp",
+    "phone": "0787654321",
+    "email": "partner@example.com",
+    "message": "We want to partner with you.",
+    "created_at": "2026-01-31T13:18:35.244Z",
+    "is_read": false
+  }
+},
+{
+  "model": "church.contactmessage",
+  "pk": 1,
+  "fields": {
+    "name": "Test User",
+    "email": "test@example.com",
+    "phone": "0712345678",
+    "subject": "Test Subject",
+    "message": "This is a test contact message.",
+    "created_at": "2026-01-31T13:18:35.198Z",
+    "is_read": false
+  }
+},
+{
+  "model": "church.calendarevent",
+  "pk": 1,
+  "fields": {
+    "title": "Mens Conference",
+    "description": "Mens Conference",
+    "event_date": "2026-01-28",
+    "event_type": "Prayer Meeting",
+    "location": "Nairobi",
+    "image": "",
+    "image_cropping": "",
+    "color": "#990030",
+    "is_published": true,
+    "created_at": "2026-01-27T18:13:10.309Z",
+    "updated_at": "2026-01-27T18:13:10.309Z"
+  }
+},
+{
+  "model": "church.calendarevent",
+  "pk": 2,
+  "fields": {
+    "title": "Women's Champions",
+    "description": "Join women of all ages for a powerful time of worship, connection, and spiritual renewal at our Women’s Church Conference. This gathering is designed to encourage, equip, and empower women to grow deeper in their faith and walk confidently in God’s purpose for their lives.\r\n\r\nThrough inspiring messages, heartfelt worship, and meaningful fellowship, we will create space to reflect, be refreshed, and be reminded that we are not alone on the journey. Whether you are seeking clarity, healing, renewed strength, or simply a moment to pause and be filled, this conference is for you.\r\n\r\nCome as you are and leave encouraged, strengthened, and ready to live out your calling with faith and boldness.",
+    "event_date": "2026-01-27",
+    "event_type": "Conference",
+    "location": "",
+    "image": "",
+    "image_cropping": "",
+    "color": "#0fe628",
+    "is_published": true,
+    "created_at": "2026-01-27T18:20:02.907Z",
+    "updated_at": "2026-01-27T18:20:02.907Z"
+  }
+},
+{
+  "model": "church.calendarevent",
+  "pk": 3,
+  "fields": {
+    "title": "Kesha",
+    "description": "A day of worship, wisdom, and sisterhood. Join us for a Women’s Church Conference filled with encouragement, connection, and powerful reminders of God’s love and purpose for your life.",
+    "event_date": "2026-01-31",
+    "event_type": "Outreach",
+    "location": "Church",
+    "image": "calendar_events/554046056_1264358689061610_2566163542975989460_n.jpg",
+    "image_cropping": "",
+    "color": "#001eff",
+    "is_published": true,
+    "created_at": "2026-01-27T18:35:22.699Z",
+    "updated_at": "2026-01-27T18:52:53.840Z"
+  }
+},
+{
+  "model": "church.testimonial",
+  "pk": 4,
+  "fields": {
+    "member_name": "Amish Behal",
+    "photo": "",
+    "photo_cropping": "",
+    "video_url": "https://www.youtube.com/watch?v=L_TZlVHtapY",
+    "text": "Amish Behal shares his journey of faith, highlighting a transformative experience of being saved by Jesus during high school. Despite facing multiple setbacks and temptations from the devil, he has remained steadfast in his faith for the past six years, emphasizing the importance of choices and their consequences.",
+    "approved": true,
+    "created_at": "2026-01-28T07:07:41.750Z"
+  }
+},
+{
+  "model": "church.galleryimage",
+  "pk": 1,
+  "fields": {
+    "caption": "\"We shall continue to spread the word\"",
+    "image": "gallery/586128223_1317086613788817_5564622601631894897_n.jpg",
+    "image_cropping": "",
+    "video_url": "",
+    "duration_label": "",
+    "category": "Outreach",
+    "uploaded_at": "2026-01-27T20:31:17.891Z"
+  }
+},
+{
+  "model": "church.galleryimage",
+  "pk": 2,
+  "fields": {
+    "caption": "Matthew 18:20  \"For where two or three gather in my name, there am I with them",
+    "image": "gallery/489618915_1125867569577390_8605684623545821322_n.jpg",
+    "image_cropping": "",
+    "video_url": "",
+    "duration_label": "",
+    "category": "Outreach",
+    "uploaded_at": "2026-01-27T20:40:48.146Z"
+  }
+},
+{
+  "model": "church.galleryimage",
+  "pk": 3,
+  "fields": {
+    "caption": "The power of a Christian fellowship",
+    "image": "gallery/lumina-enhanced-1769585360198.png",
+    "image_cropping": "376,74,2238,1474",
+    "video_url": "https://youtu.be/qkOZHILUBHw?si=IDWLbk9O86E7f3JX",
+    "duration_label": "",
+    "category": "Other",
+    "uploaded_at": "2026-01-27T22:27:58.912Z"
+  }
+},
+{
+  "model": "church.galleryimage",
+  "pk": 4,
+  "fields": {
+    "caption": "Open Heaven, the hour of Prayer",
+    "image": "gallery/lumina-enhanced-1769585508111.png",
+    "image_cropping": "459,0,2501,1536",
+    "video_url": "https://youtu.be/jmK5_YjWtVc?si=XtUzc_kk_PXuNgV6",
+    "duration_label": "",
+    "category": "Worship",
+    "uploaded_at": "2026-01-28T07:24:34.919Z"
+  }
+},
+{
+  "model": "church.galleryimage",
+  "pk": 6,
+  "fields": {
+    "caption": "The Full message of New Life",
+    "image": "gallery/lumina-enhanced-1769673365402.png",
+    "image_cropping": "128,72,2059,1520",
+    "video_url": "https://www.youtube.com/watch?v=9gXsdvVe7lk",
+    "duration_label": "",
+    "category": "Outreach",
+    "uploaded_at": "2026-01-29T07:50:32.033Z"
+  }
+},
+{
+  "model": "church.herosettings",
+  "pk": 1,
+  "fields": {
+    "image": "hero/12.jpeg",
+    "image_cropping": "",
+    "updated_at": "2026-01-26T19:35:36.306Z"
+  }
+},
+{
+  "model": "church.aboutpage",
+  "pk": 1,
+  "fields": {
+    "title": "The Birth of the Ministry",
+    "subtitle": "",
+    "image": "about/488736571_1123201483177332_5950817921094483649_n.jpg",
+    "image_cropping": "205,451,1258,1502",
+    "video_url": "https://www.youtube.com/watch?v=b_KFAGlqAdY",
+    "body": "<p>A 20-year journey in the school of the Holy Spirit gave birth to the <strong>BBI Ministry.</strong> In the area of deliverance the first thing that the Holy Spirit taught the founder, <strong>Pastor Nellie Shani</strong>, was about generational curses and how the sins of the forefathers could still affect us today.</p>\r\n\r\n<p>Since then the founder has been involved in teaching around the world. The first meeting before BBI was formally registered took place at her residence, but later as the numbers grew she looked for a hall she could hire.</p>\r\n\r\n<p>Ten days later we had an executive committee and a registered ministry called BBI in 2012. Since then God has continued to add people who work with her and share the vision, and many volunteers and partners have put their hand to the plough.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h3><strong>Objectives</strong></h3>\r\n\r\n<ol>\r\n\t<li>To teach Biblical truths concerning spiritual warfare and deliverance.</li>\r\n\t<li>To help believers in Jesus Christ identify and break generational curses.</li>\r\n\t<li>To enable believers in Jesus Christ know, live and sustain their deliverance.</li>\r\n\t<li>To counsel believers in Jesus Christ who may need specialised help beyond the teaching and prayer seminars.</li>\r\n\t<li>To identify and train workers in spiritual warfare and deliverance ministry.</li>\r\n</ol>",
+    "updated_at": "2026-01-29T08:23:35.781Z"
+  }
+},
+{
+  "model": "church.infocard",
+  "pk": 1,
+  "fields": {
+    "card_type": "childrens_bread",
+    "title": "Children's Bread",
+    "slug": "how-to-pray-purposely",
+    "image": "info_cards/12_9LA3AYL.jpeg",
+    "image_cropping": "61,42,1354,768",
+    "headline": "How to pray",
+    "summary": "Prayer is communicating with God through praise, confession, thanksgiving, and requests, trusting His will and praying in faith. If you want it even shorter or more Scripture-styled, just say the word.",
+    "content": "<p>Prayer is simply talking to God with honesty and faith. It doesn&rsquo;t require perfect words&mdash;just a sincere heart.</p>\r\n\r\n<ol>\r\n\t<li>\r\n\t<p><strong>Begin with worship</strong><br />\r\n\tAcknowledge who God is. Thank Him, praise Him, and honor His greatness.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Confess and surrender</strong><br />\r\n\tHumbly bring your sins, struggles, and weaknesses before God, asking for forgiveness and help.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Ask with faith</strong><br />\r\n\tPresent your needs, desires, and concerns to God, trusting Him to hear and respond according to His will.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Pray God&rsquo;s Word</strong><br />\r\n\tUse Scripture as your guide. God&rsquo;s Word strengthens your prayers and aligns your heart with His truth.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Listen and trust</strong><br />\r\n\tTake time to be still. Trust God with the outcome and remain open to His direction.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Close with gratitude</strong><br />\r\n\tThank God in advance, believing He is working even when you cannot see it.</p>\r\n\t</li>\r\n</ol>",
+    "author_name": "Pst. Nellie Shani",
+    "link_url": "",
+    "is_active": true,
+    "created_at": "2026-01-27T19:24:05.343Z",
+    "updated_at": "2026-01-28T07:47:18.487Z"
+  }
+},
+{
+  "model": "church.infocard",
+  "pk": 2,
+  "fields": {
+    "card_type": "news",
+    "title": "News",
+    "slug": "fellowship",
+    "image": "info_cards/554046056_1264358689061610_2566163542975989460_n_TJG4zvc.jpg",
+    "image_cropping": "0,0,1104,621",
+    "headline": "RESISTING END TIMES DECEPTION",
+    "summary": "The Bible focuses on helping believers discern truth from deception in the context of end-time events. It emphasizes that false teachings and misleading prophecies can lead Christians astray, causing fear, confusion, or spiritual compromise",
+    "content": "<p>The bible tells us that believers discern truth from deception in the context of end-time events. It emphasizes that false teachings and misleading prophecies can lead Christians astray, causing fear, confusion, or spiritual compromise. Key points include:</p>\r\n\r\n<ol>\r\n\t<li>\r\n\t<p><strong>Awareness of Deception:</strong> Many end-times teachings are distorted, mixing truth with falsehood to manipulate believers. Awareness and vigilance are crucial.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Grounding in Scripture:</strong> The Bible is the ultimate authority. Knowledge of Scripture equips believers to identify errors and test prophecies or claims against God&rsquo;s Word.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Spiritual Discernment:</strong> The Holy Spirit enables Christians to distinguish truth from lies. Prayer, obedience, and a relationship with God strengthen discernment.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Avoiding Fear and Panic:</strong> End-time deception often preys on fear. Believers are encouraged to remain steadfast, trusting God&rsquo;s sovereignty rather than succumbing to sensationalism.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Living Faithfully Now:</strong> Instead of being consumed by speculation, Christians are called to live holy, obedient, and mission-focused lives while waiting for Christ&rsquo;s return.</p>\r\n\t</li>\r\n</ol>\r\n\r\n<p><strong>Core Message:</strong> Believers must anchor themselves in Scripture, cultivate spiritual discernment, and resist being led astray by fear, false teachers, or sensationalized interpretations of end-time events.</p>",
+    "author_name": "Pst. Nellie Shani",
+    "link_url": "",
+    "is_active": true,
+    "created_at": "2026-01-27T22:40:47.668Z",
+    "updated_at": "2026-01-30T09:13:07.246Z"
+  }
+},
+{
+  "model": "church.infocard",
+  "pk": 3,
+  "fields": {
+    "card_type": "word_of_truth",
+    "title": "Word of Truth",
+    "slug": "Word-Of-Truth",
+    "image": "info_cards/489892987_1125867572910723_2120174201733623572_n.jpg",
+    "image_cropping": "0,0,482,271",
+    "headline": "Passing On the Spiritual Legacy",
+    "summary": "The message emphasizes the importance of passing on a spiritual legacy to the next generation. Just as Moses discipled Joshua to lead Israel faithfully, believers today must teach their children and others about God’s works and the gospel of Jesus Christ. The Bible warns that failing to pass on this spiritual heritage can result in future generations who “know neither the Lord nor what He has done” (Judges 2:10). Christians are encouraged to intentionally share their faith, ensuring the gospel is remembered and lived by those who come after us (1 Corinthians 15:3-5).",
+    "content": "<p><strong>The Bible </strong>tells us that after the death of Moses, Joshua took over and was the one who led the children of Israel into Canaan, the Promised Land.&nbsp;<br />\r\nMoses was careful to disciple his aide, Joshua, &ldquo;In the ways of the Lord&rdquo;. Just before Moses died, God told Moses to pass on his spiritual mantle to Joshua.&nbsp;<br />\r\n&ldquo;Now Joshua son of Nun was filled with the spirit of wisdom because Moses had laid his hands on him. So the Israelites listened to him and did what the LORD had commanded <em><strong>Moses&rdquo; &ndash; Deuteronomy 34:9.&nbsp;</strong></em><br />\r\nGod wanted a spiritual legacy passed on from Moses to the next leader, Joshua.<br />\r\n&nbsp;However after the death of Joshua the Israelites followed God for a little while then forsook Him! We are told,&nbsp;<br />\r\n&ldquo;After that whole generation had been gathered to their ancestors, another generation grew up who knew neither the Lord nor what he had done for Israel&rdquo; &ndash; Judges 2:10.&nbsp;<br />\r\nUnfortunately there was a generation that did not tell the next generation about the God of Israel and what He had done for their nation! This is what God was avoiding when He told the <em><strong>Israelites in Deuteronomy 6:1-9,&nbsp;</strong></em><br />\r\n&ldquo;These are the commands the Lord your God commanded me to teach you&hellip;so that your children and the children after them may fear the Lord your God as long as you live&hellip;Impress them on your children. Talk about them when you sit at home and when you walk along the road, when you lie down and when you get up&hellip;Write them on the doorframes of your houses and on your gates.&rdquo;&nbsp;<br />\r\nThis was the way to pass on the spiritual legacy of Israel to the next generation. Unfortunately the Israelites failed to do this!</p>\r\n\r\n<p>It is very easy to see how the children and grandchildren of a great man or woman of God can totally turn away from God because the &ldquo;mantle&rdquo; of faith in Jesus Christ was never passed down to them by their parents!&nbsp;<br />\r\nIf we as believers in Jesus Christ do not pass on our Christian heritage to our children, we risk having a generation after we have gone, who will know neither the Lord, nor what He has done for us! How sad that would be!</p>\r\n\r\n<p><br />\r\n&nbsp;&ldquo;For what I received I passed on to you as of first importance: that Christ died for our sins according to the Scriptures, that he was buried, that he was raised on the third day according to the Scriptures&rdquo; &ndash; <strong>1 Corinthians 15:3-5.</strong><br />\r\n<strong>&nbsp;Prayer Points:</strong><br />\r\n&nbsp;1). Ask the Lord to forgive you where you have not helped pass on the Word of God to the next generation.<br />\r\n&nbsp;2). Ask the Holy Spirit to give you opportunities where you can share the gospel with the next generation.<br />\r\n&nbsp;3). Thank the Lord that He has called us as co-laborers with Him in spreading the Gospel.</p>",
+    "author_name": "Pst. Nellie Shani",
+    "link_url": "",
+    "is_active": true,
+    "created_at": "2026-01-27T22:45:09.859Z",
+    "updated_at": "2026-01-30T09:13:59.539Z"
+  }
+},
+{
+  "model": "church.wordoftruth",
+  "pk": 1,
+  "fields": {
+    "title": "Cultivating Fruit and Discovering Your Divine Gifts",
+    "slug": "cultivating-fruit-and-discovering-your-divine-gifts",
+    "summary": "This teaching by Pst. Nellie Shan distinguishes between the Fruit of the Spirit, which must be cultivated through surrender, and the Gifts of the Spirit, which are freely given to every believer to fulfill their purpose. While fruit is a universal requirement for all Christians developed through \"pruning\" and obedience, spiritual gifts are often misunderstood or neglected due to comparison, ignorance, or a lack of prayer.",
+    "author_name": "Dr. Nellie",
+    "image": "word_of_truth/john-bible-commentary.png",
+    "image_cropping": "0,0,843,630",
+    "body": "<p><span style=\"font-size:11pt\"><span style=\"font-family:Tahoma,sans-serif\"><span dir=\"ltr\" lang=\"EN-US\" style=\"font-size:10.0pt\">&nbsp;&nbsp;A gift is something that we get for free. While gifts DFgiven freely, fruit is cultivated.&nbsp;<br />\r\nIt takes work to bear fruit. &ldquo;&hellip;While every branch that does bear fruit he prunes so that it will be even more fruitful&rdquo; &ndash; John 15:2. Pruning is work.<br />\r\nThe Holy Spirit does not produce fruit in us. He comes in with fruit at salvation, but we only manifest it as we water the &ldquo;Tree.&rdquo; How do we water the Tree of the Holy Spirit? We do it through surrender and obedience to the Word of God!&nbsp;<br />\r\nThe fruit that we will manifest is seen in Galatians 5:22. &ldquo;But the fruit of the Spirit is love, joy, peace, patience, kindness, goodness, faithfulness, gentleness, and self-control.&rdquo; It is God&rsquo;s desire that we bear much fruit.&nbsp;<br />\r\nMost believers are quite clear about the fruit that God desires that we manifest. The problem comes when it comes to the gifts of the Holy Spirit.&nbsp;<br />\r\nWhile it is generally accepted that all believers are to manifest the fruit of the Spirit, unfortunately a lot of people think that gifts are just for a few chosen children of God. When the Holy Spirit came upon the believers in the upper room, He fell on each and every one of them.&nbsp;<br />\r\nEvery believer has a gift that the Holy Spirit has given them, to help them fulfil the purpose for which God created them.&nbsp;<br />\r\nRomans 12:6 says, &ldquo;We have different gifts according to the grace given us. If a man&rsquo;s gift is prophesying, let him use it in proportion to his faith. If it is serving, let him serve; if it is teaching, let him teach; if it is encouraging, let him encourage; if it is contributing to the needs of others, let him give generously; if it is leadership, let him govern diligently; if it is showing mercy, let him do it cheerfully.&rdquo;<br />\r\nUnfortunately a lot of believers do not know what their gifts are.&nbsp;<br />\r\nThere are three things that are the enemies of us walking in our giftings. One, is focusing on others &ndash; How they look, What they have, and the impact that they are making. This results in jealousy, competition, self-rejection, and discouragement.&nbsp;<br />\r\nTwo is, ignorance of the gift that we have received. The result is that we will be tempted to run someone else&rsquo;s race, and we will certainly fail. This will lead to self-pity (poor me, I don&rsquo;t have any gift), and we will finally blame God (He is unfair).&nbsp;<br />\r\nThe third thing is the lack of prayer. When we do not pray concerning our gift, we will not grow in it, or even know what it is. Ask the Holy Spirit to reveal to you what your gift is, so that you can walk in it and be a blessing to those around you.<br />\r\nHow do we know what our spiritual gift is? Ask yourself and the people around you, what it is that &nbsp;you do without much effort, but blesses others tremendously.&nbsp;<br />\r\nWhat is it that you do, that brings you great joy and fulfilment? Finally, what is it that you do that brings glory to God? The answer to these three questions will give you the answer to what your spiritual gift is.&nbsp;<br />\r\n&ldquo;Now about the gifts of the Spirit, brothers and sisters, I do not want you to be uninformed&rdquo; &ndash; 1 Corinthians 12:1.<br />\r\nPrayer Points:<br />\r\n1). Ask the Lord to forgive you where you have not surrendered and been obedient to God&rsquo;s work, so that you can bear much fruit.<br />\r\n2). Ask the Holy Spirit to help you answer the three questions that you need to answer for you to be able to identify your spiritual gift.<br />\r\n3). Thank the Lord that you have a gift that is a blessing to the body of Christ. (Give me a summary and title)OMBERO COMPREHENSIVE SCHOOL </span></span></span></p>",
+    "is_published": true,
+    "created_at": "2026-01-29T05:16:49.381Z",
+    "updated_at": "2026-01-29T06:35:14.267Z"
+  }
+},
+{
+  "model": "church.wordoftruth",
+  "pk": 2,
+  "fields": {
+    "title": "word of truth",
+    "slug": "word-of-truth",
+    "summary": "God has a purposeful plan for every life, written before birth. We are not our own, so decisions must be submitted to Him. True fulfillment comes from discovering God’s appointment through obedience, prayer, and the Holy Spirit, trusting His guidance rather than personal understanding that leads to destiny and purpose.",
+    "author_name": "Pst. Nellie Shani",
+    "image": "word_of_truth/jeremiah.jpg",
+    "image_cropping": "347,0,880,400",
+    "body": "<p><strong>Jeremiah 29:11 says,</strong> &ldquo;For I know the plans I have for you&hellip;&rdquo; If God has a plan for you, then it means that you cannot just do anything that you want with your life.&nbsp;<br />\r\nA lot of people think that they have the right to do whatever it is that they please, with their lives. Choose whatever job they want, live where they want, and marry whoever they want.&nbsp;<br />\r\n<strong>1 Corinthians 6:20 says, &ldquo;</strong>You are not your own, for you were bought with a price.&rdquo;&nbsp;</p>\r\n\r\n<p><br />\r\n<strong>&nbsp;Psalm 139:15-16 says,</strong> &ldquo;My frame was not hidden from youwhen I was made in the secret place, when I was woven together in the depths of the earth. Your eyes saw my unformed body; all the days ordained for me were written in your book before one of them came to be.&rdquo;&nbsp;<br />\r\nGod wrote about you in His book before He placed you in your mother&rsquo;s womb. That means that what you came to do on this earth was pre-determined. How many people are frustrated at God and life because they do not know their purpose in life?&nbsp;<br />\r\nProverbs 3:5-6 says, &ldquo;Trust in the Lord with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight.&rdquo;&nbsp;<br />\r\nDo we submit to the Lord before we make decisions on where to work, where to live, and who to marry? Are all our ways submitted to God?&nbsp;</p>\r\n\r\n<p><br />\r\nThe plan for our life is in God&rsquo;s hands. He knows why He created us and what He wanted us to do. Let us hear what God says in <strong>Jeremiah 1:5.</strong>&nbsp;<br />\r\n&ldquo;Before I formed you in the womb I knew &nbsp;you, before you were born I set you apart; I appointed you as a prophet to the nations.&rdquo; Jeremiah was appointed to be a prophet and nothing else.&nbsp;</p>\r\n\r\n<p><br />\r\nUntil we find out who God appointed us to be, we will never be fully satisfied. Instead of applying to six jobs, ask God to lead you to the job that he has appointed you for.&nbsp;<br />\r\nInstead of wanting God to listen to us, we should listen to God, who alone knows what the future holds for us.<br />\r\n&nbsp;It is said that the two most important days of your life are, the day you were born, and the day that you discover why you were born! This requires that we walk closely with the Holy Spirit. Where God has planted you, is where you will bear much fruit.&nbsp;</p>\r\n\r\n<p><br />\r\nSensitize your spirit to hearing and recognizing the voice of God by reading His Word, just as a little baby recognizes his mother&rsquo;s voice by constantly hearing it.<br />\r\n&nbsp;&ldquo;Whether you turn to the right or to the left, your ears will hear a voice behind you, saying, &ldquo;This is the way; walk in it&rdquo; &ndash; <strong>Isaiah 30:21.</strong><br />\r\n<strong>&nbsp;Prayer Points:</strong><br />\r\n&nbsp;1). Ask the Lord to forgive you for not seeking the plans of God for your life, but trusting in your own understanding.<br />\r\n&nbsp;2). Ask the Holy Spirit to reveal to you the plans of God for your life as you continue to submit your ways to him.<br />\r\n3). Thank the Lord that He created you for a good purpose, and is guiding you into your destiny as you submit to Him.</p>",
+    "is_published": true,
+    "created_at": "2026-01-29T08:37:55.170Z",
+    "updated_at": "2026-01-29T14:46:19.165Z"
+  }
+},
+{
+  "model": "church.book",
+  "pk": 2,
+  "fields": {
+    "title": "Stand Your Ground",
+    "slug": "stand-your-ground",
+    "author": "Pst. Nellie Shani",
+    "cover_image": "books/81zl7w4RNzL._SY466_.jpg",
+    "image_cropping": "0,13,293,453",
+    "description": "da",
+    "review": "<p>sdf</p>",
+    "whatsapp_number": "+254716703508",
+    "is_published": true,
+    "created_at": "2026-02-01T14:03:16.566Z",
+    "updated_at": "2026-02-01T14:03:16.566Z"
+  }
+},
+{
+  "model": "church.childrensbread",
+  "pk": 1,
+  "fields": {
+    "title": "saasdfd",
+    "slug": "saasdfd",
+    "summary": "sdssdf",
+    "author_name": "Pst. Nellie Shani",
+    "image": "childrens_bread/83cf0d94-a8f9-446e-b414-efcd1be0719e_1.jpg",
+    "image_cropping": "0,269,716,806",
+    "body": "<p>sdfdsf</p>",
+    "is_published": true,
+    "created_at": "2026-02-01T14:23:07.667Z",
+    "updated_at": "2026-02-01T14:23:07.667Z"
+  }
+},
+{
+  "model": "church.ctacard",
+  "pk": 1,
+  "fields": {
+    "quote_text": "",
+    "verse_reference": "Galatians 3:13",
+    "button1_text": "Books",
+    "button1_url": "#",
+    "button2_text": "School of Ministry",
+    "button2_url": "/school-of-ministry/",
+    "button3_text": "Partner With Us",
+    "button3_url": "/donate/",
+    "updated_at": "2026-01-26T20:49:03.469Z"
+  }
+},
+{
+  "model": "church.mensministry",
+  "pk": 1,
+  "fields": {
+    "title": "Men's Ministry",
+    "video_url": "https://www.youtube.com/watch?v=RKG-JkgzcyU",
+    "description": "The Men’s Ministry exists to raise godly men who lead with integrity, faith, and purpose—at home, in the church, and in the wider community. Grounded in biblical principles, the ministry provides a space where men can grow spiritually, build strong brotherhood, and sharpen one another through prayer, accountability, and discipleship.\r\n\r\nThrough regular fellowship meetings, Bible studies, mentorship, and outreach initiatives, we equip men to become servant leaders, responsible fathers, faithful husbands, and positive role models. The ministry also addresses real-life challenges facing men today—spiritual, emotional, family, and societal—offering biblical solutions and practical support.",
+    "is_active": true,
+    "created_at": "2026-01-27T09:04:29.315Z"
+  }
+},
+{
+  "model": "church.partner",
+  "pk": 1,
+  "fields": {
+    "name": "Love In Deed",
+    "logo": "partners/LoveInDeed_logo-white_Rg91fee.png",
+    "use_cropping": false,
+    "logo_cropping": "0,0,1000,667",
+    "website_url": "",
+    "display_order": 0,
+    "is_active": true,
+    "created_at": "2026-01-27T10:05:10.894Z"
+  }
+},
+{
+  "model": "church.partner",
+  "pk": 2,
+  "fields": {
+    "name": "Beacon Life Church",
+    "logo": "partners/241950360_3111690835621622_4717744177550104395_n_1.png",
+    "use_cropping": false,
+    "logo_cropping": "8,240,800,768",
+    "website_url": "",
+    "display_order": 1,
+    "is_active": true,
+    "created_at": "2026-01-27T10:06:31.073Z"
+  }
+},
+{
+  "model": "church.partner",
+  "pk": 3,
+  "fields": {
+    "name": "Truth Encounters Ministries",
+    "logo": "partners/TEM-wide-400px-300x46.png",
+    "use_cropping": false,
+    "logo_cropping": "0,0,69,46",
+    "website_url": "https://truthencounterministries.org/",
+    "display_order": 0,
+    "is_active": true,
+    "created_at": "2026-01-28T05:48:53.518Z"
+  }
+},
+{
+  "model": "church.partner",
+  "pk": 4,
+  "fields": {
+    "name": "Smiles for children foundation",
+    "logo": "partners/ChatGPT_Image_Jan_28_2026_09_28_32_AM_1.png",
+    "use_cropping": false,
+    "logo_cropping": "0,171,1024,853",
+    "website_url": "",
+    "display_order": 0,
+    "is_active": true,
+    "created_at": "2026-01-28T06:30:42.318Z"
+  }
+},
+{
+  "model": "church.partner",
+  "pk": 5,
+  "fields": {
+    "name": "BB International",
+    "logo": "partners/lumina-enhanced-1769583745526.png",
+    "use_cropping": false,
+    "logo_cropping": "222,0,387,73",
+    "website_url": "https://bbi-international-1073897174388.europe-north2.run.app/",
+    "display_order": 0,
+    "is_active": true,
+    "created_at": "2026-01-28T06:58:16.355Z"
+  }
+},
+{
+  "model": "church.partner",
+  "pk": 6,
+  "fields": {
+    "name": "Wholesome Churches",
+    "logo": "partners/book-church-logo-design-icon-bible-church-logo-design-vector-cross-holy-bible-l_lYc2mIv.png",
+    "use_cropping": false,
+    "logo_cropping": "0,123,740,617",
+    "website_url": "",
+    "display_order": 0,
+    "is_active": true,
+    "created_at": "2026-01-29T07:19:42.055Z"
+  }
+},
+{
+  "model": "church.newslettersubscriber",
+  "pk": 1,
+  "fields": {
+    "email": "iamblynq@gmail.com",
+    "date_subscribed": "2026-01-27T12:52:29.103Z",
+    "is_active": true
+  }
+},
+{
+  "model": "church.schoolministryenrollment",
+  "pk": 2,
+  "fields": {
+    "programme": "School of Ministry",
+    "name": "Alphone Mwihaki",
+    "email": "alphonemwihaki@gmail.com",
+    "phone_number": "0716151615",
+    "enrolled_at": "2026-01-29T07:13:00.641Z"
+  }
+},
+{
+  "model": "church.schoolministryenrollment",
+  "pk": 3,
+  "fields": {
+    "programme": "School of Ministry",
+    "name": "Sammy Oria",
+    "email": "sammyoria@gmail.com",
+    "phone_number": "0727272822",
+    "enrolled_at": "2026-01-29T07:16:29.680Z"
+  }
+},
+{
+  "model": "church.sidebarpromo",
+  "pk": 2,
+  "fields": {
+    "image": "sidebar_promos/ABS.jpg",
+    "image_cropping": "0,0,185,246",
+    "video_url": "https://www.youtube.com/watch?v=OpYV75cmeaA",
+    "caption": "ABS",
+    "link_url": "",
+    "display_order": 2,
+    "is_active": true,
+    "created_at": "2026-01-28T00:21:22.023Z"
+  }
+},
+{
+  "model": "church.sidebarpromo",
+  "pk": 3,
+  "fields": {
+    "image": "sidebar_promos/logo-1024x733.jpg",
+    "image_cropping": "237,0,787,733",
+    "video_url": "https://www.youtube.com/watch?v=x_PR7L-rePw",
+    "caption": "Breaking Barriers",
+    "link_url": "",
+    "display_order": 0,
+    "is_active": true,
+    "created_at": "2026-01-29T06:45:32.507Z"
+  }
+},
+{
+  "model": "church.faq",
+  "pk": 1,
+  "fields": {
+    "question": "What is a generational curse?",
+    "answer": "consequences of sin, wrongdoing, or negative behavior can extend beyond an individual and affect their descendants. In this context, a generational curse is not merely about inherited traits or family patterns in a psychological sense, but rather a spiritual or moral consequence passed down through family lines.\r\n\r\nFor example, the Bible mentions in several passages, such as Exodus 20:5 and Numbers 14:18, that the sins of the parents can affect their children “to the third and fourth generation.” This is often interpreted to mean that unrepented sin or disobedience to God can create spiritual or circumstantial burdens like poverty, addiction, illness, or relational strife that may continue to manifest in subsequent generations.\r\n\r\nReligious teachings often emphasize that generational curses are not inevitable. Through repentance, prayer, faith, and obedience to God, it is believed that individuals can break these curses and restore spiritual blessings to themselves and their descendants. In Christian practice, this might involve confession, seeking deliverance through prayer, or living a life aligned with God’s commandments to end the cycle of negative spiritual influence.",
+    "display_order": 0,
+    "is_active": true,
+    "created_at": "2026-01-27T22:02:19.390Z",
+    "updated_at": "2026-01-27T22:02:19.390Z"
+  }
+},
+{
+  "model": "church.faq",
+  "pk": 2,
+  "fields": {
+    "question": "How are generational curses broken?",
+    "answer": "Breaking a generational curse, in a religious sense, is seen as a spiritual journey of repentance, faith, and deliberate action. It begins with acknowledging sin—both one’s own and, in some beliefs, the lingering effects of ancestors’ wrongdoing—and turning away from it through heartfelt repentance and prayer. This recognition is often accompanied by a conscious renunciation of the curse, verbally declaring that one no longer accepts the negative patterns or misfortunes that may have been passed down through the family line.\r\n\r\nFaith plays a central role in this process. Believers rely on the power of God to intervene, heal, and restore, trusting that divine authority can break spiritual strongholds that have persisted for generations. Prayer, sometimes accompanied by fasting, Scripture reading, or intercession from spiritual leaders, is used to call on God’s guidance and protection.",
+    "display_order": 0,
+    "is_active": true,
+    "created_at": "2026-01-27T22:03:34.291Z",
+    "updated_at": "2026-01-27T22:03:34.291Z"
+  }
+},
+{
+  "model": "church.faq",
+  "pk": 3,
+  "fields": {
+    "question": "Do I need deliverance even if I'm born again?",
+    "answer": "Being born again secures your salvation—your sins are forgiven, and you belong to Christ. You don’t need deliverance to be saved.\r\n\r\nHowever, even as a believer, you can still struggle with patterns, strongholds, or spiritual oppression from the past. Deliverance isn’t about salvation; it’s about applying Jesus’ freedom to those areas. If you experience ongoing struggles, prayer, renunciation, and pastoral support can help you walk fully in the liberty Christ has already won for you.",
+    "display_order": 0,
+    "is_active": true,
+    "created_at": "2026-01-27T22:05:15.891Z",
+    "updated_at": "2026-01-27T22:05:15.891Z"
+  }
+},
+{
+  "model": "church.faq",
+  "pk": 4,
+  "fields": {
+    "question": "If we struggle with something but generally win, is that a spirit?",
+    "answer": "If you struggle with something but generally overcome it, it is not necessarily a spirit. The Bible shows that even faithful believers wrestle with sin and weakness—Paul himself admitted in Romans 7:15–20 that he struggled to do what was right even as he desired to obey God. A true “spirit” or demonic stronghold is usually characterized by persistent, overpowering opposition that cannot be resisted through prayer, Scripture, and obedience.\r\n\r\nIf you are able to resist, repent, and grow despite the struggle, it is more likely an area God is using to refine your character and strengthen your faith. Struggles can reveal patterns in our lives that need God’s grace, teaching us dependence on Him, humility, and perseverance. Victory is not about perfection; it is about continuing to walk in obedience, relying on God’s Word, and trusting His Spirit to lead you forward.",
+    "display_order": 0,
+    "is_active": true,
+    "created_at": "2026-01-27T22:10:53.301Z",
+    "updated_at": "2026-01-27T22:10:53.301Z"
+  }
+},
+{
+  "model": "church.faq",
+  "pk": 5,
+  "fields": {
+    "question": "Is there a spirit that can enter the spirit man?",
+    "answer": "Yes, according to Scripture, the human spirit can be influenced, but it’s important to be precise about what that means. The Bible teaches that we are spirit, soul, and body (1 Thessalonians 5:23). The “spirit man” is the part of us that connects with God, discerns spiritual truths, and communes with Him (John 4:24; Romans 8:16).\r\n\r\nA demonic spirit cannot possess the spirit of a born-again believer because the Holy Spirit indwells them (1 Corinthians 6:19; 1 John 4:4). The Spirit of God protects and fills the spirit man, so it cannot be taken over. However, the spirit man can be influenced or oppressed by external spiritual forces if there is neglect, unrepented sin, or agreement with lies, which can affect our thoughts, emotions, and will.\r\n\r\nSatan and his spirits can tempt, deceive, and oppress, but they cannot inhabit the spirit of someone truly born again. That’s why Scripture emphasizes guarding your heart and mind, staying in God’s Word, and walking in obedience—this keeps your spirit man aligned with God and resistant to attack (Ephesians 6:10–18; James 4:7).",
+    "display_order": 0,
+    "is_active": true,
+    "created_at": "2026-01-27T22:11:49.387Z",
+    "updated_at": "2026-01-27T22:11:49.387Z"
+  }
+},
+{
+  "model": "church.faq",
+  "pk": 6,
+  "fields": {
+    "question": "When do I run and when do I resist in the face of temptation?",
+    "answer": "When faced with temptation, there are times to run and times to resist, and Scripture gives clear guidance.\r\n\r\nYou run from sin when it is dangerous, seductive, or beyond your natural ability to resist. Paul says in 1 Corinthians 6:18, “Flee fornication.” You remove yourself from the source of temptation—whether it’s a place, a person, or an opportunity—because staying there puts your soul at risk. Running is not cowardice; it is obedience and wisdom.\r\n\r\nYou resist when you are confronted with pressure or attack that you can face through God’s power. James 4:7 says, “Resist the devil, and he will flee from you.” Resisting means standing firm in faith, speaking Scripture, and relying on the Holy Spirit. This is active confrontation, not passive endurance.",
+    "display_order": 0,
+    "is_active": true,
+    "created_at": "2026-01-27T22:13:08.627Z",
+    "updated_at": "2026-01-27T22:13:08.627Z"
+  }
+},
+{
+  "model": "church.faq",
+  "pk": 7,
+  "fields": {
+    "question": "I am yet to understand why at the time we receive salvation the curse is not broken automatically?",
+    "answer": "When we receive salvation, our spirit is redeemed immediately. Our sins are forgiven, we are justified, and the Holy Spirit comes to dwell in us (Ephesians 1:7; Romans 5:1; Ephesians 1:13–14). Salvation restores our relationship with God and secures eternal life.\r\n\r\nHowever, the curses or effects of sin in the world—sickness, generational patterns, fear, poverty, or emotional wounds—are not always broken automatically. The reason is that while our spirit is saved, our body, mind, and circumstances still exist in a fallen world under the consequences of sin (Romans 8:20–22).",
+    "display_order": 0,
+    "is_active": true,
+    "created_at": "2026-01-27T22:15:14.772Z",
+    "updated_at": "2026-01-27T22:15:14.772Z"
+  }
+},
+{
+  "model": "church.faq",
+  "pk": 8,
+  "fields": {
+    "question": "When I become angry and I am able to ensure that I don’t sin, is this still a spirit of anger?",
+    "answer": "Feeling anger is not automatically a “spirit.” Anger is a natural emotion that God Himself expresses in certain circumstances (Exodus 32:10; Psalm 7:11). What matters is how you handle it. If you feel angry but do not act in sin, controlling your words, thoughts, and actions, this is not a demonic spirit—it is a natural human response being managed in obedience to God.\r\n\r\nA spirit of anger in Scripture refers to a persistent, controlling, or destructive force that dominates a person’s behavior (Ephesians 4:26–27 warns against letting anger give the devil a foothold). If your anger arises but you remain calm, forgive, and do not allow it to control you, it is simply an emotion, not a spirit.",
+    "display_order": 0,
+    "is_active": true,
+    "created_at": "2026-01-27T22:16:22.188Z",
+    "updated_at": "2026-01-27T22:16:22.188Z"
+  }
+},
+{
+  "model": "church.pageview",
+  "pk": 161,
+  "fields": {
+    "viewed_at": "2026-02-01T19:18:07.695Z",
+    "path": "/",
+    "ip_address": "127.0.0.1",
+    "content_type": null,
+    "object_id": null
+  }
+},
+{
+  "model": "church.pageview",
+  "pk": 162,
+  "fields": {
+    "viewed_at": "2026-02-01T19:18:19.124Z",
+    "path": "/",
+    "ip_address": "127.0.0.1",
+    "content_type": null,
+    "object_id": null
+  }
+},
+{
+  "model": "church.pageview",
+  "pk": 163,
+  "fields": {
+    "viewed_at": "2026-02-01T19:18:25.038Z",
+    "path": "/",
+    "ip_address": "127.0.0.1",
+    "content_type": null,
+    "object_id": null
+  }
+},
+{
+  "model": "church.pageview",
+  "pk": 164,
+  "fields": {
+    "viewed_at": "2026-02-01T19:18:40.738Z",
+    "path": "/",
+    "ip_address": "127.0.0.1",
+    "content_type": null,
+    "object_id": null
+  }
+},
+{
+  "model": "church.pageview",
+  "pk": 165,
+  "fields": {
+    "viewed_at": "2026-02-01T19:18:42.817Z",
+    "path": "/word-of-truth/",
+    "ip_address": "127.0.0.1",
+    "content_type": null,
+    "object_id": null
+  }
+},
+{
+  "model": "church.pageview",
+  "pk": 166,
+  "fields": {
+    "viewed_at": "2026-02-01T19:18:44.644Z",
+    "path": "/",
+    "ip_address": "127.0.0.1",
+    "content_type": null,
+    "object_id": null
+  }
+},
+{
+  "model": "church.pageview",
+  "pk": 167,
+  "fields": {
+    "viewed_at": "2026-02-01T19:18:45.929Z",
+    "path": "/childrens-bread/",
+    "ip_address": "127.0.0.1",
+    "content_type": null,
+    "object_id": null
+  }
+},
+{
+  "model": "church.pageview",
+  "pk": 168,
+  "fields": {
+    "viewed_at": "2026-02-01T19:18:47.110Z",
+    "path": "/",
+    "ip_address": "127.0.0.1",
+    "content_type": null,
+    "object_id": null
+  }
+},
+{
+  "model": "church.pageview",
+  "pk": 169,
+  "fields": {
+    "viewed_at": "2026-02-01T19:24:38.980Z",
+    "path": "/",
+    "ip_address": "127.0.0.1",
+    "content_type": null,
+    "object_id": null
+  }
+},
+{
+  "model": "church.pageview",
+  "pk": 170,
+  "fields": {
+    "viewed_at": "2026-02-01T19:24:42.339Z",
+    "path": "/about/",
+    "ip_address": "127.0.0.1",
+    "content_type": null,
+    "object_id": null
+  }
+},
+{
+  "model": "church.pageview",
+  "pk": 171,
+  "fields": {
+    "viewed_at": "2026-02-02T20:21:14.072Z",
+    "path": "/",
+    "ip_address": "127.0.0.1",
+    "content_type": null,
+    "object_id": null
+  }
+},
+{
+  "model": "church.pageview",
+  "pk": 172,
+  "fields": {
+    "viewed_at": "2026-02-02T20:21:21.305Z",
+    "path": "/",
+    "ip_address": "127.0.0.1",
+    "content_type": null,
+    "object_id": null
+  }
+},
+{
+  "model": "church.pageview",
+  "pk": 173,
+  "fields": {
+    "viewed_at": "2026-02-02T20:21:21.306Z",
+    "path": "/offline/",
+    "ip_address": "127.0.0.1",
+    "content_type": null,
+    "object_id": null
+  }
+},
+{
+  "model": "church.pageview",
+  "pk": 174,
+  "fields": {
+    "viewed_at": "2026-02-02T20:21:54.222Z",
+    "path": "/childrens-bread/",
+    "ip_address": "127.0.0.1",
+    "content_type": null,
+    "object_id": null
+  }
+},
+{
+  "model": "church.pageview",
+  "pk": 175,
+  "fields": {
+    "viewed_at": "2026-02-02T20:37:14.915Z",
+    "path": "/",
+    "ip_address": "127.0.0.1",
+    "content_type": null,
+    "object_id": null
+  }
+},
+{
+  "model": "church.pageview",
+  "pk": 176,
+  "fields": {
+    "viewed_at": "2026-02-02T20:37:16.403Z",
+    "path": "/childrens-bread/",
+    "ip_address": "127.0.0.1",
+    "content_type": null,
+    "object_id": null
+  }
+},
+{
+  "model": "church.pageview",
+  "pk": 177,
+  "fields": {
+    "viewed_at": "2026-02-02T20:37:18.117Z",
+    "path": "/childrens-bread/saasdfd/",
+    "ip_address": "127.0.0.1",
+    "content_type": "childrensbread",
+    "object_id": 1
+  }
+},
+{
+  "model": "church.pageview",
+  "pk": 178,
+  "fields": {
+    "viewed_at": "2026-02-02T20:37:18.153Z",
+    "path": "/childrens-bread/saasdfd/",
+    "ip_address": "127.0.0.1",
+    "content_type": null,
+    "object_id": null
+  }
+},
+{
+  "model": "church.pageview",
+  "pk": 179,
+  "fields": {
+    "viewed_at": "2026-02-02T20:37:22.611Z",
+    "path": "/word-of-truth/",
+    "ip_address": "127.0.0.1",
+    "content_type": null,
+    "object_id": null
+  }
+},
+{
+  "model": "church.pageview",
+  "pk": 180,
+  "fields": {
+    "viewed_at": "2026-02-02T20:37:24.277Z",
+    "path": "/word-of-truth/cultivating-fruit-and-discovering-your-divine-gifts/",
+    "ip_address": "127.0.0.1",
+    "content_type": "wordoftruth",
+    "object_id": 1
+  }
+},
+{
+  "model": "church.pageview",
+  "pk": 181,
+  "fields": {
+    "viewed_at": "2026-02-02T20:37:24.314Z",
+    "path": "/word-of-truth/cultivating-fruit-and-discovering-your-divine-gifts/",
+    "ip_address": "127.0.0.1",
+    "content_type": null,
+    "object_id": null
+  }
+},
+{
+  "model": "church.pageview",
+  "pk": 182,
+  "fields": {
+    "viewed_at": "2026-02-02T20:37:28.905Z",
+    "path": "/word-of-truth/word-of-truth/",
+    "ip_address": "127.0.0.1",
+    "content_type": "wordoftruth",
+    "object_id": 2
+  }
+},
+{
+  "model": "church.pageview",
+  "pk": 183,
+  "fields": {
+    "viewed_at": "2026-02-02T20:37:28.944Z",
+    "path": "/word-of-truth/word-of-truth/",
+    "ip_address": "127.0.0.1",
+    "content_type": null,
+    "object_id": null
+  }
+}
+]

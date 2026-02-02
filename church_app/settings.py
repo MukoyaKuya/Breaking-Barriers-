@@ -29,8 +29,23 @@ if not SECRET_KEY:
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = [h.strip() for h in os.environ.get('ALLOWED_HOSTS', '*').split(',') if h.strip()] if os.environ.get('ALLOWED_HOSTS') else ['*']
-CSRF_TRUSTED_ORIGINS = [o.strip() for o in os.environ.get('CSRF_TRUSTED_ORIGINS', '').split(',') if o.strip()] if os.environ.get('CSRF_TRUSTED_ORIGINS') else []
+ALLOWED_HOSTS = [
+    'bbi-international-1073897174388.europe-north2.run.app',
+    'bbi-international-1073897174388.europe-west1.run.app',
+    'bb-international.org',
+    'www.bb-international.org',
+    'localhost',
+    '127.0.0.1'
+]
+if os.environ.get('ALLOWED_HOSTS') and os.environ.get('ALLOWED_HOSTS') != '*':
+   ALLOWED_HOSTS += [h.strip() for h in os.environ.get('ALLOWED_HOSTS').split(',') if h.strip()]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://bbi-international-1073897174388.europe-north2.run.app',
+    'https://bbi-international-1073897174388.europe-west1.run.app',
+    'https://bb-international.org',
+    'https://www.bb-international.org',
+]
 
 # Ensure custom domain is always trusted for CSRF (admin login). Do NOT set
 # SESSION_COOKIE_DOMAIN/CSRF_COOKIE_DOMAIN: host-only cookies (default) fix
@@ -43,6 +58,17 @@ if os.environ.get('CUSTOM_DOMAIN'):
                 CSRF_TRUSTED_ORIGINS.append(origin)
         SESSION_COOKIE_SAMESITE = 'Lax'
         CSRF_COOKIE_SAMESITE = 'Lax'
+
+# Cloud Run / other service URLs that serve this app (so staff login works on run.app too)
+_extra_origins = os.environ.get('CSRF_EXTRA_ORIGINS', '').strip() or os.environ.get('CLOUD_RUN_URL', '').strip()
+for o in _extra_origins.split(','):
+    o = o.strip()
+    if o and o not in CSRF_TRUSTED_ORIGINS:
+        CSRF_TRUSTED_ORIGINS.append(o)
+# Fallback: ensure known Cloud Run URL is trusted if not in env (e.g. DEBUG=True run)
+_run_app_origin = 'https://bbi-international-1073897174388.europe-north2.run.app'
+if _run_app_origin not in CSRF_TRUSTED_ORIGINS:
+    CSRF_TRUSTED_ORIGINS.append(_run_app_origin)
 
 # Log CSRF failures (Referer/Origin) to debug admin login loop
 CSRF_FAILURE_VIEW = 'church_app.urls.csrf_failure_view'

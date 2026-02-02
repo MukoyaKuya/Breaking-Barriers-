@@ -8,12 +8,17 @@ logger = logging.getLogger(__name__)
 
 class ProxyRefererFixMiddleware(MiddlewareMixin):
     """
-    Middleware to fix the Referer header for admin login POST requests.
-    Proxies/load balancers may strip or change the Referer, causing CSRF failures.
+    Fix Referer for login POSTs so CSRF passes behind proxies.
+    Applies to /admin/login/ and /staff-login/ (custom form used when admin
+    login is redirected).
     """
     def process_view(self, request, view_func, view_args, view_kwargs):
-        # Only check POST requests to the admin login
-        if request.method == 'POST' and request.path == '/admin/login/':
+        # Check POST to admin login or staff login (custom form used behind proxy)
+        if request.method != 'POST':
+            return None
+        path = request.path.rstrip('/')
+        if path not in ('/admin/login', '/staff-login'):
+            return None
             trusted_origins = settings.CSRF_TRUSTED_ORIGINS
             try:
                 # Check if correct Host is trusted
