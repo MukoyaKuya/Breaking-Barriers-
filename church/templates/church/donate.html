@@ -33,11 +33,12 @@
             </div>
 
             <!-- Right: Contact Form -->
-            <div class="bg-gray-50 p-8 rounded-xl shadow-sm border border-gray-100 h-full">
+            <div class="bg-gray-50 p-8 rounded-xl shadow-sm border border-gray-100 h-full"
+                x-data="{ submitting: false }">
                 <h2 class="text-xl font-bold brand-text mb-6 text-center border-b border-gray-200 pb-4">Get in Touch
                 </h2>
 
-                <form method="post" action="{% url 'donate' %}">
+                <form method="post" action="{% url 'donate' %}" @submit="submitting = true">
                     {% csrf_token %}
                     <div class="space-y-4">
                         {{ contact_form.honeypot }}
@@ -66,9 +67,10 @@
                             {% endif %}
                         </div>
 
-                        <button type="submit" name="contact-submit"
-                            class="w-full brand-color text-white py-3 rounded-lg font-bold hover:opacity-90 transition duration-300">
-                            Send
+                        <button type="submit" name="contact-submit" :disabled="submitting"
+                            class="w-full brand-color text-white py-3 rounded-lg font-bold hover:opacity-90 transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
+                            <span x-show="!submitting">Send</span>
+                            <span x-show="submitting"><i class="fas fa-spinner fa-spin mr-2"></i>Sending...</span>
                         </button>
                     </div>
                 </form>
@@ -93,8 +95,9 @@
                 </p>
             </div>
 
-            <div class="bg-gray-50 p-8 md:p-10 rounded-xl shadow-sm border border-gray-100">
-                <form method="post" action="{% url 'donate' %}">
+            <div class="bg-gray-50 p-8 md:p-10 rounded-xl shadow-sm border border-gray-100"
+                x-data="{ submitting: false }">
+                <form method="post" action="{% url 'donate' %}" @submit="submitting = true">
                     {% csrf_token %}
                     {{ partner_form.honeypot }}
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
@@ -141,9 +144,10 @@
                         {% endif %}
                     </div>
 
-                    <button type="submit" name="partner-submit"
-                        class="w-full brand-color text-white py-4 rounded-lg font-bold hover:opacity-90 transition duration-300">
-                        Send
+                    <button type="submit" name="partner-submit" :disabled="submitting"
+                        class="w-full brand-color text-white py-4 rounded-lg font-bold hover:opacity-90 transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
+                        <span x-show="!submitting">Send</span>
+                        <span x-show="submitting"><i class="fas fa-spinner fa-spin mr-2"></i>Sending...</span>
                     </button>
                 </form>
             </div>

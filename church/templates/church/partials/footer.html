@@ -76,16 +76,18 @@
             </div>
 
             <!-- Newsletter (far right) -->
-            <div class="space-y-3 md:text-right sm:col-span-2 md:col-span-1">
+            <div class="space-y-3 md:text-right sm:col-span-2 md:col-span-1" x-data="{ submitting: false }">
                 <h3 class="text-xl sm:text-2xl font-bold">News Letter</h3>
-                <form action="{% url 'newsletter_subscribe' %}" method="post" class="space-y-3">
+                <form action="{% url 'newsletter_subscribe' %}" method="post" class="space-y-3"
+                    @submit="submitting = true">
                     {% csrf_token %}
                     <input type="email" name="email" placeholder="Email"
                         class="w-full md:w-56 px-3 py-3 sm:py-2 rounded-sm bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white border border-gray-300 text-base"
                         required>
-                    <button type="submit"
-                        class="w-full md:w-56 py-3 sm:py-2 rounded-sm bg-red-700 border border-white text-white font-semibold hover:bg-red-800 transition min-h-[44px]">
-                        Send
+                    <button type="submit" :disabled="submitting"
+                        class="w-full md:w-56 py-3 sm:py-2 rounded-sm bg-red-700 border border-white text-white font-semibold hover:bg-red-800 transition min-h-[44px] disabled:opacity-50 disabled:cursor-not-allowed">
+                        <span x-show="!submitting">Send</span>
+                        <span x-show="submitting"><i class="fas fa-spinner fa-spin mr-2"></i></span>
                     </button>
                 </form>
                 <div class="pt-2 text-sm">
