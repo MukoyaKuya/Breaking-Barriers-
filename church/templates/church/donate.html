@@ -11,16 +11,6 @@
             <h1 class="text-3xl md:text-4xl font-bold brand-text mb-4">Need to talk to someone?</h1>
         </div>
 
-        {% if messages %}
-        <div class="mb-12 max-w-4xl mx-auto">
-            {% for message in messages %}
-            <div
-                class="p-4 rounded-lg {% if message.tags == 'success' %}bg-green-100 text-green-700{% else %}bg-red-100 text-red-700{% endif %}">
-                {{ message }}
-            </div>
-            {% endfor %}
-        </div>
-        {% endif %}
 
         <!-- Top Section: Contact Info & Form -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 mb-20">

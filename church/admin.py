@@ -494,7 +494,7 @@ class ContactMessageAdmin(admin.ModelAdmin):
     search_fields = ('name', 'email', 'phone', 'subject', 'message')
     readonly_fields = ('created_at',)
     list_editable = ('is_read',)
-    actions = ['delete_all_messages']
+    actions = ['delete_selected', 'delete_all_messages']
     
     fieldsets = (
         ('Contact Information', {
@@ -524,6 +524,8 @@ class ContactMessageAdmin(admin.ModelAdmin):
         count = ContactMessage.objects.all().count()
         ContactMessage.objects.all().delete()
         self.message_user(request, f"Successfully deleted all {count} messages.")
+        from django.http import HttpResponseRedirect
+        return HttpResponseRedirect(request.get_full_path())
 
 @admin.register(PartnerInquiry)
 class PartnerInquiryAdmin(admin.ModelAdmin):
@@ -532,7 +534,7 @@ class PartnerInquiryAdmin(admin.ModelAdmin):
     search_fields = ('first_name', 'last_name', 'email', 'message', 'company_name')
     readonly_fields = ('created_at',)
     list_editable = ('is_read',)
-    actions = ['delete_all_inquiries']
+    actions = ['delete_selected', 'delete_all_inquiries']
 
     fieldsets = (
         ('Contact Information', {
@@ -561,6 +563,8 @@ class PartnerInquiryAdmin(admin.ModelAdmin):
         count = PartnerInquiry.objects.all().count()
         PartnerInquiry.objects.all().delete()
         self.message_user(request, f"Successfully deleted all {count} inquiries.")
+        from django.http import HttpResponseRedirect
+        return HttpResponseRedirect(request.get_full_path())
 
 
 @admin.register(Book)
