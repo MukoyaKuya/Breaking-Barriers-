@@ -35,7 +35,9 @@ ALLOWED_HOSTS = [
     'bb-international.org',
     'www.bb-international.org',
     'localhost',
-    '127.0.0.1'
+    '127.0.0.1',
+    '.a.run.app',
+    '.run.app'
 ]
 if os.environ.get('ALLOWED_HOSTS') and os.environ.get('ALLOWED_HOSTS') != '*':
    ALLOWED_HOSTS += [h.strip() for h in os.environ.get('ALLOWED_HOSTS').split(',') if h.strip()]
