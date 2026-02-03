@@ -494,6 +494,7 @@ class ContactMessageAdmin(admin.ModelAdmin):
     search_fields = ('name', 'email', 'phone', 'subject', 'message')
     readonly_fields = ('created_at',)
     list_editable = ('is_read',)
+    actions = ['delete_all_messages']
     
     fieldsets = (
         ('Contact Information', {
@@ -517,6 +518,12 @@ class ContactMessageAdmin(admin.ModelAdmin):
         return format_html('<a href="{}" style="color:#ba2121; font-weight:bold;">Delete</a>', url)
     delete_link.short_description = 'Actions'
 
+    @admin.action(description='Clear all messages (DELETE ALL)')
+    def delete_all_messages(self, request, queryset):
+        """Action to delete all messages in the system, not just selected ones."""
+        count = ContactMessage.objects.all().count()
+        ContactMessage.objects.all().delete()
+        self.message_user(request, f"Successfully deleted all {count} messages.")
 
 @admin.register(PartnerInquiry)
 class PartnerInquiryAdmin(admin.ModelAdmin):
@@ -525,6 +532,7 @@ class PartnerInquiryAdmin(admin.ModelAdmin):
     search_fields = ('first_name', 'last_name', 'email', 'message', 'company_name')
     readonly_fields = ('created_at',)
     list_editable = ('is_read',)
+    actions = ['delete_all_inquiries']
 
     fieldsets = (
         ('Contact Information', {
@@ -547,6 +555,12 @@ class PartnerInquiryAdmin(admin.ModelAdmin):
         url = reverse('admin:church_partnerinquiry_delete', args=[obj.id])
         return format_html('<a href="{}" style="color:#ba2121; font-weight:bold;">Delete</a>', url)
     delete_link.short_description = 'Actions'
+
+    @admin.action(description='Clear all inquiries (DELETE ALL)')
+    def delete_all_inquiries(self, request, queryset):
+        count = PartnerInquiry.objects.all().count()
+        PartnerInquiry.objects.all().delete()
+        self.message_user(request, f"Successfully deleted all {count} inquiries.")
 
 
 @admin.register(Book)
