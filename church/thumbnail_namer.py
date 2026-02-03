@@ -81,5 +81,10 @@ def custom_namer(thumbnailer, prepared_options, source_filename, thumbnail_exten
     # Return the final filename
     import os
     base_path, _ = os.path.splitext(path)
+    # Ensure extension starts with a dot
+    ext = thumbnail_extension
+    if ext and not ext.startswith('.'):
+        ext = '.' + ext
+    
     result = '%s.%s%s' % (base_path, opts_str, ext)
     return result
