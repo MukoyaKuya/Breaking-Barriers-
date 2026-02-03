@@ -5,6 +5,12 @@ from django.forms import ModelForm
 from django.forms.widgets import ColorInput
 from image_cropping import ImageCroppingMixin
 from .models import Verse, NewsItem, NewsLine, CalendarEvent, Testimonial, GalleryImage, HeroSettings, AboutPage, InfoCard, CTACard, MensMinistry, Partner, NewsletterSubscriber, SchoolMinistryEnrollment, FAQ, SidebarPromo, WordOfTruth, ManTalk, ChildrensBread, PageView, ContactMessage, PartnerInquiry, Book
+from .forms import (
+    WordOfTruthAdminForm, ChildrensBreadAdminForm, ManTalkAdminForm,
+    NewsLineAdminForm, NewsItemAdminForm, InfoCardAdminForm,
+    GalleryImageAdminForm, HeroSettingsAdminForm, SidebarPromoAdminForm,
+    AboutPageAdminForm, PartnerAdminForm, TestimonialAdminForm
+)
 
 
 @admin.register(Verse)
@@ -21,6 +27,7 @@ class VerseAdmin(admin.ModelAdmin):
 
 @admin.register(NewsLine)
 class NewsLineAdmin(ImageCroppingMixin, admin.ModelAdmin):
+    form = NewsLineAdminForm
     list_display = ('title', 'is_published', 'has_video', 'created_at')
     list_filter = ('is_published', 'created_at')
     search_fields = ('title', 'summary')
@@ -164,6 +171,7 @@ class CalendarEventAdmin(ImageCroppingMixin, admin.ModelAdmin):
 
 @admin.register(Testimonial)
 class TestimonialAdmin(ImageCroppingMixin, admin.ModelAdmin):
+    form = TestimonialAdminForm
     list_display = ('member_name', 'approved', 'text_preview', 'created_at')
     list_filter = ('approved', 'created_at')
     search_fields = ('member_name', 'text')
@@ -219,6 +227,7 @@ class GalleryImageAdmin(ImageCroppingMixin, admin.ModelAdmin):
 
 @admin.register(HeroSettings)
 class HeroSettingsAdmin(ImageCroppingMixin, admin.ModelAdmin):
+    form = HeroSettingsAdminForm
     fields = ('image', 'image_cropping', 'updated_at')
     readonly_fields = ('updated_at',)
     
@@ -233,6 +242,7 @@ class HeroSettingsAdmin(ImageCroppingMixin, admin.ModelAdmin):
 
 @admin.register(AboutPage)
 class AboutPageAdmin(ImageCroppingMixin, admin.ModelAdmin):
+    form = AboutPageAdminForm
     fields = ('title', 'subtitle', 'image', 'image_cropping', 'video_url', 'body', 'updated_at')
     readonly_fields = ('updated_at',)
 
@@ -247,6 +257,7 @@ class AboutPageAdmin(ImageCroppingMixin, admin.ModelAdmin):
 
 @admin.register(InfoCard)
 class InfoCardAdmin(ImageCroppingMixin, admin.ModelAdmin):
+    form = InfoCardAdminForm
     list_display = ('card_type', 'title', 'headline', 'listing_link', 'is_active', 'updated_at')
     list_filter = ('card_type', 'is_active', 'created_at', 'updated_at')
     search_fields = ('title', 'headline', 'summary', 'author_name')
@@ -299,6 +310,7 @@ class InfoCardAdmin(ImageCroppingMixin, admin.ModelAdmin):
 
 @admin.register(ManTalk)
 class ManTalkAdmin(ImageCroppingMixin, admin.ModelAdmin):
+    form = ManTalkAdminForm
     list_display = ('title', 'author_name', 'is_published', 'created_at')
     list_filter = ('is_published', 'created_at')
     search_fields = ('title', 'summary', 'body')
@@ -408,6 +420,7 @@ class FAQAdmin(admin.ModelAdmin):
 
 @admin.register(WordOfTruth)
 class WordOfTruthAdmin(ImageCroppingMixin, admin.ModelAdmin):
+    form = WordOfTruthAdminForm
     list_display = ('title', 'author_name', 'is_published', 'created_at', 'view_listing_link')
     list_filter = ('is_published', 'created_at')
     search_fields = ('title', 'summary', 'author_name', 'body')
@@ -438,6 +451,7 @@ class WordOfTruthAdmin(ImageCroppingMixin, admin.ModelAdmin):
 
 @admin.register(ChildrensBread)
 class ChildrensBreadAdmin(ImageCroppingMixin, admin.ModelAdmin):
+    form = ChildrensBreadAdminForm
     list_display = ('title', 'author_name', 'is_published', 'created_at', 'view_listing_link')
     list_filter = ('is_published', 'created_at')
     search_fields = ('title', 'summary', 'author_name', 'body')
@@ -475,7 +489,7 @@ class PageViewAdmin(admin.ModelAdmin):
 
 @admin.register(ContactMessage)
 class ContactMessageAdmin(admin.ModelAdmin):
-    list_display = ('name', 'email', 'phone', 'subject', 'is_read', 'created_at')
+    list_display = ('name', 'email', 'phone', 'subject', 'is_read', 'delete_link', 'created_at')
     list_filter = ('is_read', 'created_at')
     search_fields = ('name', 'email', 'phone', 'subject', 'message')
     readonly_fields = ('created_at',)
@@ -497,10 +511,16 @@ class ContactMessageAdmin(admin.ModelAdmin):
         # Disable manual creation - messages come from the form
         return False
 
+    def delete_link(self, obj):
+        from django.urls import reverse
+        url = reverse('admin:church_contactmessage_delete', args=[obj.id])
+        return format_html('<a href="{}" style="color:#ba2121; font-weight:bold;">Delete</a>', url)
+    delete_link.short_description = 'Actions'
+
 
 @admin.register(PartnerInquiry)
 class PartnerInquiryAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name', 'email', 'phone', 'company_name', 'is_read', 'created_at')
+    list_display = ('first_name', 'last_name', 'email', 'phone', 'company_name', 'is_read', 'delete_link', 'created_at')
     list_filter = ('is_read', 'created_at')
     search_fields = ('first_name', 'last_name', 'email', 'message', 'company_name')
     readonly_fields = ('created_at',)
@@ -521,6 +541,12 @@ class PartnerInquiryAdmin(admin.ModelAdmin):
     def has_add_permission(self, request):
         # Disable manual creation
         return False
+
+    def delete_link(self, obj):
+        from django.urls import reverse
+        url = reverse('admin:church_partnerinquiry_delete', args=[obj.id])
+        return format_html('<a href="{}" style="color:#ba2121; font-weight:bold;">Delete</a>', url)
+    delete_link.short_description = 'Actions'
 
 
 @admin.register(Book)
