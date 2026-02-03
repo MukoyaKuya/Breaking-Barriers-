@@ -415,6 +415,10 @@ if os.environ.get('GS_BUCKET_NAME'):
     }
     # Direct GCS URL for media in production - ensures thumbnails resolve correctly
     MEDIA_URL = f"https://storage.googleapis.com/{GS_BUCKET_NAME}/"
+    
+    # Aggressive caching for static assets (1 year)
+    WHITENOISE_MAX_AGE = 31536000
+    WHITENOISE_KEEP_ONLY_HASHED_FILES = True
 else:
     STORAGES = {
         'default': {

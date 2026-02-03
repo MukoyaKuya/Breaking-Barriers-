@@ -66,6 +66,7 @@
                     </div>
                     {% else %}
                     <div class="aspect-video w-full">
+                        {% if item.image %}
                         {% if item.image_cropping %}
                         {% thumbnail item.image "800x600" box=item.image_cropping crop=True detail=True as cropped %}
                         <picture>
@@ -74,8 +75,17 @@
                                 class="w-full h-full object-contain bg-gray-900">
                         </picture>
                         {% else %}
-                        <img src="{{ item.image.url }}" alt="{{ item.caption }}" loading="lazy"
-                            class="w-full h-full object-contain bg-gray-900">
+                        {% thumbnail item.image "800x600" crop=True detail=True as thumb %}
+                        <picture>
+                            <source srcset="{{ thumb.url }}.webp" type="image/webp">
+                            <img src="{{ thumb.url }}" alt="{{ item.caption }}" loading="lazy"
+                                class="w-full h-full object-contain bg-gray-900">
+                        </picture>
+                        {% endif %}
+                        {% else %}
+                        <div class="w-full h-full flex items-center justify-center bg-gray-900 text-gray-400">
+                            <i class="fas fa-image text-4xl"></i>
+                        </div>
                         {% endif %}
                     </div>
                     {% endif %}

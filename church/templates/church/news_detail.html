@@ -46,12 +46,21 @@ else %}{% static 'images/logo.png' %}{% endif %}{% endblock %}
         <!-- Featured Image -->
         {% if news_item.image %}
         <div class="mb-8">
-            {% thumbnail news_item.image "1200x800" crop=True detail=True as cropped %}
+            {% if news_item.image_cropping %}
+            {% thumbnail news_item.image "1200x800" box=news_item.image_cropping crop=True detail=True as cropped %}
             <picture>
                 <source srcset="{{ cropped.url }}.webp" type="image/webp">
                 <img src="{{ cropped.url }}" alt="{{ news_item.title }}" loading="lazy"
                     class="w-full h-auto rounded-lg shadow-md">
             </picture>
+            {% else %}
+            {% thumbnail news_item.image "1200x800" crop=True detail=True as thumb %}
+            <picture>
+                <source srcset="{{ thumb.url }}.webp" type="image/webp">
+                <img src="{{ thumb.url }}" alt="{{ news_item.title }}" loading="lazy"
+                    class="w-full h-auto rounded-lg shadow-md">
+            </picture>
+            {% endif %}
         </div>
         {% endif %}
 

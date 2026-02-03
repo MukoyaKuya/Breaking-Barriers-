@@ -14,7 +14,10 @@ from easy_thumbnails.signals import thumbnail_created
 
 from .models import (
     NewsItem,
+    NewsLine,
     WordOfTruth,
+    ChildrensBread,
+    ManTalk,
     InfoCard,
     FAQ,
     SidebarPromo,
@@ -96,24 +99,42 @@ def generate_thumbnails_for_image(image_field, thumbnail_sizes=None):
         thumbnailer = get_thumbnailer(image_field)
         for size in thumbnail_sizes:
             try:
-                thumbnailer.get_thumbnail({
-                    'size': size,
-                    'crop': 'smart',
-                })
-            except Exception:
-                # Skip if thumbnail generation fails (e.g., invalid image)
+                # Generate thumbnail with options that match admin widget expectations
+                if size == (300, 300):
+                    # Admin widget uses: 300x300 with quality, upscale, and detail=True
+                    # Note: 'detail' is a boolean option, not 'crop': 'detail'
+                    thumbnailer.get_thumbnail({
+                        'size': size,
+                        'crop': True,
+                        'detail': True,
+                        'upscale': True,
+                        'quality': 85,
+                    })
+                else:
+                    thumbnailer.get_thumbnail({
+                        'size': size,
+                        'crop': 'smart',
+                    })
+            except Exception as e:
+                # Log error but continue - thumbnails will be generated on-demand
+                import logging
+                logger = logging.getLogger(__name__)
+                logger.warning(f"Failed to generate thumbnail {size} for {image_field.name}: {e}")
                 continue
-    except Exception:
+    except Exception as e:
         # Fail silently - thumbnails will be generated on-demand
+        import logging
+        logger = logging.getLogger(__name__)
+        logger.warning(f"Failed to generate thumbnails for {image_field.name}: {e}")
         pass
 
 
 @receiver(post_save, sender=NewsItem)
 def pregenerate_news_thumbnails(sender, instance, **kwargs):
     """Pre-generate thumbnails for NewsItem images (runs after cache invalidation)."""
-    if instance.image and kwargs.get('created', False):
-        # Only generate thumbnails on creation to avoid regenerating on every save
+    if instance.image:
         generate_thumbnails_for_image(instance.image, [
+            (300, 300),   # admin preview (for image cropping widget)
             (400, 400),   # medium
             (800, 600),   # large (detail view)
         ])
@@ -124,8 +145,8 @@ def pregenerate_gallery_thumbnails(sender, instance, **kwargs):
     """Pre-generate thumbnails for GalleryImage."""
     if instance.image:
         generate_thumbnails_for_image(instance.image, [
-            (100, 100),   # small (thumbnails)
-            (400, 400),   # medium
+            (300, 300),   # admin preview (for image cropping widget)
+            (200, 150),   # gallery list thumbnails
             (800, 600),   # large
         ])
 
@@ -135,6 +156,7 @@ def pregenerate_word_of_truth_thumbnails(sender, instance, **kwargs):
     """Pre-generate thumbnails for WordOfTruth images."""
     if instance.image:
         generate_thumbnails_for_image(instance.image, [
+            (300, 300),   # admin preview (for image cropping widget)
             (400, 400),   # medium
             (800, 600),   # large (detail view)
         ])
@@ -145,6 +167,7 @@ def pregenerate_info_card_thumbnails(sender, instance, **kwargs):
     """Pre-generate thumbnails for InfoCard images."""
     if instance.image:
         generate_thumbnails_for_image(instance.image, [
+            (300, 300),   # admin preview (for image cropping widget)
             (400, 400),   # medium
             (1600, 900),  # info_card size
         ])
@@ -166,6 +189,66 @@ def pregenerate_partner_thumbnails(sender, instance, **kwargs):
     if instance.logo:
         generate_thumbnails_for_image(instance.logo, [
             (300, 200),   # partner logo size
+        ])
+
+
+@receiver(post_save, sender=NewsLine)
+def pregenerate_news_line_thumbnails(sender, instance, **kwargs):
+    """Pre-generate thumbnails for NewsLine images."""
+    if instance.image:
+        generate_thumbnails_for_image(instance.image, [
+            (300, 300),   # admin preview (for image cropping widget)
+            (800, 600),   # large (detail view)
+        ])
+
+
+@receiver(post_save, sender=ChildrensBread)
+def pregenerate_childrens_bread_thumbnails(sender, instance, **kwargs):
+    """Pre-generate thumbnails for ChildrensBread images."""
+    if instance.image:
+        generate_thumbnails_for_image(instance.image, [
+            (300, 300),   # admin preview (for image cropping widget)
+            (800, 600),   # large (detail view)
+        ])
+
+
+@receiver(post_save, sender=ManTalk)
+def pregenerate_mantalk_thumbnails(sender, instance, **kwargs):
+    """Pre-generate thumbnails for ManTalk images."""
+    if instance.image:
+        generate_thumbnails_for_image(instance.image, [
+            (300, 300),   # admin preview (for image cropping widget)
+            (800, 600),   # large (detail view)
+        ])
+
+
+@receiver(post_save, sender=HeroSettings)
+def pregenerate_hero_thumbnails(sender, instance, **kwargs):
+    """Pre-generate thumbnails for HeroSettings images."""
+    if instance.image:
+        generate_thumbnails_for_image(instance.image, [
+            (300, 300),   # admin preview (for image cropping widget)
+            (1920, 1080), # hero size
+        ])
+
+
+@receiver(post_save, sender=SidebarPromo)
+def pregenerate_sidebar_promo_thumbnails(sender, instance, **kwargs):
+    """Pre-generate thumbnails for SidebarPromo images."""
+    if instance.image:
+        generate_thumbnails_for_image(instance.image, [
+            (300, 300),   # admin preview (for image cropping widget)
+            (300, 400),   # sidebar promo size
+        ])
+
+
+@receiver(post_save, sender=AboutPage)
+def pregenerate_about_thumbnails(sender, instance, **kwargs):
+    """Pre-generate thumbnails for AboutPage images."""
+    if instance.image:
+        generate_thumbnails_for_image(instance.image, [
+            (300, 300),   # admin preview (for image cropping widget)
+            (400, 400),   # about page size
         ])
 
 
