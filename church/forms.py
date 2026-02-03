@@ -239,7 +239,11 @@ class ContactForm(forms.ModelForm):
         model = ContactMessage
         fields = ['name', 'email', 'phone', 'subject', 'message']
         widgets = {
-            'message': forms.Textarea(attrs={'rows': 4}),
+            'name': forms.TextInput(attrs={'class': 'w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand focus:border-transparent outline-none transition duration-300', 'placeholder': 'Your Full Name'}),
+            'email': forms.EmailInput(attrs={'class': 'w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand focus:border-transparent outline-none transition duration-300', 'placeholder': 'Your Email Address'}),
+            'phone': forms.TextInput(attrs={'class': 'w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand focus:border-transparent outline-none transition duration-300', 'placeholder': 'Your Phone Number'}),
+            'subject': forms.TextInput(attrs={'class': 'w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand focus:border-transparent outline-none transition duration-300', 'placeholder': 'Subject'}),
+            'message': forms.Textarea(attrs={'class': 'w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand focus:border-transparent outline-none transition duration-300', 'rows': 4, 'placeholder': 'How can we help you?'}),
         }
 
 
@@ -248,5 +252,10 @@ class PartnerInquiryForm(forms.ModelForm):
         model = PartnerInquiry
         fields = ['first_name', 'last_name', 'email', 'phone', 'company_name', 'message']
         widgets = {
-            'message': forms.Textarea(attrs={'rows': 4}),
+            'first_name': forms.TextInput(attrs={'class': 'w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand focus:border-transparent outline-none transition duration-300', 'placeholder': 'First Name'}),
+            'last_name': forms.TextInput(attrs={'class': 'w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand focus:border-transparent outline-none transition duration-300', 'placeholder': 'Last Name'}),
+            'email': forms.EmailInput(attrs={'class': 'w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand focus:border-transparent outline-none transition duration-300', 'placeholder': 'Email Address'}),
+            'phone': forms.TextInput(attrs={'class': 'w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand focus:border-transparent outline-none transition duration-300', 'placeholder': 'Phone Number'}),
+            'company_name': forms.TextInput(attrs={'class': 'w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand focus:border-transparent outline-none transition duration-300', 'placeholder': 'Company/Organization (Optional)'}),
+            'message': forms.Textarea(attrs={'class': 'w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand focus:border-transparent outline-none transition duration-300', 'rows': 4, 'placeholder': 'Tell us about your interest in partnership'}),
         }
