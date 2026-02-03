@@ -446,7 +446,7 @@ THUMBNAIL_DEFAULT_STORAGE = (
 THUMBNAIL_DEBUG = DEBUG
 THUMBNAIL_PRESERVE_EXTENSIONS = True  # Preserve original file extensions
 THUMBNAIL_CHECK_CACHE_MISS = True  # Check if thumbnail exists before generating
-THUMBNAIL_ALWAYS_GENERATE = True  # Force regeneration for naming scheme shift
+THUMBNAIL_ALWAYS_GENERATE = False  # Don't generate thumbnails on every request
 THUMBNAIL_QUALITY = 85  # Default quality for JPEG thumbnails
 from easy_thumbnails.conf import Settings as thumbnail_settings
 THUMBNAIL_PROCESSORS = (
