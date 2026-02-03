@@ -101,6 +101,8 @@ def staff_login_view(request):
                     scheme = 'https'
                 else:
                     scheme = 'https' if request.is_secure() else 'http'
+                
+                logger.info(f"STAFF_LOGIN_DEBUG: Host={host}, Is_Secure={request.is_secure()}, DECIDED_SCHEME={scheme}")
                     
                 url = f'{scheme}://{host}{next_url}'
                 logger.info("STAFF_LOGIN: redirect after login to %s (host=%s)", url, host)

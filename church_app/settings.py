@@ -57,13 +57,12 @@ if os.environ.get('CUSTOM_DOMAIN'):
 
 # Force DB sessions to avoid cache/memory issues on Cloud Run
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
-SESSION_COOKIE_NAME = 'bbi_session_id'  # Custom name to break stale cookies
-SESSION_COOKIE_AGE = 1209600  # 2 weeks
+SESSION_COOKIE_NAME = 'bbi_session_id_insecure'  # New name, insecure
+SESSION_COOKIE_AGE = 1209600
 SESSION_SAVE_EVERY_REQUEST = True
-SESSION_COOKIE_SECURE = True
-SESSION_COOKIE_DOMAIN = None  # Standard host-only cookie (safest)
-CSRF_COOKIE_SECURE = True
-# Stick to default SameSite=Lax for compatibility
+SESSION_COOKIE_SECURE = False  # NUCLEAR: Allow HTTP cookies
+SESSION_COOKIE_DOMAIN = None
+CSRF_COOKIE_SECURE = False     # NUCLEAR: Allow HTTP CSRF
 SESSION_COOKIE_SAMESITE = 'Lax'
 CSRF_COOKIE_SAMESITE = 'Lax'
 
