@@ -11,6 +11,8 @@ def custom_namer(thumbnailer, prepared_options, source_filename, thumbnail_exten
     
     This is necessary when using image cropping with easy-thumbnails + GCS backend,
     as the default namer doesn't include the box parameter in the filename.
+    
+    Also handles simple size-only requests from admin widgets (e.g., 300x300).
     """
     # Get the thumbnail options - prepared_options might be a list
     thumbnail_options = kwargs.get('thumbnail_options', {})
@@ -29,17 +31,27 @@ def custom_namer(thumbnailer, prepared_options, source_filename, thumbnail_exten
                 except ValueError:
                     pass
     
+    # Also check thumbnail_options dict directly
+    if isinstance(thumbnail_options, dict):
+        opts_dict.update(thumbnail_options)
+    
     # Start with the source filename - normalize to forward slashes for GCS/Linux
     path = source_filename.replace('\\', '/')
     
     # Build the options suffix
     opts = []
     
-    # Add size
+    # Add size (required)
     if 'size' in opts_dict:
-        opts.append('%sx%s' % tuple(opts_dict['size']))
+        size = opts_dict['size']
+        if isinstance(size, (list, tuple)):
+            opts.append('%sx%s' % tuple(size))
+        else:
+            opts.append(str(size))
+    elif 'width' in opts_dict and 'height' in opts_dict:
+        opts.append('%sx%s' % (opts_dict['width'], opts_dict['height']))
     
-    # Add quality
+    # Add quality (if specified)
     if 'quality' in opts_dict:
         opts.append('q%s' % opts_dict['quality'])
     
@@ -54,19 +66,20 @@ def custom_namer(thumbnailer, prepared_options, source_filename, thumbnail_exten
             # If box is a tuple/list, format it
             opts.append('box-%s' % ','.join(str(int(x)) for x in box).replace(',', '_'))
     
-    # Add other boolean options
+    # Add other boolean options (only if True)
     for key in ['crop', 'upscale', 'detail', 'sharpen', 'bw']:
-        if opts_dict.get(key):
+        if opts_dict.get(key) is True:
             opts.append(key)
     
-    # Join all options
-    opts_str = '_'.join(opts)
-    
-    # Ensure extension starts with a dot and only one dot
-    ext = thumbnail_extension
-    if not ext.startswith('.'):
-        ext = '.' + ext
+    # Join all options - if only size, use simple format for admin compatibility
+    if len(opts) == 1 and 'x' in opts[0]:
+        # Simple size-only request (e.g., from admin widget) - use simple format
+        opts_str = opts[0]
+    else:
+        opts_str = '_'.join(opts)
     
     # Return the final filename
-    result = '%s.%s%s' % (path, opts_str, ext)
+    import os
+    base_path, _ = os.path.splitext(path)
+    result = '%s.%s%s' % (base_path, opts_str, ext)
     return result

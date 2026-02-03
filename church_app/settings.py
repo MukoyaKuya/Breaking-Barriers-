@@ -444,7 +444,7 @@ THUMBNAIL_DEFAULT_STORAGE = (
     else 'django.core.files.storage.FileSystemStorage'
 )
 THUMBNAIL_DEBUG = DEBUG
-THUMBNAIL_PRESERVE_EXTENSIONS = True  # Preserve original file extensions
+THUMBNAIL_PRESERVE_EXTENSIONS = False  # Use consistent extensions for thumbnails
 THUMBNAIL_CHECK_CACHE_MISS = True  # Check if thumbnail exists before generating
 THUMBNAIL_ALWAYS_GENERATE = False  # Don't generate thumbnails on every request
 THUMBNAIL_QUALITY = 85  # Default quality for JPEG thumbnails
