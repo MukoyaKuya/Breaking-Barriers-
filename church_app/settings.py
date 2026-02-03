@@ -57,12 +57,23 @@ if os.environ.get('CUSTOM_DOMAIN'):
 
 # Force DB sessions to avoid cache/memory issues on Cloud Run
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
-SESSION_COOKIE_NAME = 'bbi_session_id_insecure'  # New name, insecure
+
+# FIREBASE HOSTING REQUIREMENT:
+# Firebase strips ALL cookies except "__session".
+# We must rename our session cookie to exactly using this key.
+SESSION_COOKIE_NAME = '__session'
 SESSION_COOKIE_AGE = 1209600
 SESSION_SAVE_EVERY_REQUEST = True
-SESSION_COOKIE_SECURE = False  # NUCLEAR: Allow HTTP cookies
+
+# Store CSRF token inside the session (DB) because we cannot send a separate
+# 'csrftoken' cookie (Firebase will strip it).
+CSRF_USE_SESSIONS = True
+
+# Security settings (Firebase terminates SSL, but we can usually set these)
+# Keeping them False for now to ensure no other blockers, but __session usually works.
+SESSION_COOKIE_SECURE = False
 SESSION_COOKIE_DOMAIN = None
-CSRF_COOKIE_SECURE = False     # NUCLEAR: Allow HTTP CSRF
+CSRF_COOKIE_SECURE = False
 SESSION_COOKIE_SAMESITE = 'Lax'
 CSRF_COOKIE_SAMESITE = 'Lax'
 
@@ -175,8 +186,8 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'church.proxy_fix.ProxyRefererFixMiddleware',  # before CSRF so admin login works when proxy strips Referer
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'church.diagnostic_middleware.StaffLoginRedirectMiddleware',  # /admin/login/ -> /staff-login/ (custom login)
+    'church.diagnostic_middleware.ProxyRefererFixMiddleware',  # Fix Referer for admin login
+    # 'church.diagnostic_middleware.StaffLoginRedirectMiddleware',  # DISABLE LOOP CAUSE
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'church.middleware.PageViewMiddleware',
