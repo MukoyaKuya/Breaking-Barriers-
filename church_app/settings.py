@@ -444,6 +444,10 @@ THUMBNAIL_DEFAULT_STORAGE = (
     else 'django.core.files.storage.FileSystemStorage'
 )
 THUMBNAIL_DEBUG = DEBUG
+THUMBNAIL_PRESERVE_EXTENSIONS = True  # Preserve original file extensions
+THUMBNAIL_CHECK_CACHE_MISS = True  # Check if thumbnail exists before generating
+THUMBNAIL_ALWAYS_GENERATE = True  # Force regeneration for naming scheme shift
+THUMBNAIL_QUALITY = 85  # Default quality for JPEG thumbnails
 from easy_thumbnails.conf import Settings as thumbnail_settings
 THUMBNAIL_PROCESSORS = (
     'image_cropping.thumbnail_processors.crop_corners',
@@ -453,6 +457,11 @@ THUMBNAIL_PROCESSORS = (
 # This ensures thumbnails with different crop boxes are treated as separate files
 THUMBNAIL_NAMER = 'church.thumbnail_namer.custom_namer'
 
+# Image cropping widget settings
+# Configure the thumbnail size used by django-image-cropping widget in admin
+IMAGE_CROPPING_THUMB_SIZE = (300, 300)  # Size for admin preview thumbnails
+IMAGE_CROPPING_SIZE_WARNING = True
+
 THUMBNAIL_ALIASES = {
     '': {
         'small': {'size': (100, 100), 'crop': 'smart'},
@@ -461,6 +470,13 @@ THUMBNAIL_ALIASES = {
         'info_card': {'size': (1600, 900), 'crop': 'smart'},
     },
 }
+
+# File upload settings
+FILE_UPLOAD_MAX_MEMORY_SIZE = 10485760  # 10MB
+DATA_UPLOAD_MAX_MEMORY_SIZE = 10485760  # 10MB
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 10240
+FILE_UPLOAD_TEMP_DIR = None  # Use system temp directory
+FILE_UPLOAD_PERMISSIONS = 0o644
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
