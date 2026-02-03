@@ -186,6 +186,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'church.proxy_fix.ProxyRefererFixMiddleware',  # before CSRF so admin login works when proxy strips Referer
     'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',  # REQUIRED: Populates request.user
     'church.diagnostic_middleware.ProxyRefererFixMiddleware',  # Fix Referer for admin login
     # 'church.diagnostic_middleware.StaffLoginRedirectMiddleware',  # DISABLE LOOP CAUSE
     'django.contrib.messages.middleware.MessageMiddleware',
