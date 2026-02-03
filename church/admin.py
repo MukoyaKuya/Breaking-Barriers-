@@ -515,7 +515,7 @@ class ContactMessageAdmin(admin.ModelAdmin):
     def delete_link(self, obj):
         from django.urls import reverse
         url = reverse('admin:church_contactmessage_delete', args=[obj.id])
-        return format_html('<a href="{}" style="color:#ba2121; font-weight:bold;">Delete</a>', url)
+        return format_html('<a href="{}" class="deletelink" style="color:#ba2121; font-weight:bold; border: 1px solid #ccc; padding: 2px 5px; border-radius: 4px; background: #fff; text-decoration: none;">Delete</a>', url)
     delete_link.short_description = 'Actions'
 
     @admin.action(description='Clear all messages (DELETE ALL)')
@@ -555,7 +555,7 @@ class PartnerInquiryAdmin(admin.ModelAdmin):
     def delete_link(self, obj):
         from django.urls import reverse
         url = reverse('admin:church_partnerinquiry_delete', args=[obj.id])
-        return format_html('<a href="{}" style="color:#ba2121; font-weight:bold;">Delete</a>', url)
+        return format_html('<a href="{}" class="deletelink" style="color:#ba2121; font-weight:bold; border: 1px solid #ccc; padding: 2px 5px; border-radius: 4px; background: #fff; text-decoration: none;">Delete</a>', url)
     delete_link.short_description = 'Actions'
 
     @admin.action(description='Clear all inquiries (DELETE ALL)')

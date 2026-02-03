@@ -289,8 +289,18 @@ def donate_view(request):
         if 'contact-submit' in request.POST:
             contact_form = ContactForm(request.POST, prefix='contact')
             if contact_form.is_valid():
+                # Server-side deduplication check
+                name = contact_form.cleaned_data.get('name')
+                email = contact_form.cleaned_data.get('email')
+                message = contact_form.cleaned_data.get('message')
+                
+                last_msg = ContactMessage.objects.filter(email=email, message=message).order_by('-created_at').first()
+                if last_msg and (timezone.now() - last_msg.created_at).total_seconds() < 60:
+                    messages.success(request, 'Message Sent Successfully. We will get back to you shortly')
+                    return redirect('donate')
+
                 contact_form.save()
-                messages.success(request, 'Thank you for your message! We will get back to you soon.')
+                messages.success(request, 'Message Sent Successfully. We will get back to you shortly')
                 return redirect('donate')
             else:
                 messages.error(request, 'Please correct the errors in the Contact form.')
@@ -298,8 +308,17 @@ def donate_view(request):
         elif 'partner-submit' in request.POST:
             partner_form = PartnerInquiryForm(request.POST, prefix='partner')
             if partner_form.is_valid():
+                # Server-side deduplication
+                email = partner_form.cleaned_data.get('email')
+                message = partner_form.cleaned_data.get('message')
+                
+                last_msg = PartnerInquiry.objects.filter(email=email, message=message).order_by('-created_at').first()
+                if last_msg and (timezone.now() - last_msg.created_at).total_seconds() < 60:
+                    messages.success(request, 'Message Sent Successfully. We will get back to you shortly')
+                    return redirect('donate')
+
                 partner_form.save()
-                messages.success(request, 'Thank you for your partnership inquiry! We will contact you shortly.')
+                messages.success(request, 'Message Sent Successfully. We will get back to you shortly')
                 return redirect('donate')
             else:
                 messages.error(request, 'Please correct the errors in the Partner form.')
@@ -369,8 +388,17 @@ def contact_us_view(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
+            # Server-side deduplication
+            email = form.cleaned_data.get('email')
+            message = form.cleaned_data.get('message')
+            
+            last_msg = ContactMessage.objects.filter(email=email, message=message).order_by('-created_at').first()
+            if last_msg and (timezone.now() - last_msg.created_at).total_seconds() < 60:
+                 messages.success(request, 'Message Sent Successfully. We will get back to you shortly')
+                 return redirect('contact_us')
+
             form.save()
-            messages.success(request, 'Thank you for your message! We will get back to you soon.')
+            messages.success(request, 'Message Sent Successfully. We will get back to you shortly')
             return redirect('contact_us')
         else:
             messages.error(request, 'Please correct the errors below.')
@@ -800,20 +828,27 @@ def calendar_event_delete_view(request, event_id):
 def newsletter_subscribe_view(request):
     """Handle newsletter email subscriptions from the footer form."""
     if request.method == 'POST':
-        email = request.POST.get('email', '').strip()
+        email = request.POST.get('email', '').strip().lower()
         if email:
+            # Basic deduplication for newsletter within 60 seconds
+            from django.utils import timezone
+            last_sub = NewsletterSubscriber.objects.filter(email=email).order_by('-updated_at').first()
+            if last_sub and (timezone.now() - last_sub.updated_at).total_seconds() < 60:
+                messages.success(request, "Successfully subscribed to our newsletter.")
+                return redirect(request.META.get('HTTP_REFERER') or '/')
+
             subscriber, created = NewsletterSubscriber.objects.get_or_create(email=email)
             if not subscriber.is_active:
                 subscriber.is_active = True
                 subscriber.save(update_fields=['is_active'])
+            
             if created:
-                messages.success(request, "Thank you for subscribing to our newsletter.")
+                messages.success(request, "Successfully subscribed to our newsletter.")
             else:
                 messages.info(request, "You are already subscribed to our newsletter.")
         else:
             messages.error(request, "Please enter a valid email address.")
 
-    # Redirect back to the page the user came from (usually the homepage)
     next_url = request.META.get('HTTP_REFERER') or '/'
     return redirect(next_url)
 
