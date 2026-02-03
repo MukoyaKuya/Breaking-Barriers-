@@ -15,12 +15,11 @@
                 <div class="partners-marquee-group">
                     {% for partner in partners %}
                     <div class="flex-shrink-0 max-w-[200px] md:max-w-[250px] flex items-center justify-center">
-                        {% if partner.logo %}
                         {% if partner.website_url %}
                         <a href="{{ partner.website_url }}" target="_blank" rel="noopener noreferrer"
                             class="block w-full">
                             {% if partner.use_cropping and partner.logo_cropping %}
-                            {% thumbnail partner.logo "300x200" box=partner.logo_cropping crop=True detail=True as cropped %}
+                            {% thumbnail partner.logo "300x200" crop=True detail=True as cropped %}
                             <picture>
                                 <source srcset="{{ cropped.url }}.webp" type="image/webp">
                                 <img src="{{ cropped.url }}" alt="{{ partner.name }}" loading="lazy"
@@ -33,7 +32,7 @@
                         </a>
                         {% else %}
                         {% if partner.use_cropping and partner.logo_cropping %}
-                        {% thumbnail partner.logo "300x200" box=partner.logo_cropping crop=True detail=True as cropped %}
+                        {% thumbnail partner.logo "300x200" crop=True detail=True as cropped %}
                         <picture>
                             <source srcset="{{ cropped.url }}.webp" type="image/webp">
                             <img src="{{ cropped.url }}" alt="{{ partner.name }}" loading="lazy"
@@ -44,11 +43,6 @@
                             class="h-24 md:h-32 w-auto max-w-full object-contain">
                         {% endif %}
                         {% endif %}
-                        {% else %}
-                        <div class="h-24 md:h-32 flex items-center justify-center text-gray-400 text-sm text-center px-2">
-                            {{ partner.name }}
-                        </div>
-                        {% endif %}
                     </div>
                     {% endfor %}
                 </div>
@@ -57,12 +51,11 @@
                 <div class="partners-marquee-group" aria-hidden="true">
                     {% for partner in partners %}
                     <div class="flex-shrink-0 max-w-[200px] md:max-w-[250px] flex items-center justify-center">
-                        {% if partner.logo %}
                         {% if partner.website_url %}
                         <a href="{{ partner.website_url }}" target="_blank" rel="noopener noreferrer"
                             class="block w-full" tabindex="-1">
                             {% if partner.use_cropping and partner.logo_cropping %}
-                            {% thumbnail partner.logo "300x200" box=partner.logo_cropping crop=True detail=True as cropped %}
+                            {% thumbnail partner.logo "300x200" crop=True detail=True as cropped %}
                             <picture>
                                 <source srcset="{{ cropped.url }}.webp" type="image/webp">
                                 <img src="{{ cropped.url }}" alt="" loading="lazy"
@@ -75,7 +68,7 @@
                         </a>
                         {% else %}
                         {% if partner.use_cropping and partner.logo_cropping %}
-                        {% thumbnail partner.logo "300x200" box=partner.logo_cropping crop=True detail=True as cropped %}
+                        {% thumbnail partner.logo "300x200" crop=True detail=True as cropped %}
                         <picture>
                             <source srcset="{{ cropped.url }}.webp" type="image/webp">
                             <img src="{{ cropped.url }}" alt="" loading="lazy"
@@ -85,11 +78,6 @@
                         <img src="{{ partner.logo.url }}" alt="" loading="lazy"
                             class="h-24 md:h-32 w-auto max-w-full object-contain">
                         {% endif %}
-                        {% endif %}
-                        {% else %}
-                        <div class="h-24 md:h-32 flex items-center justify-center text-gray-400 text-sm text-center px-2">
-                            {{ partner.name }}
-                        </div>
                         {% endif %}
                     </div>
                     {% endfor %}

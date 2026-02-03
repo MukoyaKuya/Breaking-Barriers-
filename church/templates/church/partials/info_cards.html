@@ -7,8 +7,7 @@
             <div
                 class="rounded-xl shadow-lg border-2 border-gray-400 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col h-full">
                 <div class="px-5 pt-5 pb-3 border-b border-gray-100">
-                    <h2 class="text-2xl font-bold brand-text text-center">{% if childrens_bread_card %}{{
-                        childrens_bread_card.title }}{% else %}Children's Bread{% endif %}</h2>
+                    <h2 class="text-2xl font-bold brand-text text-center">{% if childrens_bread_card %}{{ childrens_bread_card.title }}{% else %}Children's Bread{% endif %}</h2>
                 </div>
                 {% if childrens_bread_card or childrens_bread_articles %}
                 <a href="{% url 'childrens_bread_list' %}" class="flex flex-col flex-grow">
@@ -18,31 +17,9 @@
                         {% for article in childrens_bread_articles %}
                         <div class="info-carousel-slide absolute inset-0 w-full h-full {% if forloop.first %}opacity-100 z-10{% else %}opacity-0 z-0{% endif %}"
                             data-slide style="transition: opacity 0.5s ease;">
-                            {% if article.image and article.image.name %}
-                            {% if article.image_cropping %}
-                            {% thumbnail article.image "800x600" box=article.image_cropping crop=True detail=True as
-                            cropped %}
-                            {% if cropped %}
-                            <img src="{{ cropped.url }}" alt="{{ article.title }}" loading="lazy"
+                            {% if article.image %}
+                            <img src="{{ article.image.url }}" alt="{{ article.title }}"
                                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
-                            {% else %}
-                            <div
-                                class="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-                                <i class="fas fa-image text-gray-400 text-5xl"></i>
-                            </div>
-                            {% endif %}
-                            {% else %}
-                            {% thumbnail article.image "800x600" crop=True detail=True as thumb %}
-                            {% if thumb %}
-                            <img src="{{ thumb.url }}" alt="{{ article.title }}" loading="lazy"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
-                            {% else %}
-                            <div
-                                class="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-                                <i class="fas fa-image text-gray-400 text-5xl"></i>
-                            </div>
-                            {% endif %}
-                            {% endif %}
                             {% else %}
                             <div
                                 class="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
@@ -52,8 +29,7 @@
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent">
                             </div>
                             <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
-                                <h3 class="text-lg font-bold leading-tight line-clamp-2">{{
-                                    article.title|truncatewords:12 }}</h3>
+                                <h3 class="text-lg font-bold leading-tight line-clamp-2">{{ article.title|truncatewords:12 }}</h3>
                                 <p class="text-sm mt-1 opacity-90 line-clamp-2">{{ article.summary|truncatewords:15 }}
                                 </p>
                             </div>
@@ -63,7 +39,6 @@
                         <div class="info-carousel-slide absolute inset-0 w-full h-full opacity-100 z-10" data-slide>
                             {% if childrens_bread_card.image %}
                             <img src="{{ childrens_bread_card.image.url }}" alt="{{ childrens_bread_card.headline }}"
-                                loading="lazy"
                                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
                             {% else %}
                             <div
@@ -73,8 +48,7 @@
                             {% endif %}
                             <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                             <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
-                                <h3 class="text-lg font-bold leading-tight">{{
-                                    childrens_bread_card.headline|truncatewords:12 }}</h3>
+                                <h3 class="text-lg font-bold leading-tight">{{ childrens_bread_card.headline|truncatewords:12 }}</h3>
                             </div>
                         </div>
                         {% endif %}
@@ -107,8 +81,7 @@
             <div
                 class="rounded-xl shadow-lg border-2 border-gray-400 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col h-full">
                 <div class="px-5 pt-5 pb-3 border-b border-gray-100">
-                    <h2 class="text-2xl font-bold brand-text text-center">{% if news_card %}{{ news_card.title }}{% else
-                        %}News{% endif %}</h2>
+                    <h2 class="text-2xl font-bold brand-text text-center">{% if news_card %}{{ news_card.title }}{% else %}News{% endif %}</h2>
                 </div>
                 {% if news_card or news_line_articles %}
                 <a href="{% url 'news_line_list' %}" class="flex flex-col flex-grow">
@@ -118,31 +91,9 @@
                         {% for article in news_line_articles %}
                         <div class="info-carousel-slide absolute inset-0 w-full h-full {% if forloop.first %}opacity-100 z-10{% else %}opacity-0 z-0{% endif %}"
                             data-slide style="transition: opacity 0.5s ease;">
-                            {% if article.image and article.image.name %}
-                            {% if article.image_cropping %}
-                            {% thumbnail article.image "800x600" box=article.image_cropping crop=True detail=True as
-                            cropped %}
-                            {% if cropped %}
-                            <img src="{{ cropped.url }}" alt="{{ article.title }}" loading="lazy"
+                            {% if article.image %}
+                            <img src="{{ article.image.url }}" alt="{{ article.title }}"
                                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
-                            {% else %}
-                            <div
-                                class="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-                                <i class="fas fa-image text-gray-400 text-5xl"></i>
-                            </div>
-                            {% endif %}
-                            {% else %}
-                            {% thumbnail article.image "800x600" crop=True detail=True as thumb %}
-                            {% if thumb %}
-                            <img src="{{ thumb.url }}" alt="{{ article.title }}" loading="lazy"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
-                            {% else %}
-                            <div
-                                class="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-                                <i class="fas fa-image text-gray-400 text-5xl"></i>
-                            </div>
-                            {% endif %}
-                            {% endif %}
                             {% else %}
                             <div
                                 class="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
@@ -152,8 +103,7 @@
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent">
                             </div>
                             <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
-                                <h3 class="text-lg font-bold leading-tight line-clamp-2">{{
-                                    article.title|truncatewords:12 }}</h3>
+                                <h3 class="text-lg font-bold leading-tight line-clamp-2">{{ article.title|truncatewords:12 }}</h3>
                                 <p class="text-sm mt-1 opacity-90 line-clamp-2">{{ article.summary|truncatewords:15 }}
                                 </p>
                             </div>
@@ -161,31 +111,9 @@
                         {% endfor %}
                         {% else %}
                         <div class="info-carousel-slide absolute inset-0 w-full h-full opacity-100 z-10" data-slide>
-                            {% if news_card.image and news_card.image.name %}
-                            {% if news_card.image_cropping %}
-                            {% thumbnail news_card.image "800x600" box=news_card.image_cropping crop=True detail=True as
-                            cropped %}
-                            {% if cropped %}
-                            <img src="{{ cropped.url }}" alt="{{ news_card.headline }}" loading="lazy"
+                            {% if news_card.image %}
+                            <img src="{{ news_card.image.url }}" alt="{{ news_card.headline }}"
                                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
-                            {% else %}
-                            <div
-                                class="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-                                <i class="fas fa-image text-gray-400 text-5xl"></i>
-                            </div>
-                            {% endif %}
-                            {% else %}
-                            {% thumbnail news_card.image "800x600" crop=True detail=True as thumb %}
-                            {% if thumb %}
-                            <img src="{{ thumb.url }}" alt="{{ news_card.headline }}" loading="lazy"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
-                            {% else %}
-                            <div
-                                class="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-                                <i class="fas fa-image text-gray-400 text-5xl"></i>
-                            </div>
-                            {% endif %}
-                            {% endif %}
                             {% else %}
                             <div
                                 class="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
@@ -228,8 +156,7 @@
             <div
                 class="rounded-xl shadow-lg border-2 border-gray-400 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col h-full">
                 <div class="px-5 pt-5 pb-3 border-b border-gray-100">
-                    <h2 class="text-2xl font-bold brand-text text-center">{% if word_of_truth_card %}{{
-                        word_of_truth_card.title }}{% else %}Word of Truth{% endif %}</h2>
+                    <h2 class="text-2xl font-bold brand-text text-center">{% if word_of_truth_card %}{{ word_of_truth_card.title }}{% else %}Word of Truth{% endif %}</h2>
                 </div>
                 {% if word_of_truth_card or word_of_truth_articles %}
                 <a href="{% url 'word_of_truth_list' %}" class="flex flex-col flex-grow">
@@ -239,31 +166,9 @@
                         {% for article in word_of_truth_articles %}
                         <div class="info-carousel-slide absolute inset-0 w-full h-full {% if forloop.first %}opacity-100 z-10{% else %}opacity-0 z-0{% endif %}"
                             data-slide style="transition: opacity 0.5s ease;">
-                            {% if article.image and article.image.name %}
-                            {% if article.image_cropping %}
-                            {% thumbnail article.image "800x600" box=article.image_cropping crop=True detail=True as
-                            cropped %}
-                            {% if cropped %}
-                            <img src="{{ cropped.url }}" alt="{{ article.title }}" loading="lazy"
+                            {% if article.image %}
+                            <img src="{{ article.image.url }}" alt="{{ article.title }}"
                                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
-                            {% else %}
-                            <div
-                                class="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-                                <i class="fas fa-image text-gray-400 text-5xl"></i>
-                            </div>
-                            {% endif %}
-                            {% else %}
-                            {% thumbnail article.image "800x600" crop=True detail=True as thumb %}
-                            {% if thumb %}
-                            <img src="{{ thumb.url }}" alt="{{ article.title }}" loading="lazy"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
-                            {% else %}
-                            <div
-                                class="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-                                <i class="fas fa-image text-gray-400 text-5xl"></i>
-                            </div>
-                            {% endif %}
-                            {% endif %}
                             {% else %}
                             <div
                                 class="w-full h-full bg-gradient-to-br from-yellow-400 via-orange-500 to-red-600 flex items-center justify-center">
@@ -273,8 +178,7 @@
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent">
                             </div>
                             <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
-                                <h3 class="text-lg font-bold leading-tight line-clamp-2">{{
-                                    article.title|truncatewords:12 }}</h3>
+                                <h3 class="text-lg font-bold leading-tight line-clamp-2">{{ article.title|truncatewords:12 }}</h3>
                                 <p class="text-sm mt-1 opacity-90 line-clamp-2">{{ article.summary|truncatewords:15 }}
                                 </p>
                             </div>
@@ -282,31 +186,9 @@
                         {% endfor %}
                         {% else %}
                         <div class="info-carousel-slide absolute inset-0 w-full h-full opacity-100 z-10" data-slide>
-                            {% if word_of_truth_card.image and word_of_truth_card.image.name %}
-                            {% if word_of_truth_card.image_cropping %}
-                            {% thumbnail word_of_truth_card.image "800x600" box=word_of_truth_card.image_cropping
-                            crop=True detail=True as cropped %}
-                            {% if cropped %}
-                            <img src="{{ cropped.url }}" alt="{{ word_of_truth_card.headline }}" loading="lazy"
+                            {% if word_of_truth_card.image %}
+                            <img src="{{ word_of_truth_card.image.url }}" alt="{{ word_of_truth_card.headline }}"
                                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
-                            {% else %}
-                            <div
-                                class="w-full h-full bg-gradient-to-br from-yellow-400 via-orange-500 to-red-600 flex items-center justify-center">
-                                <i class="fas fa-book text-white text-5xl opacity-80"></i>
-                            </div>
-                            {% endif %}
-                            {% else %}
-                            {% thumbnail word_of_truth_card.image "800x600" crop=True detail=True as thumb %}
-                            {% if thumb %}
-                            <img src="{{ thumb.url }}" alt="{{ word_of_truth_card.headline }}"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
-                            {% else %}
-                            <div
-                                class="w-full h-full bg-gradient-to-br from-yellow-400 via-orange-500 to-red-600 flex items-center justify-center">
-                                <i class="fas fa-book text-white text-5xl opacity-80"></i>
-                            </div>
-                            {% endif %}
-                            {% endif %}
                             {% else %}
                             <div
                                 class="w-full h-full bg-gradient-to-br from-yellow-400 via-orange-500 to-red-600 flex items-center justify-center">
@@ -318,8 +200,7 @@
                             {% endif %}
                             <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                             <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
-                                <h3 class="text-lg font-bold leading-tight">{{
-                                    word_of_truth_card.headline|truncatewords:12 }}</h3>
+                                <h3 class="text-lg font-bold leading-tight">{{ word_of_truth_card.headline|truncatewords:12 }}</h3>
                             </div>
                         </div>
                         {% endif %}

@@ -129,9 +129,6 @@ class PartnerInquiry(models.Model):
         ordering = ['-created_at']
         verbose_name = 'Partner Inquiry'
         verbose_name_plural = 'Partner Inquiries'
-        indexes = [
-            models.Index(fields=['-created_at']),
-        ]
 
     def __str__(self):
         return f"Partner Inquiry from {self.first_name} {self.last_name}"
@@ -151,10 +148,6 @@ class ContactMessage(models.Model):
         ordering = ['-created_at']
         verbose_name = 'Contact Message'
         verbose_name_plural = 'Contact Messages'
-        indexes = [
-            models.Index(fields=['is_read', '-created_at']),
-            models.Index(fields=['-created_at']),
-        ]
 
     def __str__(self):
         return f"Message from {self.name}: {self.subject}"
@@ -555,10 +548,6 @@ class Book(models.Model):
         ordering = ['-created_at']
         verbose_name = 'Book'
         verbose_name_plural = 'Books'
-        indexes = [
-            models.Index(fields=['is_published', '-created_at']),
-            models.Index(fields=['slug']),
-        ]
 
     def __str__(self):
         return self.title

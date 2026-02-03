@@ -17,21 +17,14 @@ In normal document flow: when FAQs expand, this block is pushed down dynamically
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
                 {% elif promo.image %}
-                {% if promo.image_cropping %}
                 {% thumbnail promo.image "300x400" box=promo.image_cropping crop=True detail=True as cropped %}
+                {% with img_url=cropped.url|default:promo.image.url %}
                 <picture>
-                    <source srcset="{{ cropped.url }}.webp" type="image/webp">
-                    <img src="{{ cropped.url }}" alt="{{ promo.caption|default:'Sidebar promo' }}" loading="lazy"
+                    <source srcset="{{ img_url }}.webp" type="image/webp">
+                    <img src="{{ img_url }}" alt="{{ promo.caption|default:'Sidebar promo' }}" loading="lazy"
                         class="w-full h-full object-cover object-center">
                 </picture>
-                {% else %}
-                {% thumbnail promo.image "300x400" crop=True detail=True as thumb %}
-                <picture>
-                    <source srcset="{{ thumb.url }}.webp" type="image/webp">
-                    <img src="{{ thumb.url }}" alt="{{ promo.caption|default:'Sidebar promo' }}" loading="lazy"
-                        class="w-full h-full object-cover object-center">
-                </picture>
-                {% endif %}
+                {% endwith %}
                 {% else %}
                 <div class="w-full h-full flex items-center justify-center bg-gray-200">
                     <span class="text-gray-400">No image</span>

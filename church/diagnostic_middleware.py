@@ -107,6 +107,8 @@ class HeaderLoggingMiddleware:
             
         response = self.get_response(request)
         
+        response = self.get_response(request)
+        
         if request.path.startswith('/admin/') or request.path.startswith('/staff-login/'):
             logger.info(f"DIAGNOSTIC Response: Status={response.status_code}")
             if 'Location' in response:
