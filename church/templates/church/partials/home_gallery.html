@@ -10,14 +10,47 @@
         </div>
 
         {% if gallery_items %}
-        <div x-data="{ active: 0 }" class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+        <div x-data="{
+            active: 0,
+            total: {{ gallery_items|length }},
+            interval: null,
+            isRotating: false,
+            init() {
+                setTimeout(() => {
+                    this.startAutoRotate();
+                }, 2000);
+            },
+            startAutoRotate() {
+                this.stopAutoRotate();
+                this.isRotating = true;
+                this.interval = setInterval(() => {
+                    if (!this.isRotating) return;
+                    this.active = (this.active + 1) % this.total;
+                }, 8000); // Rotate every 8 seconds
+            },
+            stopAutoRotate() {
+                if (this.interval) {
+                    clearInterval(this.interval);
+                    this.interval = null;
+                }
+                this.isRotating = false;
+            },
+            goTo(index) {
+                this.stopAutoRotate();
+                this.active = index;
+                setTimeout(() => {
+                    this.startAutoRotate();
+                }, 500);
+            }
+        }" x-init="init()" @mouseenter="stopAutoRotate()" @mouseleave="startAutoRotate()"
+            class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
             <!-- List column -->
             <div class="md:col-span-1 space-y-2">
                 {% for item in gallery_items %}
                 <button type="button"
-                    class="w-full flex items-center gap-3 px-3 py-3 border-l-4 rounded-r transition-all"
+                    class="w-full flex items-center gap-3 px-3 py-3 border-l-4 rounded-r transition-all text-left"
                     :class="active === {{ forloop.counter0 }} ? 'border-brand-color bg-gray-100 shadow-sm' : 'border-transparent hover:bg-gray-50'"
-                    @click="active = {{ forloop.counter0 }}">
+                    @click="goTo({{ forloop.counter0 }})">
                     <div class="flex-shrink-0 w-16 h-10 overflow-hidden bg-black rounded">
                         {% if item.video_url and item.get_youtube_thumbnail_url %}
                         <img src="{{ item.get_youtube_thumbnail_url }}" alt="{{ item.caption }}" loading="lazy"
