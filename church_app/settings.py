@@ -27,7 +27,7 @@ if not SECRET_KEY:
     SECRET_KEY = 'django-insecure-np3^#88u=exi*1xe1^bl5__@g7#yr$&cps2o-jwx)y%cp#=1$5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', 'True') == 'True'
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = [
     'bbi-international-1073897174388.europe-north2.run.app',
