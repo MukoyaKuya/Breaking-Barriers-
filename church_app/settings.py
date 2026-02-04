@@ -27,7 +27,8 @@ if not SECRET_KEY:
     SECRET_KEY = 'django-insecure-np3^#88u=exi*1xe1^bl5__@g7#yr$&cps2o-jwx)y%cp#=1$5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+# Default to True for local development, False for production
+DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = [
     'bbi-international-1073897174388.europe-north2.run.app',
@@ -422,7 +423,9 @@ else:
             'BACKEND': 'django.core.files.storage.FileSystemStorage',
         },
         'staticfiles': {
-            'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage',
+            # Use CompressedStaticFilesStorage in DEBUG mode (no manifest required)
+            # Use CompressedManifestStaticFilesStorage in production (requires manifest)
+            'BACKEND': 'whitenoise.storage.CompressedStaticFilesStorage' if DEBUG else 'whitenoise.storage.CompressedManifestStaticFilesStorage',
         },
     }
     MEDIA_URL = '/media/'

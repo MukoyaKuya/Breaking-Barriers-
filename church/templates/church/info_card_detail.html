@@ -18,8 +18,7 @@
                     {% if card.image %}
                     <div class="w-full aspect-[16/9] relative bg-gray-100">
                         {% if card.image_cropping %}
-                        {% safe_thumbnail card.image "1600x900" box=card.image_cropping crop=True detail=True as cropped
-                        %}
+                        {% safe_thumbnail card.image "1600x900" box=card.image_cropping crop=True detail=True as cropped %}
                         {% if cropped %}
                         <picture>
                             <source srcset="{{ cropped.url }}.webp" type="image/webp">

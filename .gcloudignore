@@ -1,0 +1,17 @@
+.git
+.gitignore
+.vscode
+venv
+__pycache__
+*.pyc
+db.sqlite3
+# Explicitly allow templates
+!church/templates/
+!church/templatetags/
+!church/
+!static/
+!scripts/
+!manage.py
+!requirements.txt
+!Dockerfile
+!env.yaml

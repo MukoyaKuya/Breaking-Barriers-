@@ -20,6 +20,7 @@ else %}{% static 'images/logo.png' %}{% endif %}{% endblock %}
 
 {% block content %}
 <div class="bg-white py-6 sm:py-8 overflow-x-hidden">
+    <!-- DEPLOY_VERIF_SAFE_THUMBNAIL_FIX_V2 -->
     <div class="container mx-auto px-4 sm:px-6 max-w-7xl">
         <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 md:gap-8">
             <!-- Main Content column -->
@@ -41,7 +42,8 @@ else %}{% static 'images/logo.png' %}{% endif %}{% endblock %}
                         <img src="{{ cropped.url }}" alt="{{ article.title }}" loading="lazy"
                             class="w-full h-full max-h-[320px] md:max-h-[400px] object-cover object-center transition-transform duration-700 group-hover:scale-105">
                         {% else %}
-                        <div class="w-full h-full max-h-[320px] md:max-h-[400px] brand-color opacity-90 flex items-center justify-center">
+                        <div
+                            class="w-full h-full max-h-[320px] md:max-h-[400px] brand-color opacity-90 flex items-center justify-center">
                             <i class="fas fa-bread-slice text-white/30 text-6xl"></i>
                         </div>
                         {% endif %}
@@ -51,7 +53,8 @@ else %}{% static 'images/logo.png' %}{% endif %}{% endblock %}
                         <img src="{{ thumb.url }}" alt="{{ article.title }}" loading="lazy"
                             class="w-full h-full max-h-[320px] md:max-h-[400px] object-cover object-center transition-transform duration-700 group-hover:scale-105">
                         {% else %}
-                        <div class="w-full h-full max-h-[320px] md:max-h-[400px] brand-color opacity-90 flex items-center justify-center">
+                        <div
+                            class="w-full h-full max-h-[320px] md:max-h-[400px] brand-color opacity-90 flex items-center justify-center">
                             <i class="fas fa-bread-slice text-white/30 text-6xl"></i>
                         </div>
                         {% endif %}

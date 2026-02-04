@@ -294,20 +294,29 @@
 
     {% block extra_js %}{% endblock %}
 
-    <!-- PWA Service Worker Registration -->
+    <!-- PWA Service Worker Management -->
     <script>
+        // AGGRESSIVE SERVICE WORKER CACHE CLEARING
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function () {
-                navigator.serviceWorker.register('/static/service-worker.js')
-                    .then(function (registration) {
-                        console.log('BBI Service Worker registered:', registration.scope);
-                    })
-                    .catch(function (error) {
-                        console.log('BBI Service Worker registration failed:', error);
+                navigator.serviceWorker.getRegistrations().then(function (registrations) {
+                    for (let registration of registrations) {
+                        console.log('Unregistering Service Worker:', registration.scope);
+                        registration.unregister();
+                    }
+                });
+
+                // Clear all caches
+                if ('caches' in window) {
+                    caches.keys().then(function (names) {
+                        for (let name of names) {
+                            console.log('Deleting cache:', name);
+                            caches.delete(name);
+                        }
                     });
+                }
             });
         }
-
     </script>
 </body>
 
