@@ -26,27 +26,8 @@
                     <a href="{% url 'book_detail' book.slug %}"
                         class="relative aspect-[2/3] overflow-hidden bg-gray-100 block">
                         {% if book.cover_image %}
-                        {% if book.image_cropping %}
-                        {% safe_thumbnail book.cover_image "600x900" box=book.image_cropping crop=True detail=True as cropped %}
-                        {% if cropped %}
-                        <img src="{{ cropped.url }}" alt="{{ book.title }}" loading="lazy"
+                        <img src="{{ book.cover_image.url }}" alt="{{ book.title }}" loading="lazy"
                             class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
-                        {% else %}
-                        <div class="w-full h-full bg-gray-200 flex items-center justify-center">
-                            <i class="fas fa-book text-gray-400 text-6xl"></i>
-                        </div>
-                        {% endif %}
-                        {% else %}
-                        {% safe_thumbnail book.cover_image "600x900" crop=True detail=True as thumb %}
-                        {% if thumb %}
-                        <img src="{{ thumb.url }}" alt="{{ book.title }}" loading="lazy"
-                            class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
-                        {% else %}
-                        <div class="w-full h-full bg-gray-200 flex items-center justify-center">
-                            <i class="fas fa-book text-gray-400 text-6xl"></i>
-                        </div>
-                        {% endif %}
-                        {% endif %}
                         {% else %}
                         <div class="w-full h-full bg-gray-200 flex items-center justify-center">
                             <i class="fas fa-book text-gray-400 text-6xl"></i>

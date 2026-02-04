@@ -11,26 +11,13 @@
             allowfullscreen></iframe>
         {% elif article.image %}
         <div class="cursor-pointer group-hover:brightness-95 transition-all duration-300 h-full w-full">
-            {% if article.image_cropping %}
-            {% safe_thumbnail article.image "800x600" box=article.image_cropping crop=True detail=True as cropped %}
-            {% if cropped %}
-            <img src="{{ cropped.url }}" alt="{{ article.title }}" loading="lazy"
-                class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+            {% if article.image %}
+            <img src="{{ article.image.url }}" alt="{{ article.title }}" loading="lazy"
+                class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
             {% else %}
-            <div class="w-full h-full brand-color opacity-90 flex items-center justify-center">
-                <i class="fas fa-newspaper text-white/30 text-6xl"></i>
+            <div class="w-full h-full bg-gray-200 flex items-center justify-center">
+                <i class="fas fa-newspaper text-gray-400 text-4xl"></i>
             </div>
-            {% endif %}
-            {% else %}
-            {% safe_thumbnail article.image "800x600" crop=True detail=True as thumb %}
-            {% if thumb %}
-            <img src="{{ thumb.url }}" alt="{{ article.title }}" loading="lazy"
-                class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-            {% else %}
-            <div class="w-full h-full brand-color opacity-90 flex items-center justify-center">
-                <i class="fas fa-newspaper text-white/30 text-6xl"></i>
-            </div>
-            {% endif %}
             {% endif %}
         </div>
         {% else %}

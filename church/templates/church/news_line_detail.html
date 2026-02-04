@@ -29,24 +29,9 @@
                 </div>
                 {% elif article.image %}
                 <div class="w-full relative aspect-[16/9] max-h-[420px] bg-gray-100 overflow-hidden">
-                    {% if article.image_cropping %}
-                    {% safe_thumbnail article.image "1200x630" box=article.image_cropping crop=True detail=True as cropped %}
-                    {% if cropped %}
-                    <img src="{{ cropped.url }}" alt="{{ article.title }}" class="w-full h-full object-cover">
-                    {% else %}
-                    <div class="w-full h-full brand-color opacity-90 flex items-center justify-center">
-                        <i class="fas fa-newspaper text-white/30 text-6xl"></i>
-                    </div>
-                    {% endif %}
-                    {% else %}
-                    {% safe_thumbnail article.image "1200x630" crop=True detail=True as cropped %}
-                    {% if cropped %}
-                    <img src="{{ cropped.url }}" alt="{{ article.title }}" class="w-full h-full object-cover">
-                    {% else %}
-                    <div class="w-full h-full brand-color opacity-90 flex items-center justify-center">
-                        <i class="fas fa-newspaper text-white/30 text-6xl"></i>
-                    </div>
-                    {% endif %}
+                    {% if article.image %}
+                    <img src="{{ article.image.url }}" alt="{{ article.title }}" loading="lazy"
+                        class="w-full h-full max-h-[400px] object-cover object-center">
                     {% endif %}
                 </div>
                 {% endif %}

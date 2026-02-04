@@ -51,25 +51,7 @@ else %}{% static 'images/logo.png' %}{% endif %}{% endblock %}
                 <div class="md:col-span-1 bg-gray-50 p-6 md:p-8 flex flex-col items-center">
                     <div class="w-full max-w-[300px] shadow-2xl rounded-lg overflow-hidden mb-6">
                         {% if book.cover_image %}
-                        {% if book.image_cropping %}
-                        {% safe_thumbnail book.cover_image "600x900" box=book.image_cropping crop=True detail=True as cropped %}
-                        {% if cropped %}
-                        <img src="{{ cropped.url }}" alt="{{ book.title }}" class="w-full h-auto">
-                        {% else %}
-                        <div class="aspect-[2/3] bg-gray-200 flex items-center justify-center">
-                            <i class="fas fa-book text-gray-400 text-6xl"></i>
-                        </div>
-                        {% endif %}
-                        {% else %}
-                        {% safe_thumbnail book.cover_image "600x900" crop=True detail=True as thumb %}
-                        {% if thumb %}
-                        <img src="{{ thumb.url }}" alt="{{ book.title }}" class="w-full h-auto">
-                        {% else %}
-                        <div class="aspect-[2/3] bg-gray-200 flex items-center justify-center">
-                            <i class="fas fa-book text-gray-400 text-6xl"></i>
-                        </div>
-                        {% endif %}
-                        {% endif %}
+                        <img src="{{ book.cover_image.url }}" alt="{{ book.title }}" class="w-full h-auto">
                         {% else %}
                         <div class="aspect-[2/3] bg-gray-200 flex items-center justify-center">
                             <i class="fas fa-book text-gray-400 text-6xl"></i>
@@ -88,7 +70,8 @@ else %}{% static 'images/logo.png' %}{% endif %}{% endblock %}
 
                 <!-- Content Side -->
                 <div class="md:col-span-2 p-6 md:p-10 md:pl-0 flex flex-col">
-                    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2 leading-tight brand-text">{{ book.title }}</h1>
+                    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2 leading-tight brand-text">{{ book.title
+                        }}</h1>
                     {% if book.author %}
                     <p class="text-lg text-gray-600 font-medium mb-8">By {{ book.author }}</p>
                     {% endif %}
