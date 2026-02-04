@@ -1,0 +1,68 @@
+{% extends 'church/base.html' %}
+{% load static %}
+
+{% block title %}Breaking Barriers International{% endblock %}
+
+{% block content %}
+<div id="home-content-container">
+    <!-- Splash Screen shown while loading -->
+    <div id="splash-screen"
+        class="fixed inset-0 bg-white z-[60] flex flex-col items-center justify-center transition-all duration-700">
+        <div class="relative mb-8 transform transition-all duration-700 translate-y-0 opacity-100">
+            <img src="{% static 'images/splash_logo.png' %}" alt="Breaking Barriers"
+                class="w-56 md:w-80 h-auto drop-shadow-2xl">
+        </div>
+
+        <div class="flex flex-col items-center">
+            <div class="w-48 h-1 bg-gray-100 rounded-full overflow-hidden relative">
+                <div class="absolute inset-0 bg-brand/20"></div>
+                <div
+                    class="h-full bg-brand rounded-full animate-progress-indefinite shadow-[0_0_10px_rgba(153,0,48,0.5)]">
+                </div>
+            </div>
+            <p class="mt-6 text-brand font-bold text-xs tracking-[0.3em] uppercase opacity-70 animate-pulse">
+                Preparing your experience
+            </p>
+        </div>
+    </div>
+
+    <!-- HTMX will load the content here -->
+    <div hx-get="{% url 'home_content' %}" hx-trigger="load" hx-target="#home-content-container"
+        hx-swap="innerHTML show:top" class="hidden">
+    </div>
+</div>
+
+<style>
+    @keyframes progress-indefinite {
+        0% {
+            left: -40%;
+            width: 40%;
+        }
+
+        50% {
+            width: 60%;
+        }
+
+        100% {
+            left: 100%;
+            width: 40%;
+        }
+    }
+
+    .animate-progress-indefinite {
+        animation: progress-indefinite 1.8s infinite ease-in-out;
+        position: absolute;
+    }
+
+    /* HTMX Swapping transition */
+    .htmx-added {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    .htmx-swapping {
+        opacity: 0;
+        transition: opacity 0.4s ease-out;
+    }
+</style>
+{% endblock %}

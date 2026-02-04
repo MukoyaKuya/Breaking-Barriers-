@@ -211,57 +211,6 @@
             padding-left: max(0.75rem, env(safe-area-inset-left));
             padding-right: max(0.75rem, env(safe-area-inset-right));
         }
-
-        /* Site Loader */
-        #site-loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
-        }
-
-        #site-loader.fade-out {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .loader {
-            width: 50px;
-            aspect-ratio: 1;
-            display: grid;
-            border: 4px solid #0000;
-            border-radius: 50%;
-            border-right-color: rgb(153, 0, 48);
-            animation: l15 1s infinite linear;
-        }
-
-        .loader::before,
-        .loader::after {
-            content: "";
-            grid-area: 1/1;
-            margin: 2px;
-            border: inherit;
-            border-radius: 50%;
-            animation: l15 2s infinite;
-        }
-
-        .loader::after {
-            margin: 8px;
-            animation-duration: 3s;
-        }
-
-        @keyframes l15 {
-            100% {
-                transform: rotate(1turn)
-            }
-        }
     </style>
 
 
@@ -270,10 +219,6 @@
 </head>
 
 <body class="flex flex-col min-h-screen bg-gray-50 min-w-0">
-    <!-- Site Loader -->
-    <div id="site-loader">
-        <div class="loader"></div>
-    </div>
     {% include 'church/partials/header.html' %}
 
     <main class="flex-grow">
@@ -346,19 +291,6 @@
             });
         }
 
-        // Site Loader Fade Out
-        window.addEventListener('load', function () {
-            const loader = document.getElementById('site-loader');
-            if (loader) {
-                // Small delay to ensure smooth transition
-                setTimeout(() => {
-                    loader.classList.add('fade-out');
-                    setTimeout(() => {
-                        loader.style.display = 'none';
-                    }, 500);
-                }, 200);
-            }
-        });
     </script>
 </body>
 

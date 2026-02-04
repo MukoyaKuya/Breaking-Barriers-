@@ -1,0 +1,22 @@
+{% load static %}
+<div class="container mx-auto px-4 sm:px-6 pt-2 pb-8 sm:pb-10 max-w-[100vw] overflow-x-hidden">
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 md:gap-8">
+        <!-- Main left column -->
+        <div class="lg:col-span-3 space-y-10">
+            {% include 'church/partials/info_cards.html' %}
+            {% include 'church/partials/mission_vision.html' %}
+            {% include 'church/partials/news_section.html' %}
+            {% include 'church/partials/testimonials.html' %}
+            {% include 'church/partials/home_gallery.html' %}
+            {% include 'church/partials/mens_ministry.html' %}
+        </div>
+
+        <!-- Right sidebar column -->
+        <aside class="lg:col-span-1 space-y-8">
+            {% include 'church/partials/sidebar.html' %}
+        </aside>
+    </div>
+</div>
+
+{# Full-width section #}
+{% include 'church/partials/partners.html' %}

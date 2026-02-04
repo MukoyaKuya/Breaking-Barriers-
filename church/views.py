@@ -60,9 +60,15 @@ from .cache_decorators import cache_page_for_anonymous
 from .middleware import get_client_ip
 
 
-@cache_page_for_anonymous(60 * 15)  # Cache for 15 minutes (anonymous users only)
+@cache_page_for_anonymous(60 * 60) # Cache the shell for an hour
 def home_view(request):
-    """Home page view with featured content (optimized queries + cached singletons)."""
+    """Serve the lightweight App Shell with the logo instantly."""
+    return render(request, 'church/home_shell.html')
+
+
+@cache_page_for_anonymous(60 * 15)  # Cache content for 15 minutes
+def home_content_view(request):
+    """Heavy content view lazy-loaded via HTMX."""
     limit = 6
     news_items = get_optimized_news_items(limit=limit)
     total_count = NewsItem.objects.filter(is_published=True).count()
@@ -108,7 +114,7 @@ def home_view(request):
         'faqs': faqs,
         'sidebar_promos': sidebar_promos,
     }
-    return render(request, 'church/home.html', context)
+    return render(request, 'church/home_content.html', context)
 
 
 @cache_page_for_anonymous(60 * 30)  # Cache for 30 minutes (anonymous users only)

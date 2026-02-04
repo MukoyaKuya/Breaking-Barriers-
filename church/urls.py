@@ -4,6 +4,7 @@ from . import views
 
 urlpatterns = [
     path('', views.home_view, name='home'),
+    path('home-content/', views.home_content_view, name='home_content'),
     path('offline/', TemplateView.as_view(template_name='church/offline.html'), name='offline'),
     path('about/', views.about_view, name='about'),
     path('word-of-truth/', views.word_of_truth_list_view, name='word_of_truth_list'),
