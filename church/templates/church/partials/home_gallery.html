@@ -89,7 +89,8 @@
                 {% for item in gallery_items %}
                 <div x-show="active === {{ forloop.counter0 }}" x-transition:enter="transition ease-out duration-500"
                     x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
-                    class="relative w-full aspect-video rounded-xl overflow-hidden shadow-2xl bg-gray-900 group">
+                    class="relative w-full aspect-video rounded-xl overflow-hidden shadow-2xl group border-2"
+                    style="background-color: #990030; border-color: #990030;">
 
                     {% if item.video_url %}
                     <div class="absolute inset-0 w-full h-full">
