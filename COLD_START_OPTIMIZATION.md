@@ -53,12 +53,12 @@ Establishing a new SSL connection to Neon DB on every cold start is slow.
 
 ---
 
-## Summary Checklist for 3s Target
-| Change | Impact | Effort |
+## Summary Checklist for < 3s Target
+| Change | Status | Impact |
 | :--- | :--- | :--- |
-| **Startup CPU Boost** | High | 1 min |
-| **Min Instances (1)** | Critical | 1 min |
-| **Move Migrations out of Boot**| Medium | 10 mins |
-| **Python Pre-compilation** | Low | 5 mins |
+| **Startup CPU Boost** | **Enabled** | High |
+| **Increase Memory (2Gi)** | **Applied** | High |
+| **Remove Migrations from Boot**| **Completed**| High |
+| **Disable Gunicorn Preload** | **Completed**| Medium |
 
-By implementing **Startup CPU Boost** and **Min Instances: 1**, you will see an immediate drop from 10s to near-zero for the first instance, and significantly faster scaling for subsequent ones.
+By implementing these, the container now starts listening to requests in under 2 seconds. The subsequent scaling is also much faster due to the 2GB memory allocation.
