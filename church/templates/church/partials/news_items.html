@@ -1,4 +1,4 @@
-{% load thumbnail %}
+{% load thumbnail safe_thumbnail %}
 {% for news_item in news_items %}
 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
     {% if news_item.image %}
