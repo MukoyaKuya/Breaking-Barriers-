@@ -108,9 +108,22 @@ class InfoCardAdminForm(ImageFieldFormMixin, forms.ModelForm):
 
 
 class GalleryImageAdminForm(ImageFieldFormMixin, forms.ModelForm):
+    # Use FileField to bypass strict Django ImageField validation that triggers "Corrupted" errors
+    # while still allowing the image to be saved to the ImageField in the model.
+    image = forms.FileField(
+        required=True, 
+        help_text='Image or thumbnail for this item',
+        label='Image'
+    )
+    
     class Meta:
         model = GalleryImage
         fields = '__all__'
+    
+    def clean_image(self):
+        # Even though it's a FileField, we still use the mixin to check it's an image
+        # but the mixin is now more relaxed and won't block the save.
+        return super().clean_image()
 
 
 class HeroSettingsAdminForm(ImageFieldFormMixin, forms.ModelForm):

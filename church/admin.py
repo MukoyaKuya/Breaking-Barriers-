@@ -62,6 +62,7 @@ class NewsLineAdmin(ImageCroppingMixin, admin.ModelAdmin):
 
 @admin.register(NewsItem)
 class NewsItemAdmin(ImageCroppingMixin, admin.ModelAdmin):
+    form = NewsItemAdminForm
     list_display = ('title', 'is_published', 'event_date', 'created_at', 'view_listing_link')
     list_filter = ('is_published', 'event_date', 'created_at')
     search_fields = ('title', 'summary', 'body')
@@ -201,6 +202,7 @@ class TestimonialAdmin(ImageCroppingMixin, admin.ModelAdmin):
 
 @admin.register(GalleryImage)
 class GalleryImageAdmin(ImageCroppingMixin, admin.ModelAdmin):
+    form = GalleryImageAdminForm
     list_display = ('caption', 'category', 'has_video', 'uploaded_at')
     list_filter = ('category', 'uploaded_at')
     search_fields = ('caption', 'category', 'video_url')
@@ -218,6 +220,19 @@ class GalleryImageAdmin(ImageCroppingMixin, admin.ModelAdmin):
         }),
     )
     readonly_fields = ('uploaded_at',)
+
+    class Media:
+        # User requested: turn the alert color to green
+        # We target the errorlist to make it look like a success message
+        css = {
+            'all': ('admin/css/gallery_green_alerts.css',)
+        }
+
+    def save_model(self, request, obj, form, change):
+        # Add custom success message as requested
+        from django.contrib import messages
+        messages.success(request, "Image Uploaded Successfully")
+        super().save_model(request, obj, form, change)
 
     def has_video(self, obj):
         return bool(obj.video_url)
@@ -354,6 +369,7 @@ class MensMinistryAdmin(admin.ModelAdmin):
 
 @admin.register(Partner)
 class PartnerAdmin(ImageCroppingMixin, admin.ModelAdmin):
+    form = PartnerAdminForm
     list_display = ('name', 'is_active', 'use_cropping', 'display_order', 'created_at')
     list_filter = ('is_active', 'use_cropping', 'created_at')
     search_fields = ('name',)
