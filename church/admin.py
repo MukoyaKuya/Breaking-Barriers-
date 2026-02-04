@@ -229,7 +229,22 @@ class GalleryImageAdmin(ImageCroppingMixin, admin.ModelAdmin):
         }
 
     def save_model(self, request, obj, form, change):
-        # Add custom success message as requested
+        # Prevent duplicates within a short window (avoid double-submits)
+        if not change:
+            from django.utils import timezone
+            from datetime import timedelta
+            # If an identical image was uploaded in the last 30 seconds, skip
+            duplicate = GalleryImage.objects.filter(
+                caption=obj.caption,
+                category=obj.category,
+                uploaded_at__gt=timezone.now() - timedelta(seconds=30)
+            ).exists()
+            if duplicate:
+                from django.contrib import messages
+                messages.warning(request, "This image was already successfully uploaded.")
+                return 
+
+        # Add custom success message
         from django.contrib import messages
         messages.success(request, "Image Uploaded Successfully")
         super().save_model(request, obj, form, change)

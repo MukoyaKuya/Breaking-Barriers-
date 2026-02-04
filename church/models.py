@@ -252,7 +252,7 @@ class GalleryImage(models.Model):
     ]
 
     caption = models.CharField(max_length=200)
-    image = models.ImageField(upload_to='gallery/', help_text='Image or thumbnail for this item')
+    image = models.FileField(upload_to='gallery/', help_text='Image or thumbnail for this item')
     image_cropping = ImageRatioField('image', '800x600', size_warning=True, help_text='Crop the image to your desired size')
     video_url = models.URLField(
         blank=True,
