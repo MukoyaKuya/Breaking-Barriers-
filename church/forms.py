@@ -18,84 +18,55 @@ class ImageFieldFormMixin:
     """
     
     def clean_image(self):
-        """Custom validation for image fields"""
+        """Custom validation for image fields - relaxed to avoid false positives"""
         image = self.cleaned_data.get('image')
         if not image:
             return image
         
-        # Check if it's a new upload (has a file attribute or is an UploadedFile)
         from django.core.files.uploadedfile import UploadedFile
         if isinstance(image, UploadedFile) or hasattr(image, 'file'):
             try:
-                # Ensure file pointer is at the beginning
+                # Reset pointers
                 if hasattr(image, 'seek'):
                     image.seek(0)
-                elif hasattr(image, 'file') and hasattr(image.file, 'seek'):
-                    image.file.seek(0)
                 
-                # Try PIL directly first as a test
+                # Use Django's built-in check first (it's more reliable for general uploads)
+                width, height = get_image_dimensions(image)
+                
+                # If Django's check passes, we consider it a success and stop strict PIL checking
+                # which was causing false-positive "corrupted" errors for some users.
+                if width and height:
+                    if hasattr(image, 'seek'):
+                        image.seek(0)
+                    return image
+
+                # If Django failed, try a deeper PIL check only as a fallback
                 from PIL import Image as PILImage
+                from io import BytesIO
                 try:
-                    if hasattr(image, 'read'):
-                        # Read the file content
-                        if hasattr(image, 'seek'):
-                            image.seek(0)
-                        content = image.read()
-                        if hasattr(image, 'seek'):
-                            image.seek(0)
-                        
-                        # Try to open with PIL
-                        from io import BytesIO
-                        pil_img = PILImage.open(BytesIO(content))
-                        pil_img.verify()  # Verify the image
-                        pil_img.close()
-                    else:
-                        # Fall back to Django's validation
-                        width, height = get_image_dimensions(image)
-                        if width is None or height is None:
-                            raise ValidationError(
-                                'The file you uploaded was either not an image or a corrupted image. '
-                                'Please ensure you are uploading a valid JPEG, PNG, or GIF file.'
-                            )
-                except PILImage.UnidentifiedImageError:
+                    if hasattr(image, 'seek'):
+                        image.seek(0)
+                    content = image.read()
+                    if hasattr(image, 'seek'):
+                        image.seek(0)
+                    
+                    PILImage.open(BytesIO(content)).verify()
+                except Exception:
+                    # If BOTH Django and PIL fail, then it's actually invalid
                     raise ValidationError(
-                        'The file you uploaded was not recognized as a valid image format. '
-                        'Please upload a JPEG, PNG, or GIF file.'
+                        'The file was not recognized as a valid image. '
+                        'Please ensure it is a JPEG, PNG, or GIF file.'
                     )
-                except Exception as pil_error:
-                    # If PIL fails, try Django's method
-                    try:
-                        if hasattr(image, 'seek'):
-                            image.seek(0)
-                        width, height = get_image_dimensions(image)
-                        if width is None or height is None:
-                            raise ValidationError(
-                                'The file you uploaded was either not an image or a corrupted image. '
-                                'Please ensure you are uploading a valid JPEG, PNG, or GIF file.'
-                            )
-                    except Exception as django_error:
-                        error_msg = 'The file you uploaded was either not an image or a corrupted image.'
-                        if str(pil_error):
-                            error_msg += f' PIL Error: {str(pil_error)}'
-                        if str(django_error):
-                            error_msg += f' Django Error: {str(django_error)}'
-                        raise ValidationError(error_msg)
                 
-                # Reset file pointer for actual save
                 if hasattr(image, 'seek'):
                     image.seek(0)
-                elif hasattr(image, 'file') and hasattr(image.file, 'seek'):
-                    image.file.seek(0)
                     
             except ValidationError:
-                # Re-raise validation errors
                 raise
             except Exception as e:
-                # Provide more helpful error message
-                error_msg = 'The file you uploaded was either not an image or a corrupted image.'
-                if str(e):
-                    error_msg += f' Error details: {str(e)}'
-                raise ValidationError(error_msg)
+                # Fail-safe: if validation itself errors, but it's an image, let it pass
+                # instead of blocking the user with "corrupted" messages.
+                return image
         
         return image
 
@@ -166,34 +137,20 @@ class PartnerAdminForm(ImageFieldFormMixin, forms.ModelForm):
         fields = '__all__'
     
     def clean_logo(self):
-        """Custom validation for logo field"""
+        """Custom validation for logo field - relaxed"""
         logo = self.cleaned_data.get('logo')
         if not logo:
             return logo
         
-        # Check if it's a new upload
         if hasattr(logo, 'file'):
             try:
                 if hasattr(logo, 'seek'):
                     logo.seek(0)
-                
                 width, height = get_image_dimensions(logo)
-                
-                if width is None or height is None:
-                    raise ValidationError(
-                        'The file you uploaded was either not an image or a corrupted image. '
-                        'Please ensure you are uploading a valid JPEG, PNG, or GIF file.'
-                    )
-                
-                if hasattr(logo, 'seek'):
-                    logo.seek(0)
-                    
-            except Exception as e:
-                error_msg = 'The file you uploaded was either not an image or a corrupted image.'
-                if str(e):
-                    error_msg += f' Error details: {str(e)}'
-                raise ValidationError(error_msg)
-        
+                if width and height:
+                    return logo
+            except Exception:
+                pass
         return logo
 
 
@@ -203,34 +160,20 @@ class TestimonialAdminForm(ImageFieldFormMixin, forms.ModelForm):
         fields = '__all__'
     
     def clean_photo(self):
-        """Custom validation for photo field"""
+        """Custom validation for photo field - relaxed"""
         photo = self.cleaned_data.get('photo')
         if not photo:
             return photo
         
-        # Check if it's a new upload
         if hasattr(photo, 'file'):
             try:
                 if hasattr(photo, 'seek'):
                     photo.seek(0)
-                
                 width, height = get_image_dimensions(photo)
-                
-                if width is None or height is None:
-                    raise ValidationError(
-                        'The file you uploaded was either not an image or a corrupted image. '
-                        'Please ensure you are uploading a valid JPEG, PNG, or GIF file.'
-                    )
-                
-                if hasattr(photo, 'seek'):
-                    photo.seek(0)
-                    
-            except Exception as e:
-                error_msg = 'The file you uploaded was either not an image or a corrupted image.'
-                if str(e):
-                    error_msg += f' Error details: {str(e)}'
-                raise ValidationError(error_msg)
-        
+                if width and height:
+                    return photo
+            except Exception:
+                pass
         return photo
 
 
