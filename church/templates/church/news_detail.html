@@ -14,6 +14,8 @@ else %}{% static 'images/logo.png' %}{% endif %}{% endblock %}
 {% block twitter_image %}{% if news_item.image %}{{ request.scheme }}://{{ request.get_host }}{{ news_item.image.url
 }}{% else %}{% static 'images/logo.png' %}{% endif %}{% endblock %}
 
+{% block extra_head %}{% endblock %}
+
 {% block content %}
 <div class="bg-white py-16">
     <div class="container mx-auto px-4 max-w-4xl">

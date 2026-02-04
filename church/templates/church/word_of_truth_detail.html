@@ -15,12 +15,7 @@
 {% block twitter_image %}{% if word_of_truth.image %}{{ request.scheme }}://{{ request.get_host }}{{
 word_of_truth.image.url }}{% else %}{% static 'images/logo.png' %}{% endif %}{% endblock %}
 
-{% block extra_head %}
-<meta name="author" content="{{ word_of_truth.author_name }}">
-<meta name="keywords" content="Word of Truth, Breaking Barriers International, {{ word_of_truth.title }}">
-<meta property="article:published_time" content="{{ word_of_truth.created_at|date:'c' }}">
-<meta property="article:author" content="{{ word_of_truth.author_name }}">
-{% endblock %}
+{% block extra_head %}{% endblock %}
 
 {% block content %}
 <div class="bg-white py-6 sm:py-8 overflow-x-hidden">
@@ -40,7 +35,8 @@ word_of_truth.image.url }}{% else %}{% static 'images/logo.png' %}{% endif %}{% 
                     {% if word_of_truth.image %}
                     <div class="w-full max-h-[320px] md:max-h-[400px] relative bg-gray-100 group overflow-hidden">
                         {% if word_of_truth.image_cropping %}
-                        {% thumbnail word_of_truth.image "800x533" box=word_of_truth.image_cropping crop=True detail=True as cropped %}
+                        {% thumbnail word_of_truth.image "800x533" box=word_of_truth.image_cropping crop=True
+                        detail=True as cropped %}
                         <img src="{{ cropped.url }}" alt="{{ word_of_truth.title }}" loading="lazy"
                             class="w-full h-full max-h-[320px] md:max-h-[400px] object-cover object-center transition-transform duration-700 group-hover:scale-105">
                         {% else %}

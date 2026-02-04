@@ -114,6 +114,7 @@ class NewsLine(models.Model):
 
 
 
+
 class PartnerInquiry(models.Model):
     """Model for partnership inquiries from the Donate page."""
     first_name = models.CharField(max_length=100)
@@ -567,6 +568,7 @@ class Book(models.Model):
         phone = self.whatsapp_number.replace('+', '').replace(' ', '')
         text = f"Hi, I'm interested in the book '{self.title}'."
         return f"https://wa.me/{phone}?text={text}"
+
 
 
 class ChildrensBread(models.Model):

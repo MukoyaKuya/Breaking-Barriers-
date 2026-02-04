@@ -3,6 +3,14 @@
 
 {% block title %}{{ article.title }} - News Line - Breaking Barriers International{% endblock %}
 
+{% block og_title %}{{ article.title }}{% endblock %}
+{% block og_description %}{{ article.summary|truncatewords:30 }}{% endblock %}
+{% block og_image %}{% if article.image %}{{ request.scheme }}://{{ request.get_host }}{{ article.image.url }}{% else
+%}{% static 'images/logo.png' %}{% endif %}{% endblock %}
+{% block og_type %}article{% endblock %}
+
+{% block extra_head %}{% endblock %}
+
 {% block content %}
 <div class="bg-gray-50/50 pt-6 pb-12 sm:pt-10 sm:pb-20">
     <div class="container mx-auto px-4 sm:px-6 max-w-7xl">
@@ -21,12 +29,10 @@
                 <div class="w-full relative aspect-[16/9] max-h-[420px] bg-gray-100 overflow-hidden">
                     {% if article.image_cropping %}
                     {% thumbnail article.image "1200x630" box=article.image_cropping crop=True detail=True as cropped %}
-                    <img src="{{ cropped.url }}" alt="{{ article.title }}"
-                        class="w-full h-full object-cover">
+                    <img src="{{ cropped.url }}" alt="{{ article.title }}" class="w-full h-full object-cover">
                     {% else %}
                     {% thumbnail article.image "1200x630" crop=True detail=True as cropped %}
-                    <img src="{{ cropped.url }}" alt="{{ article.title }}"
-                        class="w-full h-full object-cover">
+                    <img src="{{ cropped.url }}" alt="{{ article.title }}" class="w-full h-full object-cover">
                     {% endif %}
                 </div>
                 {% endif %}

@@ -15,6 +15,8 @@
 {% block twitter_image %}{% if article.image %}{{ request.scheme }}://{{ request.get_host }}{{ article.image.url }}{%
 else %}{% static 'images/logo.png' %}{% endif %}{% endblock %}
 
+{% block extra_head %}{% endblock %}
+
 {% block content %}
 <div class="bg-white py-6 sm:py-8 overflow-x-hidden">
     <div class="container mx-auto px-4 sm:px-6 max-w-7xl">
@@ -33,7 +35,8 @@ else %}{% static 'images/logo.png' %}{% endif %}{% endblock %}
                     {% if article.image %}
                     <div class="w-full max-h-[320px] md:max-h-[400px] relative bg-gray-100 group overflow-hidden">
                         {% if article.image_cropping %}
-                        {% thumbnail article.image "800x533" box=article.image_cropping crop=True detail=True as cropped %}
+                        {% thumbnail article.image "800x533" box=article.image_cropping crop=True detail=True as cropped
+                        %}
                         <img src="{{ cropped.url }}" alt="{{ article.title }}" loading="lazy"
                             class="w-full h-full max-h-[320px] md:max-h-[400px] object-cover object-center transition-transform duration-700 group-hover:scale-105">
                         {% else %}
