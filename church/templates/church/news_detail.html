@@ -1,5 +1,7 @@
 {% extends 'church/base.html' %}
+{% load static %}
 {% load thumbnail %}
+{% load safe_thumbnail %}
 
 {% block title %}{{ news_item.title }} - Breaking Barriers International{% endblock %}
 
@@ -48,12 +50,18 @@ else %}{% static 'images/logo.png' %}{% endif %}{% endblock %}
         <!-- Featured Image -->
         {% if news_item.image %}
         <div class="mb-8">
-            {% thumbnail news_item.image "1200x800" crop=True detail=True as cropped %}
+            {% safe_thumbnail news_item.image "1200x800" crop=True detail=True as cropped %}
+            {% if cropped %}
             <picture>
                 <source srcset="{{ cropped.url }}.webp" type="image/webp">
                 <img src="{{ cropped.url }}" alt="{{ news_item.title }}" loading="lazy"
                     class="w-full h-auto rounded-lg shadow-md">
             </picture>
+            {% else %}
+            <div class="w-full aspect-video bg-gray-200 rounded-lg flex items-center justify-center">
+                <i class="fas fa-newspaper text-gray-400 text-6xl"></i>
+            </div>
+            {% endif %}
         </div>
         {% endif %}
 

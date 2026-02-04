@@ -1,4 +1,5 @@
 {% load thumbnail %}
+{% load safe_thumbnail %}
 <section class="pt-4 pb-16">
     <div class="container mx-auto px-4">
         <div class="flex items-center justify-center mb-6">
@@ -56,14 +57,20 @@
                         <img src="{{ item.get_youtube_thumbnail_url }}" alt="{{ item.caption }}" loading="lazy"
                             class="w-full h-full object-cover opacity-90" referrerpolicy="no-referrer">
                         {% elif item.image %}
-                        {% thumbnail item.image "200x150" crop=True detail=True as thumb %}
-                        {% with img_url=thumb.url|default:item.image.url %}
+                        {% safe_thumbnail item.image "200x150" crop=True detail=True as thumb %}
+                        {% if thumb %}
+                        {% with img_url=thumb.url %}
                         <picture>
                             <source srcset="{{ img_url }}.webp" type="image/webp">
                             <img src="{{ img_url }}" alt="{{ item.caption }}" loading="lazy"
                                 class="w-full h-full object-cover opacity-90">
                         </picture>
                         {% endwith %}
+                        {% else %}
+                        <div class="w-full h-full bg-gray-700 flex items-center justify-center">
+                            <i class="fas fa-image text-white/60 text-xs"></i>
+                        </div>
+                        {% endif %}
                         {% else %}
                         <div class="w-full h-full bg-gray-700 flex items-center justify-center">
                             <i class="fas fa-play text-white/60 text-xs"></i>
@@ -103,9 +110,13 @@
                     <!-- Background Vibrant Layer (Blurred Backdrop) -->
                     <div class="absolute inset-0 w-full h-full overflow-hidden">
                         {% if item.image_cropping %}
-                        {% thumbnail item.image "1200x900" box=item.image_cropping crop=True detail=True as bg_thumb %}
+                        {% safe_thumbnail item.image "1200x900" box=item.image_cropping crop=True detail=True as bg_thumb %}
+                        {% if bg_thumb %}
                         <img src="{{ bg_thumb.url }}" alt=""
                             class="w-full h-full object-cover blur-2xl opacity-40 scale-110">
+                        {% else %}
+                        <div class="w-full h-full bg-gray-800"></div>
+                        {% endif %}
                         {% else %}
                         <img src="{{ item.image.url }}" alt=""
                             class="w-full h-full object-cover blur-2xl opacity-40 scale-110">
@@ -116,12 +127,18 @@
                     <!-- Main Image Preview -->
                     <div class="relative z-10 w-full h-full flex items-center justify-center p-4">
                         {% if item.image_cropping %}
-                        {% thumbnail item.image "1200x900" box=item.image_cropping crop=True detail=True as preview %}
+                        {% safe_thumbnail item.image "1200x900" box=item.image_cropping crop=True detail=True as preview %}
+                        {% if preview %}
                         <picture>
                             <source srcset="{{ preview.url }}.webp" type="image/webp">
                             <img src="{{ preview.url }}" alt="{{ item.caption }}" loading="lazy"
                                 class="max-w-full max-h-full object-contain rounded-lg shadow-lg">
                         </picture>
+                        {% else %}
+                        <div class="max-w-full max-h-full flex items-center justify-center">
+                            <i class="fas fa-image text-white/60 text-4xl"></i>
+                        </div>
+                        {% endif %}
                         {% else %}
                         <img src="{{ item.image.url }}" alt="{{ item.caption }}" loading="lazy"
                             class="max-w-full max-h-full object-contain rounded-lg shadow-lg">

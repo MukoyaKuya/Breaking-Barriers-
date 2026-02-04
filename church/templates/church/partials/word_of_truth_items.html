@@ -1,4 +1,5 @@
 {% load thumbnail %}
+{% load safe_thumbnail %}
 {% for word_of_truth in articles %}
 <div
     class="group bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-500 flex flex-col h-full transform hover:-translate-y-1">
@@ -7,13 +8,25 @@
         class="relative aspect-[16/10] overflow-hidden bg-gray-100 block">
         {% if word_of_truth.image %}
         {% if word_of_truth.image_cropping %}
-        {% thumbnail word_of_truth.image "800x600" box=word_of_truth.image_cropping crop=True detail=True as cropped %}
+        {% safe_thumbnail word_of_truth.image "800x600" box=word_of_truth.image_cropping crop=True detail=True as cropped %}
+        {% if cropped %}
         <img src="{{ cropped.url }}" alt="{{ word_of_truth.title }}" loading="lazy"
             class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
         {% else %}
-        {% thumbnail word_of_truth.image "800x600" crop=True detail=True as thumb %}
+        <div class="w-full h-full brand-color opacity-90 flex items-center justify-center">
+            <i class="fas fa-bible text-white/30 text-6xl"></i>
+        </div>
+        {% endif %}
+        {% else %}
+        {% safe_thumbnail word_of_truth.image "800x600" crop=True detail=True as thumb %}
+        {% if thumb %}
         <img src="{{ thumb.url }}" alt="{{ word_of_truth.title }}" loading="lazy"
             class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+        {% else %}
+        <div class="w-full h-full brand-color opacity-90 flex items-center justify-center">
+            <i class="fas fa-bible text-white/30 text-6xl"></i>
+        </div>
+        {% endif %}
         {% endif %}
         {% else %}
         <div class="w-full h-full brand-color opacity-90 flex items-center justify-center">

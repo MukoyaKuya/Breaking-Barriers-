@@ -3,14 +3,26 @@
 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
     {% if news_item.image %}
     {% if news_item.image_cropping %}
-    {% thumbnail news_item.image "800x600" box=news_item.image_cropping crop=True detail=True as cropped %}
+    {% safe_thumbnail news_item.image "800x600" box=news_item.image_cropping crop=True detail=True as cropped %}
+    {% if cropped %}
     <picture>
         <source srcset="{{ cropped.url }}.webp" type="image/webp">
         <img src="{{ cropped.url }}" alt="{{ news_item.title }}" loading="lazy" class="w-full h-48 object-cover">
     </picture>
     {% else %}
-    {% thumbnail news_item.image "800x600" crop=True detail=True as thumb %}
+    <div class="w-full h-48 bg-gray-200 flex items-center justify-center">
+        <i class="fas fa-newspaper text-gray-400 text-4xl"></i>
+    </div>
+    {% endif %}
+    {% else %}
+    {% safe_thumbnail news_item.image "800x600" crop=True detail=True as thumb %}
+    {% if thumb %}
     <img src="{{ thumb.url }}" alt="{{ news_item.title }}" loading="lazy" class="w-full h-48 object-cover">
+    {% else %}
+    <div class="w-full h-48 bg-gray-200 flex items-center justify-center">
+        <i class="fas fa-newspaper text-gray-400 text-4xl"></i>
+    </div>
+    {% endif %}
     {% endif %}
     {% endif %}
     <div class="p-6">

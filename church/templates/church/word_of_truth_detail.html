@@ -1,6 +1,7 @@
 {% extends 'church/base.html' %}
 {% load static %}
 {% load thumbnail %}
+{% load safe_thumbnail %}
 
 {% block title %}{{ word_of_truth.title }} - Breaking Barriers International{% endblock %}
 
@@ -35,14 +36,25 @@ word_of_truth.image.url }}{% else %}{% static 'images/logo.png' %}{% endif %}{% 
                     {% if word_of_truth.image %}
                     <div class="w-full max-h-[320px] md:max-h-[400px] relative bg-gray-100 group overflow-hidden">
                         {% if word_of_truth.image_cropping %}
-                        {% thumbnail word_of_truth.image "800x533" box=word_of_truth.image_cropping crop=True
-                        detail=True as cropped %}
+                        {% safe_thumbnail word_of_truth.image "800x533" box=word_of_truth.image_cropping crop=True detail=True as cropped %}
+                        {% if cropped %}
                         <img src="{{ cropped.url }}" alt="{{ word_of_truth.title }}" loading="lazy"
                             class="w-full h-full max-h-[320px] md:max-h-[400px] object-cover object-center transition-transform duration-700 group-hover:scale-105">
                         {% else %}
-                        {% thumbnail word_of_truth.image "800x533" crop=True detail=True as thumb %}
+                        <div class="w-full h-full brand-color opacity-90 flex items-center justify-center">
+                            <i class="fas fa-bible text-white/30 text-6xl"></i>
+                        </div>
+                        {% endif %}
+                        {% else %}
+                        {% safe_thumbnail word_of_truth.image "800x533" crop=True detail=True as thumb %}
+                        {% if thumb %}
                         <img src="{{ thumb.url }}" alt="{{ word_of_truth.title }}" loading="lazy"
                             class="w-full h-full max-h-[320px] md:max-h-[400px] object-cover object-center transition-transform duration-700 group-hover:scale-105">
+                        {% else %}
+                        <div class="w-full h-full brand-color opacity-90 flex items-center justify-center">
+                            <i class="fas fa-bible text-white/30 text-6xl"></i>
+                        </div>
+                        {% endif %}
                         {% endif %}
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
                         </div>

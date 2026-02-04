@@ -1,4 +1,5 @@
 {% load thumbnail %}
+{% load safe_thumbnail %}
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
     {% for image in gallery_images %}
@@ -29,15 +30,28 @@
                 referrerpolicy="no-referrer">
             {% elif image.image %}
             {% if image.image_cropping %}
-            {% thumbnail image.image "800x600" box=image.image_cropping crop=True detail=True as thumb %}
+            {% safe_thumbnail image.image "800x600" box=image.image_cropping crop=True detail=True as thumb %}
+            {% if thumb %}
             <picture>
                 <source srcset="{{ thumb.url }}.webp" type="image/webp">
                 <img src="{{ thumb.url }}" alt="{{ image.caption }}" loading="lazy"
                     class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
             </picture>
             {% else %}
-            <img src="{{ image.image.url }}" alt="{{ image.caption }}" loading="lazy"
+            <div class="w-full h-full flex items-center justify-center">
+                <i class="fas fa-image text-gray-300 text-5xl"></i>
+            </div>
+            {% endif %}
+            {% else %}
+            {% safe_thumbnail image.image "800x600" crop=True detail=True as thumb %}
+            {% if thumb %}
+            <img src="{{ thumb.url }}" alt="{{ image.caption }}" loading="lazy"
                 class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+            {% else %}
+            <div class="w-full h-full flex items-center justify-center">
+                <i class="fas fa-image text-gray-300 text-5xl"></i>
+            </div>
+            {% endif %}
             {% endif %}
             {% else %}
             <div class="w-full h-full flex items-center justify-center">
