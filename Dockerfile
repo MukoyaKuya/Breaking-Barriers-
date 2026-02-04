@@ -21,12 +21,8 @@ COPY . ./
 
 # Ensure media directory exists and has files
 # Install production dependencies and collect static files.
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Pre-compile Python bytecode for faster startup
-RUN python -m compileall .
-
-RUN mkdir -p media \
+RUN pip install --no-cache-dir -r requirements.txt \
+    && mkdir -p media \
     && python manage.py collectstatic --noinput
 
 # Setup start script

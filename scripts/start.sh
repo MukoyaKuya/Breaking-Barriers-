@@ -3,9 +3,8 @@
 # Substitute the environment variables in the nginx config
 envsubst '$PORT $GS_BUCKET_NAME' < /app/nginx.conf.template > /app/nginx.conf
 
-# Run migrations
-echo "Running migrations..."
-python manage.py migrate --noinput
+# Skip migrations during boot for faster cold start
+# python manage.py migrate --noinput
 
 # Gunicorn: (2 * CPU) + 1 workers recommended; default 5 workers, 4 threads
 WORKERS=${GUNICORN_WORKERS:-5}
@@ -20,7 +19,6 @@ gunicorn \
   --keep-alive 5 \
   --max-requests 1000 \
   --max-requests-jitter 50 \
-  --preload \
   church_app.wsgi:application &
 
 # Wait for Gunicorn to start serving connections
