@@ -242,6 +242,7 @@ def load_more_news_view(request):
     return render(request, 'church/partials/news_items.html', context)
 
 
+@cache_page_for_anonymous(60 * 15)  # Cache for 15 minutes
 def gallery_view(request):
     """Gallery view with optional category filter and pagination."""
     category = request.GET.get('category', '')
