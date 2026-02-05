@@ -1,0 +1,59 @@
+DEBUG 2026-02-05 13:55:29,984 utils (0.000) BEGIN; args=None; alias=default
+DEBUG 2026-02-05 13:55:29,988 utils (0.001) DELETE FROM "church_partnerinquiry" WHERE "church_partnerinquiry"."email" = 'test_script@example.com'; args=('test_script@example.com',); alias=default
+DEBUG 2026-02-05 13:55:29,989 utils (0.000) COMMIT; args=None; alias=default
+ERROR 2026-02-05 13:55:30,948 log Internal Server Error: /donate/
+Traceback (most recent call last):
+  File "C:\Users\Little Human\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Little Human\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Little Human\Desktop\BBInternational\Breaking-Barriers\church\views.py", line 324, in donate_view
+    last_msg = PartnerInquiry.objects.filter(email=email, message=message).order_by('-created_at').first()
+               ^^^^^^^^^^^^^^
+NameError: name 'PartnerInquiry' is not defined. Did you mean: 'PartnerInquiryForm'?
+ERROR 2026-02-05 13:55:31,052 log Internal Server Error: /donate/
+Traceback (most recent call last):
+  File "C:\Users\Little Human\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Little Human\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Little Human\Desktop\BBInternational\Breaking-Barriers\church\views.py", line 324, in donate_view
+    last_msg = PartnerInquiry.objects.filter(email=email, message=message).order_by('-created_at').first()
+               ^^^^^^^^^^^^^^
+NameError: name 'PartnerInquiry' is not defined. Did you mean: 'PartnerInquiryForm'?
+Starting Donate Form Test...
+Traceback (most recent call last):
+  File "C:\Users\Little Human\Desktop\BBInternational\Breaking-Barriers\test_donate.py", line 25, in <module>
+    response = c.post('/donate/', data, HTTP_HOST='bb-international.org')
+  File "C:\Users\Little Human\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\django\test\client.py", line 1153, in post
+    response = super().post(
+        path,
+    ...<5 lines>...
+        **extra,
+    )
+  File "C:\Users\Little Human\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\django\test\client.py", line 499, in post
+    return self.generic(
+           ~~~~~~~~~~~~^
+        "POST",
+        ^^^^^^^
+    ...<6 lines>...
+        **extra,
+        ^^^^^^^^
+    )
+    ^
+  File "C:\Users\Little Human\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\django\test\client.py", line 671, in generic
+    return self.request(**r)
+           ~~~~~~~~~~~~^^^^^
+  File "C:\Users\Little Human\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\django\test\client.py", line 1087, in request
+    self.check_exception(response)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Little Human\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\django\test\client.py", line 802, in check_exception
+    raise exc_value
+  File "C:\Users\Little Human\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Little Human\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Little Human\Desktop\BBInternational\Breaking-Barriers\church\views.py", line 324, in donate_view
+    last_msg = PartnerInquiry.objects.filter(email=email, message=message).order_by('-created_at').first()
+               ^^^^^^^^^^^^^^
+NameError: name 'PartnerInquiry' is not defined. Did you mean: 'PartnerInquiryForm'?

@@ -224,12 +224,12 @@ WSGI_APPLICATION = 'church_app.wsgi.application'
 if os.environ.get('DATABASE_URL'):
     import dj_database_url
     DATABASES = {
-        'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
+        'default': dj_database_url.config(conn_max_age=0, ssl_require=True)
     }
     if os.environ.get('REPLICA_DATABASE_URL'):
         DATABASES['replica'] = dj_database_url.config(
             env='REPLICA_DATABASE_URL',
-            conn_max_age=600,
+            conn_max_age=0,
             ssl_require=True,
         )
         DATABASE_ROUTERS = ['church_app.db_router.ReplicaRouter']

@@ -28,6 +28,8 @@ from .models import (
     ChildrensBread,
     SchoolMinistryEnrollment,
     PageView,
+    ContactMessage,
+    PartnerInquiry,
 )
 from .query_utils import (
     get_cached_hero_settings,
