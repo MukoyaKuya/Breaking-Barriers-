@@ -1,0 +1,1 @@
+europe-north2-docker.pkg.dev/gen-lang-client-0549116861/cloud-run-source-deploy/bbi-international@sha256:fed69fb0993efbe5fac4d38c3395c1d85a5aee292a4950faa704c73f1b8773c6

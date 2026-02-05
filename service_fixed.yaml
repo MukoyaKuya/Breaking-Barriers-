@@ -1,0 +1,44 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: bbi-international
+  labels:
+    cloud.googleapis.com/location: europe-north2
+  annotations:
+    run.googleapis.com/ingress: all
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/maxScale: '20'
+        run.googleapis.com/cloudsql-instances: gen-lang-client-0549116861:europe-north2:bbinternational-db
+        run.googleapis.com/startup-cpu-boost: 'true'
+    spec:
+      containerConcurrency: 80
+      timeoutSeconds: 300
+      containers:
+      - image: europe-north2-docker.pkg.dev/gen-lang-client-0549116861/cloud-run-source-deploy/bbi-international:clean
+        ports:
+        - containerPort: 8080
+          name: http1
+        env:
+        - name: DATABASE_URL
+          value: postgresql://neondb_owner:npg_OsJiLV86Bkdn@ep-damp-water-aht3z7in-pooler.c-3.us-east-1.aws.neon.tech/neondb?sslmode=require
+        - name: GS_BUCKET_NAME
+          value: bbinternational-media
+        - name: GS_PROJECT_ID
+          value: gen-lang-client-0549116861
+        - name: DEBUG
+          value: 'False'
+        - name: ALLOWED_HOSTS
+          value: '*'
+        - name: SECRET_KEY
+          value: django-insecure-prod-key
+        - name: CSRF_TRUSTED_ORIGINS
+          value: https://bbi-international-gyosnq7vca-ew.a.run.app,https://bbi-international-1073897174388.europe-north2.run.app,https://bb-international.org,https://www.bb-international.org,https://gen-lang-client-0549116861.web.app
+        - name: CUSTOM_DOMAIN
+          value: bb-international.org
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 512Mi

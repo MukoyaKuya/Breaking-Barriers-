@@ -412,7 +412,7 @@ if os.environ.get('GS_BUCKET_NAME'):
             },
         },
         'staticfiles': {
-            'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage',
+            'BACKEND': 'whitenoise.storage.CompressedStaticFilesStorage',
         },
     }
     # Direct GCS URL for media in production - ensures thumbnails resolve correctly
