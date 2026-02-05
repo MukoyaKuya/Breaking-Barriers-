@@ -5,16 +5,36 @@
 
 {% block title %}{{ article.title }} - Breaking Barriers International{% endblock %}
 
+{% block meta_title %}{{ article.title }} | Breaking Barriers International{% endblock %}
+{% block meta_description %}{{ article.summary|striptags|truncatewords:25 }}{% endblock %}
+
 {% block og_title %}{{ article.title }}{% endblock %}
-{% block og_description %}{{ article.summary|truncatewords:30 }}{% endblock %}
-{% block og_image %}{% if article.image %}{{ request.scheme }}://{{ request.get_host }}{{ article.image.url }}{% else
-%}{% static 'images/logo.png' %}{% endif %}{% endblock %}
+{% block og_description %}{{ article.summary|striptags|truncatewords:25 }}{% endblock %}
 {% block og_type %}article{% endblock %}
+{% block og_image %}{% if article.image %}{{ request.scheme }}://{{ request.get_host }}{{ article.image.url }}{% else
+%}{{ block.super }}{% endif %}{% endblock %}
 
 {% block twitter_title %}{{ article.title }}{% endblock %}
-{% block twitter_description %}{{ article.summary|truncatewords:30 }}{% endblock %}
+{% block twitter_description %}{{ article.summary|striptags|truncatewords:25 }}{% endblock %}
 {% block twitter_image %}{% if article.image %}{{ request.scheme }}://{{ request.get_host }}{{ article.image.url }}{%
-else %}{% static 'images/logo.png' %}{% endif %}{% endblock %}
+else %}{{ block.super }}{% endif %}{% endblock %}
+
+{% block detailed_schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{ article.title|escapejs }}",
+  "image": ["{% if article.image %}{{ request.scheme }}://{{ request.get_host }}{{ article.image.url }}{% endif %}"],
+  "datePublished": "{{ article.created_at|date:'c' }}",
+  "dateModified": "{{ article.updated_at|date:'c' }}",
+  "author": [{
+      "@type": "Person",
+      "name": "{{ article.author_name|default:'Pst. Nellie Shani' }}"
+    }]
+}
+</script>
+{% endblock %}
 
 {% block extra_head %}{% endblock %}
 
@@ -134,21 +154,28 @@ else %}{% static 'images/logo.png' %}{% endif %}{% endblock %}
                             <div class="flex flex-col items-center md:items-end gap-3">
                                 <p class="text-xs uppercase text-gray-400 font-bold tracking-widest">Share</p>
                                 <div class="flex items-center gap-3">
-                                    <a href="#"
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}"
+                                        target="_blank" rel="noopener noreferrer"
                                         class="h-10 w-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-sm">
                                         <i class="fab fa-facebook-f"></i>
                                     </a>
-                                    <a href="#"
+                                    <a href="https://wa.me/?text={{ request.build_absolute_uri }}" target="_blank"
+                                        rel="noopener noreferrer"
                                         class="h-10 w-10 rounded-xl bg-green-50 text-green-600 flex items-center justify-center hover:bg-green-600 hover:text-white transition-all duration-300 shadow-sm">
                                         <i class="fab fa-whatsapp"></i>
                                     </a>
-                                    <a href="#"
-                                        class="h-10 w-10 rounded-xl bg-sky-50 text-sky-500 flex items-center justify-center hover:bg-sky-500 hover:text-white transition-all duration-300 shadow-sm">
-                                        <i class="fab fa-twitter"></i>
+                                    <a href="https://x.com/intent/tweet?url={{ request.build_absolute_uri }}&text={{ article.title }}"
+                                        target="_blank" rel="noopener noreferrer"
+                                        class="h-10 w-10 p-2.5 rounded-xl bg-white text-black border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-all duration-300 shadow-sm">
+                                        <svg viewBox="0 0 24 24" aria-hidden="true" class="w-full h-full fill-current">
+                                            <path
+                                                d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z">
+                                            </path>
+                                        </svg>
                                     </a>
-                                    <a href="#"
+                                    <a href="mailto:?subject={{ article.title }}&body=Check out this article: {{ request.build_absolute_uri }}"
                                         class="h-10 w-10 rounded-xl bg-gray-50 text-gray-600 flex items-center justify-center hover:bg-gray-800 hover:text-white transition-all duration-300 shadow-sm">
-                                        <i class="fas fa-link text-xs"></i>
+                                        <i class="fas fa-envelope"></i>
                                     </a>
                                 </div>
                             </div>

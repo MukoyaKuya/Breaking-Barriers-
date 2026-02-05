@@ -14,16 +14,16 @@
     <link rel="icon" type="image/png" href="{% static 'images/logo.png' %}">
     <link rel="shortcut icon" type="image/png" href="{% static 'images/logo.png' %}">
 
-    <!-- SEO / OpenGraph -->
-    <meta property="og:site_name" content="Breaking Barriers International">
-    <meta property="og:title" content="{% block og_title %}Breaking Barriers International{% endblock %}">
-    <meta property="og:description"
-        content="{% block og_description %}Breaking barriers in life and ministry through the power of the Holy Spirit{% endblock %}">
-    <meta property="og:image" content="{% block og_image %}{% static 'images/logo.png' %}{% endblock %}">
+    <!-- SEO Meta Tags -->
+    <title>{% block meta_title %}Breaking Barriers International{% endblock %}</title>
+    <meta name="description"
+        content="{% block meta_description %}Based in Nairobi, Kenya, Breaking Barriers International is a ministry dedicated to teaching spiritual warfare and deliverance.{% endblock %}">
+    <meta name="author" content="Breaking Barriers International">
+    <link rel="canonical" href="{{ request.build_absolute_uri }}">
+
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="{% block og_type %}website{% endblock %}">
     <meta property="og:url" content="{{ request.build_absolute_uri }}">
-    <link rel="canonical"
-        href="{% block canonical %}{{ request.scheme }}://{{ request.get_host }}{{ request.path }}{% endblock %}">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{% block twitter_title %}Breaking Barriers International{% endblock %}">
@@ -41,7 +41,7 @@
       "logo": "https://bb-international.org{% static 'images/logo.png' %}",
       "sameAs": [
         "https://www.facebook.com/BreakingBarriersInt",
-        "https://twitter.com/BreakingBarriers"
+        "https://x.com/BreakingBarriers"
       ]
     }
     </script>
@@ -75,7 +75,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <!-- Google Fonts - Fjalla One and Kaushan Script -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

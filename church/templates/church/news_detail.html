@@ -5,13 +5,37 @@
 
 {% block title %}{{ news_item.title }} - Breaking Barriers International{% endblock %}
 
+{% block meta_title %}{{ news_item.title }} | Breaking Barriers International{% endblock %}
+{% block meta_description %}{{ news_item.summary|striptags|truncatewords:25 }}{% endblock %}
+
 {% block og_title %}{{ news_item.title }}{% endblock %}
-{% block og_description %}{{ news_item.summary|truncatewords:30 }}{% endblock %}
-{% block og_image %}{% if news_item.image %}{{ request.scheme }}://{{ request.get_host }}{{ news_item.image.url }}{%
-else %}{% static 'images/logo.png' %}{% endif %}{% endblock %}
+{% block og_description %}{{ news_item.summary|striptags|truncatewords:25 }}{% endblock %}
 {% block og_type %}article{% endblock %}
+{% block og_image %}{% if news_item.image %}{{ request.scheme }}://{{ request.get_host }}{{ news_item.image.url }}{%
+else %}{{ block.super }}{% endif %}{% endblock %}
 
 {% block twitter_title %}{{ news_item.title }}{% endblock %}
+{% block twitter_description %}{{ news_item.summary|striptags|truncatewords:25 }}{% endblock %}
+{% block twitter_image %}{% if news_item.image %}{{ request.scheme }}://{{ request.get_host }}{{ news_item.image.url
+}}{% else %}{{ block.super }}{% endif %}{% endblock %}
+
+{% block detailed_schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "NewsArticle",
+  "headline": "{{ news_item.title|escapejs }}",
+  "image": ["{% if news_item.image %}{{ request.scheme }}://{{ request.get_host }}{{ news_item.image.url }}{% endif %}"],
+  "datePublished": "{{ news_item.created_at|date:'c' }}",
+  "dateModified": "{{ news_item.updated_at|date:'c'|default:news_item.created_at|date:'c' }}",
+  "author": [{
+      "@type": "Organization",
+      "name": "Breaking Barriers International",
+      "url": "https://bb-international.org"
+    }]
+}
+</script>
+{% endblock %}
 {% block twitter_description %}{{ news_item.summary|truncatewords:30 }}{% endblock %}
 {% block twitter_image %}{% if news_item.image %}{{ request.scheme }}://{{ request.get_host }}{{ news_item.image.url
 }}{% else %}{% static 'images/logo.png' %}{% endif %}{% endblock %}
@@ -40,6 +64,15 @@ else %}{% static 'images/logo.png' %}{% endif %}{% endblock %}
                     Event Date: {{ news_item.event_date|date:"F d, Y" }}
                 </p>
                 {% endif %}
+                <a href="https://x.com/intent/tweet?url={{ request.build_absolute_uri }}&text={{ news_item.title }}"
+                    target="_blank" rel="noopener noreferrer"
+                    class="h-10 w-10 p-2.5 rounded-xl bg-white text-black border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-all duration-300 shadow-sm">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-full h-full fill-current">
+                        <path
+                            d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z">
+                        </path>
+                    </svg>
+                </a>
                 <p>
                     <i class="fas fa-clock mr-1"></i>
                     Published: {{ news_item.created_at|date:"F d, Y" }}

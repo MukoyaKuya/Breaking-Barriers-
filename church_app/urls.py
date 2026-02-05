@@ -27,6 +27,16 @@ from django.views.generic import RedirectView, TemplateView
 from django.views.csrf import csrf_failure as default_csrf_failure
 from django.http import JsonResponse
 from django.db import connection
+from django.contrib.sitemaps.views import sitemap
+from church.sitemaps import StaticViewSitemap, NewsItemSitemap, WordOfTruthSitemap, ChildrensBreadSitemap, ManTalkSitemap
+
+sitemaps = {
+    'static': StaticViewSitemap,
+    'news': NewsItemSitemap,
+    'word_of_truth': WordOfTruthSitemap,
+    'childrens_bread': ChildrensBreadSitemap,
+    'mantalk': ManTalkSitemap,
+}
 
 logger = logging.getLogger(__name__)
 
@@ -154,6 +164,8 @@ urlpatterns = [
     path('', include('church.urls')),
     path('favicon.ico', RedirectView.as_view(url='/static/images/logo.png', permanent=False)),
     path('offline/', TemplateView.as_view(template_name='church/offline.html'), name='offline'),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+    path('robots.txt', TemplateView.as_view(template_name="robots.txt", content_type="text/plain")),
 ]
 try:
     import debug_toolbar

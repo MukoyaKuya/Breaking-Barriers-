@@ -161,12 +161,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
     'ckeditor',
     'ckeditor_uploader',
     'image_cropping',
     'easy_thumbnails',
     'church',
 ]
+
+SITE_ID = 1
 
 if os.environ.get('GS_BUCKET_NAME'):
     INSTALLED_APPS += ['storages']

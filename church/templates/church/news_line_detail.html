@@ -76,10 +76,14 @@
                                 class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700 transition">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
-                            <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}&text={{ article.title }}"
+                            <a href="https://x.com/intent/tweet?url={{ request.build_absolute_uri }}&text={{ article.title }}"
                                 target="_blank" rel="noopener noreferrer"
-                                class="w-10 h-10 rounded-full bg-sky-500 text-white flex items-center justify-center hover:bg-sky-600 transition">
-                                <i class="fab fa-twitter"></i>
+                                class="w-10 h-10 p-2.5 rounded-full bg-white text-black border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition">
+                                <svg viewBox="0 0 24 24" aria-hidden="true" class="w-full h-full fill-current">
+                                    <path
+                                        d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z">
+                                    </path>
+                                </svg>
                             </a>
                             <a href="whatsapp://send?text={{ article.title }} {{ request.build_absolute_uri }}"
                                 target="_blank" rel="noopener noreferrer"
