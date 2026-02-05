@@ -20,8 +20,8 @@ ENV APP_HOME /app
 WORKDIR $APP_HOME
 COPY . ./
 
-# Convert Windows line endings to Unix in shell scripts
-RUN dos2unix /app/scripts/*.sh
+# Convert Windows line endings to Unix in shell scripts and config templates
+RUN dos2unix /app/scripts/*.sh /app/nginx.conf.template
 
 # Ensure media directory exists and has files
 # Install production dependencies and collect static files.

@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 
 # Substitute the environment variables in the nginx config
 envsubst '$PORT $GS_BUCKET_NAME' < /app/nginx.conf.template > /app/nginx.conf
