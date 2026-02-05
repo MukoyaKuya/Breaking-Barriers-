@@ -31,7 +31,8 @@
                         class="relative aspect-[16/10] overflow-hidden bg-gray-100 block">
                         {% if article.image %}
                         {% if article.image_cropping %}
-                        {% safe_thumbnail article.image "800x600" box=article.image_cropping crop=True detail=True as cropped %}
+                        {% safe_thumbnail article.image "800x600" box=article.image_cropping crop=True detail=True as
+                        cropped %}
                         {% if cropped %}
                         <img src="{{ cropped.url }}" alt="{{ article.title }}" loading="lazy"
                             class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
