@@ -95,13 +95,12 @@ else %}{% static 'images/logo.png' %}{% endif %}{% endblock %}
         <div class="mt-16">
             <h3 class="text-2xl font-bold text-gray-800 mb-6">Other Books</h3>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                {% for item in recent_books %}
-                <a href="{% url 'book_detail' item.slug %}"
-                    class="group block bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
+                {% for recent_book in recent_books %}
+                <a href="{% url 'book_detail' recent_book.slug %}" class="group block bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
                     <div class="flex items-center gap-4 p-4">
                         <div class="w-16 h-24 flex-shrink-0 bg-gray-100 rounded overflow-hidden">
-                            {% if item.cover_image %}
-                            <img src="{{ item.cover_image.url }}" alt="{{ item.title }}" loading="lazy" class="w-full h-full object-cover">
+                            {% if recent_book.cover_image %}
+                            <img src="{{ recent_book.cover_image.url }}" alt="{{ recent_book.title }}" loading="lazy" class="w-full h-full object-cover">
                             {% else %}
                             <div class="w-full h-full flex items-center justify-center text-gray-300">
                                 <i class="fas fa-book"></i>
@@ -109,8 +108,7 @@ else %}{% static 'images/logo.png' %}{% endif %}{% endblock %}
                             {% endif %}
                         </div>
                         <div>
-                            <h4 class="font-bold text-gray-900 group-hover:text-brand-color transition line-clamp-2">{{
-                                item.title }}</h4>
+                            <h4 class="font-bold text-gray-900 group-hover:text-brand-color transition line-clamp-2">{{ recent_book.title }}</h4>
                             <p class="text-xs text-gray-500 mt-1">View Review &rarr;</p>
                         </div>
                     </div>
