@@ -1154,6 +1154,7 @@ def analytics_reset_view(request):
     return redirect('analytics')
 
 
+@cache_page_for_anonymous(60 * 10)  # Cache ManTalk list for 10 minutes (anonymous users only)
 def man_talk_list_view(request):
     """List all ManTalk articles."""
     from django.db import connection
@@ -1208,6 +1209,7 @@ def man_talk_list_view(request):
     return render(request, 'church/mantalk_list.html', context)
 
 
+@cache_page_for_anonymous(60 * 15)  # Cache ManTalk detail page for 15 minutes (anonymous users only)
 def man_talk_detail_view(request, slug):
     """Detail view for a Man Talk article."""
     # Try to get from cache first
@@ -1224,11 +1226,21 @@ def man_talk_detail_view(request, slug):
     recent_articles = cache.get(recent_cache_key)
     if not recent_articles:
         recent_articles = ManTalk.objects.filter(is_published=True).exclude(id=article.id).order_by('-created_at')[:3]
-        cache.set(recent_cache_key, recent_articles, 300) # 5 mins
+        cache.set(recent_cache_key, recent_articles, 300)  # 5 mins
+
+    # Sidebar context (cached helpers, shared with other article detail pages)
+    faqs = get_cached_faqs()
+    sidebar_promos = get_cached_sidebar_promos(limit=3)
+    cta_card = get_cached_cta_card()
+    verse_of_the_day = get_cached_verse_of_the_day()
 
     context = {
         'article': article,
         'recent_articles': recent_articles,
+        'faqs': faqs,
+        'sidebar_promos': sidebar_promos,
+        'cta_card': cta_card,
+        'verse_of_the_day': verse_of_the_day,
     }
     return render(request, 'church/mantalk_detail.html', context)
 

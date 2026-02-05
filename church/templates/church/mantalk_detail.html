@@ -38,7 +38,7 @@ else %}{% static 'images/logo.png' %}{% endif %}{% endblock %}
                         {% if article.image_cropping %}
                         {% safe_thumbnail article.image "800x533" box=article.image_cropping crop=True detail=True as cropped %}
                         {% if cropped %}
-                        <img src="{{ cropped.url }}" alt="{{ article.title }}" loading="lazy"
+                        <img src="{{ cropped.url }}" alt="{{ article.title }}" loading="eager" decoding="async" fetchpriority="high"
                             class="w-full h-full max-h-[320px] md:max-h-[400px] object-cover object-center transition-transform duration-700 group-hover:scale-105">
                         {% else %}
                         <div class="w-full h-full max-h-[320px] md:max-h-[400px] brand-color opacity-90 flex items-center justify-center">
@@ -48,7 +48,7 @@ else %}{% static 'images/logo.png' %}{% endif %}{% endblock %}
                         {% else %}
                         {% safe_thumbnail article.image "800x533" crop=True detail=True as thumb %}
                         {% if thumb %}
-                        <img src="{{ thumb.url }}" alt="{{ article.title }}" loading="lazy"
+                        <img src="{{ thumb.url }}" alt="{{ article.title }}" loading="eager" decoding="async" fetchpriority="high"
                             class="w-full h-full max-h-[320px] md:max-h-[400px] object-cover object-center transition-transform duration-700 group-hover:scale-105">
                         {% else %}
                         <div class="w-full h-full max-h-[320px] md:max-h-[400px] brand-color opacity-90 flex items-center justify-center">
