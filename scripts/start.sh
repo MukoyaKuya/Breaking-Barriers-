@@ -4,8 +4,8 @@ set -x
 # Substitute the environment variables in the nginx config
 envsubst '$PORT $GS_BUCKET_NAME' < /app/nginx.conf.template > /app/nginx.conf
 
-# Skip migrations during boot for faster cold start
-# python manage.py migrate --noinput
+# Run migrations on boot to ensure DB is up to date (including sites/sitemaps)
+python manage.py migrate --noinput
 
 # Gunicorn: (2 * CPU) + 1 workers recommended; default 5 workers, 4 threads
 WORKERS=${GUNICORN_WORKERS:-5}
