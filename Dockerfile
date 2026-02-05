@@ -30,7 +30,7 @@ RUN pip install --no-cache-dir -r requirements.txt \
     && python manage.py collectstatic --noinput
 
 # Setup start script
-RUN chmod +x /app/scripts/start.sh && chmod +x /app/scripts/migrate.sh
+RUN chmod +x /app/scripts/start.sh && chmod +x /app/scripts/migrate.sh && chmod +x /app/scripts/simple_start.sh
 
 # Run the startup script
-CMD ["bash", "/app/scripts/start.sh"]
+CMD ["bash", "/app/scripts/simple_start.sh"]
