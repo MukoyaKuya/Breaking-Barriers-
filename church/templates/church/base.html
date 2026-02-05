@@ -11,8 +11,8 @@
     <title>{% block title %}Breaking Barriers International{% endblock %}</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="{% static 'images/logo.png' %}">
-    <link rel="shortcut icon" type="image/png" href="{% static 'images/logo.png' %}">
+    <link rel="icon" type="image/png" href="{% static 'images/bb_logo.png' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/bb_logo.png' %}">
 
     <!-- SEO Meta Tags -->
     <title>{% block meta_title %}Breaking Barriers International{% endblock %}</title>
@@ -24,12 +24,19 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="{% block og_type %}website{% endblock %}">
     <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:title"
+        content="{% block og_title %}{% block meta_title_og %}Breaking Barriers International{% endblock %}{% endblock %}">
+    <meta property="og:description"
+        content="{% block og_description %}{% block meta_description_og %}Based in Nairobi, Kenya, Breaking Barriers International is a ministry dedicated to teaching spiritual warfare and deliverance.{% endblock %}{% endblock %}">
+    <meta property="og:image"
+        content="{% block og_image %}https://bb-international.org/static/images/bb_logo.png{% endblock %}">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{% block twitter_title %}Breaking Barriers International{% endblock %}">
     <meta name="twitter:description"
         content="{% block twitter_description %}Breaking barriers in life and ministry through the power of the Holy Spirit{% endblock %}">
-    <meta name="twitter:image" content="{% block twitter_image %}{% static 'images/logo.png' %}{% endblock %}">
+    <meta name="twitter:image"
+        content="{% block twitter_image %}{% block og_image_tw %}https://bb-international.org/static/images/bb_logo.png{% endblock %}{% endblock %}">
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
@@ -38,7 +45,7 @@
       "@type": "Organization",
       "name": "Breaking Barriers International",
       "url": "https://bb-international.org",
-      "logo": "https://bb-international.org{% static 'images/logo.png' %}",
+      "logo": "https://bb-international.org{% static 'images/bb_logo.png' %}",
       "sameAs": [
         "https://www.facebook.com/BreakingBarriersInt",
         "https://x.com/BreakingBarriers"
