@@ -15,6 +15,8 @@ from easy_thumbnails.signals import thumbnail_created
 from .models import (
     NewsItem,
     WordOfTruth,
+    ChildrensBread,
+    NewsLine,
     InfoCard,
     FAQ,
     SidebarPromo,
@@ -24,6 +26,7 @@ from .models import (
     GalleryImage,
     Testimonial,
     Partner,
+    Verse,
 )
 from .query_utils import invalidate_home_caches
 
@@ -55,6 +58,7 @@ def invalidate_news_caches(sender, instance, **kwargs):
 def invalidate_word_of_truth_caches(sender, instance, **kwargs):
     """Invalidate caches when Word of Truth articles change."""
     invalidate_home_caches()
+    cache.delete(f'word_of_truth_{instance.slug}')
     # Also invalidate search cache
     try:
         if hasattr(cache, 'delete_pattern'):
@@ -63,11 +67,28 @@ def invalidate_word_of_truth_caches(sender, instance, **kwargs):
         pass  # Cache backend doesn't support pattern deletion - cache will expire naturally
 
 
+@receiver(post_save, sender=ChildrensBread)
+@receiver(post_delete, sender=ChildrensBread)
+def invalidate_childrens_bread_caches(sender, instance, **kwargs):
+    """Invalidate caches when Children's Bread articles change."""
+    invalidate_home_caches()
+    cache.delete(f'childrens_bread_{instance.slug}')
+
+
+@receiver(post_save, sender=NewsLine)
+@receiver(post_delete, sender=NewsLine)
+def invalidate_news_line_caches(sender, instance, **kwargs):
+    """Invalidate caches when News Line articles change."""
+    invalidate_home_caches()
+    cache.delete(f'news_line_{instance.slug}')
+
+
 @receiver(post_save, sender=InfoCard)
 @receiver(post_save, sender=FAQ)
 @receiver(post_save, sender=SidebarPromo)
+@receiver(post_save, sender=Verse)
 def invalidate_sidebar_caches(sender, instance, **kwargs):
-    """Invalidate home/sidebar caches when info cards, FAQs, or promos change."""
+    """Invalidate home/sidebar caches when info cards, FAQs, promos, or verse change."""
     invalidate_home_caches()
 
 

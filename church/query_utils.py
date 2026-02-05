@@ -86,11 +86,21 @@ def get_optimized_partners():
 
 
 def get_optimized_verse_of_the_day():
-    """Latest active & featured verse."""
+    """Latest active & featured verse (no cache)."""
     return Verse.objects.filter(
         is_active=True,
         is_featured=True
     ).order_by('-date_posted').first()
+
+
+def get_cached_verse_of_the_day():
+    """Latest active & featured verse (cached 5 min)."""
+    cache_key = 'bbi_verse_of_the_day'
+    verse = cache.get(cache_key)
+    if verse is None:
+        verse = get_optimized_verse_of_the_day()
+        cache.set(cache_key, verse, LIST_CACHE_TIMEOUT)
+    return verse
 
 
 def get_optimized_info_cards():
@@ -107,17 +117,37 @@ def get_optimized_info_cards():
 
 
 def get_optimized_faqs():
-    """Active FAQs for sidebar."""
+    """Active FAQs for sidebar (no cache - used in detail views)."""
     return FAQ.objects.filter(
         is_active=True
     ).order_by('display_order', 'question')
 
 
+def get_cached_faqs():
+    """Active FAQs for sidebar (cached 5 min)."""
+    cache_key = 'bbi_faqs'
+    faqs = cache.get(cache_key)
+    if faqs is None:
+        faqs = list(get_optimized_faqs())
+        cache.set(cache_key, faqs, LIST_CACHE_TIMEOUT)
+    return faqs
+
+
 def get_optimized_sidebar_promos(limit=3):
-    """Active sidebar promos."""
+    """Active sidebar promos (no cache)."""
     return SidebarPromo.objects.filter(
         is_active=True
     ).order_by('display_order', 'created_at')[:limit]
+
+
+def get_cached_sidebar_promos(limit=3):
+    """Active sidebar promos (cached 5 min)."""
+    cache_key = f'bbi_sidebar_promos_{limit}'
+    promos = cache.get(cache_key)
+    if promos is None:
+        promos = list(get_optimized_sidebar_promos(limit))
+        cache.set(cache_key, promos, LIST_CACHE_TIMEOUT)
+    return promos
 
 
 def get_optimized_word_of_truth_list():
@@ -156,9 +186,12 @@ def get_optimized_man_talk_list(limit=3):
 
 
 def invalidate_home_caches():
-    """Clear caches that affect the home page."""
+    """Clear caches that affect the home page and article detail sidebars."""
     cache.delete_many([
         'bbi_hero_settings',
         'bbi_cta_card',
         'bbi_about_page',
+        'bbi_faqs',
+        'bbi_verse_of_the_day',
+        'bbi_sidebar_promos_3',
     ])

@@ -1,0 +1,786 @@
+[
+{
+  "model": "church.verse",
+  "pk": 1,
+  "fields": {
+    "content": "“So be strong and courageous! Do not be afraid and do not panic before them. For the Lord your God will personally go ahead of you. He will neither fail you nor abandon you.”",
+    "reference": "Deuteronomy 31:6",
+    "date_posted": "2026-01-27T12:54:16.094Z",
+    "is_active": true,
+    "is_featured": true
+  }
+},
+{
+  "model": "church.newsitem",
+  "pk": 1,
+  "fields": {
+    "title": "Word Of Truth",
+    "slug": "word-of-truth",
+    "image": "news/JEG_Themes_Matthew_600x.png",
+    "image_cropping": "33,0,567,400",
+    "summary": "“But he answered and said, It is written, Man shall not live by bread alone, but by every word that proceedeth out of the mouth of God.”",
+    "body": "<p><strong>Matthew 4:4 (KJV)</strong></p>\r\n\r\n<p>&ldquo;But he answered and said, It is written, Man shall not live by bread alone, but by every word that proceedeth out of the mouth of God.&rdquo;</p>\r\n\r\n<p><strong>This is Jesus responding to Satan during the temptation in the wilderness.</strong></p>\r\n\r\n<p><br />\r\nThe full temptation passage<em> (Matthew 4:1&ndash;11)</em></p>\r\n\r\n<p>A different verse where Jesus says <strong>&ldquo;It is written&rdquo;</strong></p>\r\n\r\n<p>A short teaching explanation to go with it for a slide or message.</p>",
+    "event_date": null,
+    "created_at": "2026-01-27T18:59:29.232Z",
+    "is_published": false
+  }
+},
+{
+  "model": "church.newsline",
+  "pk": 3,
+  "fields": {
+    "title": "BBI Solomon Project | Nairobi Ministry Building",
+    "slug": "bbi-solomon-project-nairobi-ministry-building",
+    "image": "news_line/lumina-enhanced-1770114474864.jpg",
+    "image_cropping": "95,45,1613,1183",
+    "video_url": "",
+    "summary": "Breaking Barriers International launches the BBI Solomon Project to acquire a permanent ministry building in Nairobi. Join partners building a generational legacy of faith.",
+    "body": "<p>BREAKING Barriers International (BBI) has unveiled a bold and faith-driven vision known as <strong>BBI Solomon Project</strong>&mdash;an initiative to acquire a <strong>permanent ministry building in Nairobi, Kenya</strong>.</p>\r\n\r\n<p>This landmark step is aimed at strengthening the ministry&rsquo;s foundation, expanding its reach, and securing a lasting legacy for generations to come.</p>\r\n\r\n<p>For over a decade, BBI has been a pillar in the ministry of deliverance, discipleship, and spiritual transformation locally and abroad.</p>\r\n\r\n<p>The Solomon Project represents both a strategic leap forward and a powerful invitation for partnership within the faith community.</p>\r\n\r\n<hr />\r\n<h2>A Vision Rooted in Faith and Consistency</h2>\r\n\r\n<p>Speaking during a project appraisal meeting, <strong>Pastor Nellie Shani</strong>, Founder and CEO of Breaking Barriers International, reaffirmed the long-standing vision:</p>\r\n\r\n<blockquote>\r\n<p><em>&ldquo;It has been a while since we encouraged one another to continue with the zeal to see BBI own its ministry centre.&rdquo;</em></p>\r\n</blockquote>\r\n\r\n<p>The vision was first officially introduced during the <strong>End of a Season Dinner Party in July 2024</strong>, shortly before BBI transitioned fully into an on-line ministry.</p>\r\n\r\n<hr />\r\n<h2>Why a Permanent Ministry Building Matters</h2>\r\n\r\n<p>BBI currently operates as a <strong>full-time online ministry</strong>, having transitioned from its former physical office at <strong>Apex Court No. 10</strong>, where the ministry previously hosted:</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>Training and discipleship sessions</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Group deliverance meetings</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Worship nights</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Administrative and coordination activities</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>As the ministry has grown over the past <strong>13 years</strong>, leadership has recognized the need for a stable, long-term physical space to sustain impact and ensure generational continuity.</p>\r\n\r\n<blockquote>\r\n<p><em>&ldquo;We&rsquo;ve seen incredible growth in our ministry over the past 13 years, both in membership and outreach. A permanent facility will enable us to better serve our constituents and the coming generations,&rdquo;</em> Pastor Nellie shared.</p>\r\n</blockquote>\r\n\r\n<p>The rented facility reached capacity in 2023, making the need for a permanent space increasingly urgent.</p>\r\n\r\n<hr />\r\n<h2>What the BBI Solomon Project Building Will House</h2>\r\n\r\n<p>Once acquired, the BBI ministry centre will serve as a hub for spiritual, social, and community transformation, hosting:</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>Worship services</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Training and discipleship programs</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Men and women group deliverance sessions</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Community outreach initiatives</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Ministry administration and coordination</p>\r\n\t</li>\r\n</ul>\r\n\r\n<blockquote>\r\n<p><em>&ldquo;More than just a physical structure, this building will become a centre of faith, hope, and practical support. It is a prayer altar we raised for seven years, and we have witnessed its impact in countless lives,&rdquo;</em> Pastor Nellie explained.</p>\r\n</blockquote>\r\n\r\n<hr />\r\n<h2>A Call to Partners, Builders, and Kingdom Collaborators</h2>\r\n\r\n<p>The Solomon Project is a call to <strong>shared vision, obedience, and collaboration</strong>. While financial support is essential, BBI emphasizes partnership rooted in purpose.</p>\r\n\r\n<blockquote>\r\n<p><em>&ldquo;We&rsquo;re seeking partners who believe in the power of God to transform lives and the importance of supporting those in need. This building isn&rsquo;t just for us&mdash;it&rsquo;s for everyone,&rdquo;</em> Pastor Nellie said.</p>\r\n</blockquote>\r\n\r\n<p>BBI expresses heartfelt gratitude to all who have already registered, pledged, or given toward this vision. <strong>Registration remains open</strong> for anyone who desires to be part of this generational project.</p>\r\n\r\n<p>Register to Support the BBI Solomon Project</p>\r\n\r\n<p><a href=\"https://docs.google.com/forms/d/1m0i-vu5N6vL4RNDP2hTneH5miWDlte9uT_YAEMVfqfM/edit?pli=1\" rel=\"noopener\" target=\"_new\">Click here to register</a></p>\r\n\r\n<hr />\r\n<h2>A Fun Giving Activation&nbsp;</h2>\r\n\r\n<p>To inspire cheerful and joyful giving, BBI invites members and friends to participate in a light-hearted activation:</p>\r\n\r\n<p><strong>Try This Fun Activity (Share Your Results!):</strong></p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>Write your full name &rarr; count the letters &times; 2</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Number of siblings &times; 50</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Married? Add 100</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Wearing slippers? Add 50</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Curtains in your house? Add 100</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Ate two meals today? Add 150</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Parents living? Add 100 for each</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p><strong>Fun Fact:</strong><br />\r\nThat total represents your pledge toward the <strong>BBI Solomon Project</strong> today!</p>\r\n\r\n<hr />\r\n<h2>Looking Ahead: Growth, Capacity, and National Impact</h2>\r\n\r\n<p>BBI has a strong history of partnering with organizations to provide:</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>Charity support</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Education initiatives</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Spiritual counselling</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Deliverance ministry</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>Leadership envisions the new building as a <strong>beacon of hope</strong>, enabling larger gatherings, expanded programs, and deeper national impact.</p>\r\n\r\n<blockquote>\r\n<p><em>&ldquo;With this new space, we&rsquo;ll offer more programs, more outreach, and more opportunities to make real, lasting impact in people&rsquo;s lives,&rdquo;</em> Pastor Nellie noted.</p>\r\n</blockquote>\r\n\r\n<p>Monthly Solomon Project meetings are ongoing, and informational sessions will be announced to keep partners updated on progress and next steps.</p>\r\n\r\n<hr />\r\n<h2>A Milestone of Faith and Unity</h2>\r\n\r\n<p>The <strong>BBI Solomon Project</strong> marks a defining milestone in the ministry&rsquo;s journey&mdash;one built on faith, unity, and collective obedience.</p>\r\n\r\n<blockquote>\r\n<p><em>&ldquo;Let us continue to honour our pledges and involve our friends and families in this project,&rdquo;</em> Pastor Nellie encouraged.</p>\r\n</blockquote>\r\n\r\n<p>As Breaking Barriers International moves forward, the Solomon Project stands as an open invitation to all who believe in <strong>faith-driven transformation</strong> to help build something truly <strong>godly, enduring, and generational</strong></p>",
+    "is_published": true,
+    "created_at": "2026-02-03T09:56:54.895Z",
+    "updated_at": "2026-02-03T10:29:24.618Z"
+  }
+},
+{
+  "model": "church.calendarevent",
+  "pk": 1,
+  "fields": {
+    "title": "Mens Conference",
+    "description": "Mens Conference",
+    "event_date": "2026-01-28",
+    "event_type": "Prayer Meeting",
+    "location": "Nairobi",
+    "image": "",
+    "image_cropping": "",
+    "color": "#990030",
+    "is_published": true,
+    "created_at": "2026-01-27T18:13:10.309Z",
+    "updated_at": "2026-01-27T18:13:10.309Z"
+  }
+},
+{
+  "model": "church.calendarevent",
+  "pk": 2,
+  "fields": {
+    "title": "Women's Champions",
+    "description": "Join women of all ages for a powerful time of worship, connection, and spiritual renewal at our Women’s Church Conference. This gathering is designed to encourage, equip, and empower women to grow deeper in their faith and walk confidently in God’s purpose for their lives.\r\n\r\nThrough inspiring messages, heartfelt worship, and meaningful fellowship, we will create space to reflect, be refreshed, and be reminded that we are not alone on the journey. Whether you are seeking clarity, healing, renewed strength, or simply a moment to pause and be filled, this conference is for you.\r\n\r\nCome as you are and leave encouraged, strengthened, and ready to live out your calling with faith and boldness.",
+    "event_date": "2026-01-27",
+    "event_type": "Conference",
+    "location": "",
+    "image": "",
+    "image_cropping": "",
+    "color": "#0fe628",
+    "is_published": true,
+    "created_at": "2026-01-27T18:20:02.907Z",
+    "updated_at": "2026-01-27T18:20:02.907Z"
+  }
+},
+{
+  "model": "church.calendarevent",
+  "pk": 3,
+  "fields": {
+    "title": "Kesha",
+    "description": "A day of worship, wisdom, and sisterhood. Join us for a Women’s Church Conference filled with encouragement, connection, and powerful reminders of God’s love and purpose for your life.",
+    "event_date": "2026-01-31",
+    "event_type": "Outreach",
+    "location": "Church",
+    "image": "calendar_events/554046056_1264358689061610_2566163542975989460_n.jpg",
+    "image_cropping": "0,138,1104,966",
+    "color": "#001eff",
+    "is_published": true,
+    "created_at": "2026-01-27T18:35:22.699Z",
+    "updated_at": "2026-01-27T18:52:53.840Z"
+  }
+},
+{
+  "model": "church.calendarevent",
+  "pk": 4,
+  "fields": {
+    "title": "Fast",
+    "description": "",
+    "event_date": "2026-02-01",
+    "event_type": "Prayer Meeting",
+    "location": "",
+    "image": "",
+    "image_cropping": "",
+    "color": "#990030",
+    "is_published": true,
+    "created_at": "2026-02-03T01:39:33.773Z",
+    "updated_at": "2026-02-03T01:39:33.773Z"
+  }
+},
+{
+  "model": "church.calendarevent",
+  "pk": 5,
+  "fields": {
+    "title": "Fast",
+    "description": "",
+    "event_date": "2026-02-01",
+    "event_type": "Prayer Meeting",
+    "location": "",
+    "image": "",
+    "image_cropping": "",
+    "color": "#990030",
+    "is_published": true,
+    "created_at": "2026-02-03T01:39:34.593Z",
+    "updated_at": "2026-02-03T01:39:34.593Z"
+  }
+},
+{
+  "model": "church.calendarevent",
+  "pk": 6,
+  "fields": {
+    "title": "Fast",
+    "description": "",
+    "event_date": "2026-02-03",
+    "event_type": "Prayer Meeting",
+    "location": "",
+    "image": "",
+    "image_cropping": "",
+    "color": "#990030",
+    "is_published": true,
+    "created_at": "2026-02-03T01:40:03.221Z",
+    "updated_at": "2026-02-03T01:41:19.003Z"
+  }
+},
+{
+  "model": "church.calendarevent",
+  "pk": 7,
+  "fields": {
+    "title": "Fast",
+    "description": "",
+    "event_date": "2026-02-02",
+    "event_type": "Other",
+    "location": "",
+    "image": "",
+    "image_cropping": "",
+    "color": "#990030",
+    "is_published": true,
+    "created_at": "2026-02-03T01:40:03.971Z",
+    "updated_at": "2026-02-03T01:40:03.971Z"
+  }
+},
+{
+  "model": "church.testimonial",
+  "pk": 4,
+  "fields": {
+    "member_name": "Amish Behal",
+    "photo": "",
+    "photo_cropping": "",
+    "video_url": "https://www.youtube.com/watch?v=L_TZlVHtapY",
+    "text": "Amish Behal shares his journey of faith, highlighting a transformative experience of being saved by Jesus during high school. Despite facing multiple setbacks and temptations from the devil, he has remained steadfast in his faith for the past six years, emphasizing the importance of choices and their consequences.",
+    "approved": true,
+    "created_at": "2026-01-28T07:07:41.750Z"
+  }
+},
+{
+  "model": "church.galleryimage",
+  "pk": 1,
+  "fields": {
+    "caption": "\"We shall continue to spread the word\"",
+    "image": "gallery/586128223_1317086613788817_5564622601631894897_n.jpg",
+    "image_cropping": "0,0,720,540",
+    "video_url": "",
+    "duration_label": "",
+    "category": "Outreach",
+    "uploaded_at": "2026-01-27T20:31:17.891Z"
+  }
+},
+{
+  "model": "church.galleryimage",
+  "pk": 2,
+  "fields": {
+    "caption": "Matthew 18:20  \"For where two or three gather in my name, there am I with them",
+    "image": "gallery/489618915_1125867569577390_8605684623545821322_n.jpg",
+    "image_cropping": "0,0,2048,1536",
+    "video_url": "",
+    "duration_label": "",
+    "category": "Outreach",
+    "uploaded_at": "2026-01-27T20:40:48.146Z"
+  }
+},
+{
+  "model": "church.galleryimage",
+  "pk": 3,
+  "fields": {
+    "caption": "The power of a Christian fellowship",
+    "image": "gallery/lumina-enhanced-1769585360198.png",
+    "image_cropping": "376,74,2238,1474",
+    "video_url": "https://youtu.be/qkOZHILUBHw?si=IDWLbk9O86E7f3JX",
+    "duration_label": "",
+    "category": "Other",
+    "uploaded_at": "2026-01-27T22:27:58.912Z"
+  }
+},
+{
+  "model": "church.galleryimage",
+  "pk": 4,
+  "fields": {
+    "caption": "Open Heaven, the hour of Prayer",
+    "image": "gallery/lumina-enhanced-1769585508111.png",
+    "image_cropping": "459,0,2501,1536",
+    "video_url": "https://youtu.be/jmK5_YjWtVc?si=XtUzc_kk_PXuNgV6",
+    "duration_label": "",
+    "category": "Worship",
+    "uploaded_at": "2026-01-28T07:24:34.919Z"
+  }
+},
+{
+  "model": "church.galleryimage",
+  "pk": 5,
+  "fields": {
+    "caption": "The Full message of New Life",
+    "image": "gallery/lumina-enhanced-1769673365402.png",
+    "image_cropping": "128,72,2059,1520",
+    "video_url": "https://www.youtube.com/watch?v=9gXsdvVe7lk",
+    "duration_label": "",
+    "category": "Outreach",
+    "uploaded_at": "2026-02-02T21:30:05.514Z"
+  }
+},
+{
+  "model": "church.galleryimage",
+  "pk": 6,
+  "fields": {
+    "caption": "Worship Service 2025",
+    "image": "gallery/_G5A7899_1.jpg",
+    "image_cropping": "38,0,5135,3824",
+    "video_url": "",
+    "duration_label": "",
+    "category": "Worship",
+    "uploaded_at": "2026-02-03T14:46:40.067Z"
+  }
+},
+{
+  "model": "church.galleryimage",
+  "pk": 7,
+  "fields": {
+    "caption": "Worship Service 2025",
+    "image": "gallery/_G5A7853_1.jpg",
+    "image_cropping": "318,0,5416,3824",
+    "video_url": "",
+    "duration_label": "",
+    "category": "Worship",
+    "uploaded_at": "2026-02-03T14:48:55.658Z"
+  }
+},
+{
+  "model": "church.galleryimage",
+  "pk": 26,
+  "fields": {
+    "caption": "Worship Service 2025",
+    "image": "gallery/_G5A8214_1_S6Y390c.jpg",
+    "image_cropping": "318,0,5416,3824",
+    "video_url": "",
+    "duration_label": "",
+    "category": "Worship",
+    "uploaded_at": "2026-02-04T09:49:16.049Z"
+  }
+},
+{
+  "model": "church.galleryimage",
+  "pk": 27,
+  "fields": {
+    "caption": "Worship Service 2025",
+    "image": "gallery/_G5A8226_1_pA8cjlk.jpg",
+    "image_cropping": "318,0,5416,3824",
+    "video_url": "",
+    "duration_label": "",
+    "category": "Worship",
+    "uploaded_at": "2026-02-04T09:52:30.790Z"
+  }
+},
+{
+  "model": "church.galleryimage",
+  "pk": 28,
+  "fields": {
+    "caption": "Worship Service 2025",
+    "image": "gallery/_G5A8245_1_7PX0DSm.jpg",
+    "image_cropping": "318,0,5416,3824",
+    "video_url": "",
+    "duration_label": "",
+    "category": "Worship",
+    "uploaded_at": "2026-02-04T09:53:11.266Z"
+  }
+},
+{
+  "model": "church.galleryimage",
+  "pk": 29,
+  "fields": {
+    "caption": "Worship Service 2025",
+    "image": "gallery/_G5A8254_1_okbf5kx.jpg",
+    "image_cropping": "270,0,4609,3255",
+    "video_url": "",
+    "duration_label": "",
+    "category": "Worship",
+    "uploaded_at": "2026-02-04T09:54:11.615Z"
+  }
+},
+{
+  "model": "church.galleryimage",
+  "pk": 30,
+  "fields": {
+    "caption": "Worship Service 2025",
+    "image": "gallery/_G5A8261_1_Y5lwx4J.jpg",
+    "image_cropping": "318,0,5416,3824",
+    "video_url": "",
+    "duration_label": "",
+    "category": "Worship",
+    "uploaded_at": "2026-02-04T09:56:47.693Z"
+  }
+},
+{
+  "model": "church.galleryimage",
+  "pk": 31,
+  "fields": {
+    "caption": "Worship Service 2025",
+    "image": "gallery/WhatsApp_Image_2026-02-03_at_17.51.49_1.jpg",
+    "image_cropping": "63,0,1057,746",
+    "video_url": "",
+    "duration_label": "",
+    "category": "Worship",
+    "uploaded_at": "2026-02-04T09:59:49.472Z"
+  }
+},
+{
+  "model": "church.galleryimage",
+  "pk": 32,
+  "fields": {
+    "caption": "Worship Service 2025",
+    "image": "gallery/_G5A7853_2_9M0zp4F.jpg",
+    "image_cropping": "318,0,5416,3824",
+    "video_url": "",
+    "duration_label": "",
+    "category": "Worship",
+    "uploaded_at": "2026-02-04T10:03:25.705Z"
+  }
+},
+{
+  "model": "church.galleryimage",
+  "pk": 34,
+  "fields": {
+    "caption": "Worship Service 2025",
+    "image": "gallery/_G5A7826_1_3caaGo8.jpg",
+    "image_cropping": "246,0,4198,2964",
+    "video_url": "",
+    "duration_label": "",
+    "category": "Worship",
+    "uploaded_at": "2026-02-04T10:08:09.553Z"
+  }
+},
+{
+  "model": "church.galleryimage",
+  "pk": 35,
+  "fields": {
+    "caption": "Worship Service 2025",
+    "image": "gallery/_G5A7814_1_LVS3M6D.jpg",
+    "image_cropping": "318,0,5416,3824",
+    "video_url": "",
+    "duration_label": "",
+    "category": "Worship",
+    "uploaded_at": "2026-02-04T10:18:23.480Z"
+  }
+},
+{
+  "model": "church.galleryimage",
+  "pk": 36,
+  "fields": {
+    "caption": "Worship Service 2025",
+    "image": "gallery/_G5A8186_1_1.jpg",
+    "image_cropping": "0,46,2650,2033",
+    "video_url": "",
+    "duration_label": "",
+    "category": "Worship",
+    "uploaded_at": "2026-02-04T10:25:14.853Z"
+  }
+},
+{
+  "model": "church.galleryimage",
+  "pk": 37,
+  "fields": {
+    "caption": "Worship Service 2025",
+    "image": "gallery/_G5A7805_1_BEq9NU2.jpg",
+    "image_cropping": "92,0,2530,1829",
+    "video_url": "",
+    "duration_label": "",
+    "category": "Worship",
+    "uploaded_at": "2026-02-04T10:27:08.811Z"
+  }
+},
+{
+  "model": "church.galleryimage",
+  "pk": 38,
+  "fields": {
+    "caption": "Worship Service 2025",
+    "image": "gallery/WhatsApp_Image_2026-02-03_at_17_DCjRCS2.51.48.jpeg",
+    "image_cropping": "89,0,1511,1067",
+    "video_url": "",
+    "duration_label": "",
+    "category": "Worship",
+    "uploaded_at": "2026-02-04T10:31:26.348Z"
+  }
+},
+{
+  "model": "church.herosettings",
+  "pk": 1,
+  "fields": {
+    "image": "hero/12.jpeg",
+    "image_cropping": "21,0,1387,768",
+    "updated_at": "2026-01-26T19:35:36.306Z"
+  }
+},
+{
+  "model": "church.aboutpage",
+  "pk": 1,
+  "fields": {
+    "title": "The Birth of the Ministry",
+    "subtitle": "",
+    "image": "about/488736571_1123201483177332_5950817921094483649_n.jpg",
+    "image_cropping": "205,451,1258,1502",
+    "video_url": "https://www.youtube.com/watch?v=b_KFAGlqAdY",
+    "body": "<p>A 20-year journey in the school of the Holy Spirit gave birth to the <strong>BBI Ministry.</strong> In the area of deliverance the first thing that the Holy Spirit taught the founder, <strong>Pastor Nellie Shani</strong>, was about generational curses and how the sins of the forefathers could still affect us today.</p>\r\n\r\n<p>Since then the founder has been involved in teaching around the world. The first meeting before BBI was formally registered took place at her residence, but later as the numbers grew she looked for a hall she could hire.</p>\r\n\r\n<p>Ten days later we had an executive committee and a registered ministry called BBI in 2012. Since then God has continued to add people who work with her and share the vision, and many volunteers and partners have put their hand to the plough.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h3><strong>Objectives</strong></h3>\r\n\r\n<ol>\r\n\t<li>To teach Biblical truths concerning spiritual warfare and deliverance.</li>\r\n\t<li>To help believers in Jesus Christ identify and break generational curses.</li>\r\n\t<li>To enable believers in Jesus Christ know, live and sustain their deliverance.</li>\r\n\t<li>To counsel believers in Jesus Christ who may need specialised help beyond the teaching and prayer seminars.</li>\r\n\t<li>To identify and train workers in spiritual warfare and deliverance ministry.</li>\r\n</ol>",
+    "updated_at": "2026-02-02T21:30:10.527Z"
+  }
+},
+{
+  "model": "church.infocard",
+  "pk": 1,
+  "fields": {
+    "card_type": "childrens_bread",
+    "title": "Children's Bread",
+    "slug": "how-to-pray-purposely",
+    "image": "info_cards/12_9LA3AYL.jpeg",
+    "image_cropping": "61,42,1354,768",
+    "headline": "How to pray",
+    "summary": "Prayer is communicating with God through praise, confession, thanksgiving, and requests, trusting His will and praying in faith. If you want it even shorter or more Scripture-styled, just say the word.",
+    "content": "<p>Prayer is simply talking to God with honesty and faith. It doesn&rsquo;t require perfect words&mdash;just a sincere heart.</p>\r\n\r\n<ol>\r\n\t<li>\r\n\t<p><strong>Begin with worship</strong><br />\r\n\tAcknowledge who God is. Thank Him, praise Him, and honor His greatness.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Confess and surrender</strong><br />\r\n\tHumbly bring your sins, struggles, and weaknesses before God, asking for forgiveness and help.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Ask with faith</strong><br />\r\n\tPresent your needs, desires, and concerns to God, trusting Him to hear and respond according to His will.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Pray God&rsquo;s Word</strong><br />\r\n\tUse Scripture as your guide. God&rsquo;s Word strengthens your prayers and aligns your heart with His truth.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Listen and trust</strong><br />\r\n\tTake time to be still. Trust God with the outcome and remain open to His direction.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Close with gratitude</strong><br />\r\n\tThank God in advance, believing He is working even when you cannot see it.</p>\r\n\t</li>\r\n</ol>",
+    "author_name": "Pst. Nellie Shani",
+    "link_url": "",
+    "is_active": true,
+    "created_at": "2026-01-27T19:24:05.343Z",
+    "updated_at": "2026-01-28T07:47:18.487Z"
+  }
+},
+{
+  "model": "church.infocard",
+  "pk": 2,
+  "fields": {
+    "card_type": "news",
+    "title": "Newsline",
+    "slug": "Newsline",
+    "image": "info_cards/554046056_1264358689061610_2566163542975989460_n_DyWfGSk.jpg",
+    "image_cropping": "0,15,1104,636",
+    "headline": "RESISTING END TIMES DECEPTION",
+    "summary": "The Bible focuses on helping believers discern truth from deception in the context of end-time events. It emphasizes that false teachings and misleading prophecies can lead Christians astray, causing fear, confusion, or spiritual compromise",
+    "content": "<p>The bible tells us that believers discern truth from deception in the context of end-time events. It emphasizes that false teachings and misleading prophecies can lead Christians astray, causing fear, confusion, or spiritual compromise. Key points include:</p>\r\n\r\n<ol>\r\n\t<li>\r\n\t<p><strong>Awareness of Deception:</strong> Many end-times teachings are distorted, mixing truth with falsehood to manipulate believers. Awareness and vigilance are crucial.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Grounding in Scripture:</strong> The Bible is the ultimate authority. Knowledge of Scripture equips believers to identify errors and test prophecies or claims against God&rsquo;s Word.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Spiritual Discernment:</strong> The Holy Spirit enables Christians to distinguish truth from lies. Prayer, obedience, and a relationship with God strengthen discernment.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Avoiding Fear and Panic:</strong> End-time deception often preys on fear. Believers are encouraged to remain steadfast, trusting God&rsquo;s sovereignty rather than succumbing to sensationalism.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Living Faithfully Now:</strong> Instead of being consumed by speculation, Christians are called to live holy, obedient, and mission-focused lives while waiting for Christ&rsquo;s return.</p>\r\n\t</li>\r\n</ol>\r\n\r\n<p><strong>Core Message:</strong> Believers must anchor themselves in Scripture, cultivate spiritual discernment, and resist being led astray by fear, false teachers, or sensationalized interpretations of end-time events.</p>",
+    "author_name": "Pst. Nellie Shani",
+    "link_url": "",
+    "is_active": true,
+    "created_at": "2026-01-27T22:40:47.668Z",
+    "updated_at": "2026-02-03T00:51:57.047Z"
+  }
+},
+{
+  "model": "church.infocard",
+  "pk": 3,
+  "fields": {
+    "card_type": "word_of_truth",
+    "title": "Word of Truth",
+    "slug": "the-story-of-moses",
+    "image": "info_cards/moses.jpg",
+    "image_cropping": "0,0,480,270",
+    "headline": "Passing On the Spiritual Legacy",
+    "summary": "The message emphasizes the importance of passing on a spiritual legacy to the next generation. Just as Moses discipled Joshua to lead Israel faithfully, believers today must teach their children and others about God’s works and the gospel of Jesus Christ. The Bible warns that failing to pass on this spiritual heritage can result in future generations who “know neither the Lord nor what He has done” (Judges 2:10). Christians are encouraged to intentionally share their faith, ensuring the gospel is remembered and lived by those who come after us (1 Corinthians 15:3-5).",
+    "content": "<p><strong>The Bible </strong>tells us that after the death of Moses, Joshua took over and was the one who led the children of Israel into Canaan, the Promised Land.&nbsp;<br />\r\nMoses was careful to disciple his aide, Joshua, &ldquo;In the ways of the Lord&rdquo;. Just before Moses died, God told Moses to pass on his spiritual mantle to Joshua.&nbsp;<br />\r\n&ldquo;Now Joshua son of Nun was filled with the spirit of wisdom because Moses had laid his hands on him. So the Israelites listened to him and did what the LORD had commanded <em><strong>Moses&rdquo; &ndash; Deuteronomy 34:9.&nbsp;</strong></em><br />\r\nGod wanted a spiritual legacy passed on from Moses to the next leader, Joshua.<br />\r\n&nbsp;However after the death of Joshua the Israelites followed God for a little while then forsook Him! We are told,&nbsp;<br />\r\n&ldquo;After that whole generation had been gathered to their ancestors, another generation grew up who knew neither the Lord nor what he had done for Israel&rdquo; &ndash; Judges 2:10.&nbsp;<br />\r\nUnfortunately there was a generation that did not tell the next generation about the God of Israel and what He had done for their nation! This is what God was avoiding when He told the <em><strong>Israelites in Deuteronomy 6:1-9,&nbsp;</strong></em><br />\r\n&ldquo;These are the commands the Lord your God commanded me to teach you&hellip;so that your children and the children after them may fear the Lord your God as long as you live&hellip;Impress them on your children. Talk about them when you sit at home and when you walk along the road, when you lie down and when you get up&hellip;Write them on the doorframes of your houses and on your gates.&rdquo;&nbsp;<br />\r\nThis was the way to pass on the spiritual legacy of Israel to the next generation. Unfortunately the Israelites failed to do this!</p>\r\n\r\n<p>It is very easy to see how the children and grandchildren of a great man or woman of God can totally turn away from God because the &ldquo;mantle&rdquo; of faith in Jesus Christ was never passed down to them by their parents!&nbsp;<br />\r\nIf we as believers in Jesus Christ do not pass on our Christian heritage to our children, we risk having a generation after we have gone, who will know neither the Lord, nor what He has done for us! How sad that would be!</p>\r\n\r\n<p><br />\r\n&nbsp;&ldquo;For what I received I passed on to you as of first importance: that Christ died for our sins according to the Scriptures, that he was buried, that he was raised on the third day according to the Scriptures&rdquo; &ndash; <strong>1 Corinthians 15:3-5.</strong><br />\r\n<strong>&nbsp;Prayer Points:</strong><br />\r\n&nbsp;1). Ask the Lord to forgive you where you have not helped pass on the Word of God to the next generation.<br />\r\n&nbsp;2). Ask the Holy Spirit to give you opportunities where you can share the gospel with the next generation.<br />\r\n&nbsp;3). Thank the Lord that He has called us as co-laborers with Him in spreading the Gospel.</p>",
+    "author_name": "Pst. Nellie Shani",
+    "link_url": "",
+    "is_active": true,
+    "created_at": "2026-01-27T22:45:09.859Z",
+    "updated_at": "2026-02-03T00:52:30.426Z"
+  }
+},
+{
+  "model": "church.wordoftruth",
+  "pk": 9,
+  "fields": {
+    "title": "How God Wrote Your Life and Purpose",
+    "slug": "how-god-wrote-your-life-and-purpose",
+    "summary": "God wrote your book of destiny before you were born. Discover His plan, calling, and purpose for your life through His Word and guidance.",
+    "author_name": "Pst Dr Nellie Shani",
+    "image": "word_of_truth/lumina-enhanced-1770041042851_WBQrgD5.jpg",
+    "image_cropping": "0,0,1433,1075",
+    "body": "<p>God is an Author who has written many books, but the most significant book He wrote concerns His Son, <strong>Jesus Christ</strong>.</p>\r\n\r\n<blockquote>\r\n<p><em>&ldquo;Therefore when Christ came into the world, he said,&hellip; &#39;As is written of me in the scroll, Behold, I come to do your will, O God.&rsquo;&rdquo;</em><br />\r\n<em>(Hebrews 10:5,7)</em></p>\r\n</blockquote>\r\n\r\n<p>Jesus came to fulfill what was already written about Him in this divine book. He could do nothing outside His <strong>book of destiny</strong>.</p>\r\n\r\n<p>Even the Old Testament prophets did not fully understand that they were prophesying about Jesus. They were given a &ldquo;sneak preview&rdquo; of what God had already written in His eternal plan.</p>\r\n\r\n<hr />\r\n<h2>Jesus&rsquo; Book Was Written Before the World Began</h2>\r\n\r\n<p>I believe that God wrote Jesus&rsquo; book at the foundation of the world. Revelation 13:8 describes Him as:</p>\r\n\r\n<blockquote>\r\n<p><em>&ldquo;&hellip;The Lamb that was slain from the foundation of the world.&rdquo;</em></p>\r\n</blockquote>\r\n\r\n<p>If Jesus was destined to be slain from the foundation of the world, then His <strong>book of destiny</strong> had already been written, including His crucifixion.</p>\r\n\r\n<p>Psalm 139:16 confirms:</p>\r\n\r\n<blockquote>\r\n<p><em>&ldquo;&hellip;All the days ordained for me were written in your book before one of them came to be.&rdquo;</em></p>\r\n</blockquote>\r\n\r\n<p>Even Jesus&rsquo; birth was foretold:</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p><strong>Isaiah 7:14</strong>: &ldquo;&hellip;The virgin will conceive and give birth to a son, and will call him Immanuel.&rdquo;</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Micah 5:2</strong>: Prophesied the exact town of His birth&mdash;Bethlehem.</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>His crucifixion was foretold in <strong>Psalm 22:15-18</strong>, where David described in detail what would happen to Him.</p>\r\n\r\n<hr />\r\n<h2>Your Book Was Written Too</h2>\r\n\r\n<p>Just as God wrote a book about Jesus, He has written a book about <strong>you</strong>&mdash;your destiny, purpose, and calling.</p>\r\n\r\n<p>Sometimes, God reveals what He has written in our book through prophecy. Jeremiah 29:11 reminds us:</p>\r\n\r\n<blockquote>\r\n<p><em>&ldquo;For I know the plans I have for you, says the Lord. Plans for welfare and not for evil, to give you a future and a hope.&rdquo;</em></p>\r\n</blockquote>\r\n\r\n<p>These plans are already written in your book. Everything in your book aligns with the Word of God. The difference between books is <strong>our area of calling</strong>.</p>\r\n\r\n<p>Jeremiah 1:5 says:</p>\r\n\r\n<blockquote>\r\n<p><em>&ldquo;Before I formed you in the womb I knew you, before you were born I set you apart; I appointed you as a prophet to the nations.&rdquo;</em></p>\r\n</blockquote>\r\n\r\n<p>Isaiah 49:1 adds:</p>\r\n\r\n<blockquote>\r\n<p><em>&ldquo;&hellip;Before I was born the Lord called me; from my birth He made mention of my name.&rdquo;</em></p>\r\n</blockquote>\r\n\r\n<p>Ask God: <em>What have You set me apart for? Who have You appointed me to be?</em></p>\r\n\r\n<hr />\r\n<h2>Prayer Points</h2>\r\n\r\n<ol>\r\n\t<li>\r\n\t<p><strong>Repentance</strong> &ndash; Ask the Lord for forgiveness for living according to your own plans instead of following your book of destiny.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Revelation</strong> &ndash; Ask the Holy Spirit to reveal your calling, purpose, and what God has written in your book.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Thanksgiving</strong> &ndash; Thank God for planning your life before you were born and for His perfect guidance.</p>\r\n\t</li>\r\n</ol>",
+    "is_published": true,
+    "created_at": "2026-02-03T06:13:42.904Z",
+    "updated_at": "2026-02-03T09:17:15.812Z"
+  }
+},
+{
+  "model": "church.wordoftruth",
+  "pk": 10,
+  "fields": {
+    "title": "Resist the Devil: How To Win Spiritual Battles",
+    "slug": "resist-the-devil-how-to-win-spiritual-battles",
+    "summary": "Learn how to resist the devil, enforce Christ’s victory, and defend your faith, family, and calling using the Word of God.",
+    "author_name": "Pst Dr Nellie Shani",
+    "image": "word_of_truth/pst_n_otYTU0T.jpeg",
+    "image_cropping": "0,20,478,378",
+    "body": "<p><strong>IMAGINE</strong> visiting a zoo and seeing a notice that reads:</p>\r\n\r\n<blockquote>\r\n<p><em>&ldquo;Simba the lion has escaped from his cage, but do not be alarmed. If you leave him alone, he will also leave you alone.&rdquo;</em></p>\r\n</blockquote>\r\n\r\n<p>No one would take such a notice seriously. Most people would immediately run for the nearest exit.</p>\r\n\r\n<p>So why do many believers live as though this were true about Satan?</p>\r\n\r\n<hr />\r\n<h2>The Bible&rsquo;s Warning About the Enemy</h2>\r\n\r\n<p>Scripture paints a very different picture of the devil:</p>\r\n\r\n<blockquote>\r\n<p><strong>&ldquo;Be self-controlled and alert. Your enemy the devil prowls around like a roaring lion looking for someone to devour.&rdquo;</strong><br />\r\n<em>(1 Peter 5:8)</em></p>\r\n</blockquote>\r\n\r\n<p>This is not a casual warning. Satan is described as <strong>active, intentional, and dangerous</strong>&mdash;constantly looking for opportunities to steal, kill, and destroy.</p>\r\n\r\n<p>But the instruction does not stop there.</p>\r\n\r\n<blockquote>\r\n<p><strong>&ldquo;Resist him, standing firm in the faith.&rdquo;</strong><br />\r\n<em>(1 Peter 5:9)</em></p>\r\n</blockquote>\r\n\r\n<p>The Bible does not tell believers to run, hide, negotiate, or ignore the enemy.<br />\r\nIt commands us to <strong>stand and resist</strong>.</p>\r\n\r\n<hr />\r\n<h2>Why Believers Must Stand and Resist</h2>\r\n\r\n<p>In every area where Satan opposes us&mdash;our faith, health, family, calling, identity, or destiny&mdash;the only biblical response is <strong>resistance</strong>.</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>Silence gives him space</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Passivity gives him permission</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Avoidance gives him ground</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>Spiritual warfare is <strong>not optional</strong> for the believer.</p>\r\n\r\n<p>Although Jesus Christ has already won the ultimate victory through His death and resurrection, we are still called to <strong>enforce that victory daily</strong>. The war is won&mdash;but battles remain.</p>\r\n\r\n<hr />\r\n<h2>The Only Offensive Weapon God Has Given Us</h2>\r\n\r\n<p>The Bible is very clear about the armour of God:</p>\r\n\r\n<blockquote>\r\n<p><strong>&ldquo;Take&hellip;the sword of the Spirit, which is the Word of God.&rdquo;</strong><br />\r\n<em>(Ephesians 6:17)</em></p>\r\n</blockquote>\r\n\r\n<p>Every other piece of armour is defensive.<br />\r\n<strong>The Word of God is our only offensive weapon.</strong></p>\r\n\r\n<p>It is how we:</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>Confront lies</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Resist temptation</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Overcome fear</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Silence accusation</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Push back darkness</p>\r\n\t</li>\r\n</ul>\r\n\r\n<hr />\r\n<h2>Jesus Showed Us How to Fight</h2>\r\n\r\n<p>When Satan tempted Jesus in the wilderness, Jesus did not panic, argue, or retreat.</p>\r\n\r\n<p>Every response began with the same phrase:</p>\r\n\r\n<blockquote>\r\n<p><strong>&ldquo;It is written&hellip;&rdquo;</strong></p>\r\n</blockquote>\r\n\r\n<p>Jesus resisted Satan using the Word of God&mdash;and Satan fled.</p>\r\n\r\n<p>If Jesus, the Son of God, used Scripture as His weapon, <strong>how much more should we?</strong></p>\r\n\r\n<hr />\r\n<h2>What Satan Is Trying to Steal</h2>\r\n\r\n<p>Jesus clearly revealed the enemy&rsquo;s agenda:</p>\r\n\r\n<blockquote>\r\n<p><strong>&ldquo;The thief comes only to steal and kill and destroy.&rdquo;</strong><br />\r\n<em>(John 10:10)</em></p>\r\n</blockquote>\r\n\r\n<p>Satan seeks to:</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p><strong>Kill</strong> through sickness, accidents, calamities, murder, and abortion</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Steal</strong> dignity, marriages, relationships, reputation, health, wealth, and truth through deception and false doctrine</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Destroy</strong> hope, faith, peace, joy, and purpose</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>He targets what Jesus has already given us:</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>Righteousness</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Healing</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Blessing</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Provision</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Authority</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>We are not called to watch helplessly while these things are taken.<br />\r\nWe are called to <strong>resist</strong>.</p>\r\n\r\n<hr />\r\n<h2>Authority Has Already Been Given</h2>\r\n\r\n<p>Jesus declared plainly:</p>\r\n\r\n<blockquote>\r\n<p><strong>&ldquo;I have given you authority to trample on snakes and scorpions and to overcome all the power of the enemy; nothing will harm you.&rdquo;</strong><br />\r\n<em>(Luke 10:19)</em></p>\r\n</blockquote>\r\n\r\n<p>The issue is not lack of authority.<br />\r\nThe issue is <strong>failure to use it</strong>.</p>\r\n\r\n<p>When believers stand firm, speak the Word of God, and resist the devil, <strong>he flees</strong>.</p>\r\n\r\n<blockquote>\r\n<p><strong>&ldquo;In all these things we are more than conquerors through Him who loved us.&rdquo;</strong><br />\r\n<em>(Romans 8:37)</em></p>\r\n</blockquote>\r\n\r\n<hr />\r\n<h2>A Personal Question</h2>\r\n\r\n<p>What has Satan tried to take from you?</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>Your peace?</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Your health?</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Your family?</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Your calling?</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Your joy?</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>Are you going to let him get away with it&mdash;or will you take your stand?</p>\r\n\r\n<p><strong>Wield your sword.<br />\r\nSpeak the Word.<br />\r\nResist him in the name of Jesus Christ.</strong></p>\r\n\r\n<hr />\r\n<h2>Prayer Points</h2>\r\n\r\n<h3>1. Repentance</h3>\r\n\r\n<p>Ask God to forgive you for times you allowed the enemy to take what Jesus already secured for you by failing to resist him.</p>\r\n\r\n<h3>2. Strength and Boldness</h3>\r\n\r\n<p>Ask the Holy Spirit to help you stand firm and consistently use the Word of God whenever the enemy opposes you.</p>\r\n\r\n<h3>3. Thanksgiving</h3>\r\n\r\n<p>Thank the Lord that you have authority over Satan and that <strong>He who is in you is greater than he who is in the world</strong>.</p>",
+    "is_published": true,
+    "created_at": "2026-02-03T10:16:32.943Z",
+    "updated_at": "2026-02-03T10:40:51.614Z"
+  }
+},
+{
+  "model": "church.wordoftruth",
+  "pk": 11,
+  "fields": {
+    "title": "You Are Not a Worm | Understanding Your Worth in God’s Eyes",
+    "slug": "you-are-not-a-worm-understanding-your-worth-in-gods-eyes",
+    "summary": "Many misunderstand humility as self-belittling. Scripture reveals your true worth, identity, and value as one created in God’s image.",
+    "author_name": "Pst Dr Nellie Shani",
+    "image": "word_of_truth/NEW.jpg",
+    "image_cropping": "0,30,768,606",
+    "body": "<p><strong>MANY</strong> believers misunderstand humility. We often assume that being humble means belittling ourselves, speaking poorly about our worth, or seeing ourselves as insignificant. However, <strong>the Bible presents a very different picture of humility</strong>&mdash;one that is rooted in truth, identity, and honor before God.</p>\r\n\r\n<p>I once heard someone pray:</p>\r\n\r\n<blockquote>\r\n<p><em>&ldquo;Lord, have mercy on us. We are just worms in Your sight.&rdquo;</em></p>\r\n</blockquote>\r\n\r\n<p>This raises an important question:<br />\r\n<strong>Would God send His only beloved Son to die a cruel death on the cross for worms?</strong><br />\r\nOf course not.</p>\r\n\r\n<p>Tragically, some people have even taken their own lives because they felt worthless and unloved, believing their lives had no value. Scripture tells us the opposite. <strong>You are far more valuable than you realize.</strong></p>\r\n\r\n<hr />\r\n<h2>God Created You in His Image</h2>\r\n\r\n<p>The Bible clearly reveals humanity&rsquo;s worth:</p>\r\n\r\n<blockquote>\r\n<p><strong>&ldquo;Then God said, &lsquo;Let us make mankind in our image, in our likeness&hellip;&rsquo;&rdquo;</strong><br />\r\n<em>(Genesis 1:26)</em></p>\r\n</blockquote>\r\n\r\n<p>God created human beings in His image and likeness, granting them authority, responsibility, and a unique place in creation. Humanity was designed not only to rule but to <strong>walk in fellowship with God</strong>.</p>\r\n\r\n<blockquote>\r\n<p><strong>&ldquo;Then the man and his wife heard the sound of the Lord God as He was walking in the garden in the cool of the day.&rdquo;</strong><br />\r\n<em>(Genesis 3:8)</em></p>\r\n</blockquote>\r\n\r\n<p>Imagine the Creator of the universe seeking fellowship with human beings. That alone reveals <strong>how deeply God values relationship with us</strong>.</p>\r\n\r\n<hr />\r\n<h2>God&rsquo;s Plan to Restore Fellowship With Humanity</h2>\r\n\r\n<p>When sin entered the world, God did not abandon humanity. Instead, He immediately set in motion a redemptive plan.</p>\r\n\r\n<p>God placed the weight of humanity&rsquo;s sin upon His Son, <strong>Jesus Christ</strong>, so that fellowship could be restored. Through the cross, forgiveness was made available, and humanity was reconciled back to God.</p>\r\n\r\n<p>This sacrifice is the ultimate proof of your value. <strong>You were worth redeeming.</strong></p>\r\n\r\n<hr />\r\n<h2>You Are the Apple of God&rsquo;s Eye</h2>\r\n\r\n<p>King David, a man after God&rsquo;s own heart, prayed:</p>\r\n\r\n<blockquote>\r\n<p><strong>&ldquo;Keep me as the apple of your eye; hide me in the shadow of your wings.&rdquo;</strong><br />\r\n<em>(Psalm 17:8)</em></p>\r\n</blockquote>\r\n\r\n<p>Every believer in Jesus Christ is precious in God&rsquo;s sight. He watches over us, protects us, and draws us close&mdash;not because we are insignificant, but because we are deeply loved.</p>\r\n\r\n<hr />\r\n<h2>You Are Not Worthless&mdash;You Are Loved</h2>\r\n\r\n<p>If you have ever felt forgotten, insignificant, or cast aside, Scripture speaks directly to you.</p>\r\n\r\n<blockquote>\r\n<p><strong>&ldquo;He who did not spare His own Son, but gave Him up for us all&mdash;how will He not also, along with Him, graciously give us all things?&rdquo;</strong><br />\r\n<em>(Romans 8:32)</em></p>\r\n</blockquote>",
+    "is_published": true,
+    "created_at": "2026-02-03T10:35:03.918Z",
+    "updated_at": "2026-02-03T10:35:03.918Z"
+  }
+},
+{
+  "model": "church.wordoftruth",
+  "pk": 12,
+  "fields": {
+    "title": "Overcoming Fear of Satan | Spiritual Warfare For Every Believer",
+    "slug": "overcoming-fear-of-satan-spiritual-warfare-for-every-believer",
+    "summary": "Learn how to overcome fear of Satan, resist the enemy, and walk in authority using the Word of God. Stand firm and experience victory in Christ today.",
+    "author_name": "Pst Dr Nellie Shani",
+    "image": "word_of_truth/b12_wCfoS1E.jpg",
+    "image_cropping": "0,19,720,559",
+    "body": "<p>MANY believers fear Satan and spiritual warfare, yet Scripture teaches us to <strong>stand firm, use the Word of God, and walk in authority and victory in Christ</strong>.</p>\r\n\r\n<p>One reason fear persists is that spiritual warfare is rarely taught from pulpits. Most sermons focus on salvation, hope, faith, and love&mdash;which are vital&mdash;but the topic of the devil and spiritual warfare is often avoided.</p>\r\n\r\n<p>Some ministers avoid it to prevent fear in their congregations or to avoid giving attention to Satan. While well-intentioned, this often produces the opposite effect: <strong>ignorance breeds fear</strong>.</p>\r\n\r\n<hr />\r\n<h2>Fear Often Comes from a Lack of Knowledge</h2>\r\n\r\n<p>Many believers&rsquo; understanding of Satan is shaped by culture, cartoons, or exaggerated stories&mdash;none of which are biblical.</p>\r\n\r\n<p>Even after coming to Christ, fear can remain. Without <strong>personal study of the Word of God</strong>, false images and intimidation persist. Sadly, this is still true for many believers today.</p>\r\n\r\n<hr />\r\n<h2>Every Believer Is Already in Spiritual Warfare</h2>\r\n\r\n<p>Whether we acknowledge it or not, every believer is part of the Lord Jesus Christ&rsquo;s army.</p>\r\n\r\n<p>Spiritual warfare is <strong>not optional</strong>. Ignoring it leads to unnecessary defeat, harassment, and vulnerability to the enemy&rsquo;s schemes. Scripture warns us clearly about the adversary&mdash;pretending he doesn&rsquo;t exist does not remove him.</p>\r\n\r\n<p>Victory depends on understanding three key truths:</p>\r\n\r\n<ol>\r\n\t<li>\r\n\t<p><strong>Who Jesus Christ is</strong></p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Who we are in Christ</strong></p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Who Satan really is</strong></p>\r\n\t</li>\r\n</ol>\r\n\r\n<hr />\r\n<h2>The Truth About Satan&rsquo;s Defeat</h2>\r\n\r\n<p>The Bible reassures us:</p>\r\n\r\n<blockquote>\r\n<p><em>&ldquo;He who is in you is greater than he who is in the world.&rdquo;</em><br />\r\n<em>(1 John 4:4)</em></p>\r\n</blockquote>\r\n\r\n<p>Through His death and resurrection, <strong>Jesus Christ defeated Satan</strong>:</p>\r\n\r\n<blockquote>\r\n<p><em>&ldquo;And having disarmed the powers and authorities, He made a public spectacle of them, triumphing over them by the cross.&rdquo;</em><br />\r\n<em>(Colossians 2:15)</em></p>\r\n</blockquote>\r\n\r\n<p>Satan is <strong>not all-powerful</strong>. His influence lies in <strong>deception and intimidation</strong>, not real authority.</p>\r\n\r\n<hr />\r\n<h2>Authority Has Been Given to the Believer</h2>\r\n\r\n<p>Jesus not only defeated Satan, He <strong>delegated authority to believers</strong>.</p>\r\n\r\n<p>We are not to fear the devil, but we are also not to ignore him. Scripture instructs us to <strong>resist him</strong>&mdash;and resisting requires <strong>action and knowledge of the Word of God</strong>.</p>\r\n\r\n<blockquote>\r\n<p><em>&ldquo;God raised us up with Christ and seated us with Him in the heavenly realms in Christ Jesus.&rdquo;</em><br />\r\n<em>(Ephesians 2:6)</em></p>\r\n</blockquote>\r\n\r\n<p>This is our position: <strong>authority, victory, and confidence in Christ</strong>.</p>\r\n\r\n<hr />\r\n<h2>From Fear to Confidence in Christ</h2>\r\n\r\n<p>Many believers fear Satan because they do not yet know Scripture well enough to see his defeat.</p>\r\n\r\n<p>Growing in God&rsquo;s Word replaces fear with <strong>revelation</strong>, and intimidation with <strong>confidence</strong>.</p>\r\n\r\n<blockquote>\r\n<p><em>&ldquo;I have given you authority to trample on snakes and scorpions and to overcome all the power of the enemy; nothing will harm you.&rdquo;</em><br />\r\n<em>(Luke 10:19)</em></p>\r\n</blockquote>\r\n\r\n<p>Believers are on the <strong>winning side</strong>. We have authority. We have victory.</p>\r\n\r\n<hr />\r\n<h2>Prayer Points</h2>\r\n\r\n<h3>1. Repentance</h3>\r\n\r\n<p>Ask God to forgive you for fearing Satan and for not studying the Word enough to know that he is defeated.</p>\r\n\r\n<h3>2. Revelation</h3>\r\n\r\n<p>Pray that the Holy Spirit reveals Jesus Christ as the <strong>Lion of the tribe of Judah</strong>, supreme over all powers of darkness.</p>\r\n\r\n<h3>3. Thanksgiving</h3>\r\n\r\n<p>Thank the Lord that you are on the <strong>winning side</strong> and that He has given you authority over all the power of the enemy.</p>",
+    "is_published": true,
+    "created_at": "2026-02-03T10:51:02.761Z",
+    "updated_at": "2026-02-03T10:51:02.761Z"
+  }
+},
+{
+  "model": "church.wordoftruth",
+  "pk": 13,
+  "fields": {
+    "title": "Walking in God’s Work and Mission Today",
+    "slug": "walking-in-gods-work-and-mission-today",
+    "summary": "Learn how to join God in His work by following Jesus’ example. Walk in obedience, discern His will, and serve faithfully in every area of life.",
+    "author_name": "Pst Dr Nellie Shani",
+    "image": "word_of_truth/lum.jpg",
+    "image_cropping": "0,0,800,600",
+    "body": "<p><strong>IMAGINE</strong> the anxiety Jesus&rsquo; disciples must have felt as they watched Him <strong>ascend into the sky</strong>, disappearing until a cloud hid Him from their sight.</p>\r\n\r\n<p>For over three years, they had followed Him faithfully, participating in the work God the Father had given Jesus to do. Even in His final moments on earth, <strong>Jesus remained focused on His mission</strong>, never allowing distractions to pull Him off course.</p>\r\n\r\n<hr />\r\n<h2>Jesus&rsquo; Mission Was Always Aligned with the Father</h2>\r\n\r\n<p>Jesus did not act on His own will. He said:</p>\r\n\r\n<blockquote>\r\n<p><em>&ldquo;My Father is always at His work to this very day, and I too am working.&rdquo;</em><br />\r\n<em>(John 5:17)</em></p>\r\n</blockquote>\r\n\r\n<p>What God the Father was accomplishing in the <strong>invisible spiritual realm</strong>, Jesus manifested visibly on earth.</p>\r\n\r\n<blockquote>\r\n<p><em>&ldquo;&hellip;The Son can do nothing by himself; he can do only what he sees his Father doing, because whatever the Father does, the Son also does.&rdquo;</em><br />\r\n<em>(John 5:19)</em></p>\r\n</blockquote>\r\n\r\n<p>Jesus never allowed distractions to divert Him from the work God had called Him to do. To understand the Father&rsquo;s work, we only need to <strong>observe the life of Jesus</strong>:</p>\r\n\r\n<blockquote>\r\n<p><em>&ldquo;For the Father loves the Son and shows him all He does&hellip;&rdquo;</em><br />\r\n<em>(John 5:20)</em></p>\r\n</blockquote>\r\n\r\n<hr />\r\n<h2>The Father&rsquo;s Work Revealed Through Jesus</h2>\r\n\r\n<p>Who raised <strong>Lazarus</strong>, the widow&rsquo;s son at Nain, or <strong>Jairus&rsquo; daughter</strong>? It was God the Father, working <strong>through Jesus</strong>.</p>\r\n\r\n<blockquote>\r\n<p><em>&ldquo;For just as the Father raises the dead and gives them life, even so the Son gives life to whom he is pleased to give it.&rdquo;</em><br />\r\n<em>(John 5:21)</em></p>\r\n</blockquote>\r\n\r\n<p>Jesus&rsquo; earthly mission culminated on the cross:</p>\r\n\r\n<blockquote>\r\n<p><em>&ldquo;I have brought you glory on earth by finishing the work you gave me to do.&rdquo;</em><br />\r\n<em>(John 17:4)</em></p>\r\n</blockquote>\r\n\r\n<p>Notice: He said <strong>the work given to Him was finished</strong>, not all work on earth. The Father&rsquo;s work continues today&mdash;through His children.</p>\r\n\r\n<hr />\r\n<h2>Joining God in His Work Today</h2>\r\n\r\n<p>God is still active in the world&mdash;<strong>saving souls, healing the sick, and delivering those in bondage</strong>. He invites us to join Him, just as Jesus did.</p>\r\n\r\n<p>To participate, we must <strong>walk closely with the Father</strong>, following Jesus&rsquo; example:</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p><strong>Read the Bible regularly</strong></p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Pray without ceasing</strong></p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Seek God&rsquo;s guidance before acting</strong></p>\r\n\t</li>\r\n</ul>\r\n\r\n<blockquote>\r\n<p><em>&ldquo;As the Father has sent me, so I am sending you.&rdquo;</em><br />\r\n<em>(John 20:21)</em></p>\r\n</blockquote>\r\n\r\n<p>Where is God at work in your life&mdash;<strong>family, office, business, or hospital</strong>? Where is there <strong>fruit (Galatians 5:22)</strong>? That is where He is inviting you to participate.</p>\r\n\r\n<hr />\r\n<h2>Lessons from Jesus&rsquo; Example</h2>\r\n\r\n<ol>\r\n\t<li>\r\n\t<p><strong>Do not run your own show.</strong></p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Observe what God is doing and join Him.</strong></p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Walk in obedience and faith</strong>, following Jesus&rsquo; example.</p>\r\n\t</li>\r\n</ol>\r\n\r\n<hr />\r\n<h2>Prayer Points</h2>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p><strong>Repentance:</strong> Ask the Father to forgive you for acting on your own instead of seeking His will.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Revelation:</strong> Ask the Holy Spirit to enlighten your spiritual eyes, revealing what the Father is doing.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Thanksgiving:</strong> Thank Jesus for leaving us an example of how to walk closely with the Father</p>\r\n\t</li>\r\n</ul>",
+    "is_published": true,
+    "created_at": "2026-02-03T11:05:44.928Z",
+    "updated_at": "2026-02-03T11:05:44.928Z"
+  }
+},
+{
+  "model": "church.mantalk",
+  "pk": 1,
+  "fields": {
+    "title": "How Men Can Break Hidden Cycles",
+    "slug": "how-men-can-break-hidden-cycles",
+    "summary": "Discover how sexual sin became one of Satan’s greatest weapons against men, its generational consequences, and how biblical purity restores honor, authority, and legacy.",
+    "author_name": "BBI",
+    "image": "man_talk/22men_Ft20Qww.jpg",
+    "image_cropping": "45,0,230,139",
+    "body": "<h1><strong>Dealing With the Root of Sexual Iniquity</strong></h1>\r\n\r\n<blockquote>\r\n<p><em>&ldquo;Flee from sexual immorality&hellip; whoever sins sexually sins against their own body. Do you not know that your bodies are temples of the Holy Spirit&hellip; you were bought at a price. Therefore honor God with your bodies.&rdquo;</em><br />\r\n<strong>&mdash;1 Corinthians 6:18&ndash;20</strong></p>\r\n</blockquote>\r\n\r\n<p><strong>SEXUAL</strong> sin is not merely a moral failure&mdash;it is a <strong>spiritual weapon</strong> that Satan has used across generations to weaken men, fracture families, destroy leadership, and erase legacies. Scripture consistently reveals that when sexual boundaries collapse, <strong>authority, honor, and inheritance follow</strong>.</p>\r\n\r\n<p>This teaching is not about condemnation. It is about <strong>exposure, understanding, and restoration</strong>.</p>\r\n\r\n<hr />\r\n<h2><strong>1. How Satan Weaponized Sex Through History</strong></h2>\r\n\r\n<p>From Eden to the present age, Satan has targeted sexuality because it sits at the intersection of <strong>identity, covenant, and legacy</strong>. When sex is detached from God&rsquo;s design, it becomes a tool for manipulation and destruction.</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>Samson lost strength through Delilah</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>David lost moral authority through Bathsheba</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Reuben lost his birthright through sexual defilement</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Eli&rsquo;s sons lost the priesthood through immorality</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>Sexual sin doesn&rsquo;t just bring guilt&mdash;it <strong>silences spiritual authority</strong>.</p>\r\n\r\n<hr />\r\n<h2><strong>2. Sexual Sin and Generational Consequences</strong></h2>\r\n\r\n<p>Sexual compromise often opens doors to <strong>generational struggles</strong>&mdash;addiction, broken marriages, fatherlessness, abuse, and cycles of secrecy.</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p><strong>Abraham and Hagar</strong> produced Ishmael&mdash;a blessing, yes, but also long-term conflict</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Lot&rsquo;s daughters</strong>, shaped by a corrupt culture, acted out of fear and desperation</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Onan&rsquo;s sin</strong> reveals sex reduced to self-gratification&mdash;defiling the body and dishonoring covenant</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>God is merciful, but <strong>consequences remain real</strong>.</p>\r\n\r\n<hr />\r\n<h2><strong>3. Why Satan Targets Men Through Sexual Sin</strong></h2>\r\n\r\n<p>Men carry responsibility for <strong>covering, protecting, and leading</strong>. When a man falls sexually, the ripple effects touch wives, children, ministries, and nations.</p>\r\n\r\n<p>Sexual sin:</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>Dulls discernment</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Weakens prayer life</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Erodes leadership credibility</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Invites shame and secrecy</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>That is why Scripture commands men to <strong>flee</strong>, not negotiate.</p>\r\n\r\n<hr />\r\n<h2><strong>4. Modern Delilahs: Today&rsquo;s Sexual Traps</strong></h2>\r\n\r\n<p>The enemy no longer needs physical temples&mdash;he has digital ones:</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>Pornography</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Sexting and secret messaging</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Emotional affairs</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Prostitution disguised as &ldquo;choice&rdquo;</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Media that normalizes exploitation</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>Like Delilah, these traps promise pleasure but steal <strong>strength, focus, and destiny</strong>.</p>\r\n\r\n<hr />\r\n<h2><strong>5. Joseph&rsquo;s Strategy: Run</strong></h2>\r\n\r\n<p>Joseph didn&rsquo;t pray longer&mdash;he <strong>ran</strong>.</p>\r\n\r\n<p>For men today, &ldquo;running&rdquo; may look like:</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>Cutting off certain apps or platforms</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Leaving environments that feed lust</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Installing accountability software</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Choosing isolation over compromise</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>Running is not weakness&mdash;it is <strong>wisdom</strong>.</p>\r\n\r\n<hr />\r\n<h2><strong>6. The Levite and the Concubine: A Warning for Our Time</strong></h2>\r\n\r\n<p>Judges 19 reveals a society so morally decayed that sexual violence became normalized, and women were treated as expendable.</p>\r\n\r\n<p>This mirrors modern culture where:</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>Women are objectified</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Exploitation is commercialized</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Pornography profits from abuse</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>When men stop protecting, <strong>society collapses</strong>.</p>\r\n\r\n<hr />\r\n<h2><strong>7. Protectors vs Predators</strong></h2>\r\n\r\n<p>God calls men to be <strong>covering agents</strong>, not consumers.</p>\r\n\r\n<p>Contrast:</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p><strong>Ham</strong>, who exposed his father&rsquo;s nakedness</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Shem and Japheth</strong>, who covered him with honor</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>In an age of exposure, gossip, and public shaming, godly men choose <strong>dignity over drama</strong>.</p>\r\n\r\n<hr />\r\n<h2><strong>8. Tribal Loyalty vs God&rsquo;s Righteousness</strong></h2>\r\n\r\n<p>The tribe of Benjamin protected wicked men rather than surrender them to justice (Judges 20). This reveals the danger of:</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>Covering sin to protect reputation</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Choosing loyalty over truth</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Protecting systems instead of victims</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>God judges nations that <strong>shield wickedness</strong>.</p>\r\n\r\n<hr />\r\n<h2><strong>9. Birthrights Lost Through Sexual Carelessness</strong></h2>\r\n\r\n<p>Esau despised his birthright. Reuben defiled his father&rsquo;s bed. Proverbs 6:32 says:</p>\r\n\r\n<blockquote>\r\n<p><em>&ldquo;He who commits adultery destroys his own soul.&rdquo;</em></p>\r\n</blockquote>\r\n\r\n<p>Sexual sin costs:</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>Honor</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Authority</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Legacy</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>Many men today lose marriages, ministries, and influence&mdash;not overnight, but gradually.</p>\r\n\r\n<hr />\r\n<h2><strong>10. Breaking Generational Sexual Cycles</strong></h2>\r\n\r\n<p>Freedom is possible.</p>\r\n\r\n<p>Men break sexual iniquity by:</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>Confession and repentance</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Renouncing generational patterns</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Building strong brotherhood accountability</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Replacing secrecy with light</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Waiting for God&rsquo;s timing, not shortcuts</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>Ruth&rsquo;s story reminds us that <strong>redemption can rewrite family histories</strong>.</p>\r\n\r\n<hr />\r\n<h2><strong>11. Brotherhood and Accountability</strong></h2>\r\n\r\n<p>Men do not fall alone&mdash;and they do not rise alone.</p>\r\n\r\n<p>Biblical accountability is:</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>Loving, not shaming</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Firm, not permissive</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Restorative, not destructive</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>Strong men <strong>walk together</strong>.</p>\r\n\r\n<hr />\r\n<h2><strong>12. Living as Men of Honor in the Days of Noah</strong></h2>\r\n\r\n<p>Jesus said the last days would resemble <strong>the days of Noah</strong>&mdash;a culture saturated with violence, lust, and moral collapse.</p>\r\n\r\n<p>In such a time, God is raising men who:</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>Guard their eyes</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Protect the vulnerable</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Honor women as image-bearers</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Preserve covenant</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Pass down godly legacy</p>\r\n\t</li>\r\n</ul>\r\n\r\n<hr />\r\n<h2><strong>Conclusion: Reclaiming Authority and Legacy</strong></h2>\r\n\r\n<p>Sexual sin may be one of Satan&rsquo;s strongest weapons&mdash;but it is <strong>not undefeatable</strong>.</p>\r\n\r\n<p>Through repentance, discipline, brotherhood, and the power of the Holy Spirit, men can:</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>Break generational curses</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Restore honor</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Reclaim spiritual authority</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Leave a righteous legacy</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>The call is clear:</p>\r\n\r\n<p><strong>Flee immorality. Honor God with your body. Rise as men of God.</strong></p>",
+    "is_published": true,
+    "created_at": "2026-02-03T14:01:20.039Z",
+    "updated_at": "2026-02-03T14:01:20.039Z"
+  }
+},
+{
+  "model": "church.mantalk",
+  "pk": 2,
+  "fields": {
+    "title": "Why Many Men Get Battered in Life",
+    "slug": "why-many-men-get-battered-in-life",
+    "summary": "Many men are silently battling spiritual, emotional, and generational forces. Discover why men get battered in life—and how healing, deliverance, and identity in Christ restore strength.",
+    "author_name": "BBI",
+    "image": "man_talk/lumina-enhanced-1770148595455.jpg",
+    "image_cropping": "90,0,1630,1155",
+    "body": "<h3><strong>The Silent Crisis Among Men</strong></h3>\r\n\r\n<p><strong>MEN</strong> are seen to be symbols of strength, leadership and provision. Yet beneath the armour, many men are silently bleeding&mdash;emotionally, spiritually, and psychologically.</p>\r\n\r\n<p>Some are broken but cannot say it.<br />\r\nOthers are fighting battles they cannot explain.<br />\r\nMany are weary warriors&mdash;battered not only by external pressures, but by internal enemies such as <strong>ego, pride, ignorance, shame, and lack of self-control</strong>.</p>\r\n\r\n<p>Men are hurting&mdash;and many do not know why.</p>\r\n\r\n<hr />\r\n<h2><strong>Men Are Targeted: The War Did Not Start Today</strong></h2>\r\n\r\n<p>The battle against men did not begin in the boardroom, the bedroom, or the bar.<br />\r\nIt began in the <strong>Garden of Eden</strong>.</p>\r\n\r\n<blockquote>\r\n<p><em>&ldquo;I will put enmity between you and the woman, and between your seed and her seed; He shall bruise your head, and you shall bruise His heel.&rdquo;</em> &mdash; <strong>Genesis 3:15</strong></p>\r\n</blockquote>\r\n\r\n<p>From the beginning, Satan feared <strong>Christ</strong>&mdash;and the men who would believe in Him, walk in purpose, and advance God&rsquo;s kingdom. The enemy&rsquo;s strategy has always been clear:</p>\r\n\r\n<blockquote>\r\n<p><strong>Corrupt the man before he can conquer.<br />\r\nMisdefine him before he discovers purpose.<br />\r\nDistract him with battles that feel like failure, so he never walks in Christ&rsquo;s victory.</strong></p>\r\n</blockquote>\r\n\r\n<p>Revelation 12 unveils this same warfare:</p>\r\n\r\n<blockquote>\r\n<p><em>&ldquo;The dragon stood before the woman who was about to give birth, so that he might devour her child.&rdquo;</em> &mdash; <strong>Revelation 12:4</strong></p>\r\n</blockquote>\r\n\r\n<p>This is not mere symbolism&mdash;it is the spiritual reality behind the resistance many men face today.</p>\r\n\r\n<hr />\r\n<h2><strong>Invisible Barriers: Why Many Men Keep Falling</strong></h2>\r\n\r\n<p>Many men are not only dealing with poor choices&mdash;they are fighting <strong>invisible spiritual barriers</strong> that society and even the church have failed to teach them to discern.</p>\r\n\r\n<h3><strong>1. Generational Curses</strong></h3>\r\n\r\n<p>Some men are unknowingly battling patterns passed down through bloodlines&mdash;cycles of addiction, anger, poverty, broken relationships, failure, or premature death.</p>\r\n\r\n<p>These are not just habits. They are <strong>spiritual legalities</strong>.</p>\r\n\r\n<blockquote>\r\n<p><em>&ldquo;Christ redeemed us from the curse of the law by becoming a curse for us.&rdquo;</em> &mdash; <strong>Galatians 3:13</strong></p>\r\n</blockquote>\r\n\r\n<p>In Christ, generational curses can be broken through repentance, deliverance, and walking in spiritual authority.</p>\r\n\r\n<hr />\r\n<h3><strong>2. Ego: False Strength in Disguise</strong></h3>\r\n\r\n<p>Ego often masquerades as confidence, but underneath it is fear wearing armor.<br />\r\nMen with wounded egos resist correction, avoid vulnerability, and reject accountability.</p>\r\n\r\n<p>Yet a man&rsquo;s worth is not something he must prove&mdash;<strong>it is something Christ already secured</strong>.</p>\r\n\r\n<hr />\r\n<h3><strong>3. Pride: The Silent Killer</strong></h3>\r\n\r\n<p>Pride whispers, <em>&ldquo;You can handle this alone.&rdquo;</em><br />\r\nThen it isolates men from counsel, brotherhood, and healing.</p>\r\n\r\n<blockquote>\r\n<p><em>&ldquo;Pride goes before destruction, and a haughty spirit before a fall.&rdquo;</em> &mdash; <strong>Proverbs 16:18</strong><br />\r\n<em>&ldquo;God opposes the proud but gives grace to the humble.&rdquo;</em> &mdash; <strong>James 4:6</strong></p>\r\n</blockquote>\r\n\r\n<hr />\r\n<h3><strong>4. Ignorance: A Hidden Vulnerability</strong></h3>\r\n\r\n<blockquote>\r\n<p><em>&ldquo;My people are destroyed for lack of knowledge.&rdquo;</em> &mdash; <strong>Hosea 4:6</strong></p>\r\n</blockquote>\r\n\r\n<p>Many men were never taught how to manage emotions, confront generational cycles, or lead with love. Ignorance is not innocence&mdash;it is exposure.</p>\r\n\r\n<p>Darkness is not merely around a man; sometimes it is <strong>within</strong>, limiting what he can see of God&rsquo;s provision.</p>\r\n\r\n<hr />\r\n<h3><strong>5. Shame: The Weight Men Carry Quietly</strong></h3>\r\n\r\n<p>Shame convinces men they are damaged, disqualified, or beyond restoration. It forces them to hide instead of heal.</p>\r\n\r\n<blockquote>\r\n<p><em>&ldquo;Those who look to Him are radiant; their faces are never covered with shame.&rdquo;</em> &mdash; <strong>Psalm 34:5</strong></p>\r\n</blockquote>\r\n\r\n<p>Jesus endured the cross and <strong>despised the shame</strong>, so men would no longer live under it.</p>\r\n\r\n<blockquote>\r\n<p><em>&ldquo;Instead of your shame you will receive a double portion.&rdquo;</em> &mdash; <strong>Isaiah 61:7</strong></p>\r\n</blockquote>\r\n\r\n<hr />\r\n<h3><strong>6. Lack of Self-Control</strong></h3>\r\n\r\n<p>Self-control is a fruit of the Spirit (Galatians 5:22&ndash;23), yet many men were never taught how to submit desires to God.</p>\r\n\r\n<p>The result?<br />\r\nAddictions. Emotional outbursts. Relational sabotage.</p>\r\n\r\n<blockquote>\r\n<p><em>&ldquo;Like a city whose walls are broken down is a man who lacks self-control.&rdquo;</em> &mdash; <strong>Proverbs 25:28</strong></p>\r\n</blockquote>\r\n\r\n<p>Wherever a man says, <em>&ldquo;I couldn&rsquo;t help it,&rdquo;</em> self-control is needed.</p>\r\n\r\n<hr />\r\n<h2><strong>Men Can Be Restored</strong></h2>\r\n\r\n<p>Culture measures men by success, conquest, and status.<br />\r\nChrist measures men by <strong>character and sonship</strong>.</p>\r\n\r\n<blockquote>\r\n<p><em>&ldquo;You are all sons of God through faith in Christ Jesus.&rdquo;</em> &mdash; <strong>Galatians 3:26</strong></p>\r\n</blockquote>\r\n\r\n<p>You are not your failure.<br />\r\nYou are not your paycheck.<br />\r\nYou are not your past.</p>\r\n\r\n<p>Your identity is in Christ.</p>\r\n\r\n<blockquote>\r\n<p><em>&ldquo;If the Son sets you free, you will be free indeed.&rdquo;</em> &mdash; <strong>John 8:36</strong><br />\r\n<em>&ldquo;He has delivered us from the domain of darkness.&rdquo;</em> &mdash; <strong>Colossians 1:13</strong></p>\r\n</blockquote>\r\n\r\n<p>Deliverance is not just casting out demons&mdash;it is breaking spiritual patterns, healing soul wounds, and restoring purpose.</p>\r\n\r\n<hr />\r\n<h2><strong>From Wounded to Weaponized for God</strong></h2>\r\n\r\n<p>A healed man becomes:</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>A <strong>chain-breaker</strong></p>\r\n\t</li>\r\n\t<li>\r\n\t<p>A <strong>generational reformer</strong></p>\r\n\t</li>\r\n\t<li>\r\n\t<p>A <strong>carrier of legacy</strong></p>\r\n\t</li>\r\n</ul>\r\n\r\n<blockquote>\r\n<p><em>&ldquo;They will rebuild the ancient ruins&hellip; restore places devastated for generations.&rdquo;</em> &mdash; <strong>Isaiah 61:4&ndash;9</strong></p>\r\n</blockquote>\r\n\r\n<p>Though the dragon pursued the male child in Revelation 12, <strong>he failed</strong>.</p>\r\n\r\n<p>So will the enemy against you.</p>\r\n\r\n<hr />\r\n<h2><strong>A Prayer for Men</strong></h2>\r\n\r\n<p><em>Father, I pray for every man reading this. Break the chains of pride, ego, shame, and ignorance in the name of Jesus. Restore identity, heal wounds, renew strength, and raise men to walk in purpose and victory. Amen.</em></p>\r\n\r\n<hr />\r\n<h2><strong>Ready to Take the Next Step?</strong></h2>\r\n\r\n<p>You do not have to fight invisible battles alone.</p>\r\n\r\n<p>📞 <strong>Call or WhatsApp:</strong> +254 716 703 508<br />\r\n<strong>bb-international.org</strong><br />\r\n✔ Counselling<br />\r\n✔ Deliverance sessions<br />\r\n✔ Biblical teaching on identity, purpose, and victory<br />\r\n✔ Monthly online teachings on spiritual warfare</p>\r\n\r\n<p><strong>Your healing matters.<br />\r\nYour freedom matters.<br />\r\nYour legacy matters.</strong></p>",
+    "is_published": true,
+    "created_at": "2026-02-03T14:12:37.607Z",
+    "updated_at": "2026-02-03T19:57:40.320Z"
+  }
+},
+{
+  "model": "church.mantalk",
+  "pk": 3,
+  "fields": {
+    "title": "Identifying Hidden Strongholds Before Praying for Men",
+    "slug": "identifying-hidden-strongholds-before-praying-for-men",
+    "summary": "Effective intercession requires discernment. Learn how to identify spiritual strongholds, agreements, and accusations that keep men bound—and how to pray them free biblically.",
+    "author_name": "BBI",
+    "image": "man_talk/lumina-enhanced-1770148410690.jpg",
+    "image_cropping": "45,101,1583,1254",
+    "body": "<h3><strong>Why Discernment Comes Before Deliverance</strong></h3>\r\n\r\n<p><strong>POWERFUL</strong> prayer begins with <strong>seeing</strong>.</p>\r\n\r\n<p>Many believers pray earnestly for men trapped in cycles of anger, addiction, confusion, or rebellion, yet see little change because the <strong>real issue remains hidden</strong>. Scripture reveals that before salvation, healing, or deliverance manifests, <strong>spiritual blindness must be addressed</strong>.</p>\r\n\r\n<blockquote>\r\n<p><em>&ldquo;He saw that there was no one, He was appalled that there was no one to intercede; so His own arm achieved salvation.&rdquo;</em> &mdash; <strong>Isaiah 59:18</strong></p>\r\n</blockquote>\r\n\r\n<p>God is still looking for intercessors who will <strong>stand in the gap</strong>, discern root issues, and contend wisely.</p>\r\n\r\n<hr />\r\n<h2><strong>Why Men Remain Stuck: The Problem of Spiritual Blindness</strong></h2>\r\n\r\n<p>The Bible is clear&mdash;many people are not resisting God intentionally; they are <strong>blinded spiritually</strong>.</p>\r\n\r\n<blockquote>\r\n<p><em>&ldquo;The god of this world has blinded the minds of unbelievers.&rdquo;</em> &mdash; <strong>2 Corinthians 4:3&ndash;4</strong><br />\r\n<em>&ldquo;Their understanding is darkened&hellip; because of the hardening of their hearts.&rdquo;</em> &mdash; <strong>Ephesians 4:18</strong></p>\r\n</blockquote>\r\n\r\n<p>Before men can repent, believe, or change behavior, <strong>their eyes must be opened</strong>.</p>\r\n\r\n<blockquote>\r\n<p><em>&ldquo;To open their eyes and turn them from darkness to light, and from the power of Satan to God.&rdquo;</em> &mdash; <strong>Acts 26:18</strong></p>\r\n</blockquote>\r\n\r\n<p>This is why effective intercession must address <strong>agreements, strongholds, and accusations</strong>&mdash;not just surface behavior.</p>\r\n\r\n<hr />\r\n<h2><strong>Key Stumbling Blocks to Discern Before You Pray</strong></h2>\r\n\r\n<p>When praying for a man&mdash;especially if you are not closely connected to him&mdash;ask the Holy Spirit to help you <strong>discern likely access points</strong> the enemy may be using.</p>\r\n\r\n<p>Your &ldquo;best guess,&rdquo; submitted humbly to God, is often enough.</p>\r\n\r\n<h3><strong>1. Occult Involvement or Witchcraft</strong></h3>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>Traditional witchcraft</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Sorcery, divination, astrology</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>New Age practices</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Family involvement in occult rituals</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>These open doors to <strong>spiritual control and deception</strong>.</p>\r\n\r\n<blockquote>\r\n<p><em>&ldquo;You used to live&hellip; following the ruler of the kingdom of the air.&rdquo;</em> &mdash; <strong>Ephesians 2:2</strong></p>\r\n</blockquote>\r\n\r\n<hr />\r\n<h3><strong>2. Addictions and Compulsions</strong></h3>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>Alcohol or substance abuse</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Pornography and sexual sin</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Gambling</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Work addiction</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Emotional dependencies</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>Addiction is often a <strong>false refuge</strong> masking deeper pain.</p>\r\n\r\n<hr />\r\n<h3><strong>3. Anger and Rage Triggers</strong></h3>\r\n\r\n<p>Ask:</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>How quickly does he anger?</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>What sets him off&mdash;disrespect, rejection, shame?</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Is anger used to control or withdraw?</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>Unresolved anger often hides <strong>wounded masculinity</strong> and trauma.</p>\r\n\r\n<hr />\r\n<h3><strong>4. Trauma and Unhealed Pain</strong></h3>\r\n\r\n<p>Trauma is one of Satan&rsquo;s most effective entry points.</p>\r\n\r\n<p>Consider:</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>Childhood abuse or neglect</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Abandonment by a father</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Exposure to violence or humiliation</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Sexual trauma</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Public failure or shame</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>Trauma creates <strong>inner vows</strong>, self‑accusations, and distorted beliefs about God.</p>\r\n\r\n<hr />\r\n<h2><strong>Common Accusations to Address in Prayer</strong></h2>\r\n\r\n<p>In the Courts of Heaven, accusations matter. They usually fall into three categories:</p>\r\n\r\n<h3><strong>1. Accusations Against Self</strong></h3>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>&ldquo;I am broken.&rdquo;</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>&ldquo;I will never change.&rdquo;</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>&ldquo;I am not worthy.&rdquo;</p>\r\n\t</li>\r\n</ul>\r\n\r\n<h3><strong>2. Accusations Against God</strong></h3>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>&ldquo;God failed me.&rdquo;</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>&ldquo;God is unfair.&rdquo;</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>&ldquo;If God cared, this wouldn&rsquo;t have happened.&rdquo;</p>\r\n\t</li>\r\n</ul>\r\n\r\n<h3><strong>3. Accusations Against Others</strong></h3>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>&ldquo;They ruined my life.&rdquo;</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>&ldquo;I cannot forgive.&rdquo;</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>&ldquo;They owe me.&rdquo;</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>These accusations <strong>sustain legal ground</strong> for spiritual oppression.</p>\r\n\r\n<hr />\r\n<h2><strong>Dominant Strongholds Affecting Men Today</strong></h2>\r\n\r\n<h3><strong>1. False Information About God</strong></h3>\r\n\r\n<p>Many men believe:</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>God is distant</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>God is angry</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>God only accepts &ldquo;perfect&rdquo; people</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>This creates <strong>fear instead of sonship</strong>.</p>\r\n\r\n<hr />\r\n<h3><strong>2. Trauma-Based Identity</strong></h3>\r\n\r\n<p>Men begin to define themselves by:</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>What happened to them</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>What was done to them</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>What they lost</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>Rather than who they are in Christ.</p>\r\n\r\n<hr />\r\n<h3><strong>3. Legalism and Religious Control</strong></h3>\r\n\r\n<p>Some men were wounded by:</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>Harsh church environments</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Performance-based faith</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Narrow theological boxes that deny God&rsquo;s power</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>This creates rebellion, cynicism, or spiritual paralysis.</p>\r\n\r\n<hr />\r\n<h3><strong>4. Anti-God Ideologies</strong></h3>\r\n\r\n<p>Common modern systems include:</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>Atheism</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Humanism</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>New Age spirituality</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Radical autonomy (&ldquo;I answer to no one&rdquo;)</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>These ideologies blind men while promising freedom.</p>\r\n\r\n<hr />\r\n<h2><strong>Your Role as an Intercessor</strong></h2>\r\n\r\n<p>You are not called to accuse&mdash;you are called to <strong>appeal</strong>.</p>\r\n\r\n<blockquote>\r\n<p><em>&ldquo;Be alert&hellip; your enemy the devil prowls around like a roaring lion.&rdquo;</em> &mdash; <strong>1 Peter 5:8</strong></p>\r\n</blockquote>\r\n\r\n<p>Intercession means:</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>Asking God to <strong>open eyes</strong></p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Cancelling agreements with darkness</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Silencing accusations through the blood of Jesus</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Calling men back to identity, truth, and sonship</p>\r\n\t</li>\r\n</ul>\r\n\r\n<hr />\r\n<h2><strong>Man Talk Takeaway</strong></h2>\r\n\r\n<p>Before you pray loudly&mdash;<strong>pray wisely</strong>.<br />\r\nBefore you confront behavior&mdash;<strong>discern the root</strong>.<br />\r\nBefore you demand repentance&mdash;<strong>ask God to open eyes</strong>.</p>\r\n\r\n<p>True freedom begins when blindness is removed.</p>",
+    "is_published": true,
+    "created_at": "2026-02-03T14:21:48.214Z",
+    "updated_at": "2026-02-03T19:54:22.694Z"
+  }
+},
+{
+  "model": "church.book",
+  "pk": 6,
+  "fields": {
+    "title": "Altars | The Gate of Heaven",
+    "slug": "altars-the-gate-of-heaven",
+    "author": "Pst Dr Nellie Shani",
+    "cover_image": "books/BOOKS2_FhERuMV.jpeg",
+    "image_cropping": "190,0,607,627",
+    "description": "Discover why God may reject your prayer altar and how to raise altars that attract His presence. Learn key principles from Pastor Nellie Shani’s Altars: The Gate of Heaven.",
+    "review": "<p>EVER wondered why your prayer altar seems inactive or ineffective? Pastor Nellie Shani&rsquo;s book <em>Altars: The Gate of Heaven</em> (Spiritual Warfare Series, Vol. 11) explains why some altars fail and how believers can raise ones that attract God&rsquo;s presence.</p>\r\n\r\n<p>Altars are God&rsquo;s chosen way of communication, producing a pleasing aroma and serving as a meeting point between heaven and earth. They even fight on our behalf, as seen in 1 Samuel 5, where the Ark of the Covenant humbled Dagon in enemy territory.</p>\r\n\r\n<p>God may reject prayer altars for three main reasons:</p>\r\n\r\n<ol>\r\n\t<li>\r\n\t<p><strong>Another Altar Is Speaking</strong> &ndash; Unaddressed ancestral or idolatrous altars can block a new one (Judges 6).</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>The Wrong Sacrifice</strong> &ndash; Cain&rsquo;s offering was rejected; New Testament altars require the blood of Jesus.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Practicing Idolatry</strong> &ndash; Anything taking God&rsquo;s place weakens the altar.</p>\r\n\t</li>\r\n</ol>\r\n\r\n<p>Pastor Nellie Shani, Founder and CEO of Breaking Barriers International (BBI), has authored multiple books on spiritual warfare, helping believers deepen their prayer life.</p>",
+    "whatsapp_number": "+254716703508",
+    "is_published": true,
+    "created_at": "2026-02-03T11:49:40.221Z",
+    "updated_at": "2026-02-03T11:49:40.221Z"
+  }
+},
+{
+  "model": "church.book",
+  "pk": 7,
+  "fields": {
+    "title": "17 Kajiado Pastors Receive Life-Changing Spiritual Warfare Book",
+    "slug": "17-kajiado-pastors-receive-life-changing-spiritual-warfare-book",
+    "author": "BBI",
+    "cover_image": "books/book-Life-1024x741_1_ICVNvxs.jpg.300x300RED.jpg",
+    "image_cropping": "78,0,222,217",
+    "description": "Seventeen Kajiado pastors receive Pastor Nellie’s Breaking Invisible Barriers, learning to overcome spiritual struggles through the power of the Cross.",
+    "review": "<p><strong>SEVENTEEN</strong> pastors from Kajiado are the latest recipients of Pastor Nellie&rsquo;s transformative spiritual warfare book, <em>Breaking Invisible Barriers: The Power of the Cross</em>. The book, priced at Ksh 1,000, is available at BBI Apex Court No. 10 on Ngong Rd and online via Amazon.</p>\r\n\r\n<p>Pastor Nellie says many Christians struggle daily, blocked by &ldquo;invisible barriers&rdquo; that prevent them from manifesting God&rsquo;s promises. &ldquo;They are fighting something they do not understand, as if something invisible stops their progress,&rdquo; she explains.</p>\r\n\r\n<p>The pastors attended a special teaching session at Glory Tabernacle Church in Inkinye, focusing on generational curses and spiritual deliverance. Pastor Johnson Lesiamo of Jesus Is Able Deliverance Ministries said the teaching challenged him to preach with a fresh perspective and emphasized the importance of deliverance even for ministers.</p>\r\n\r\n<p>Pastor Nellie highlights that these barriers are curses, but through the Cross of Calvary, believers can break free. She led prayers of deliverance during the session, empowering attendees to walk in victory.</p>",
+    "whatsapp_number": "+254716703508",
+    "is_published": true,
+    "created_at": "2026-02-03T12:02:30.614Z",
+    "updated_at": "2026-02-03T12:02:30.614Z"
+  }
+},
+{
+  "model": "church.book",
+  "pk": 8,
+  "fields": {
+    "title": "Breaking Financial Curses | Living an Abundant Life",
+    "slug": "breaking-financial-curses-living-an-abundant-life",
+    "author": "Pst. Nellie Shani",
+    "cover_image": "books/financia.jpg",
+    "image_cropping": "0,0,600,900",
+    "description": "Discover why many Christians struggle in poverty and learn how to break barriers to live a life of God’s abundant provision and blessing.",
+    "review": "<p>Since it is God&#39;s desire to give generously to His children, why are so many of His children languishing in poverty? Jesus said that He came so that we may have abundant life. Abundance is not going to bed hungry, or not being able to pay for my children&#39;s education, or not having house- rent. Abundance is being amply supplied for by my heavenly Father! 2 Corinthians 9:8 says, &quot;And God is able to make all grace abound to you, so that in all things at all times, having all that you need, you will abound in every good work.&quot; This book attempts to identify some of the barriers that may be standing in the way of many well-meaning and diligent Christians.</p>",
+    "whatsapp_number": "+254716703508",
+    "is_published": true,
+    "created_at": "2026-02-03T12:10:44.979Z",
+    "updated_at": "2026-02-03T12:10:44.979Z"
+  }
+},
+{
+  "model": "church.childrensbread",
+  "pk": 2,
+  "fields": {
+    "title": "Forgive to Be Free: Unlock Your Healing and Deliverance Today",
+    "slug": "forgive-to-be-free-unlock-your-healing-and-deliverance-today",
+    "summary": "Is unforgiveness holding you back from complete healing and deliverance? Discover why letting go of past hurts is essential for spiritual, emotional, and physical freedom.",
+    "author_name": "BBI",
+    "image": "childrens_bread/Whisk_32fcf194bd96f298200497b70f8bc559dr.jpeg",
+    "image_cropping": "436,66,1194,632",
+    "body": "<p>Are there people who hurt, betrayed, or abandoned you, and you haven&rsquo;t forgiven them? Unforgiveness is more than just a feeling&mdash;it&rsquo;s a spiritual block that can hinder your healing and deliverance.</p>\r\n\r\n<p>Even in the Bible, we see the consequences of broken relationships. When Adam and Eve disobeyed God, they were removed from the Garden of Eden. While it seemed like punishment, it was actually a <strong>blessing in disguise</strong>. Remaining in the garden would have allowed them to eat from the Tree of Life while in sin, keeping them in bondage forever.</p>\r\n\r\n<p>God&rsquo;s nature is <strong>forgiveness</strong>, and He calls us to reflect this in our lives. His love, expressed through Jesus Christ, gives us the opportunity to forgive and be forgiven.</p>\r\n\r\n<hr />\r\n<h3><strong>Why Unforgiveness Harms You</strong></h3>\r\n\r\n<p>Holding onto past hurts does more than weigh you down emotionally&mdash;it has spiritual consequences. Here&rsquo;s how unforgiveness can affect your life:</p>\r\n\r\n<h4><strong>1. Denying God&rsquo;s Nature in Your Life</strong></h4>\r\n\r\n<p>God&rsquo;s nature is forgiveness. Ephesians 5:1-2 tells us:</p>\r\n\r\n<blockquote>\r\n<p>&ldquo;Be imitators of God, as beloved children. Walk in love, as Christ loved us and gave himself up for us.&rdquo;</p>\r\n</blockquote>\r\n\r\n<p>When we refuse to forgive, we block God&rsquo;s love from fully operating in our hearts and deny His work in reconciling us to Him.</p>\r\n\r\n<hr />\r\n<h4><strong>2. Breaking Biblical Principles</strong></h4>\r\n\r\n<p>Jesus made it clear:</p>\r\n\r\n<blockquote>\r\n<p>&ldquo;For if you forgive others their sins, your heavenly Father will also forgive you. But if you do not forgive others, your Father will not forgive your sins.&rdquo; &mdash; Matthew 6:14-15</p>\r\n</blockquote>\r\n\r\n<p>Forgiveness is not optional&mdash;it&rsquo;s a requirement for receiving God&rsquo;s grace and mercy. Without it, our prayers may be hindered, and our spiritual growth stunted.</p>\r\n\r\n<hr />\r\n<h4><strong>3. Opening Doors to Tormenting Spirits</strong></h4>\r\n\r\n<p>Unforgiveness is like leaving a wound open&mdash;spiritual forces can exploit it. Matthew 18:28-35 warns that holding grudges allows tormenting spirits to attach themselves to us, leading to suspicion, bitterness, anger, and depression.</p>\r\n\r\n<blockquote>\r\n<p>&ldquo;Unforgiveness is like a carcass that attracts flies.&rdquo; &mdash; Matthew 24:28</p>\r\n</blockquote>\r\n\r\n<p>To remove the &ldquo;flies,&rdquo; we must first remove the cause&mdash;the unforgiveness in our hearts.</p>\r\n\r\n<hr />\r\n<h4><strong>4. Blocking Your Blessings</strong></h4>\r\n\r\n<p>Harboring resentment spiritually burdens you more than those who hurt you. Each memory of betrayal or hurt triggers stress, discomfort, and emotional pain.</p>\r\n\r\n<p>Unforgiveness is like <strong>drinking poison and expecting your enemy to die</strong>&mdash;it affects you, not them. Letting go frees your heart and opens doors to blessings, healing, and deliverance.</p>\r\n\r\n<p>Ephesians 1:7-8 reminds us:</p>\r\n\r\n<blockquote>\r\n<p>&ldquo;In Him we have redemption through His blood, the forgiveness of sins, in accordance with the riches of God&rsquo;s grace that He lavished on us.&rdquo;</p>\r\n</blockquote>\r\n\r\n<hr />\r\n<h3><strong>How Unforgiveness Blocks Healing and Deliverance</strong></h3>\r\n\r\n<p>Sometimes, persistent struggles in life are rooted in unforgiveness. Bitterness toward others&mdash;past betrayals, workplace challenges, or locked doors&mdash;can subconsciously block progress and prevent breakthroughs.</p>\r\n\r\n<p>Forgiveness draws us closer to God and breaks chains set by the enemy. Psalm 103:3 says:</p>\r\n\r\n<blockquote>\r\n<p>&ldquo;He forgives all your sins and heals all your diseases.&rdquo;</p>\r\n</blockquote>\r\n\r\n<p>Even Jesus and Stephen forgave their persecutors. Refusing forgiveness not only prolongs our pain but can negatively impact our relationships and mental health.</p>\r\n\r\n<hr />\r\n<h3><strong>The Spiritual and Physical Benefits of Forgiveness</strong></h3>\r\n\r\n<p>Forgiveness is not just a spiritual principle&mdash;it affects your emotional, mental, and physical well-being:</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>Relieves stress and anxiety</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Frees your heart from resentment</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Improves relationships</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Opens the door for blessings and breakthroughs</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Strengthens your connection with God</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>Luke 11:4 emphasizes the link between forgiving others and receiving God&rsquo;s forgiveness:</p>\r\n\r\n<blockquote>\r\n<p>&ldquo;Forgive us our sins, as we forgive those who sin against us.&rdquo;</p>\r\n</blockquote>\r\n\r\n<p>Forgiveness is <strong>essential for complete healing and deliverance</strong>, and it empowers us to live in freedom.</p>\r\n\r\n<hr />\r\n<h3><strong>Practical Steps to Let Go and Heal</strong></h3>\r\n\r\n<ol>\r\n\t<li>\r\n\t<p><strong>Identify the hurts</strong>: Reflect on past pain and betrayals.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Pray for the Holy Spirit&rsquo;s help</strong>: True forgiveness is a spiritual act.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Forgive others intentionally</strong>: Release anger, resentment, and desire for revenge.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Forgive yourself</strong>: Let go of guilt, regret, and self-condemnation.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Seek reconciliation if possible</strong>: Restore broken relationships where safe.</p>\r\n\t</li>\r\n</ol>\r\n\r\n<hr />\r\n<h3><strong>Final Thoughts</strong></h3>\r\n\r\n<p>Unforgiveness is a spiritual, emotional, and physical burden. To experience <strong>complete healing and deliverance</strong>, we must release past hurts, forgive sincerely, and allow God&rsquo;s love to flow through us.</p>\r\n\r\n<p>When we forgive, we align with God&rsquo;s nature, receive His blessings, and walk in freedom. Let go today, and let God heal your heart completely.</p>",
+    "is_published": true,
+    "created_at": "2026-02-03T06:34:13.225Z",
+    "updated_at": "2026-02-03T09:33:12.128Z"
+  }
+},
+{
+  "model": "church.childrensbread",
+  "pk": 3,
+  "fields": {
+    "title": "Why Jesus Made You Rich: 3 False Beliefs About Wealth",
+    "slug": "why-jesus-made-you-rich-3-false-beliefs-about-wealth",
+    "summary": "Discover the truth about prosperity in God’s Word. Learn 3 common misconceptions about wealth, why God desires you to be rich, and how to use your blessings to build His kingdom.",
+    "author_name": "BBI",
+    "image": "childrens_bread/9marks.org-2.png",
+    "image_cropping": "128,0,965,627",
+    "body": "<p>Many Christians struggle with misconceptions about wealth, believing that God wants them to live in poverty or that riches are inherently wrong. The Bible, however, shows that God&rsquo;s plan includes prosperity&mdash;not just for our comfort, but so we can further His kingdom.</p>\r\n\r\n<p>The promises in <strong>Galatians 3:16</strong> were not only given to Abraham&mdash;they are for you as well. If you belong to Christ, you are a seed of Abraham, and His blessings through Jesus Christ are yours. God promised Abraham that he would be prosperous, and even Abraham&rsquo;s cousin Lot became wealthy. Jesus Himself benefited from the anointing of wealth on His family.</p>\r\n\r\n<blockquote>\r\n<p><em>Galatians 3:16</em> &ndash; &ldquo;The promises were spoken to Abraham and to his seed. Scripture does not say &lsquo;unto seeds&rsquo; meaning many people, but to your seed meaning one person, who is Christ.&rdquo;</p>\r\n</blockquote>\r\n\r\n<p>When you prosper, those around you are also blessed. One reason Jesus was crucified was to make us rich:</p>\r\n\r\n<blockquote>\r\n<p><em>2 Corinthians 8:9</em> &ndash; &ldquo;For you know the grace of our Lord Jesus Christ, that though He was rich, yet for your sake He became poor, so that you through His poverty might become rich.&rdquo;</p>\r\n</blockquote>\r\n\r\n<blockquote>\r\n<p><em>2 Peter 1:3</em> &ndash; &ldquo;His divine power has given us everything we need for a godly life through our knowledge of Him who called us by His own glory and goodness.&rdquo;</p>\r\n</blockquote>\r\n\r\n<p>If a child does not know they are an heir, they may live in poverty. God has given us the ability to create wealth:</p>\r\n\r\n<blockquote>\r\n<p><em>Deuteronomy 8:18</em> &ndash; &ldquo;But remember the LORD your God, for it is He who gives you the ability to produce wealth, and so confirms His covenant, which He swore to your ancestors.&rdquo;</p>\r\n</blockquote>\r\n\r\n<p>God&rsquo;s covenant with Abraham was meant to bring prosperity, so living in poverty often reflects a misunderstanding of God&rsquo;s promises.</p>\r\n\r\n<blockquote>\r\n<p><em>Genesis 12:2</em> &ndash; &ldquo;I will make you into a great nation, and I will bless you; I will make your name great, and you will be a blessing.&rdquo;</p>\r\n</blockquote>\r\n\r\n<p>Do you see yourself as a child of Abraham, a seed of promise?</p>\r\n\r\n<hr />\r\n<h3>3 Misplaced Beliefs About Prosperity</h3>\r\n\r\n<p>Here are three common misconceptions about wealth:</p>\r\n\r\n<p><strong>1. God Can Make Me Poor to Teach Me Something</strong><br />\r\nWhat loving parent allows their child to suffer poverty as a lesson?</p>\r\n\r\n<blockquote>\r\n<p><em>Matthew 7:11</em> &ndash; &ldquo;If you, then, though you are evil, know how to give good gifts to your children, how much more will your Father in heaven give good gifts to those who ask Him?&rdquo;</p>\r\n</blockquote>\r\n\r\n<p>God&rsquo;s discipline is not about making us poor; His gifts are for our good.</p>\r\n\r\n<p><strong>2. Being Rich Gives the Wrong Impression</strong><br />\r\nSome fear wealth will make people think they are dishonest. Remember, God only blesses those who value prosperity. You can be extremely rich, blameless, and still fear God, as Abraham and Job demonstrated.</p>\r\n\r\n<p><strong>3. Jesus Was Poor as an Example</strong><br />\r\nJesus became poor so that we might become rich:</p>\r\n\r\n<blockquote>\r\n<p><em>2 Corinthians 8:9</em> &ndash; &ldquo;Through His poverty, we might become rich.&rdquo;</p>\r\n</blockquote>\r\n\r\n<p>God calls us to His glory and goodness. The cross did not leave us in poverty&mdash;it secured our abundance.</p>\r\n\r\n<hr />\r\n<h3>Why God Gives Us Wealth</h3>\r\n\r\n<p>God&rsquo;s purpose for wealth goes beyond personal comfort&mdash;it&rsquo;s for His kingdom. The Israelites received silver, gold, and clothing during their 40-year wilderness journey to prepare for building the tabernacle:</p>\r\n\r\n<blockquote>\r\n<p><em>Exodus 12:35</em> &ndash; &ldquo;The Israelites did as Moses instructed and asked the Egyptians for articles of silver and gold and for clothing.&rdquo;<br />\r\n<em>Exodus 25:8</em> &ndash; &ldquo;Then have them make a sanctuary for Me, and I will dwell among them.&rdquo;<br />\r\n<em>Exodus 29:5</em> &ndash; &ldquo;During the forty years that I led you through the wilderness, your clothes did not wear out, nor did the sandals on your feet.&rdquo;</p>\r\n</blockquote>\r\n\r\n<p>When the tabernacle was built, the people gave willingly from abundance:</p>\r\n\r\n<blockquote>\r\n<p><em>Exodus 35:21</em> &ndash; &ldquo;And everyone whose heart moved them came and brought an offering to the LORD for the work on the tent of meeting.&rdquo;</p>\r\n</blockquote>\r\n\r\n<hr />\r\n<h3>The Willingness of the Heart</h3>\r\n\r\n<p>God sees the willingness of our hearts. He blesses generosity and obedience:</p>\r\n\r\n<blockquote>\r\n<p><em>Exodus 36:5</em> &ndash; &ldquo;The people are bringing more than enough for doing the work the LORD commanded to be done.&rdquo;</p>\r\n</blockquote>\r\n\r\n<p>Just as a farmer anticipates a harvest with joy, we should give willingly and abundantly. The Israelites prospered because they recognized their wealth came from God, not themselves.</p>\r\n\r\n<p>God wants us to live a <strong>supernatural, abundant life</strong>&mdash;not merely to survive, but to thrive and advance His kingdom.</p>",
+    "is_published": true,
+    "created_at": "2026-02-03T06:42:40.689Z",
+    "updated_at": "2026-02-03T09:31:28.661Z"
+  }
+},
+{
+  "model": "church.childrensbread",
+  "pk": 6,
+  "fields": {
+    "title": "Where Do Curses Get Their Strength?",
+    "slug": "where-do-curses-get-their-strength",
+    "summary": "Discover where curses get their strength, why prayer alone may not break cycles of hardship, and how biblical legal ground affects lasting freedom.",
+    "author_name": "BBI",
+    "image": "childrens_bread/lumina-enhanced-1770150477052.jpg",
+    "image_cropping": "22,0,1658,1226",
+    "body": "<p>Why Do Some Believers Struggle Despite Prayer and Fasting?</p>\r\n\r\n<p><strong>MANY</strong> believers pray fervently, fast diligently, and engage in intense spiritual warfare&mdash;yet still experience repeated cycles of hardship, sickness, financial struggle, or broken relationships.</p>\r\n\r\n<p>This raises a critical and uncomfortable question:</p>\r\n\r\n<p><strong>If prayer works, where is the problem?</strong></p>\r\n\r\n<p>Scripture reveals that curses do not operate randomly. They function within <strong>spiritual laws, legal grounds, and moral conditions</strong>. Until those foundations are understood and addressed, spiritual cycles can persist despite sincere devotion.</p>\r\n\r\n<p>Freedom begins with understanding <strong>where curses get their strength</strong>.</p>\r\n\r\n<hr />\r\n<h2><strong>How Curses Gain Spiritual Access</strong></h2>\r\n\r\n<p>Evil spirits cannot afflict people arbitrarily. They require <strong>legal ground</strong>.</p>\r\n\r\n<p>Jesus explained this spiritual principle clearly:</p>\r\n\r\n<blockquote>\r\n<p>&ldquo;Wherever there is a carcass, there the vultures will gather.&rdquo; &mdash; <em>Matthew 24:28</em></p>\r\n</blockquote>\r\n\r\n<p>Demons are drawn to spiritual &ldquo;carcasses&rdquo;&mdash;conditions that give them permission to operate. These include:</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>Unrepented sin</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Guilt and condemnation</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Disobedience to God&rsquo;s commands</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Covenant violations</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Ungodly agreements (spoken or symbolic)</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>Remove the carcass, and the vultures lose access.</p>\r\n\r\n<hr />\r\n<h2><strong>What Is a Curse? A Biblical Definition</strong></h2>\r\n\r\n<p>A <strong>curse</strong> is not superstition or bad luck. Biblically, a curse is:</p>\r\n\r\n<blockquote>\r\n<p><strong>A spoken word or divine judgment, empowered by spiritual authority, that produces harm, limitation, or misfortune.</strong></p>\r\n</blockquote>\r\n\r\n<p>Curses may originate from:</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p><strong>Human speech</strong> spoken in anger, jealousy, bitterness, or resentment</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Rituals or symbolic acts</strong> that invoke spiritual authority</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><strong>Divine judgment</strong> resulting from covenant violation</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>The defining factors are <strong>intent, authority, and legal justification</strong>.</p>\r\n\r\n<hr />\r\n<h2><strong>Curses as Consequences for Wrongdoing</strong></h2>\r\n\r\n<p>In Scripture, curses often function as <strong>retribution for injustice or disobedience</strong>. They are not arbitrary punishments but legal outcomes.</p>\r\n\r\n<p>Common manifestations include:</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>Chronic or recurring illness</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Financial instability or loss</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Relationship breakdowns</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Persistent failure despite effort</p>\r\n\t</li>\r\n</ul>\r\n\r\n<h3><strong>Biblical Example: Gehazi</strong></h3>\r\n\r\n<p>Elisha&rsquo;s judgment on Gehazi was severe:</p>\r\n\r\n<blockquote>\r\n<p>&ldquo;The leprosy of Naaman shall cling to you and to your descendants forever.&rdquo; &mdash; <em>2 Kings 5:27</em></p>\r\n</blockquote>\r\n\r\n<p>This curse did not stop with Gehazi. It legally extended to his bloodline, revealing how unresolved sin can authorize generational consequences.</p>\r\n\r\n<hr />\r\n<h2><strong>Curses Affect More Than Individuals</strong></h2>\r\n\r\n<p>The Bible shows that curses can operate at multiple levels:</p>\r\n\r\n<h3><strong>Families &amp; Generations</strong></h3>\r\n\r\n<blockquote>\r\n<p>&ldquo;Punishing the children for the sin of the parents to the third and fourth generation&hellip;&rdquo; &mdash; <em>Exodus 20:5</em></p>\r\n</blockquote>\r\n\r\n<p>Generational patterns often reflect unresolved covenant breaches rather than coincidence.</p>\r\n\r\n<h3><strong>Communities &amp; Nations</strong></h3>\r\n\r\n<p>When sin becomes collective, consequences become collective. Scripture repeatedly links national decline to moral and spiritual rebellion.</p>\r\n\r\n<h3><strong>Objects &amp; Property</strong></h3>\r\n\r\n<blockquote>\r\n<p>&ldquo;Do not bring a cursed thing into your house&hellip;&rdquo; &mdash; <em>Deuteronomy 7:26</em></p>\r\n</blockquote>\r\n\r\n<p>Certain objects, possessions, or inheritances can carry spiritual defilement that affects those who own or interact with them.</p>\r\n\r\n<hr />\r\n<h2><strong>Do Curses Come from Satan or from God?</strong></h2>\r\n\r\n<p>One of the most dangerous misconceptions is blaming Satan for every curse.</p>\r\n\r\n<h3><strong>Biblical Truth</strong></h3>\r\n\r\n<p>Curses originate from <strong>God&rsquo;s covenant justice</strong>, not from Satan.</p>\r\n\r\n<p>Satan does not create curses&mdash;he <strong>exploits what God has already permitted</strong> due to disobedience.</p>\r\n\r\n<blockquote>\r\n<p>&ldquo;The LORD will send on you curses, confusion and rebuke&hellip;&rdquo; &mdash; <em>Deuteronomy 28:20</em></p>\r\n</blockquote>\r\n\r\n<p>This understanding shifts believers from fighting demons blindly to addressing <strong>root spiritual causes</strong>.</p>\r\n\r\n<hr />\r\n<h2><strong>Signs You May Be Under a Curse</strong></h2>\r\n\r\n<p>Discernment is essential, but common indicators include:</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>Repeated, unexplained misfortunes</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Cycles of failure despite prayer and effort</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Persistent sickness or emotional heaviness</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Strife, conflict, and relational breakdowns</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Patterns that repeat across generations</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>These signs often point to unresolved legal issues rather than spiritual weakness.</p>\r\n\r\n<hr />\r\n<h2><strong>Where Curses Truly Get Their Strength</strong></h2>\r\n\r\n<p><strong>Curses draw their strength from guilt and legitimate cause</strong></p>\r\n\r\n<blockquote>\r\n<p>&ldquo;An undeserved curse will not come to rest.&rdquo; &mdash; <em>Proverbs 26:2</em></p>\r\n</blockquote>\r\n\r\n<p>A curse only lands where there is <strong>justification</strong>.<br />\r\nGuilt&mdash;whether personal or inherited&mdash;creates spiritual vulnerability.</p>\r\n\r\n<p>Remove the cause, and the curse loses its authority.</p>\r\n\r\n<hr />\r\n<h2><strong>Biblical Case Study: Aaron and the Golden Calf</strong></h2>\r\n\r\n<p>Aaron&rsquo;s idolatry in Exodus 32:4 did not end at repentance alone. Its consequences surfaced later when his sons died prematurely:</p>\r\n\r\n<blockquote>\r\n<p><em>Leviticus 10</em></p>\r\n</blockquote>\r\n\r\n<p>This reveals a sobering truth:<br />\r\n<strong>Curses can outlive the original sin if the legal ground is not fully addressed.</strong></p>\r\n\r\n<hr />\r\n<h2><strong>Key Takeaway</strong></h2>\r\n\r\n<p>Prayer, fasting, and warfare are powerful&mdash;but they are not substitutes for repentance, alignment, and removing legal ground.</p>\r\n\r\n<p>Lasting freedom comes when believers:</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>Identify the spiritual cause</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Remove guilt and disobedience</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Align with God&rsquo;s covenant truth</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Apply the finished work of Christ legally and spiritually</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>Only then do curses lose their strength.</p>",
+    "is_published": true,
+    "created_at": "2026-02-03T12:51:25.851Z",
+    "updated_at": "2026-02-03T20:29:13.592Z"
+  }
+},
+{
+  "model": "church.childrensbread",
+  "pk": 7,
+  "fields": {
+    "title": "10 Powerful Fruits of Deliverance for Every Believer",
+    "slug": "10-powerful-fruits-of-deliverance-for-every-believer",
+    "summary": "Discover the 10 fruits of deliverance and how freedom in Christ produces healing, joy, purpose, and lasting transformation in the believer’s life.",
+    "author_name": "BBI",
+    "image": "childrens_bread/lumina-enhanced-1770150297522.jpg",
+    "image_cropping": "17,0,1652,1226",
+    "body": "<h3><strong>Deliverance: The Children&rsquo;s Bread and Covenant Inheritance</strong></h3>\r\n\r\n<p><strong>DELIVERANCE</strong> is God&rsquo;s gracious gift of freedom through Jesus Christ. It is freedom from sin, demonic oppression, fear, and spiritual bondage&mdash;and it is <strong>the children&rsquo;s bread</strong>.</p>\r\n\r\n<p>When the Canaanite woman approached Jesus for her daughter&rsquo;s healing, He responded:</p>\r\n\r\n<blockquote>\r\n<p>&ldquo;It is not right to take the children&rsquo;s bread and throw it to the dogs.&rdquo; &mdash; <em>Matthew 15:26</em></p>\r\n</blockquote>\r\n\r\n<p>With this statement, Jesus revealed a powerful truth: <strong>deliverance is the rightful inheritance of God&rsquo;s children</strong>. Just as bread sustains physical life, deliverance is essential for victorious Christian living.</p>\r\n\r\n<p>Deliverance is a <strong>covenant provision</strong>, sealed by the blood of Jesus and rooted in the Finished Work of the Cross. Through His death and resurrection, Christ broke the power of sin, sickness, and Satan, granting believers authority to walk in freedom.</p>\r\n\r\n<blockquote>\r\n<p>&ldquo;He cancelled the charge of our legal indebtedness&hellip; disarming the powers and authorities.&rdquo; &mdash; <em>Colossians 2:14&ndash;15</em></p>\r\n</blockquote>\r\n\r\n<p>Deliverance affirms our identity as sons and daughters&mdash;not slaves to fear or oppression (Romans 8:15&ndash;17). It restores joy, peace, and fruitfulness, enabling believers to live from the Father&rsquo;s table daily.</p>\r\n\r\n<p>Like a tree known by its fruit (Matthew 7:17&ndash;18), <strong>true deliverance is revealed by the transformation that follows</strong>.</p>\r\n\r\n<p>So what are the unmistakable fruits that testify a believer has truly been set free?</p>\r\n\r\n<hr />\r\n<h2><strong>1. Freedom from Bondage</strong></h2>\r\n\r\n<p>The first fruit of deliverance is <strong>genuine freedom</strong>.</p>\r\n\r\n<blockquote>\r\n<p>&ldquo;Therefore if the Son makes you free, you shall be free indeed.&rdquo; &mdash; <em>John 8:36</em></p>\r\n</blockquote>\r\n\r\n<p>Bondage may come through sin, addictions, fear, trauma, generational curses, or lack of self-control. When Christ delivers, those chains are broken&mdash;internally and externally.</p>\r\n\r\n<blockquote>\r\n<p>&ldquo;For sin shall not have dominion over you.&rdquo; &mdash; <em>Romans 6:14</em><br />\r\n&ldquo;It is for freedom that Christ has set us free.&rdquo; &mdash; <em>Galatians 5:1</em></p>\r\n</blockquote>\r\n\r\n<p>True deliverance produces a lasting walk in liberty.</p>\r\n\r\n<hr />\r\n<h2><strong>2. A Renewed Mind</strong></h2>\r\n\r\n<p>Deliverance transforms the way a believer thinks. Many strongholds begin in the mind&mdash;lies, fear, shame, and condemnation.</p>\r\n\r\n<blockquote>\r\n<p>&ldquo;Be transformed by the renewing of your mind.&rdquo; &mdash; <em>Romans 12:2</em></p>\r\n</blockquote>\r\n\r\n<p>After deliverance, the old mindset of defeat is replaced with faith, hope, and obedience. You are under <strong>new management</strong>, and your mind becomes fertile ground for God&rsquo;s truth.</p>\r\n\r\n<hr />\r\n<h2><strong>3. Joy and Peace Restored</strong></h2>\r\n\r\n<p>One of the sweetest fruits of deliverance is <strong>supernatural joy and peace</strong>.</p>\r\n\r\n<blockquote>\r\n<p>&ldquo;The kingdom of God is&hellip; righteousness and peace and joy in the Holy Spirit.&rdquo; &mdash; <em>Romans 14:17</em></p>\r\n</blockquote>\r\n\r\n<p>Oppression steals peace, but deliverance restores God&rsquo;s shalom.</p>\r\n\r\n<blockquote>\r\n<p>&ldquo;You have turned my mourning into dancing.&rdquo; &mdash; <em>Psalm 30:11</em></p>\r\n</blockquote>\r\n\r\n<p>Peace and joy are unmistakable signs of a liberated soul.</p>\r\n\r\n<hr />\r\n<h2><strong>4. Victory Over Sin</strong></h2>\r\n\r\n<p>Deliverance produces holiness, not just emotional relief.</p>\r\n\r\n<blockquote>\r\n<p>&ldquo;Having been set free from sin&hellip; you have your fruit to holiness.&rdquo; &mdash; <em>Romans 6:22</em></p>\r\n</blockquote>\r\n\r\n<p>What once controlled the believer&mdash;anger, lust, fear, addiction&mdash;no longer dominates. This victory comes through the power of the Holy Spirit.</p>\r\n\r\n<blockquote>\r\n<p>&ldquo;Walk by the Spirit, and you will not gratify the desires of the flesh.&rdquo; &mdash; <em>Galatians 5:16</em></p>\r\n</blockquote>\r\n\r\n<hr />\r\n<h2><strong>5. Restoration of Purpose</strong></h2>\r\n\r\n<p>Satan attacks destinies, but deliverance restores divine purpose.</p>\r\n\r\n<blockquote>\r\n<p>&ldquo;He delivered us from the power of darkness and conveyed us into the kingdom of His Son.&rdquo; &mdash; <em>Colossians 1:13</em></p>\r\n</blockquote>\r\n\r\n<p>The man delivered from Legion (Mark 5:1&ndash;20) is a powerful example. Once isolated and tormented, he was restored in dignity and given an assignment:</p>\r\n\r\n<blockquote>\r\n<p>&ldquo;Go home to your friends, and tell them what great things the Lord has done for you.&rdquo; &mdash; <em>Mark 5:19</em></p>\r\n</blockquote>\r\n\r\n<p>Deliverance reactivates callings, assignments, and passion for God&rsquo;s work.</p>\r\n\r\n<hr />\r\n<h2><strong>6. The Fruit of the Spirit</strong></h2>\r\n\r\n<p>True deliverance allows the Holy Spirit to produce lasting character transformation.</p>\r\n\r\n<blockquote>\r\n<p>&ldquo;The fruit of the Spirit is love, joy, peace, patience, kindness, goodness, faithfulness, gentleness, self-control.&rdquo; &mdash; <em>Galatians 5:22&ndash;23</em></p>\r\n</blockquote>\r\n\r\n<p>Temporary freedom fades, but <strong>Spirit-produced fruit endures</strong>.</p>\r\n\r\n<hr />\r\n<h2><strong>7. Boldness in Prayer and Worship</strong></h2>\r\n\r\n<p>Oppression silences prayer, but deliverance restores spiritual boldness.</p>\r\n\r\n<blockquote>\r\n<p>&ldquo;He put a new song in my mouth.&rdquo; &mdash; <em>Psalm 40:1&ndash;3</em><br />\r\n&ldquo;In whom we have boldness and access with confidence.&rdquo; &mdash; <em>Ephesians 3:12</em></p>\r\n</blockquote>\r\n\r\n<p>Guilt and shame lift. Intimacy with God is renewed. Prayer and worship flow freely.</p>\r\n\r\n<hr />\r\n<h2><strong>8. A Living Testimony</strong></h2>\r\n\r\n<p>Deliverance produces a testimony that glorifies God.</p>\r\n\r\n<blockquote>\r\n<p>&ldquo;Go&hellip; tell them how great things the Lord has done for you.&rdquo; &mdash; <em>Mark 5:19</em></p>\r\n</blockquote>\r\n\r\n<p>Testimonies strengthen faith and advance the Kingdom.</p>\r\n\r\n<blockquote>\r\n<p>&ldquo;They overcame by the blood of the Lamb and by the word of their testimony.&rdquo; &mdash; <em>Revelation 12:11</em></p>\r\n</blockquote>\r\n\r\n<hr />\r\n<h2><strong>9. Gratitude and Thanksgiving</strong></h2>\r\n\r\n<p>A delivered heart overflows with thanksgiving.</p>\r\n\r\n<blockquote>\r\n<p>&ldquo;Oh, give thanks to the LORD, for He is good!&rdquo; &mdash; <em>Psalm 107:1</em></p>\r\n</blockquote>\r\n\r\n<p>Gratitude becomes a lifestyle because the believer remembers what it means to be rescued.</p>\r\n\r\n<hr />\r\n<h2><strong>10. A Life of Fruitfulness</strong></h2>\r\n\r\n<p>Deliverance ultimately produces <strong>fruitfulness in life and ministry</strong>.</p>\r\n\r\n<blockquote>\r\n<p>&ldquo;By this My Father is glorified, that you bear much fruit.&rdquo; &mdash; <em>John 15:8</em></p>\r\n</blockquote>\r\n\r\n<p>Where the enemy brought destruction, Christ brings abundance.</p>\r\n\r\n<blockquote>\r\n<p>&ldquo;I have come that they may have life&hellip; abundantly.&rdquo; &mdash; <em>John 10:10</em></p>\r\n</blockquote>\r\n\r\n<p>Deliverance is the gateway to abundant life.</p>\r\n\r\n<hr />\r\n<h3><strong>Deliverance: Evidence of the Kingdom of God</strong></h3>\r\n\r\n<p>Jesus declared:</p>\r\n\r\n<blockquote>\r\n<p>&ldquo;If I cast out demons with the finger of God, surely the kingdom of God has come upon you.&rdquo; &mdash; <em>Luke 11:20</em></p>\r\n</blockquote>\r\n\r\n<p><strong>Deliverance</strong>&nbsp;is proof that Christ&rsquo;s authority has displaced darkness. It is evidence that Jesus is stronger than the strongman (Luke 11:21&ndash;22) and that the <strong>reign of God is active and advancing</strong>.</p>\r\n\r\n<hr />\r\n<h3><strong>Final Thought</strong></h3>\r\n\r\n<p>Deliverance is not merely an experience&mdash;it is an <strong>entrance into a transformed life</strong>.<br />\r\nIts fruits testify that a believer has truly been set free.</p>",
+    "is_published": true,
+    "created_at": "2026-02-03T13:26:29.738Z",
+    "updated_at": "2026-02-03T20:26:00.839Z"
+  }
+},
+{
+  "model": "church.childrensbread",
+  "pk": 8,
+  "fields": {
+    "title": "Beating Relapse After Deliverance",
+    "slug": "beating-relapse-after-deliverance",
+    "summary": "Many believers experience relapse after deliverance. Learn how to stay free, resist counterattacks, and maintain lasting victory through biblical principles.",
+    "author_name": "BBI",
+    "image": "childrens_bread/lumina-enhanced-1770150018235.jpg",
+    "image_cropping": "6,11,1658,1250",
+    "body": "<h3><strong>Why Do Some People Relapse After Deliverance?</strong></h3>\r\n\r\n<p><strong>MOST</strong> people rejoice after deliverance&mdash;only to find themselves slipping back into old habits, patterns, or even worse bondage. This painful cycle raises an important question:</p>\r\n\r\n<p><strong>Why does deliverance sometimes not last?</strong></p>\r\n\r\n<p>The issue is not that deliverance failed. The issue is that <strong>many believers are never taught how to fight back</strong> when the enemy attempts a return.</p>\r\n\r\n<p>Deliverance is not the end of the battle&mdash;it is the beginning of a new way of living.</p>\r\n\r\n<hr />\r\n<h3><strong>The Biblical Warning About Relapse</strong></h3>\r\n\r\n<p>Jesus Himself warned about this danger:</p>\r\n\r\n<blockquote>\r\n<p>&ldquo;When an evil spirit leaves a person, it goes through arid places seeking rest and does not find it. Then it says, &lsquo;I will return to the house I left.&rsquo; When it arrives, it finds the house unoccupied, swept, and put in order. Then it goes and takes with it seven other spirits more wicked than itself, and they go in and live there. And the final condition of that person is worse than the first.&rdquo;<br />\r\n&mdash; <em>Matthew 12:43&ndash;45</em></p>\r\n</blockquote>\r\n\r\n<p>This explains why some people become worse after deliverance. The enemy <strong>regroups for a counterattack</strong>, and when that moment comes, the deliverance minister will not be there&mdash;you will be.</p>\r\n\r\n<p>That is why staying free requires <strong>personal responsibility, spiritual discipline, and biblical training</strong>.</p>\r\n\r\n<hr />\r\n<h3><strong>You Are Not Powerless</strong></h3>\r\n\r\n<p>The good news is this:<br />\r\nYou do not need a deliverance minister present to remain free.</p>\r\n\r\n<p>You can call on the <strong>name of Jesus Christ</strong> yourself&mdash;and He will answer.</p>\r\n\r\n<p>Christ, the life-giving Spirit, <strong>lives in you</strong>. You are no longer operating from the weaknesses of the first Adam, but from the victory of the second Adam&mdash;Jesus Christ.</p>\r\n\r\n<blockquote>\r\n<p>&ldquo;Christ in you, the hope of glory.&rdquo; &mdash; <em>Colossians 1:27</em></p>\r\n</blockquote>\r\n\r\n<p>Freedom is sustained not by external help alone, but by <strong>internal transformation</strong>.</p>\r\n\r\n<hr />\r\n<h2><strong>How to Stay Free After Deliverance</strong></h2>\r\n\r\n<p>Here are <strong>three biblical foundations</strong> that help believers remain free and overcome relapse.</p>\r\n\r\n<hr />\r\n<h3><strong>1. Renew Your Mind</strong></h3>\r\n\r\n<p>After deliverance, the fiercest battle does not happen in the heavens&mdash;it happens in the <strong>mind</strong>.</p>\r\n\r\n<p>Many people were conditioned by years of defeat, lack, fear, or addiction. Their thinking patterns&mdash;and even their words&mdash;were shaped by those experiences:</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>&ldquo;I will never change.&rdquo;</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>&ldquo;I am weak.&rdquo;</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>&ldquo;This always defeats me.&rdquo;</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>To stay free, your thinking must change.</p>\r\n\r\n<blockquote>\r\n<p>&ldquo;Do not conform to the pattern of this world, but be transformed by the renewing of your mind.&rdquo;<br />\r\n&mdash; <em>Romans 12:2</em></p>\r\n</blockquote>\r\n\r\n<p>Renewal comes through:</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>Daily reading of Scripture</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Meditation on God&rsquo;s truth</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Application of the Word to daily life</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>A renewed mind resists old lies and strengthens new freedom.</p>\r\n\r\n<hr />\r\n<h3><strong>2. Change Your Words</strong></h3>\r\n\r\n<p>The Bible teaches that words shape reality.</p>\r\n\r\n<blockquote>\r\n<p>&ldquo;As a man thinks in his heart, so is he.&rdquo; &mdash; <em>Proverbs 23:7</em><br />\r\n&ldquo;The tongue has the power of life and death.&rdquo; &mdash; <em>Proverbs 18:21</em></p>\r\n</blockquote>\r\n\r\n<p>To stay free, you must <strong>speak differently</strong>.</p>\r\n\r\n<p>Faith-filled words reinforce spiritual victory:</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>&ldquo;I am free in Christ.&rdquo;</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>&ldquo;I can resist temptation.&rdquo;</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>&ldquo;I am strong in the Lord.&rdquo;</p>\r\n\t</li>\r\n</ul>\r\n\r\n<blockquote>\r\n<p>&ldquo;Let the weak say, &lsquo;I am strong.&rsquo;&rdquo; &mdash; <em>Joel 3:10</em><br />\r\n&ldquo;God calls things that are not as though they were.&rdquo; &mdash; <em>Romans 4:17</em></p>\r\n</blockquote>\r\n\r\n<p>Your words should align with God&rsquo;s truth, not past bondage.</p>\r\n\r\n<hr />\r\n<h3><strong>3. Develop a Strong Prayer Life</strong></h3>\r\n\r\n<p>Staying free requires a shift in prayer&mdash;from emergency prayers to <strong>consistent spiritual warfare</strong>.</p>\r\n\r\n<p>Oppression thrives where prayer is weak. Freedom grows where prayer is strong.</p>\r\n\r\n<p>A delivered believer must learn to:</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>Pray daily</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Resist temptation immediately</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Command the enemy to leave</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>Declare Scripture out loud</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>Prayer keeps the house <strong>occupied</strong>&mdash;so the enemy finds no empty space to return.</p>\r\n\r\n<hr />\r\n<h3><strong>Freedom Must Be Maintained</strong></h3>\r\n\r\n<p>Deliverance cleans the house.<br />\r\nDiscipline keeps it guarded.</p>\r\n\r\n<p>Staying free is not about fear&mdash;it is about <strong>stewardship of your freedom</strong>.</p>\r\n\r\n<blockquote>\r\n<p>&ldquo;Stand firm, then, and do not let yourselves be burdened again by a yoke of slavery.&rdquo; &mdash; <em>Galatians 5:1</em></p>\r\n</blockquote>\r\n\r\n<hr />\r\n<h3><strong>When You Need Support</strong></h3>\r\n\r\n<p>Freedom is personal&mdash;but it does not have to be lonely.</p>\r\n\r\n<p>If you feel overwhelmed or need guidance, trained deliverance ministers can walk with you and help you strengthen your foundations.</p>\r\n\r\n<hr />\r\n<h3><strong>Final Encouragement</strong></h3>\r\n\r\n<p>Deliverance is not temporary relief&mdash;it is an invitation to a new life.</p>\r\n\r\n<p>When your <strong>mind is renewed</strong>, your <strong>words are aligned</strong>, and your <strong>prayer life is strong</strong>, relapse loses its power and freedom becomes your lifestyle.</p>\r\n\r\n<p>You were delivered to <strong>stay free</strong>.</p>",
+    "is_published": true,
+    "created_at": "2026-02-03T13:44:53.017Z",
+    "updated_at": "2026-02-03T20:21:24.567Z"
+  }
+},
+{
+  "model": "church.ctacard",
+  "pk": 1,
+  "fields": {
+    "quote_text": "",
+    "verse_reference": "Galatians 3:13",
+    "button1_text": "Books",
+    "button1_url": "#",
+    "button2_text": "School of Ministry",
+    "button2_url": "/school-of-ministry/",
+    "button3_text": "Partner With Us",
+    "button3_url": "/donate/",
+    "updated_at": "2026-01-26T20:49:03.469Z"
+  }
+},
+{
+  "model": "church.mensministry",
+  "pk": 1,
+  "fields": {
+    "title": "Men's Ministry",
+    "video_url": "https://www.youtube.com/watch?v=RKG-JkgzcyU",
+    "description": "The Men’s Ministry exists to raise godly men who lead with integrity, faith, and purpose—at home, in the church, and in the wider community. Grounded in biblical principles, the ministry provides a space where men can grow spiritually, build strong brotherhood, and sharpen one another through prayer, accountability, and discipleship.\r\n\r\nThrough regular fellowship meetings, Bible studies, mentorship, and outreach initiatives, we equip men to become servant leaders, responsible fathers, faithful husbands, and positive role models. The ministry also addresses real-life challenges facing men today—spiritual, emotional, family, and societal—offering biblical solutions and practical support.",
+    "is_active": true,
+    "created_at": "2026-01-27T09:04:29.315Z"
+  }
+}

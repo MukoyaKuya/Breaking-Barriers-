@@ -6,6 +6,13 @@ import sys
 
 def main():
     """Run administrative tasks."""
+    # Check if .env exists and load it
+    try:
+        import dotenv
+        dotenv.load_dotenv(os.path.join(os.path.dirname(__file__), '.env'))
+    except ImportError:
+        pass
+        
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'church_app.settings')
     try:
         from django.core.management import execute_from_command_line

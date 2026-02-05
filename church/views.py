@@ -33,6 +33,9 @@ from .query_utils import (
     get_cached_hero_settings,
     get_cached_cta_card,
     get_cached_about_page,
+    get_cached_faqs,
+    get_cached_sidebar_promos,
+    get_cached_verse_of_the_day,
     get_optimized_news_items,
     get_optimized_testimonials,
     get_optimized_gallery_items,
@@ -41,7 +44,6 @@ from .query_utils import (
     get_optimized_verse_of_the_day,
     get_optimized_info_cards,
     get_optimized_faqs,
-    get_optimized_sidebar_promos,
     get_optimized_sidebar_promos,
     get_optimized_word_of_truth_list,
     get_optimized_man_talk_list,
@@ -189,10 +191,10 @@ def news_list_view(request):
 def info_card_detail_view(request, slug):
     """Detail view for Hero Info Cards (Children's Bread, News, Word of Truth)."""
     card = get_object_or_404(InfoCard, slug=slug, is_active=True)
-    faqs = get_optimized_faqs()
-    sidebar_promos = get_optimized_sidebar_promos(limit=3)
+    faqs = get_cached_faqs()
+    sidebar_promos = get_cached_sidebar_promos(limit=3)
     cta_card = get_cached_cta_card()
-    verse_of_the_day = get_optimized_verse_of_the_day()
+    verse_of_the_day = get_cached_verse_of_the_day()
     context = {
         'card': card,
         'faqs': faqs,
@@ -460,7 +462,11 @@ def load_more_word_of_truth_view(request):
 @cache_page_for_anonymous(60 * 15)  # Cache for 15 minutes (anonymous users only)
 def word_of_truth_detail_view(request, slug):
     """Detail view for a Word of Truth article (optimized sidebar)."""
-    word_of_truth = get_object_or_404(WordOfTruth, slug=slug, is_published=True)
+    cache_key = f'word_of_truth_{slug}'
+    word_of_truth = cache.get(cache_key)
+    if not word_of_truth:
+        word_of_truth = get_object_or_404(WordOfTruth, slug=slug, is_published=True)
+        cache.set(cache_key, word_of_truth, 600)
     try:
         PageView.objects.create(
             path=request.path[:500],
@@ -470,10 +476,10 @@ def word_of_truth_detail_view(request, slug):
         )
     except Exception:
         pass
-    faqs = get_optimized_faqs()
-    sidebar_promos = get_optimized_sidebar_promos(limit=3)
+    faqs = get_cached_faqs()
+    sidebar_promos = get_cached_sidebar_promos(limit=3)
     cta_card = get_cached_cta_card()
-    verse_of_the_day = get_optimized_verse_of_the_day()
+    verse_of_the_day = get_cached_verse_of_the_day()
     context = {
         'word_of_truth': word_of_truth,
         'faqs': faqs,
@@ -904,7 +910,11 @@ def load_more_childrens_bread_view(request):
 @cache_page_for_anonymous(60 * 15)  # Cache for 15 minutes (anonymous users only)
 def childrens_bread_detail_view(request, slug):
     """Detail view for a Children's Bread article (optimized sidebar)."""
-    article = get_object_or_404(ChildrensBread, slug=slug, is_published=True)
+    cache_key = f'childrens_bread_{slug}'
+    article = cache.get(cache_key)
+    if not article:
+        article = get_object_or_404(ChildrensBread, slug=slug, is_published=True)
+        cache.set(cache_key, article, 600)
     try:
         PageView.objects.create(
             path=request.path[:500],
@@ -914,10 +924,10 @@ def childrens_bread_detail_view(request, slug):
         )
     except Exception:
         pass
-    faqs = get_optimized_faqs()
-    sidebar_promos = get_optimized_sidebar_promos(limit=3)
+    faqs = get_cached_faqs()
+    sidebar_promos = get_cached_sidebar_promos(limit=3)
     cta_card = get_cached_cta_card()
-    verse_of_the_day = get_optimized_verse_of_the_day()
+    verse_of_the_day = get_cached_verse_of_the_day()
     context = {
         'article': article,
         'faqs': faqs,
@@ -928,7 +938,7 @@ def childrens_bread_detail_view(request, slug):
     return render(request, 'church/childrens_bread_detail.html', context)
 
 
-# @cache_page_for_anonymous(60 * 15)  # Cache disabled to ensure template fix is seen
+@cache_page_for_anonymous(60 * 15)  # Cache for 15 minutes (anonymous users only)
 def news_line_list_view(request):
     """News Line listing page - shows 9 articles initially with load more."""
     initial_limit = 9
@@ -955,28 +965,24 @@ def news_line_list_view(request):
 @cache_page_for_anonymous(60 * 15)  # Cache for 15 minutes (anonymous users only)
 def news_line_detail_view(request, slug):
     """Detail view for a News Line article (optimized sidebar)."""
-    # Use 'slug' instead of 'id' which is standard for our detail views
-    article = get_object_or_404(NewsLine, slug=slug, is_published=True)
-    
-    # Track page view
+    cache_key = f'news_line_{slug}'
+    article = cache.get(cache_key)
+    if not article:
+        article = get_object_or_404(NewsLine, slug=slug, is_published=True)
+        cache.set(cache_key, article, 600)
     try:
         PageView.objects.create(
             path=request.path[:500],
             ip_address=get_client_ip(request),
-            # We don't have a content_type for NewsLine separately in PageView model yet,
-            # but we can reuse 'news' or add a new one. Let's add 'newsline' for clarity if needed,
-            # but for now let's just track it generically or skip content_type if strict.
-            # actually PageView.content_type is a CharField, so we can pass 'newsline'
             content_type='newsline',
             object_id=article.pk,
         )
     except Exception:
         pass
-
-    faqs = get_optimized_faqs()
-    sidebar_promos = get_optimized_sidebar_promos(limit=3)
+    faqs = get_cached_faqs()
+    sidebar_promos = get_cached_sidebar_promos(limit=3)
     cta_card = get_cached_cta_card()
-    verse_of_the_day = get_optimized_verse_of_the_day()
+    verse_of_the_day = get_cached_verse_of_the_day()
     
     context = {
         'article': article,
@@ -1264,6 +1270,7 @@ def book_list_view(request):
     return render(request, 'church/book_list.html', context)
 
 
+@cache_page_for_anonymous(60 * 15)  # Cache full page for 15 minutes (anonymous users)
 def book_detail_view(request, slug):
     """Detail view for a Book."""
     cache_key = f'book_detail_{slug}'
@@ -1273,11 +1280,13 @@ def book_detail_view(request, slug):
         book = get_object_or_404(Book, slug=slug, is_published=True)
         cache.set(cache_key, book, 600)
 
-    # Recent books for sidebar or bottom
-    recent_cache_key = 'books_recent'
+    # Recent books for sidebar or bottom (per-book cache so exclude works correctly)
+    recent_cache_key = f'books_recent_exclude_{book.id}'
     recent_books = cache.get(recent_cache_key)
     if not recent_books:
-        recent_books = Book.objects.filter(is_published=True).exclude(id=book.id).order_by('-created_at')[:3]
+        recent_books = list(
+            Book.objects.filter(is_published=True).exclude(id=book.id).order_by('-created_at')[:3]
+        )
         cache.set(recent_cache_key, recent_books, 300)
 
     context = {

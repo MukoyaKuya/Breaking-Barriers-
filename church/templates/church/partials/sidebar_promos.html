@@ -1,8 +1,6 @@
-{% load thumbnail %}
-{% load safe_thumbnail %}
 {% comment %}
 Portrait image/video holders below Verse of the Day (3:4 aspect).
-In normal document flow: when FAQs expand, this block is pushed down dynamically.
+Uses direct image URLs for fast loading (no thumbnail generation).
 {% endcomment %}
 <div class="space-y-4">
     {% for promo in sidebar_promos %}
@@ -18,30 +16,8 @@ In normal document flow: when FAQs expand, this block is pushed down dynamically
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
                 {% elif promo.image %}
-                {% if promo.image_cropping %}
-                {% safe_thumbnail promo.image "300x400" box=promo.image_cropping crop=True detail=True as cropped %}
-                {% if cropped %}
-                <picture>
-                    <source srcset="{{ cropped.url }}.webp" type="image/webp">
-                    <img src="{{ cropped.url }}" alt="{{ promo.caption|default:'Sidebar promo' }}" loading="lazy"
-                        class="w-full h-full object-cover object-center">
-                </picture>
-                {% else %}
-                <div class="w-full h-full flex items-center justify-center bg-gray-200">
-                    <i class="fas fa-image text-gray-400 text-4xl"></i>
-                </div>
-                {% endif %}
-                {% else %}
-                {% safe_thumbnail promo.image "300x400" crop=True detail=True as thumb %}
-                {% if thumb %}
-                <img src="{{ thumb.url }}" alt="{{ promo.caption|default:'Sidebar promo' }}" loading="lazy"
+                <img src="{{ promo.image.url }}" alt="{{ promo.caption|default:'Sidebar promo' }}" loading="lazy"
                     class="w-full h-full object-cover object-center">
-                {% else %}
-                <div class="w-full h-full flex items-center justify-center bg-gray-200">
-                    <i class="fas fa-image text-gray-400 text-4xl"></i>
-                </div>
-                {% endif %}
-                {% endif %}
                 {% else %}
                 <div class="w-full h-full flex items-center justify-center bg-gray-200">
                     <i class="fas fa-image text-gray-400 text-4xl"></i>

@@ -605,6 +605,16 @@ class ChildrensBread(models.Model):
         from django.urls import reverse
         return reverse('childrens_bread_detail', args=[self.slug])
 
+    @property
+    def created_at_month(self):
+        """Month abbreviation (e.g. Jan) for badge display."""
+        return self.created_at.strftime('%b') if self.created_at else ''
+
+    @property
+    def created_at_day(self):
+        """Day number (e.g. 01) for badge display."""
+        return self.created_at.strftime('%d') if self.created_at else ''
+
 
 class CTACard(models.Model):
     """Singleton model for Call-to-Action card (4th card)"""

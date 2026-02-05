@@ -1,11 +1,9 @@
 {% extends 'church/base.html' %}
-{% load thumbnail %}
-{% load safe_thumbnail %}
 
 {% block title %}Word of Truth - Breaking Barriers International{% endblock %}
 
 {% block content %}
-<div class="bg-gray-50/50 py-8 sm:py-12 md:py-16 overflow-x-hidden">
+<div class="bg-gray-50/50 py-8 sm:py-12 md:py-16 overflow-x-hidden" x-ignore>
     <div class="container mx-auto px-4 sm:px-6 max-w-7xl">
         <div class="max-w-4xl mx-auto text-center mb-10 sm:mb-16">
             <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 brand-text kaushan-script-regular">Word
@@ -46,10 +44,8 @@
                         <!-- Date Badge -->
                         <div
                             class="absolute top-4 right-4 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-xl shadow-lg border border-white/50 text-center min-w-[50px]">
-                            <span class="block text-xs font-bold text-brand-color uppercase tracking-tighter">{{
-                                word_of_truth.created_at_month }}</span>
-                            <span class="block text-lg font-black text-gray-900 leading-none">{{
-                                word_of_truth.created_at_day }}</span>
+                            <span class="block text-xs font-bold text-brand-color uppercase tracking-tighter">{{ word_of_truth.created_at|date:"M" }}</span>
+                            <span class="block text-lg font-black text-gray-900 leading-none">{{ word_of_truth.created_at|date:"d" }}</span>
                         </div>
                     </a>
 
@@ -58,8 +54,7 @@
                         <div class="flex-grow">
                             <h3
                                 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-brand-color transition-colors line-clamp-2 leading-snug">
-                                <a href="{% url 'word_of_truth_detail' word_of_truth.slug %}">{{ word_of_truth.title
-                                    }}</a>
+                                <a href="{% url 'word_of_truth_detail' word_of_truth.slug %}">{{ word_of_truth.title }}</a>
                             </h3>
                             <p
                                 class="text-xs text-gray-400 font-bold uppercase tracking-widest mb-4 flex items-center gap-2">
