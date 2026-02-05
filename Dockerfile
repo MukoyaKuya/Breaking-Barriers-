@@ -33,4 +33,4 @@ RUN pip install --no-cache-dir -r requirements.txt \
 RUN chmod +x /app/scripts/start.sh && chmod +x /app/scripts/migrate.sh
 
 # Run the startup script
-CMD ["/app/scripts/start.sh"]
+CMD ["bash", "/app/scripts/start.sh"]
