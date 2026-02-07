@@ -49,7 +49,7 @@
                         </h1>
                     </div>
 
-                    <!-- Content -->
+                    <!-- Content: Summary -->
                     <div
                         class="prose prose-sm sm:prose-base md:prose-lg lg:prose-xl max-w-none text-gray-700 leading-relaxed font-normal overflow-x-hidden">
                         <!-- Summary (Lead Text) -->
@@ -59,15 +59,15 @@
                             {{ article.summary|linebreaks }}
                         </div>
                         {% endif %}
+                    </div>
 
-                        <!-- Main Body -->
-                        <div class="article-content font-normal text-gray-800">
-                            {% if article.body %}
-                            {{ article.body|safe }}
-                            {% else %}
-                            <p class="text-gray-500 italic">No further details available.</p>
-                            {% endif %}
-                        </div>
+                    <!-- Main Body (Separated from prose to avoid conflicts) -->
+                    <div class="article-content font-normal text-gray-800 text-lg leading-relaxed mt-6">
+                        {% if article.body %}
+                        {{ article.body|safe }}
+                        {% else %}
+                        <p class="text-gray-500 italic">No further details available.</p>
+                        {% endif %}
                     </div>
 
                     <!-- Share Section -->

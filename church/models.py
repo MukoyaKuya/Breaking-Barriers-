@@ -92,6 +92,9 @@ class NewsLine(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
+        # Clear detail view cache
+        from django.core.cache import cache
+        cache.delete(f'news_line_{self.slug}')
 
     def get_embed_url(self):
         """Return a YouTube embed URL if possible, or the raw URL as fallback."""
