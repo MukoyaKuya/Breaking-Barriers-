@@ -50,17 +50,13 @@
                     </div>
 
                     <!-- Content -->
-                    <div class="prose prose-sm sm:prose-base md:prose-lg lg:prose-xl max-w-none text-gray-700 leading-relaxed font-normal overflow-x-hidden">
+                    <div
+                        class="prose prose-sm sm:prose-base md:prose-lg lg:prose-xl max-w-none text-gray-700 leading-relaxed font-normal overflow-x-hidden">
                         <!-- Summary (Lead Text) -->
                         {% if article.summary %}
-                        <div class="lead-text relative mb-12">
-                            <div class="absolute left-0 top-0 bottom-0 w-1.5 brand-color rounded-full"></div>
-                            <div class="pl-12 py-2">
-                                <p class="text-2xl text-gray-600 font-medium italic leading-relaxed">
-                                    "{{ article.summary|linebreaksbr }}"
-                                </p>
-                            </div>
-                            <i class="fas fa-quote-right absolute right-0 bottom-0 text-6xl text-gray-100 -z-10"></i>
+                        <div
+                            class="text-xl text-gray-800 mb-8 font-normal leading-relaxed border-l-4 border-brand-red pl-4 italic bg-gray-50 p-4 rounded-r-lg">
+                            {{ article.summary|linebreaks }}
                         </div>
                         {% endif %}
 
