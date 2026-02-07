@@ -986,7 +986,6 @@ def news_line_detail_view(request, slug):
     sidebar_promos = get_cached_sidebar_promos(limit=3)
     cta_card = get_cached_cta_card()
     verse_of_the_day = get_cached_verse_of_the_day()
-    
     context = {
         'article': article,
         'faqs': faqs,

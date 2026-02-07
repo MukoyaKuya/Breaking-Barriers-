@@ -50,21 +50,28 @@
                     </div>
 
                     <!-- Content -->
-                    <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed font-light">
+                    <div class="prose prose-sm sm:prose-base md:prose-lg lg:prose-xl max-w-none text-gray-700 leading-relaxed font-normal overflow-x-hidden">
                         <!-- Summary (Lead Text) -->
                         {% if article.summary %}
-                        <div
-                            class="text-xl text-gray-800 mb-8 font-normal leading-relaxed border-l-4 border-brand-red pl-4 italic bg-gray-50 p-4 rounded-r-lg">
-                            {{ article.summary|linebreaks }}
+                        <div class="lead-text relative mb-12">
+                            <div class="absolute left-0 top-0 bottom-0 w-1.5 brand-color rounded-full"></div>
+                            <div class="pl-12 py-2">
+                                <p class="text-2xl text-gray-600 font-medium italic leading-relaxed">
+                                    "{{ article.summary|linebreaksbr }}"
+                                </p>
+                            </div>
+                            <i class="fas fa-quote-right absolute right-0 bottom-0 text-6xl text-gray-100 -z-10"></i>
                         </div>
                         {% endif %}
 
                         <!-- Main Body -->
-                        {% if article.body %}
-                        {{ article.body|safe }}
-                        {% else %}
-                        <p class="text-gray-500 italic">No further details available.</p>
-                        {% endif %}
+                        <div class="article-content font-normal text-gray-800">
+                            {% if article.body %}
+                            {{ article.body|safe }}
+                            {% else %}
+                            <p class="text-gray-500 italic">No further details available.</p>
+                            {% endif %}
+                        </div>
                     </div>
 
                     <!-- Share Section -->
@@ -87,7 +94,7 @@
                             </a>
                             <a href="whatsapp://send?text={{ article.title }} {{ request.build_absolute_uri }}"
                                 target="_blank" rel="noopener noreferrer"
-                                class="w-10 h-10 rounded-full bg-green-500 text-white flex items-center justify-center hover:bg-green-600 transition">
+                                class="w-10 h-10 rounded-full bg-green-50 text-white flex items-center justify-center hover:bg-green-600 transition">
                                 <i class="fab fa-whatsapp"></i>
                             </a>
                         </div>
@@ -103,4 +110,81 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .article-content {
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        font-style: normal !important;
+    }
+
+    .article-content p {
+        margin-bottom: 1.5rem;
+        line-height: 1.8;
+        font-style: normal !important;
+        color: #374151;
+        /* gray-700 */
+    }
+
+    .article-content em,
+    .article-content i {
+        font-style: italic !important;
+    }
+
+    .article-content h2 {
+        font-size: 1.875rem;
+        font-weight: 800;
+        color: #990030;
+        margin-top: 3rem;
+        margin-bottom: 1.25rem;
+        line-height: 1.2;
+        font-family: "Fjalla One", sans-serif;
+        text-transform: uppercase;
+        letter-spacing: -0.025em;
+    }
+
+    .article-content h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #111827;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        font-family: "Fjalla One", sans-serif;
+        text-transform: uppercase;
+    }
+
+    .article-content ul,
+    .article-content ol {
+        margin-bottom: 1.75rem;
+        padding-left: 2rem;
+    }
+
+    .article-content li {
+        margin-bottom: 0.75rem;
+        line-height: 1.6;
+    }
+
+    .article-content blockquote {
+        border-left: 4px solid #990030;
+        padding-left: 1.5rem;
+        margin: 2rem 0;
+        font-style: italic;
+        color: #4b5563;
+        background-color: #fffafb;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        border-radius: 0 1rem 1rem 0;
+    }
+
+    @media (max-width: 768px) {
+        .article-content h2 {
+            font-size: 1.5rem;
+        }
+
+        .article-content h3 {
+            font-size: 1.25rem;
+        }
+    }
+</style>
 {% endblock %}
