@@ -545,6 +545,7 @@ JAZZMIN_SETTINGS = {
             "name": "Site & Settings",
             "children": [
                 {"name": "Hero Image", "url": "admin:church_herosettings_changelist", "icon": "fas fa-image"},
+                {"name": "Maintenance (MN)", "url": "admin:church_mn_changelist", "icon": "fas fa-tools"},
                 {"name": "CTA Card", "url": "admin:church_ctacard_changelist", "icon": "fas fa-bullhorn"},
                 {"name": "Sidebar Promos", "url": "admin:church_sidebarpromo_changelist", "icon": "fas fa-ad"},
                 {"name": "Common Questions", "url": "admin:church_faq_changelist", "icon": "fas fa-question-circle"},
@@ -585,6 +586,7 @@ JAZZMIN_SETTINGS = {
         "church.SchoolMinistryEnrollment": "fas fa-graduation-cap",
         "church.SidebarPromo": "fas fa-ad",
         "church.FAQ": "fas fa-question-circle",
+        "church.MN": "fas fa-tools",
     },
     "default_icon_parents": "fas fa-chevron-circle-right",
     "default_icon_children": "fas fa-circle",

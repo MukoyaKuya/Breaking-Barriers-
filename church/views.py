@@ -52,6 +52,7 @@ from .query_utils import (
     get_optimized_childrens_bread_preview,
     get_optimized_news_line_preview,
     get_optimized_word_of_truth_preview,
+    get_cached_maintenance_settings,
 )
 from django.template.loader import get_template
 from io import BytesIO
@@ -67,6 +68,9 @@ from .middleware import get_client_ip
 @cache_page_for_anonymous(60 * 60) # Cache the shell for an hour
 def home_view(request):
     """Serve the lightweight App Shell with the logo instantly."""
+    mn_settings = get_cached_maintenance_settings()
+    if getattr(mn_settings, 'is_active', False):
+        return render(request, 'church/maintenance.html')
     return render(request, 'church/home_shell.html')
 
 

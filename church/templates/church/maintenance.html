@@ -1,0 +1,40 @@
+{% extends 'church/base.html' %}
+
+{% load static %}
+
+{% block title %}Site Maintenance | Breaking Barriers International{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+        <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10 text-center">
+
+            <div class="mb-6">
+                <!-- Replace with your actual logo logic if needed -->
+                <img class="h-20 w-auto mx-auto" src="{% static 'images/logo.png' %}" alt="BBI Logo">
+            </div>
+
+            <h2 class="mt-2 text-2xl font-bold text-gray-900 tracking-tight">System Under Maintenance</h2>
+
+            <div class="mt-4 text-gray-600">
+                <p class="mb-4">
+                    Our website is currently undergoing scheduled maintenance to improve your experience.
+                    We are working hard to bring it back online as quickly as possible.
+                </p>
+                <p>
+                    Thank you for your patience and understanding.
+                </p>
+            </div>
+
+            <div class="mt-8 border-t border-gray-200 pt-6">
+                <p class="text-sm text-gray-500">
+                    &copy; {% now "Y" %} Breaking Barriers International. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block header %}{% endblock %}
+{% block footer %}{% endblock %}

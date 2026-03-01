@@ -21,6 +21,7 @@ from .models import (
     ManTalk,
     ChildrensBread,
     NewsLine,
+    MN,
 )
 
 # Cache timeouts (seconds)
@@ -50,6 +51,11 @@ def get_cached_cta_card():
 def get_cached_about_page():
     """About page content (cached)."""
     return get_cached_singleton(AboutPage, 'bbi_about_page')
+
+
+def get_cached_maintenance_settings():
+    """Maintenance settings (cached)."""
+    return get_cached_singleton(MN, 'bbi_maintenance_settings')
 
 
 def get_optimized_news_items(limit=6):
@@ -194,4 +200,5 @@ def invalidate_home_caches():
         'bbi_faqs',
         'bbi_verse_of_the_day',
         'bbi_sidebar_promos_3',
+        'bbi_maintenance_settings',
     ])

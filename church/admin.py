@@ -4,7 +4,7 @@ from django.utils.html import format_html
 from django.forms import ModelForm
 from django.forms.widgets import ColorInput
 from image_cropping import ImageCroppingMixin
-from .models import Verse, NewsItem, NewsLine, CalendarEvent, Testimonial, GalleryImage, HeroSettings, AboutPage, InfoCard, CTACard, MensMinistry, Partner, NewsletterSubscriber, SchoolMinistryEnrollment, FAQ, SidebarPromo, WordOfTruth, ManTalk, ChildrensBread, PageView, ContactMessage, PartnerInquiry, Book
+from .models import Verse, NewsItem, NewsLine, CalendarEvent, Testimonial, GalleryImage, HeroSettings, AboutPage, InfoCard, CTACard, MensMinistry, Partner, NewsletterSubscriber, SchoolMinistryEnrollment, FAQ, SidebarPromo, WordOfTruth, ManTalk, ChildrensBread, PageView, ContactMessage, PartnerInquiry, Book, MN
 from .forms import (
     WordOfTruthAdminForm, ChildrensBreadAdminForm, ManTalkAdminForm,
     NewsLineAdminForm, NewsItemAdminForm, InfoCardAdminForm,
@@ -634,3 +634,13 @@ class BookAdmin(ImageCroppingMixin, admin.ModelAdmin):
             'classes': ('collapse',)
         }),
     )
+
+@admin.register(MN)
+class MNAdmin(admin.ModelAdmin):
+    list_display = ('__str__', 'is_active', 'updated_at')
+    
+    def has_add_permission(self, request):
+        return not MN.objects.exists()
+
+    def has_delete_permission(self, request, obj=None):
+        return False

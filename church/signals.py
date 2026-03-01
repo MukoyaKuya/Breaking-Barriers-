@@ -27,6 +27,7 @@ from .models import (
     Testimonial,
     Partner,
     Verse,
+    MN,
 )
 from .query_utils import invalidate_home_caches
 
@@ -34,6 +35,7 @@ from .query_utils import invalidate_home_caches
 @receiver(post_save, sender=HeroSettings)
 @receiver(post_save, sender=CTACard)
 @receiver(post_save, sender=AboutPage)
+@receiver(post_save, sender=MN)
 def invalidate_singleton_caches(sender, instance, **kwargs):
     """Invalidate cached singletons when Hero, CTA, or About is saved."""
     invalidate_home_caches()

@@ -243,7 +243,9 @@
 </head>
 
 <body class="flex flex-col min-h-screen bg-gray-50 min-w-0">
+    {% block header %}
     {% include 'church/partials/header.html' %}
+    {% endblock %}
 
     <main class="flex-grow">
         {% if messages %}
@@ -297,7 +299,9 @@
         {% block content %}{% endblock %}
     </main>
 
+    {% block footer %}
     {% include 'church/partials/footer.html' %}
+    {% endblock %}
 
     {% block extra_js %}{% endblock %}
 
