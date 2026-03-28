@@ -4,7 +4,7 @@ from django.utils.html import format_html
 from django.forms import ModelForm
 from django.forms.widgets import ColorInput
 from image_cropping import ImageCroppingMixin
-from .models import Verse, NewsItem, NewsLine, CalendarEvent, Testimonial, GalleryImage, HeroSettings, AboutPage, InfoCard, CTACard, MensMinistry, Partner, NewsletterSubscriber, SchoolMinistryEnrollment, FAQ, SidebarPromo, WordOfTruth, ManTalk, ChildrensBread, PageView, ContactMessage, PartnerInquiry, Book, MN
+from .models import Verse, NewsItem, NewsLine, CalendarEvent, Testimonial, GalleryImage, HeroSettings, AboutPage, InfoCard, CTACard, MensMinistry, Partner, NewsletterSubscriber, SchoolMinistryEnrollment, FAQ, SidebarPromo, WordOfTruth, ManTalk, ChildrensBread, PageView, ContactMessage, PartnerInquiry, Book, MN, BoardMember
 from .forms import (
     WordOfTruthAdminForm, ChildrensBreadAdminForm, ManTalkAdminForm,
     NewsLineAdminForm, NewsItemAdminForm, InfoCardAdminForm,
@@ -644,3 +644,28 @@ class MNAdmin(admin.ModelAdmin):
 
     def has_delete_permission(self, request, obj=None):
         return False
+
+
+@admin.register(BoardMember)
+class BoardMemberAdmin(ImageCroppingMixin, admin.ModelAdmin):
+    list_display = ('name', 'role', 'display_order', 'is_active', 'created_at')
+    list_filter = ('is_active', 'role')
+    search_fields = ('name', 'role', 'bio')
+    list_editable = ('display_order', 'is_active')
+    readonly_fields = ('created_at', 'updated_at')
+    
+    fieldsets = (
+        ('Personal Info', {
+            'fields': ('name', 'role', 'image', 'image_cropping')
+        }),
+        ('Biography', {
+            'fields': ('bio',)
+        }),
+        ('Settings', {
+            'fields': ('display_order', 'is_active')
+        }),
+        ('Timestamps', {
+            'fields': ('created_at', 'updated_at'),
+            'classes': ('collapse',)
+        }),
+    )

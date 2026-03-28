@@ -1,0 +1,87 @@
+--- NEON COST ANALYSIS REPORT ---
+Total PageViews: 5333645
+
+--- HITS PER DAY (Last 14 Days) ---
+2026-03-28: 410
+2026-03-27: 1108
+2026-03-26: 1289
+2026-03-25: 1331
+2026-03-24: 91358
+2026-03-23: 488826
+2026-03-22: 346485
+2026-03-21: 77586
+2026-03-20: 165012
+2026-03-19: 146282
+2026-03-18: 160212
+2026-03-17: 131146
+2026-03-16: 127194
+2026-03-15: 90651
+2026-03-14: 38760
+
+--- TOP 30 IP ADDRESSES (Potential Bots) ---
+57.141.6.3: 38592
+57.141.6.11: 38100
+57.141.6.32: 37982
+57.141.6.29: 37898
+57.141.6.34: 37758
+57.141.6.15: 37368
+57.141.6.40: 37169
+57.141.6.27: 37118
+57.141.6.26: 36940
+57.141.6.35: 36872
+57.141.6.4: 36804
+57.141.6.45: 36795
+57.141.6.24: 36793
+57.141.6.22: 36676
+57.141.6.63: 36630
+57.141.6.37: 36554
+57.141.6.20: 36472
+57.141.6.18: 36362
+57.141.6.64: 36306
+57.141.6.23: 36299
+57.141.6.48: 36238
+57.141.6.6: 36158
+57.141.6.52: 36064
+57.141.6.31: 36020
+57.141.6.12: 35982
+57.141.6.7: 35976
+57.141.6.21: 35946
+57.141.6.43: 35828
+57.141.6.28: 35812
+57.141.6.17: 35705
+
+--- TOP 30 PATHS ---
+/: 5043255
+/robots.txt: 264708
+/news/: 4426
+/contact-us/: 3930
+/home-content/: 2290
+/childrens-bread/: 778
+/man-talk/: 728
+/books/: 506
+/word-of-truth/: 468
+/about/: 384
+/news-line/: 332
+/gallery/: 312
+/childrens-bread/divine-health-5-spiritual-barriers-and-breakthroughs/: 311
+/childrens-bread/winning-spiritual-warfare-as-new-creation/: 271
+/privacy/: 232
+/childrens-bread/Interceding-for-our-children-in-difficult-times/: 198
+/childrens-bread/powerful-prayers-for-family-restoration/: 186
+/donate/: 172
+/school-of-ministry/: 158
+/word-of-truth/embracing-rebuke-and-correction/: 134
+/word-of-truth/divine-healing-how-to-receive-it/: 131
+/word-of-truth/why-prayer-is-your-greatest-defence/: 131
+/childrens-bread/heavenly-altarfrom-fear-to-grace/: 131
+/word-of-truth/the-true-meaning-of-fearing-the-lord/: 130
+/childrens-bread/why-the-wicked-prosper/: 129
+/word-of-truth/the-philippians-48-filter/: 129
+/books/courts-of-heaven/: 122
+/word-of-truth/biblical-truth-about-wealth-and-riches/: 119
+/man-talk/from-condemnation-to-approval/: 118
+/news-line/q-and-a-with-bbi-school-of-ministry-director/: 117
+
+--- SESSION TABLE ANALYSIS ---
+Total Sessions in DB: 2749653
+Expired Sessions (Uncleaned): 1865682

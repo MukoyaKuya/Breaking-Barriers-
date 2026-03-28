@@ -30,6 +30,8 @@ from .models import (
     PageView,
     ContactMessage,
     PartnerInquiry,
+    Book,
+    BoardMember,
 )
 from .query_utils import (
     get_cached_hero_settings,
@@ -51,7 +53,9 @@ from .query_utils import (
     get_optimized_man_talk_list,
     get_optimized_childrens_bread_preview,
     get_optimized_news_line_preview,
+    get_optimized_news_line_preview,
     get_optimized_word_of_truth_preview,
+    get_optimized_board_members,
     get_cached_maintenance_settings,
 )
 from django.template.loader import get_template
@@ -130,6 +134,12 @@ def about_view(request):
     """About page view (driven from AboutPage singleton, cached)."""
     about = AboutPage.load()
     return render(request, 'church/about.html', {'about': about})
+
+
+def leadership_view(request):
+    """Leadership / Board Members page."""
+    members = get_optimized_board_members()
+    return render(request, 'church/leadership.html', {'members': members})
 
 
 def news_list_view(request):
@@ -224,8 +234,10 @@ def news_detail_view(request, slug):
         )
     except Exception:
         pass
+    related_articles = NewsItem.objects.filter(is_published=True).exclude(pk=news_item.pk).order_by('?')[:2]
     context = {
         'news_item': news_item,
+        'related_articles': related_articles,
     }
     return render(request, 'church/news_detail.html', context)
 
@@ -487,12 +499,14 @@ def word_of_truth_detail_view(request, slug):
     sidebar_promos = get_cached_sidebar_promos(limit=3)
     cta_card = get_cached_cta_card()
     verse_of_the_day = get_cached_verse_of_the_day()
+    related_articles = WordOfTruth.objects.filter(is_published=True).exclude(pk=word_of_truth.pk).order_by('?')[:2]
     context = {
         'word_of_truth': word_of_truth,
         'faqs': faqs,
         'sidebar_promos': sidebar_promos,
         'cta_card': cta_card,
         'verse_of_the_day': verse_of_the_day,
+        'related_articles': related_articles,
     }
     return render(request, 'church/word_of_truth_detail.html', context)
 
@@ -935,12 +949,14 @@ def childrens_bread_detail_view(request, slug):
     sidebar_promos = get_cached_sidebar_promos(limit=3)
     cta_card = get_cached_cta_card()
     verse_of_the_day = get_cached_verse_of_the_day()
+    related_articles = ChildrensBread.objects.filter(is_published=True).exclude(pk=article.pk).order_by('?')[:2]
     context = {
         'article': article,
         'faqs': faqs,
         'sidebar_promos': sidebar_promos,
         'cta_card': cta_card,
         'verse_of_the_day': verse_of_the_day,
+        'related_articles': related_articles,
     }
     return render(request, 'church/childrens_bread_detail.html', context)
 

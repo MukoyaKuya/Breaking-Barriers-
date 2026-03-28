@@ -870,6 +870,31 @@ def _to_youtube_embed(raw_url: str) -> str:
         pass
     return raw_url
 
+
+class BoardMember(models.Model):
+    """Model for Leadership/Board Members"""
+    name = models.CharField(max_length=200)
+    role = models.CharField(max_length=200, help_text='Role/Position (e.g. Founder, Chairman)')
+    image = models.ImageField(upload_to='leadership/', help_text='Professional photo (400x400 square recommended)')
+    image_cropping = ImageRatioField('image', '400x400', size_warning=True)
+    bio = RichTextField(help_text='Short biography/background')
+    display_order = models.PositiveIntegerField(default=0, help_text='Lower numbers appear first')
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['display_order', 'name']
+        verbose_name = 'Board Member'
+        verbose_name_plural = 'Board Members'
+        indexes = [
+            models.Index(fields=['is_active', 'display_order']),
+        ]
+
+    def __str__(self):
+        return f"{self.name} - {self.role}"
+
+
 class MN(models.Model):
     """Singleton model for Maintenance settings"""
     is_active = models.BooleanField(

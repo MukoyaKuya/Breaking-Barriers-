@@ -19,12 +19,13 @@ else %}{{ block.super }}{% endif %}{% endblock %}
 {% block twitter_image %}{% if news_item.image %}{{ request.scheme }}://{{ request.get_host }}{{ news_item.image.url
 }}{% else %}{{ block.super }}{% endif %}{% endblock %}
 
-{% block detailed_schema %}
+{% block extra_meta %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "NewsArticle",
   "headline": "{{ news_item.title|escapejs }}",
+  "description": "{{ news_item.summary|striptags|truncatewords:25|escapejs }}",
   "image": ["{% if news_item.image %}{{ request.scheme }}://{{ request.get_host }}{{ news_item.image.url }}{% endif %}"],
   "datePublished": "{{ news_item.created_at|date:'c' }}",
   "dateModified": "{{ news_item.updated_at|date:'c'|default:news_item.created_at|date:'c' }}",
@@ -32,13 +33,22 @@ else %}{{ block.super }}{% endif %}{% endblock %}
       "@type": "Organization",
       "name": "Breaking Barriers International",
       "url": "https://bb-international.org"
-    }]
+    }],
+  "publisher": {
+    "@type": "Organization",
+    "name": "Breaking Barriers International",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://bb-international.org/static/images/bb_logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ request.build_absolute_uri }}"
+  }
 }
 </script>
 {% endblock %}
-{% block twitter_description %}{{ news_item.summary|truncatewords:30 }}{% endblock %}
-{% block twitter_image %}{% if news_item.image %}{{ request.scheme }}://{{ request.get_host }}{{ news_item.image.url
-}}{% else %}{% static 'images/logo.png' %}{% endif %}{% endblock %}
 
 {% block extra_head %}{% endblock %}
 
@@ -105,9 +115,16 @@ else %}{{ block.super }}{% endif %}{% endblock %}
         </div>
         {% endif %}
 
-        <!-- Article Body -->
         <div class="prose max-w-none mb-8">
             {{ news_item.body|safe }}
+        </div>
+
+        <!-- Internal Linking: Related Content -->
+        <div class="mt-16 pt-10 border-t border-gray-100">
+            <h2 class="fjalla-one-regular text-2xl text-gray-900 mb-6 uppercase tracking-tight">Recent News</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {% include 'church/partials/related_articles.html' with articles=related_articles type='news' %}
+            </div>
         </div>
 
         <!-- Back to News Link -->

@@ -1,0 +1,76 @@
+{% extends 'church/base.html' %}
+{% load thumbnail %}
+
+{% block title %}Leadership - Breaking Barriers International{% endblock %}
+
+{% block meta_description %}Meet the leadership team of Breaking Barriers International, dedicated to spiritual warfare, deliverance, and empowering believers.{% endblock %}
+
+{% block content %}
+<div class="bg-gradient-to-b from-gray-100 via-white to-gray-100 py-10 md:py-16">
+    <div class="container mx-auto px-4 max-w-6xl">
+        <!-- Header -->
+        <section class="text-center mb-12 md:mb-16">
+            <p class="uppercase tracking-[0.25em] text-xs md:text-sm text-gray-500 mb-2">
+                Our Team
+            </p>
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-gray-900">
+                Leadership
+            </h1>
+            <div class="w-16 h-1 brand-color mx-auto rounded-full"></div>
+        </section>
+
+        <!-- Members Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+            {% for member in members %}
+            <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-300 group">
+                <!-- Image Container -->
+                <div class="aspect-square relative overflow-hidden bg-gray-100">
+                    {% if member.image %}
+                        <img 
+                            src="{{ member.image.url }}" 
+                            alt="{{ member.name }} - {{ member.role }}"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        >
+                    {% else %}
+                        <div class="w-full h-full flex items-center justify-center text-gray-300">
+                            <i class="fas fa-user text-5xl"></i>
+                        </div>
+                    {% endif %}
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+
+                <!-- Content -->
+                <div class="p-6 md:p-8">
+                    <h3 class="text-xl font-bold text-gray-900 mb-1 group-hover:brand-text transition-colors">
+                        {{ member.name }}
+                    </h3>
+                    <p class="text-sm font-semibold brand-text uppercase tracking-wider mb-4">
+                        {{ member.role }}
+                    </p>
+                    <div class="prose prose-sm text-gray-600 leading-relaxed line-clamp-6">
+                        {{ member.bio|safe }}
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-span-full py-20 text-center">
+                <div class="bg-gray-50 rounded-2xl p-8 max-w-md mx-auto border border-dashed border-gray-300">
+                    <i class="fas fa-users text-gray-300 text-4xl mb-4"></i>
+                    <p class="text-gray-500">Our leadership profiles are currently being updated. Please check back soon.</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<style>
+    .line-clamp-6 {
+        display: -webkit-box;
+        -webkit-line-clamp: 6;
+        line-clamp: 6;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+</style>
+{% endblock %}

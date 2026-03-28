@@ -45,14 +45,22 @@
                         </div>
 
                         <!-- Objectives highlight strip if the body contains a list -->
-                        <div class="mt-6 md:mt-8 pt-5 md:pt-6 border-t border-gray-100">
-                            <p class="text-xs uppercase tracking-[0.3em] text-gray-500 mb-1">
-                                Our Focus
-                            </p>
-                            <p class="text-sm md:text-base text-gray-700">
-                                Through teaching, deliverance and discipleship, BBI exists to help believers
-                                identify and break invisible barriers so they can walk in the freedom Jesus purchased.
-                            </p>
+                        <div class="mt-6 md:mt-8 pt-5 md:pt-6 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+                            <div class="flex-grow">
+                                <p class="text-xs uppercase tracking-[0.3em] text-gray-500 mb-1">
+                                    Our Focus
+                                </p>
+                                <p class="text-sm md:text-base text-gray-700">
+                                    Through teaching, deliverance and discipleship, BBI exists to help believers
+                                    identify and break invisible barriers so they can walk in the freedom Jesus purchased.
+                                </p>
+                            </div>
+                            <div class="flex-shrink-0 w-full sm:w-auto">
+                                <a href="{% url 'leadership' %}" class="inline-flex items-center gap-2 text-brand-color font-bold hover:underline">
+                                    Meet Our Leadership
+                                    <i class="fas fa-arrow-right text-xs"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>

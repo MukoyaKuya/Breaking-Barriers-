@@ -1,0 +1,2701 @@
+[
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2026-01-26T19:35:36.309Z",
+    "user": 1,
+    "content_type": 11,
+    "object_id": "1",
+    "object_repr": "Hero Section Settings",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2026-01-27T09:04:29.322Z",
+    "user": 1,
+    "content_type": 14,
+    "object_id": "1",
+    "object_repr": "Men's Ministry",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2026-01-27T09:08:19.119Z",
+    "user": 1,
+    "content_type": 14,
+    "object_id": "1",
+    "object_repr": "Men's Ministry",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2026-01-27T09:11:10.548Z",
+    "user": 1,
+    "content_type": 14,
+    "object_id": "1",
+    "object_repr": "Men's Ministry",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Video url\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2026-01-27T09:47:50.952Z",
+    "user": 1,
+    "content_type": 14,
+    "object_id": "1",
+    "object_repr": "Men's Ministry",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Video url\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2026-01-27T10:05:10.896Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "1",
+    "object_repr": "Love In Deed",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2026-01-27T10:06:31.076Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "2",
+    "object_repr": "Beacon Life Church",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2026-01-27T10:20:03.204Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "1",
+    "object_repr": "Alphone Aoko - I thank God for His faithfulness in my life. There...",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2026-01-27T12:54:16.098Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "1",
+    "object_repr": "Deuteronomy 31:6 - “So be strong and courageous! Do not be afraid and...",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2026-01-27T12:56:32.808Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "1",
+    "object_repr": "Deuteronomy 31:6 - “So be strong and courageous! Do not be afraid and...",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Is featured\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2026-01-27T12:56:38.809Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "1",
+    "object_repr": "Deuteronomy 31:6 - “So be strong and courageous! Do not be afraid and...",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2026-01-27T18:13:10.317Z",
+    "user": 1,
+    "content_type": 17,
+    "object_id": "1",
+    "object_repr": "Mens Conference - 2026-01-28",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 13,
+  "fields": {
+    "action_time": "2026-01-27T18:20:02.913Z",
+    "user": 1,
+    "content_type": 17,
+    "object_id": "2",
+    "object_repr": "Women's Champions - 2026-01-27",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 14,
+  "fields": {
+    "action_time": "2026-01-27T18:35:22.704Z",
+    "user": 1,
+    "content_type": 17,
+    "object_id": "3",
+    "object_repr": "Kesha - 2026-02-10",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 15,
+  "fields": {
+    "action_time": "2026-01-27T18:35:42.503Z",
+    "user": 1,
+    "content_type": 17,
+    "object_id": "3",
+    "object_repr": "Kesha - 2026-02-10",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 16,
+  "fields": {
+    "action_time": "2026-01-27T18:43:24.663Z",
+    "user": 1,
+    "content_type": 17,
+    "object_id": "3",
+    "object_repr": "Kesha - 2026-01-31",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Event date\", \"Event type\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 17,
+  "fields": {
+    "action_time": "2026-01-27T18:43:55.045Z",
+    "user": 1,
+    "content_type": 17,
+    "object_id": "3",
+    "object_repr": "Kesha - 2026-01-31",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Color\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 18,
+  "fields": {
+    "action_time": "2026-01-27T18:52:53.847Z",
+    "user": 1,
+    "content_type": 17,
+    "object_id": "3",
+    "object_repr": "Kesha - 2026-01-31",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 19,
+  "fields": {
+    "action_time": "2026-01-27T18:59:29.245Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "1",
+    "object_repr": "Word Of Truth",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 20,
+  "fields": {
+    "action_time": "2026-01-27T19:24:05.346Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "1",
+    "object_repr": "Children's Bread - How to pray purposely",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 21,
+  "fields": {
+    "action_time": "2026-01-27T19:41:05.729Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "1",
+    "object_repr": "Children's Bread - Children's Bread",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Title\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 22,
+  "fields": {
+    "action_time": "2026-01-27T20:31:17.898Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "1",
+    "object_repr": "\"We shall continue to spread the word\" - Outreach",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 23,
+  "fields": {
+    "action_time": "2026-01-27T20:40:48.158Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "2",
+    "object_repr": "Matthew 18:20  \"For where two or three gather in my name, there am I with them - Outreach",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 24,
+  "fields": {
+    "action_time": "2026-01-27T20:52:14.623Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "2",
+    "object_repr": "Peter Mwenje - \"I want to thank God for the gift of this child. T...",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 25,
+  "fields": {
+    "action_time": "2026-01-27T20:52:40.423Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "2",
+    "object_repr": "Peter Mwenje - \"I want to thank God for the gift of this child. T...",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Approved\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 26,
+  "fields": {
+    "action_time": "2026-01-27T20:54:01.750Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "1",
+    "object_repr": "Alphone Aoko - I thank God for His faithfulness in my life. There...",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Video url\", \"Photo\", \"Text\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 27,
+  "fields": {
+    "action_time": "2026-01-27T21:12:56.410Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "3",
+    "object_repr": "Brian Nganya - “And they overcame him by the blood of the Lamb, a...",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 28,
+  "fields": {
+    "action_time": "2026-01-27T21:13:55.749Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "2",
+    "object_repr": "Peter Mwenje - \"I want to thank God for the gift of this child. T...",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Text\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 29,
+  "fields": {
+    "action_time": "2026-01-27T21:14:30.874Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "3",
+    "object_repr": "Brian Nganya - “And they overcame him by the blood of the Lamb, a...",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Photo\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 30,
+  "fields": {
+    "action_time": "2026-01-27T21:15:16.737Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "3",
+    "object_repr": "Brian Nganya - “And they overcame him by the blood of the Lamb, a...",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Photo\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 31,
+  "fields": {
+    "action_time": "2026-01-27T21:21:24.405Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "2",
+    "object_repr": "Peter Mwenje - \"I want to thank God for the gift of this child. T...",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Text\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 32,
+  "fields": {
+    "action_time": "2026-01-27T22:02:19.394Z",
+    "user": 1,
+    "content_type": 18,
+    "object_id": "1",
+    "object_repr": "What is a generational curse?",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 33,
+  "fields": {
+    "action_time": "2026-01-27T22:03:34.299Z",
+    "user": 1,
+    "content_type": 18,
+    "object_id": "2",
+    "object_repr": "How are generational curses broken?",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 34,
+  "fields": {
+    "action_time": "2026-01-27T22:05:15.898Z",
+    "user": 1,
+    "content_type": 18,
+    "object_id": "3",
+    "object_repr": "Do I need deliverance even if I'm born again?",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 35,
+  "fields": {
+    "action_time": "2026-01-27T22:10:53.306Z",
+    "user": 1,
+    "content_type": 18,
+    "object_id": "4",
+    "object_repr": "If we struggle with something but generally win, i...",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 36,
+  "fields": {
+    "action_time": "2026-01-27T22:11:49.392Z",
+    "user": 1,
+    "content_type": 18,
+    "object_id": "5",
+    "object_repr": "Is there a spirit that can enter the spirit man?",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 37,
+  "fields": {
+    "action_time": "2026-01-27T22:13:08.630Z",
+    "user": 1,
+    "content_type": 18,
+    "object_id": "6",
+    "object_repr": "When do I run and when do I resist in the face of ...",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 38,
+  "fields": {
+    "action_time": "2026-01-27T22:15:14.776Z",
+    "user": 1,
+    "content_type": 18,
+    "object_id": "7",
+    "object_repr": "I am yet to understand why at the time we receive ...",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 39,
+  "fields": {
+    "action_time": "2026-01-27T22:16:22.195Z",
+    "user": 1,
+    "content_type": 18,
+    "object_id": "8",
+    "object_repr": "When I become angry and I am able to ensure that I...",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 40,
+  "fields": {
+    "action_time": "2026-01-27T22:27:58.915Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "3",
+    "object_repr": "The power of a Christian fellowship - Other",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 41,
+  "fields": {
+    "action_time": "2026-01-27T22:40:47.671Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 42,
+  "fields": {
+    "action_time": "2026-01-27T22:41:13.230Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 43,
+  "fields": {
+    "action_time": "2026-01-27T22:41:58.573Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 44,
+  "fields": {
+    "action_time": "2026-01-27T22:45:09.864Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "3",
+    "object_repr": "Word of Truth - The Story of Moses",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 45,
+  "fields": {
+    "action_time": "2026-01-27T22:47:02.665Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "3",
+    "object_repr": "Word of Truth - The Story of Moses",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Summary\", \"Content\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 46,
+  "fields": {
+    "action_time": "2026-01-27T22:57:16.679Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 47,
+  "fields": {
+    "action_time": "2026-01-27T23:03:53.858Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 48,
+  "fields": {
+    "action_time": "2026-01-27T23:17:33.012Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 49,
+  "fields": {
+    "action_time": "2026-01-27T23:31:03.060Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 50,
+  "fields": {
+    "action_time": "2026-01-27T23:31:19.622Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 51,
+  "fields": {
+    "action_time": "2026-01-27T23:34:27.049Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 52,
+  "fields": {
+    "action_time": "2026-01-27T23:34:57.825Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "3",
+    "object_repr": "Brian Nganya - “And they overcame him by the blood of the Lamb, a...",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Photo\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 53,
+  "fields": {
+    "action_time": "2026-01-27T23:45:56.665Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 54,
+  "fields": {
+    "action_time": "2026-01-27T23:47:50.312Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 55,
+  "fields": {
+    "action_time": "2026-01-27T23:48:15.646Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 56,
+  "fields": {
+    "action_time": "2026-01-27T23:48:28.821Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 57,
+  "fields": {
+    "action_time": "2026-01-27T23:48:44.232Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 58,
+  "fields": {
+    "action_time": "2026-01-27T23:49:12.192Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 59,
+  "fields": {
+    "action_time": "2026-01-27T23:49:22.454Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 60,
+  "fields": {
+    "action_time": "2026-01-27T23:57:28.418Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 61,
+  "fields": {
+    "action_time": "2026-01-27T23:59:52.977Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 62,
+  "fields": {
+    "action_time": "2026-01-28T00:00:32.698Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 63,
+  "fields": {
+    "action_time": "2026-01-28T00:00:55.448Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 64,
+  "fields": {
+    "action_time": "2026-01-28T00:01:11.166Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\", \"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 65,
+  "fields": {
+    "action_time": "2026-01-28T00:01:23.223Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 66,
+  "fields": {
+    "action_time": "2026-01-28T00:02:17.120Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 67,
+  "fields": {
+    "action_time": "2026-01-28T00:06:38.229Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\", \"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 68,
+  "fields": {
+    "action_time": "2026-01-28T00:06:59.353Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 69,
+  "fields": {
+    "action_time": "2026-01-28T00:07:20.252Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\", \"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 70,
+  "fields": {
+    "action_time": "2026-01-28T00:07:29.280Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 71,
+  "fields": {
+    "action_time": "2026-01-28T00:20:12.911Z",
+    "user": 1,
+    "content_type": 22,
+    "object_id": "1",
+    "object_repr": "The Christ Commission",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 72,
+  "fields": {
+    "action_time": "2026-01-28T00:21:22.028Z",
+    "user": 1,
+    "content_type": 22,
+    "object_id": "2",
+    "object_repr": "ABS",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 73,
+  "fields": {
+    "action_time": "2026-01-28T00:27:04.950Z",
+    "user": 1,
+    "content_type": 22,
+    "object_id": "1",
+    "object_repr": "The Christ Commission",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 74,
+  "fields": {
+    "action_time": "2026-01-28T00:27:27.830Z",
+    "user": 1,
+    "content_type": 22,
+    "object_id": "2",
+    "object_repr": "ABS",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 75,
+  "fields": {
+    "action_time": "2026-01-28T00:34:50.055Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\", \"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 76,
+  "fields": {
+    "action_time": "2026-01-28T05:27:01.035Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "1",
+    "object_repr": "Love In Deed",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Logo\", \"Logo cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 77,
+  "fields": {
+    "action_time": "2026-01-28T05:36:47.336Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "1",
+    "object_repr": "Love In Deed",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Logo cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 78,
+  "fields": {
+    "action_time": "2026-01-28T05:37:09.807Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "2",
+    "object_repr": "Beacon Life Church",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Logo cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 79,
+  "fields": {
+    "action_time": "2026-01-28T05:44:25.807Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "2",
+    "object_repr": "Beacon Life Church",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Logo\", \"Logo cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 80,
+  "fields": {
+    "action_time": "2026-01-28T05:44:44.912Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "2",
+    "object_repr": "Beacon Life Church",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Logo cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 81,
+  "fields": {
+    "action_time": "2026-01-28T05:44:59.636Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "2",
+    "object_repr": "Beacon Life Church",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 82,
+  "fields": {
+    "action_time": "2026-01-28T05:45:16.568Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "2",
+    "object_repr": "Beacon Life Church",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Logo cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 83,
+  "fields": {
+    "action_time": "2026-01-28T05:47:03.732Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "2",
+    "object_repr": "Beacon Life Church",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Logo cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 84,
+  "fields": {
+    "action_time": "2026-01-28T05:48:53.523Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "3",
+    "object_repr": "Truth Encounters Ministries",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 85,
+  "fields": {
+    "action_time": "2026-01-28T05:49:10.107Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "3",
+    "object_repr": "Truth Encounters Ministries",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Logo cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 86,
+  "fields": {
+    "action_time": "2026-01-28T05:49:30.811Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "3",
+    "object_repr": "Truth Encounters Ministries",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 87,
+  "fields": {
+    "action_time": "2026-01-28T05:49:42.718Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "3",
+    "object_repr": "Truth Encounters Ministries",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 88,
+  "fields": {
+    "action_time": "2026-01-28T05:49:49.865Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "3",
+    "object_repr": "Truth Encounters Ministries",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 89,
+  "fields": {
+    "action_time": "2026-01-28T05:49:58.474Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "3",
+    "object_repr": "Truth Encounters Ministries",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Logo cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 90,
+  "fields": {
+    "action_time": "2026-01-28T05:50:22.215Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "3",
+    "object_repr": "Truth Encounters Ministries",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Logo cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 91,
+  "fields": {
+    "action_time": "2026-01-28T05:50:29.097Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "2",
+    "object_repr": "Beacon Life Church",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 92,
+  "fields": {
+    "action_time": "2026-01-28T05:50:43.206Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "3",
+    "object_repr": "Truth Encounters Ministries",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Logo cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 93,
+  "fields": {
+    "action_time": "2026-01-28T05:54:02.652Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "3",
+    "object_repr": "Truth Encounters Ministries",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 94,
+  "fields": {
+    "action_time": "2026-01-28T06:30:42.323Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "4",
+    "object_repr": "Smiles for children foundation",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 95,
+  "fields": {
+    "action_time": "2026-01-28T06:58:16.361Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "5",
+    "object_repr": "BB International",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 96,
+  "fields": {
+    "action_time": "2026-01-28T06:59:02.073Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "5",
+    "object_repr": "BB International",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Logo\", \"Logo cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 97,
+  "fields": {
+    "action_time": "2026-01-28T07:03:06.058Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "5",
+    "object_repr": "BB International",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Logo\", \"Logo cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 98,
+  "fields": {
+    "action_time": "2026-01-28T07:05:55.490Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "3",
+    "object_repr": "Brian Nganya - “And they overcame him by the blood of the Lamb, a...",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 99,
+  "fields": {
+    "action_time": "2026-01-28T07:06:00.306Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "2",
+    "object_repr": "Peter Mwenje - \"I want to thank God for the gift of this child. T...",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 100,
+  "fields": {
+    "action_time": "2026-01-28T07:06:04.999Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "1",
+    "object_repr": "Alphone Aoko - I thank God for His faithfulness in my life. There...",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 101,
+  "fields": {
+    "action_time": "2026-01-28T07:07:41.755Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "4",
+    "object_repr": "Amish Behal - \"And they overcame him by the Blood of The Lamb an...",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 102,
+  "fields": {
+    "action_time": "2026-01-28T07:19:39.888Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "4",
+    "object_repr": "Amish Behal - Amish Behal shares his journey of faith, highlight...",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Text\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 103,
+  "fields": {
+    "action_time": "2026-01-28T07:24:34.924Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "4",
+    "object_repr": "Open Heaven, the hour of Prayer - Worship",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 104,
+  "fields": {
+    "action_time": "2026-01-28T07:26:30.922Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "4",
+    "object_repr": "Open Heaven, the hour of Prayer - Worship",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\", \"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 105,
+  "fields": {
+    "action_time": "2026-01-28T07:26:38.059Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "4",
+    "object_repr": "Open Heaven, the hour of Prayer - Worship",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 106,
+  "fields": {
+    "action_time": "2026-01-28T07:30:09.156Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "3",
+    "object_repr": "The power of a Christian fellowship - Other",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\", \"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 107,
+  "fields": {
+    "action_time": "2026-01-28T07:30:20.061Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "3",
+    "object_repr": "The power of a Christian fellowship - Other",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 108,
+  "fields": {
+    "action_time": "2026-01-28T07:32:05.795Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "4",
+    "object_repr": "Open Heaven, the hour of Prayer - Worship",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 109,
+  "fields": {
+    "action_time": "2026-01-28T07:32:19.459Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "4",
+    "object_repr": "Open Heaven, the hour of Prayer - Worship",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 110,
+  "fields": {
+    "action_time": "2026-01-28T07:42:40.831Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "1",
+    "object_repr": "Children's Bread - Children's Bread",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image cropping\", \"Author name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 111,
+  "fields": {
+    "action_time": "2026-01-28T07:42:50.827Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "2",
+    "object_repr": "News - FELLOWSHIP",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Author name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 112,
+  "fields": {
+    "action_time": "2026-01-28T07:44:34.654Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "1",
+    "object_repr": "Children's Bread - Children's Bread",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 113,
+  "fields": {
+    "action_time": "2026-01-28T07:46:44.774Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "1",
+    "object_repr": "Children's Bread - Children's Bread",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 114,
+  "fields": {
+    "action_time": "2026-01-28T07:47:08.963Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "1",
+    "object_repr": "Children's Bread - Children's Bread",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 115,
+  "fields": {
+    "action_time": "2026-01-28T07:47:18.492Z",
+    "user": 1,
+    "content_type": 13,
+    "object_id": "1",
+    "object_repr": "Children's Bread - Children's Bread",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 116,
+  "fields": {
+    "action_time": "2026-02-03T00:49:44.024Z",
+    "user": 1,
+    "content_type": 19,
+    "object_id": "5",
+    "object_repr": "BB International",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 117,
+  "fields": {
+    "action_time": "2026-02-03T00:51:56.192Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "2",
+    "object_repr": "News - Newsline",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Title\", \"Slug\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 118,
+  "fields": {
+    "action_time": "2026-02-03T00:51:57.135Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "2",
+    "object_repr": "News - Newsline",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 119,
+  "fields": {
+    "action_time": "2026-02-03T00:52:29.588Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "3",
+    "object_repr": "Word of Truth - Word of Truth",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Title\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 120,
+  "fields": {
+    "action_time": "2026-02-03T00:52:30.512Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "3",
+    "object_repr": "Word of Truth - Word of Truth",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 121,
+  "fields": {
+    "action_time": "2026-02-03T00:53:52.576Z",
+    "user": 1,
+    "content_type": 28,
+    "object_id": "1",
+    "object_repr": "Test NewsLine Article with Rich Text",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 122,
+  "fields": {
+    "action_time": "2026-02-03T01:34:42.510Z",
+    "user": 1,
+    "content_type": 19,
+    "object_id": "6",
+    "object_repr": "Wholesome Churches",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 123,
+  "fields": {
+    "action_time": "2026-02-03T01:35:26.211Z",
+    "user": 1,
+    "content_type": 19,
+    "object_id": "7",
+    "object_repr": "m",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 124,
+  "fields": {
+    "action_time": "2026-02-03T01:37:35.662Z",
+    "user": 1,
+    "content_type": 20,
+    "object_id": "1",
+    "object_repr": "The Christ Commission",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Video url\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 125,
+  "fields": {
+    "action_time": "2026-02-03T01:37:36.417Z",
+    "user": 1,
+    "content_type": 20,
+    "object_id": "1",
+    "object_repr": "The Christ Commission",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 126,
+  "fields": {
+    "action_time": "2026-02-03T01:38:15.497Z",
+    "user": 1,
+    "content_type": 20,
+    "object_id": "2",
+    "object_repr": "ABS",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Video url\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 127,
+  "fields": {
+    "action_time": "2026-02-03T01:38:16.253Z",
+    "user": 1,
+    "content_type": 20,
+    "object_id": "2",
+    "object_repr": "ABS",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 128,
+  "fields": {
+    "action_time": "2026-02-03T01:39:34.032Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "4",
+    "object_repr": "Fast - 2026-02-01",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 129,
+  "fields": {
+    "action_time": "2026-02-03T01:39:34.762Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "5",
+    "object_repr": "Fast - 2026-02-01",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 130,
+  "fields": {
+    "action_time": "2026-02-03T01:40:03.469Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "6",
+    "object_repr": "Fast - 2026-02-02",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 131,
+  "fields": {
+    "action_time": "2026-02-03T01:40:04.136Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "7",
+    "object_repr": "Fast - 2026-02-02",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 132,
+  "fields": {
+    "action_time": "2026-02-03T01:40:53.948Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "6",
+    "object_repr": "Fast - 2026-02-03",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Event date\", \"Event type\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 133,
+  "fields": {
+    "action_time": "2026-02-03T01:40:54.706Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "6",
+    "object_repr": "Fast - 2026-02-03",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 134,
+  "fields": {
+    "action_time": "2026-02-03T01:41:05.455Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "6",
+    "object_repr": "Fast - 2026-02-03",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Is published\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 135,
+  "fields": {
+    "action_time": "2026-02-03T01:41:19.170Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "6",
+    "object_repr": "Fast - 2026-02-03",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Is published\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 136,
+  "fields": {
+    "action_time": "2026-02-03T05:08:48.511Z",
+    "user": 1,
+    "content_type": 23,
+    "object_id": "3",
+    "object_repr": "Resist the Devil: Standing Firm With the Word of God",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 137,
+  "fields": {
+    "action_time": "2026-02-03T05:23:22.676Z",
+    "user": 1,
+    "content_type": 23,
+    "object_id": "2",
+    "object_repr": "word of truth",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 138,
+  "fields": {
+    "action_time": "2026-02-03T05:23:22.676Z",
+    "user": 1,
+    "content_type": 23,
+    "object_id": "1",
+    "object_repr": "Cultivating Fruit and Discovering Your Divine Gifts",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 139,
+  "fields": {
+    "action_time": "2026-02-03T05:29:26.907Z",
+    "user": 1,
+    "content_type": 23,
+    "object_id": "4",
+    "object_repr": "Why Many Believers Fear Satan and Spiritual Warfare",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 140,
+  "fields": {
+    "action_time": "2026-02-03T05:34:32.508Z",
+    "user": 1,
+    "content_type": 23,
+    "object_id": "4",
+    "object_repr": "Why Many Believers Fear Satan and Spiritual Warfare",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 141,
+  "fields": {
+    "action_time": "2026-02-03T05:37:13.473Z",
+    "user": 1,
+    "content_type": 23,
+    "object_id": "5",
+    "object_repr": "Why Many Believers Fear Satan and Spiritual Warfare",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 142,
+  "fields": {
+    "action_time": "2026-02-03T05:48:49.753Z",
+    "user": 1,
+    "content_type": 23,
+    "object_id": "6",
+    "object_repr": "You Are Precious in God’s Sight",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 143,
+  "fields": {
+    "action_time": "2026-02-03T05:57:46.389Z",
+    "user": 1,
+    "content_type": 23,
+    "object_id": "7",
+    "object_repr": "Walking in Step with the Father:",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 144,
+  "fields": {
+    "action_time": "2026-02-03T06:01:31.207Z",
+    "user": 1,
+    "content_type": 23,
+    "object_id": "7",
+    "object_repr": "Walking in Step with the Father:",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 145,
+  "fields": {
+    "action_time": "2026-02-03T06:05:04.534Z",
+    "user": 1,
+    "content_type": 23,
+    "object_id": "8",
+    "object_repr": "Walking in Step with the Father",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 146,
+  "fields": {
+    "action_time": "2026-02-03T06:13:44.213Z",
+    "user": 1,
+    "content_type": 23,
+    "object_id": "9",
+    "object_repr": "How God Wrote Your Life and Purpose",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 147,
+  "fields": {
+    "action_time": "2026-02-03T06:27:01.921Z",
+    "user": 1,
+    "content_type": 26,
+    "object_id": "1",
+    "object_repr": "saasdfd",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 148,
+  "fields": {
+    "action_time": "2026-02-03T06:34:13.315Z",
+    "user": 1,
+    "content_type": 26,
+    "object_id": "2",
+    "object_repr": "Forgive to Be Free: Unlock Your Healing and Deliverance Today",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 149,
+  "fields": {
+    "action_time": "2026-02-03T06:42:40.778Z",
+    "user": 1,
+    "content_type": 26,
+    "object_id": "3",
+    "object_repr": "Why Jesus Made You Rich: 3 False Beliefs About Wealth",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 150,
+  "fields": {
+    "action_time": "2026-02-03T07:26:21.483Z",
+    "user": 1,
+    "content_type": 28,
+    "object_id": "2",
+    "object_repr": "Breaking Barriers International Calls for Partners to Support the BBI Solomon Project",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 151,
+  "fields": {
+    "action_time": "2026-02-03T07:45:07.468Z",
+    "user": 1,
+    "content_type": 32,
+    "object_id": "2",
+    "object_repr": "Courts of Heaven: How Believers Can Seek Favor Before the Righteous Judge",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 152,
+  "fields": {
+    "action_time": "2026-02-03T07:59:18.133Z",
+    "user": 1,
+    "content_type": 32,
+    "object_id": "3",
+    "object_repr": "3 Reasons Why God Rejects Prayer Altars",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 153,
+  "fields": {
+    "action_time": "2026-02-03T08:00:22.272Z",
+    "user": 1,
+    "content_type": 32,
+    "object_id": "3",
+    "object_repr": "3 Reasons Why God Rejects Prayer Altars",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Author\", \"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 154,
+  "fields": {
+    "action_time": "2026-02-03T08:00:23.129Z",
+    "user": 1,
+    "content_type": 32,
+    "object_id": "3",
+    "object_repr": "3 Reasons Why God Rejects Prayer Altars",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 155,
+  "fields": {
+    "action_time": "2026-02-03T08:01:11.383Z",
+    "user": 1,
+    "content_type": 32,
+    "object_id": "2",
+    "object_repr": "Courts of Heaven: How Believers Can Seek Favor Before the Righteous Judge",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Author\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 156,
+  "fields": {
+    "action_time": "2026-02-03T08:01:12.236Z",
+    "user": 1,
+    "content_type": 32,
+    "object_id": "2",
+    "object_repr": "Courts of Heaven: How Believers Can Seek Favor Before the Righteous Judge",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 157,
+  "fields": {
+    "action_time": "2026-02-03T08:02:58.744Z",
+    "user": 1,
+    "content_type": 32,
+    "object_id": "2",
+    "object_repr": "Courts of Heaven: How Believers Can Seek Favor Before the Righteous Judge",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Cover image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 158,
+  "fields": {
+    "action_time": "2026-02-03T08:04:57.028Z",
+    "user": 1,
+    "content_type": 32,
+    "object_id": "2",
+    "object_repr": "Courts of Heaven: How Believers Can Seek Favor Before the Righteous Judge",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Cover image\", \"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 159,
+  "fields": {
+    "action_time": "2026-02-03T08:08:16.632Z",
+    "user": 1,
+    "content_type": 32,
+    "object_id": "2",
+    "object_repr": "Courts of Heaven: How Believers Can Seek Favor Before the Righteous Judge",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Cover image\", \"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 160,
+  "fields": {
+    "action_time": "2026-02-03T08:09:16.477Z",
+    "user": 1,
+    "content_type": 32,
+    "object_id": "2",
+    "object_repr": "Courts of Heaven: How Believers Can Seek Favor Before the Righteous Judge",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Cover image\", \"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 161,
+  "fields": {
+    "action_time": "2026-02-03T08:11:18.085Z",
+    "user": 1,
+    "content_type": 32,
+    "object_id": "2",
+    "object_repr": "Courts of Heaven: How Believers Can Seek Favor Before the Righteous Judge",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Cover image\", \"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 162,
+  "fields": {
+    "action_time": "2026-02-03T08:12:40.441Z",
+    "user": 1,
+    "content_type": 32,
+    "object_id": "2",
+    "object_repr": "Courts of Heaven: How Believers Can Seek Favor Before the Righteous Judge",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Cover image\", \"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 163,
+  "fields": {
+    "action_time": "2026-02-03T08:13:34.557Z",
+    "user": 1,
+    "content_type": 32,
+    "object_id": "2",
+    "object_repr": "Courts of Heaven: How Believers Can Seek Favor Before the Righteous Judge",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Cover image\", \"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 164,
+  "fields": {
+    "action_time": "2026-02-03T08:15:34.370Z",
+    "user": 1,
+    "content_type": 32,
+    "object_id": "2",
+    "object_repr": "Courts of Heaven: How Believers Can Seek Favor Before the Righteous Judge",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Cover image\", \"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 165,
+  "fields": {
+    "action_time": "2026-02-03T08:16:25.444Z",
+    "user": 1,
+    "content_type": 32,
+    "object_id": "2",
+    "object_repr": "Courts of Heaven: How Believers Can Seek Favor Before the Righteous Judge",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Cover image\", \"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 166,
+  "fields": {
+    "action_time": "2026-02-03T08:41:07.388Z",
+    "user": 1,
+    "content_type": 32,
+    "object_id": "1",
+    "object_repr": "Stand Your Ground",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 167,
+  "fields": {
+    "action_time": "2026-02-03T09:01:23.932Z",
+    "user": 1,
+    "content_type": 23,
+    "object_id": "9",
+    "object_repr": "How God Wrote Your Life and Purpose",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 168,
+  "fields": {
+    "action_time": "2026-02-03T09:15:43.769Z",
+    "user": 1,
+    "content_type": 23,
+    "object_id": "9",
+    "object_repr": "How God Wrote Your Life and Purpose",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 169,
+  "fields": {
+    "action_time": "2026-02-03T09:16:17.511Z",
+    "user": 1,
+    "content_type": 23,
+    "object_id": "9",
+    "object_repr": "How God Wrote Your Life and Purpose",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 170,
+  "fields": {
+    "action_time": "2026-02-03T09:16:18.777Z",
+    "user": 1,
+    "content_type": 23,
+    "object_id": "9",
+    "object_repr": "How God Wrote Your Life and Purpose",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 171,
+  "fields": {
+    "action_time": "2026-02-03T09:17:14.989Z",
+    "user": 1,
+    "content_type": 23,
+    "object_id": "9",
+    "object_repr": "How God Wrote Your Life and Purpose",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 172,
+  "fields": {
+    "action_time": "2026-02-03T09:17:16.237Z",
+    "user": 1,
+    "content_type": 23,
+    "object_id": "9",
+    "object_repr": "How God Wrote Your Life and Purpose",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 173,
+  "fields": {
+    "action_time": "2026-02-03T09:18:10.036Z",
+    "user": 1,
+    "content_type": 23,
+    "object_id": "8",
+    "object_repr": "Walking in Step with the Father",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 174,
+  "fields": {
+    "action_time": "2026-02-03T09:18:22.431Z",
+    "user": 1,
+    "content_type": 23,
+    "object_id": "8",
+    "object_repr": "Walking in Step with the Father",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 175,
+  "fields": {
+    "action_time": "2026-02-03T09:18:23.659Z",
+    "user": 1,
+    "content_type": 23,
+    "object_id": "8",
+    "object_repr": "Walking in Step with the Father",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 176,
+  "fields": {
+    "action_time": "2026-02-03T09:20:00.737Z",
+    "user": 1,
+    "content_type": 23,
+    "object_id": "6",
+    "object_repr": "You Are Precious in God’s Sight",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 177,
+  "fields": {
+    "action_time": "2026-02-03T09:20:10.602Z",
+    "user": 1,
+    "content_type": 23,
+    "object_id": "6",
+    "object_repr": "You Are Precious in God’s Sight",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 178,
+  "fields": {
+    "action_time": "2026-02-03T09:20:11.863Z",
+    "user": 1,
+    "content_type": 23,
+    "object_id": "6",
+    "object_repr": "You Are Precious in God’s Sight",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 179,
+  "fields": {
+    "action_time": "2026-02-03T09:21:10.319Z",
+    "user": 1,
+    "content_type": 23,
+    "object_id": "6",
+    "object_repr": "You Are Precious in God’s Sight",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 180,
+  "fields": {
+    "action_time": "2026-02-03T09:21:11.582Z",
+    "user": 1,
+    "content_type": 23,
+    "object_id": "6",
+    "object_repr": "You Are Precious in God’s Sight",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 181,
+  "fields": {
+    "action_time": "2026-02-03T09:22:27.682Z",
+    "user": 1,
+    "content_type": 23,
+    "object_id": "5",
+    "object_repr": "Why Many Believers Fear Satan and Spiritual Warfare",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 182,
+  "fields": {
+    "action_time": "2026-02-03T09:22:39.939Z",
+    "user": 1,
+    "content_type": 23,
+    "object_id": "5",
+    "object_repr": "Why Many Believers Fear Satan and Spiritual Warfare",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 183,
+  "fields": {
+    "action_time": "2026-02-03T09:22:41.169Z",
+    "user": 1,
+    "content_type": 23,
+    "object_id": "5",
+    "object_repr": "Why Many Believers Fear Satan and Spiritual Warfare",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 184,
+  "fields": {
+    "action_time": "2026-02-03T09:23:35.525Z",
+    "user": 1,
+    "content_type": 23,
+    "object_id": "3",
+    "object_repr": "Resist the Devil: Standing Firm With the Word of God",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 185,
+  "fields": {
+    "action_time": "2026-02-03T09:23:49.161Z",
+    "user": 1,
+    "content_type": 23,
+    "object_id": "3",
+    "object_repr": "Resist the Devil: Standing Firm With the Word of God",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 186,
+  "fields": {
+    "action_time": "2026-02-03T09:23:50.428Z",
+    "user": 1,
+    "content_type": 23,
+    "object_id": "3",
+    "object_repr": "Resist the Devil: Standing Firm With the Word of God",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 187,
+  "fields": {
+    "action_time": "2026-02-03T09:26:54.652Z",
+    "user": 1,
+    "content_type": 28,
+    "object_id": "2",
+    "object_repr": "Breaking Barriers International Calls for Partners to Support the BBI Solomon Project",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 188,
+  "fields": {
+    "action_time": "2026-02-03T09:27:14.629Z",
+    "user": 1,
+    "content_type": 28,
+    "object_id": "2",
+    "object_repr": "Breaking Barriers International Calls for Partners to Support the BBI Solomon Project",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 189,
+  "fields": {
+    "action_time": "2026-02-03T09:27:15.852Z",
+    "user": 1,
+    "content_type": 28,
+    "object_id": "2",
+    "object_repr": "Breaking Barriers International Calls for Partners to Support the BBI Solomon Project",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 190,
+  "fields": {
+    "action_time": "2026-02-03T09:31:09.438Z",
+    "user": 1,
+    "content_type": 26,
+    "object_id": "3",
+    "object_repr": "Why Jesus Made You Rich: 3 False Beliefs About Wealth",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 191,
+  "fields": {
+    "action_time": "2026-02-03T09:31:27.838Z",
+    "user": 1,
+    "content_type": 26,
+    "object_id": "3",
+    "object_repr": "Why Jesus Made You Rich: 3 False Beliefs About Wealth",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 192,
+  "fields": {
+    "action_time": "2026-02-03T09:31:29.259Z",
+    "user": 1,
+    "content_type": 26,
+    "object_id": "3",
+    "object_repr": "Why Jesus Made You Rich: 3 False Beliefs About Wealth",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 193,
+  "fields": {
+    "action_time": "2026-02-03T09:32:04.787Z",
+    "user": 1,
+    "content_type": 26,
+    "object_id": "2",
+    "object_repr": "Forgive to Be Free: Unlock Your Healing and Deliverance Today",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 194,
+  "fields": {
+    "action_time": "2026-02-03T09:32:19.007Z",
+    "user": 1,
+    "content_type": 26,
+    "object_id": "2",
+    "object_repr": "Forgive to Be Free: Unlock Your Healing and Deliverance Today",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 195,
+  "fields": {
+    "action_time": "2026-02-03T09:32:20.166Z",
+    "user": 1,
+    "content_type": 26,
+    "object_id": "2",
+    "object_repr": "Forgive to Be Free: Unlock Your Healing and Deliverance Today",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 196,
+  "fields": {
+    "action_time": "2026-02-03T09:33:11.308Z",
+    "user": 1,
+    "content_type": 26,
+    "object_id": "2",
+    "object_repr": "Forgive to Be Free: Unlock Your Healing and Deliverance Today",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 197,
+  "fields": {
+    "action_time": "2026-02-03T09:33:12.464Z",
+    "user": 1,
+    "content_type": 26,
+    "object_id": "2",
+    "object_repr": "Forgive to Be Free: Unlock Your Healing and Deliverance Today",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 198,
+  "fields": {
+    "action_time": "2026-02-03T09:42:32.063Z",
+    "user": 1,
+    "content_type": 28,
+    "object_id": "2",
+    "object_repr": "Breaking Barriers International Calls for Partners to Support the BBI Solomon Project",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 199,
+  "fields": {
+    "action_time": "2026-02-03T09:42:46.877Z",
+    "user": 1,
+    "content_type": 28,
+    "object_id": "2",
+    "object_repr": "Breaking Barriers International Calls for Partners to Support the BBI Solomon Project",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 200,
+  "fields": {
+    "action_time": "2026-02-03T09:42:48.071Z",
+    "user": 1,
+    "content_type": 28,
+    "object_id": "2",
+    "object_repr": "Breaking Barriers International Calls for Partners to Support the BBI Solomon Project",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 201,
+  "fields": {
+    "action_time": "2026-02-03T09:56:57.537Z",
+    "user": 1,
+    "content_type": 28,
+    "object_id": "3",
+    "object_repr": "BBI Solomon Project | Nairobi Ministry Building",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 202,
+  "fields": {
+    "action_time": "2026-02-03T09:58:20.205Z",
+    "user": 1,
+    "content_type": 28,
+    "object_id": "2",
+    "object_repr": "Breaking Barriers International Calls for Partners to Support the BBI Solomon Project",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 203,
+  "fields": {
+    "action_time": "2026-02-03T10:04:20.416Z",
+    "user": 1,
+    "content_type": 23,
+    "object_id": "5",
+    "object_repr": "Why Many Believers Fear Satan and Spiritual Warfare",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 204,
+  "fields": {
+    "action_time": "2026-02-03T10:06:37.597Z",
+    "user": 1,
+    "content_type": 23,
+    "object_id": "5",
+    "object_repr": "Why Many Believers Fear Satan and Spiritual Warfare",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\", \"Image cropping\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 205,
+  "fields": {
+    "action_time": "2026-02-03T10:13:46.429Z",
+    "user": 1,
+    "content_type": 29,
+    "object_id": "1",
+    "object_repr": "Message from Latosha Houlding: Stop \"Inventing\" Demand (And Start Selling)",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 206,
+  "fields": {
+    "action_time": "2026-02-03T10:14:45.407Z",
+    "user": 1,
+    "content_type": 29,
+    "object_id": "11",
+    "object_repr": "Message from Delton Mukoya Kuya: Deliverance",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Is read\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 207,
+  "fields": {
+    "action_time": "2026-02-03T10:14:45.572Z",
+    "user": 1,
+    "content_type": 29,
+    "object_id": "10",
+    "object_repr": "Message from Delton Mukoya Kuya: Deliverance",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Is read\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 208,
+  "fields": {
+    "action_time": "2026-02-03T10:14:45.740Z",
+    "user": 1,
+    "content_type": 29,
+    "object_id": "9",
+    "object_repr": 

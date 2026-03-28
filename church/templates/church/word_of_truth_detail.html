@@ -19,22 +19,61 @@
 {% block twitter_image %}{% if word_of_truth.image %}{{ request.scheme }}://{{ request.get_host }}{{
 word_of_truth.image.url }}{% else %}{{ block.super }}{% endif %}{% endblock %}
 
-{% block detailed_schema %}
+{% block extra_meta %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "{{ word_of_truth.title|escapejs }}",
+  "description": "{{ word_of_truth.summary|striptags|truncatewords:25|escapejs }}",
   "image": ["{% if word_of_truth.image %}{{ request.scheme }}://{{ request.get_host }}{{ word_of_truth.image.url }}{% endif %}"],
   "datePublished": "{{ word_of_truth.created_at|date:'c' }}",
   "dateModified": "{{ word_of_truth.updated_at|date:'c' }}",
   "author": [{
-      "@type": "Organization",
-      "name": "{{ word_of_truth.author_name|default:'Breaking Barriers International' }}",
+      "@type": "Person",
+      "name": "{{ word_of_truth.author_name|default:'Breaking Barriers International'|escapejs }}",
       "url": "https://bb-international.org"
-    }]
+    }],
+  "publisher": {
+    "@type": "Organization",
+    "name": "Breaking Barriers International",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://bb-international.org/static/images/bb_logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ request.build_absolute_uri }}"
+  }
 }
 </script>
+{% endblock %}
+
+{% block breadcrumbs %}
+<div class="bg-gray-50 border-b border-gray-200 py-3">
+    <div class="container mx-auto px-4 max-w-7xl">
+        <nav class="flex text-xs md:text-sm font-medium text-gray-500" aria-label="Breadcrumb">
+            <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                <li class="inline-flex items-center">
+                    <a href="{% url 'home' %}" class="hover:text-brand-color transition-colors">Home</a>
+                </li>
+                <li>
+                    <div class="flex items-center">
+                        <i class="fas fa-chevron-right text-[10px] mx-2 text-gray-400"></i>
+                        <a href="{% url 'word_of_truth_list' %}" class="hover:text-brand-color transition-colors">Word of Truth</a>
+                    </div>
+                </li>
+                <li aria-current="page">
+                    <div class="flex items-center">
+                        <i class="fas fa-chevron-right text-[10px] mx-2 text-gray-400"></i>
+                        <span class="text-gray-400 line-clamp-1">{{ word_of_truth.title }}</span>
+                    </div>
+                </li>
+            </ol>
+        </nav>
+    </div>
+</div>
 {% endblock %}
 
 {% block extra_head %}{% endblock %}
@@ -139,6 +178,14 @@ word_of_truth.image.url }}{% else %}{{ block.super }}{% endif %}{% endblock %}
 
                             <div class="article-content font-normal text-gray-800">
                                 {{ word_of_truth.body|safe }}
+                            </div>
+                        </div>
+
+                        <!-- Internal Linking: Related Content -->
+                        <div class="mt-16 pt-10 border-t border-gray-100">
+                            <h3 class="fjalla-one-regular text-2xl text-gray-900 mb-6 uppercase tracking-tight">Related Word of Truth</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                {% include 'church/partials/related_articles.html' with articles=related_articles type='word_of_truth' %}
                             </div>
                         </div>
 

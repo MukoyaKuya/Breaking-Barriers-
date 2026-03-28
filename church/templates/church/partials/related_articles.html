@@ -1,0 +1,27 @@
+{% load thumbnail %}
+{% load safe_thumbnail %}
+
+{% for article in articles %}
+<a href="{% if type == 'word_of_truth' %}{% url 'word_of_truth_detail' article.slug %}{% elif type == 'childrens_bread' %}{% url 'childrens_bread_detail' article.slug %}{% else %}{% url 'news_detail' article.slug %}{% endif %}" 
+   class="group block bg-gray-50 rounded-xl overflow-hidden border border-gray-100 hover:shadow-md transition-all duration-300">
+    <div class="flex items-center gap-4 p-3">
+        <div class="w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden bg-gray-200">
+            {% if article.image %}
+                <img src="{{ article.image.url }}" alt="{{ article.title }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            {% else %}
+                <div class="w-full h-full brand-color flex items-center justify-center text-white/30">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+            {% endif %}
+        </div>
+        <div class="flex-grow min-w-0">
+            <h4 class="text-sm font-bold text-gray-900 group-hover:brand-text transition-colors line-clamp-2 leading-snug mb-1">
+                {{ article.title }}
+            </h4>
+            <p class="text-[10px] uppercase tracking-wider text-gray-400 font-bold">
+                {{ article.created_at|date:"M j, Y" }}
+            </p>
+        </div>
+    </div>
+</a>
+{% endfor %}

@@ -21,7 +21,12 @@ from .models import (
     ManTalk,
     ChildrensBread,
     NewsLine,
+    WordOfTruth,
+    ManTalk,
+    ChildrensBread,
+    NewsLine,
     MN,
+    BoardMember,
 )
 
 # Cache timeouts (seconds)
@@ -189,6 +194,13 @@ def get_optimized_man_talk_list(limit=3):
     return ManTalk.objects.filter(
         is_published=True
     ).order_by('-created_at')[:limit]
+
+
+def get_optimized_board_members():
+    """Active Board Members for Leadership page."""
+    return BoardMember.objects.filter(
+        is_active=True
+    ).order_by('display_order', 'name')
 
 
 def invalidate_home_caches():

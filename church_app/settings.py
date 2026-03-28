@@ -38,8 +38,13 @@ ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     '.a.run.app',
-    '.run.app'
 ]
+# HostAfrica Domain logic
+if os.environ.get('DOMAIN'):
+    domain = os.environ.get('DOMAIN').strip()
+    if domain not in ALLOWED_HOSTS:
+        ALLOWED_HOSTS.append(domain)
+        ALLOWED_HOSTS.append(f"www.{domain}")
 if os.environ.get('ALLOWED_HOSTS') and os.environ.get('ALLOWED_HOSTS') != '*':
    ALLOWED_HOSTS += [h.strip() for h in os.environ.get('ALLOWED_HOSTS').split(',') if h.strip()]
 
@@ -54,7 +59,7 @@ CSRF_TRUSTED_ORIGINS = [
 if os.environ.get('CUSTOM_DOMAIN'):
     custom_domain = os.environ.get('CUSTOM_DOMAIN').strip()
     if custom_domain:
-        for origin in (f'https://{custom_domain}', f'https://www.{custom_domain}'):
+        for origin in (f'https://{custom_domain}', f'https://www.{custom_domain}', f'http://{custom_domain}', f'http://www.{custom_domain}'):
             if origin not in CSRF_TRUSTED_ORIGINS:
                 CSRF_TRUSTED_ORIGINS.append(origin)
 

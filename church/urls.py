@@ -7,6 +7,7 @@ urlpatterns = [
     path('home-content/', views.home_content_view, name='home_content'),
     path('offline/', TemplateView.as_view(template_name='church/offline.html'), name='offline'),
     path('about/', views.about_view, name='about'),
+    path('leadership/', views.leadership_view, name='leadership'),
     path('word-of-truth/', views.word_of_truth_list_view, name='word_of_truth_list'),
     path('word-of-truth/load-more/', views.load_more_word_of_truth_view, name='load_more_word_of_truth'),
     path('word-of-truth/<slug:slug>/', views.word_of_truth_detail_view, name='word_of_truth_detail'),

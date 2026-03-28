@@ -72,12 +72,15 @@
 
                 <a href="{% url 'childrens_bread_list' %}"
                     class="block hover:text-gray-200 transition py-2 sm:py-0">Children's Bread</a>
+                <a href="{% url 'word_of_truth_list' %}" class="block hover:text-gray-200 transition py-2 sm:py-0">Word of Truth</a>
+                <a href="{% url 'school_of_ministry' %}" class="block hover:text-gray-200 transition py-2 sm:py-0">School of Ministry</a>
                 <a href="{% url 'mantalk_list' %}" class="block hover:text-gray-200 transition py-2 sm:py-0">ManTalk</a>
+                <a href="{% url 'leadership' %}" class="block hover:text-gray-200 transition py-2 sm:py-0">Leadership</a>
             </div>
 
             <!-- Newsletter (far right) -->
             <div class="space-y-3 md:text-right sm:col-span-2 md:col-span-1" x-data="{ submitting: false }">
-                <h3 class="text-xl sm:text-2xl font-bold">News Letter</h3>
+                <!-- Newsletter Form (Header removed as requested) -->
                 <form action="{% url 'newsletter_subscribe' %}" method="post" class="space-y-3"
                     @submit="submitting = true">
                     {% csrf_token %}

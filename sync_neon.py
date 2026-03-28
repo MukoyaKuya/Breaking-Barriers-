@@ -39,7 +39,9 @@ if __name__ == "__main__":
         sys.executable, 'manage.py', 'dumpdata', 
         '--exclude', 'auth.permission', 
         '--exclude', 'contenttypes',
-        '--exclude', 'admin.logentry', # admin logs might have user refs that conflict
+        '--exclude', 'admin.logentry', 
+        '--exclude', 'church.PageView',
+        '--exclude', 'sessions.Session',
         '--indent', '2',
         '--output', 'neon_data.json'
     ]

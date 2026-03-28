@@ -19,21 +19,60 @@
 {% block twitter_image %}{% if article.image %}{{ request.scheme }}://{{ request.get_host }}{{ article.image.url }}{%
 else %}{{ block.super }}{% endif %}{% endblock %}
 
-{% block detailed_schema %}
+{% block extra_meta %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "{{ article.title|escapejs }}",
+  "description": "{{ article.summary|striptags|truncatewords:25|escapejs }}",
   "image": ["{% if article.image %}{{ request.scheme }}://{{ request.get_host }}{{ article.image.url }}{% endif %}"],
   "datePublished": "{{ article.created_at|date:'c' }}",
   "dateModified": "{{ article.updated_at|date:'c' }}",
   "author": [{
       "@type": "Person",
-      "name": "{{ article.author_name|default:'Pst. Nellie Shani' }}"
-    }]
+      "name": "{{ article.author_name|default:'Pst. Nellie Shani'|escapejs }}"
+    }],
+  "publisher": {
+    "@type": "Organization",
+    "name": "Breaking Barriers International",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://bb-international.org/static/images/bb_logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ request.build_absolute_uri }}"
+  }
 }
 </script>
+{% endblock %}
+
+{% block breadcrumbs %}
+<div class="bg-gray-50 border-b border-gray-200 py-3">
+    <div class="container mx-auto px-4 max-w-7xl">
+        <nav class="flex text-xs md:text-sm font-medium text-gray-500" aria-label="Breadcrumb">
+            <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                <li class="inline-flex items-center">
+                    <a href="{% url 'home' %}" class="hover:text-brand-color transition-colors">Home</a>
+                </li>
+                <li>
+                    <div class="flex items-center">
+                        <i class="fas fa-chevron-right text-[10px] mx-2 text-gray-400"></i>
+                        <a href="{% url 'childrens_bread_list' %}" class="hover:text-brand-color transition-colors">Children's Bread</a>
+                    </div>
+                </li>
+                <li aria-current="page">
+                    <div class="flex items-center">
+                        <i class="fas fa-chevron-right text-[10px] mx-2 text-gray-400"></i>
+                        <span class="text-gray-400 line-clamp-1">{{ article.title }}</span>
+                    </div>
+                </li>
+            </ol>
+        </nav>
+    </div>
+</div>
 {% endblock %}
 
 {% block extra_head %}{% endblock %}
@@ -138,6 +177,14 @@ else %}{{ block.super }}{% endif %}{% endblock %}
 
                             <div class="article-content font-normal text-gray-800">
                                 {{ article.body|safe }}
+                            </div>
+                        </div>
+
+                        <!-- Internal Linking: Related Content -->
+                        <div class="mt-16 pt-10 border-t border-gray-100">
+                            <h3 class="fjalla-one-regular text-2xl text-gray-900 mb-6 uppercase tracking-tight">Related Children's Bread</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                {% include 'church/partials/related_articles.html' with articles=related_articles type='childrens_bread' %}
                             </div>
                         </div>
 
