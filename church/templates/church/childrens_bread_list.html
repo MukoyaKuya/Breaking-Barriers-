@@ -75,19 +75,17 @@
                     </div>
                 </div>
                 {% endfor %}
-            </div>
 
-            <!-- Load More Button -->
-            {% if has_more %}
-            <div class="text-center mt-12" id="load-more-wrapper">
-                <button hx-get="{% url 'load_more_childrens_bread' %}?offset={{ next_offset }}"
-                    hx-target="#articles-container" hx-swap="beforeend"
-                    hx-on::after-swap="if (event.detail.target.querySelector('#load-more-wrapper')) { event.detail.target.querySelector('#load-more-wrapper').remove(); }"
-                    class="bg-brand-color text-white px-8 py-3.5 rounded-xl hover:bg-red-900 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl hover:-translate-y-1 min-h-[48px]">
-                    Load More Articles
-                </button>
+                {% if has_more %}
+                <div class="text-center mt-12 col-span-full" id="load-more-wrapper">
+                    <button hx-get="{% url 'load_more_childrens_bread' %}?offset={{ next_offset }}"
+                        hx-target="#load-more-wrapper" hx-swap="outerHTML"
+                        class="bg-brand-color text-white px-8 py-3.5 rounded-xl hover:bg-red-900 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl hover:-translate-y-1 min-h-[48px]">
+                        Load More Articles
+                    </button>
+                </div>
+                {% endif %}
             </div>
-            {% endif %}
         </div>
         {% else %}
         <div class="text-center py-20 bg-white rounded-3xl border border-gray-100 shadow-sm">

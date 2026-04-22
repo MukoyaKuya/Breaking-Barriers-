@@ -2,7 +2,7 @@
 {% load static %}
 {% load thumbnail %}
 {% load safe_thumbnail %}
-
+{% load comment_tags %}
 {% block title %}{{ article.title }} - Breaking Barriers International{% endblock %}
 
 {% block meta_title %}{{ article.title }} | Breaking Barriers International{% endblock %}
@@ -197,6 +197,9 @@ else %}{{ block.super }}{% endif %}{% endblock %}
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Comment Section -->
+                        {% render_comments article %}
                     </div>
                 </div>
             </div>

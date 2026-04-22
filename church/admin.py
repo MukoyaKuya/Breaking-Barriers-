@@ -4,7 +4,7 @@ from django.utils.html import format_html
 from django.forms import ModelForm
 from django.forms.widgets import ColorInput
 from image_cropping import ImageCroppingMixin
-from .models import Verse, NewsItem, NewsLine, CalendarEvent, Testimonial, GalleryImage, HeroSettings, AboutPage, InfoCard, CTACard, MensMinistry, Partner, NewsletterSubscriber, SchoolMinistryEnrollment, FAQ, SidebarPromo, WordOfTruth, ManTalk, ChildrensBread, PageView, ContactMessage, PartnerInquiry, Book, MN, BoardMember
+from .models import Verse, NewsItem, NewsLine, CalendarEvent, Testimonial, GalleryImage, HeroSettings, AboutPage, InfoCard, CTACard, MensMinistry, Partner, NewsletterSubscriber, SchoolMinistryEnrollment, FAQ, SidebarPromo, WordOfTruth, ManTalk, ChildrensBread, PageView, ContactMessage, PartnerInquiry, Book, MN, BoardMember, ArticleComment, ArticleComment
 from .forms import (
     WordOfTruthAdminForm, ChildrensBreadAdminForm, ManTalkAdminForm,
     NewsLineAdminForm, NewsItemAdminForm, InfoCardAdminForm,
@@ -668,4 +668,25 @@ class BoardMemberAdmin(ImageCroppingMixin, admin.ModelAdmin):
             'fields': ('created_at', 'updated_at'),
             'classes': ('collapse',)
         }),
+    )
+
+
+@admin.register(ArticleComment)
+class ArticleCommentAdmin(admin.ModelAdmin):
+    list_display = ('author_name', 'email', 'content_object', 'is_approved', 'created_at')
+    list_filter = ('is_approved', 'created_at', 'content_type')
+    search_fields = ('author_name', 'email', 'content')
+    list_editable = ('is_approved',)
+    readonly_fields = ('created_at',)
+    
+    fieldsets = (
+        ('Comment Info', {
+            'fields': ('content_type', 'object_id', 'author_name', 'email', 'is_approved')
+        }),
+        ('Content', {
+            'fields': ('content',)
+        }),
+        ('Timestamps', {
+            'fields': ('created_at',)
+        })
     )

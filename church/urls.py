@@ -42,4 +42,5 @@ urlpatterns = [
     path('newsletter/subscribe/', views.newsletter_subscribe_view, name='newsletter_subscribe'),
     path('analytics/', views.analytics_view, name='analytics'),
     path('analytics/reset/', views.analytics_reset_view, name='analytics_reset'),
+    path('add-comment/<int:content_type_id>/<int:object_id>/', views.add_article_comment, name='add_article_comment'),
 ]

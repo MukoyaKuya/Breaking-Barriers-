@@ -3,6 +3,7 @@ from urllib.parse import urlparse
 
 from django.conf import settings
 from django.http import HttpResponseRedirect
+from django.utils.http import url_has_allowed_host_and_scheme
 
 logger = logging.getLogger(__name__)
 
@@ -60,7 +61,7 @@ class StaffLoginRedirectMiddleware:
             and not request.user.is_authenticated
         ):
             next_url = request.GET.get('next') or '/admin/'
-            if not next_url.startswith('/'):
+            if not url_has_allowed_host_and_scheme(url=next_url, allowed_hosts={request.get_host()}, require_https=request.is_secure()):
                 next_url = '/admin/'
             staff_login_url = f'/staff-login/?next={next_url}'
             return HttpResponseRedirect(request.build_absolute_uri(staff_login_url))
@@ -99,14 +100,20 @@ class HeaderLoggingMiddleware:
                         pass
 
         if request.path.startswith('/admin/') or request.path.startswith('/staff-login/'):
-            # Log headers for admin and login requests
-            headers = {k: v for k, v in request.META.items() if k.startswith('HTTP_') or k in ['REMOTE_ADDR', 'CONTENT_TYPE', 'CONTENT_LENGTH']}
+            # Log headers for admin and login requests (Redact sensitive data)
+            sensitive_keys = {'HTTP_COOKIE', 'HTTP_AUTHORIZATION', 'HTTP_X_CSRFTOKEN', 'CSRF_COOKIE'}
+            headers = {}
+            for k, v in request.META.items():
+                if k.startswith('HTTP_') or k in ['REMOTE_ADDR', 'CONTENT_TYPE', 'CONTENT_LENGTH']:
+                    if k in sensitive_keys:
+                        headers[k] = '[REDACTED]'
+                    else:
+                        headers[k] = v
+                        
             logger.info(f"DIAGNOSTIC: Path={request.path}, Method={request.method}")
             logger.info(f"DIAGNOSTIC Headers: {headers}")
-            logger.info(f"DIAGNOSTIC Cookies: {request.COOKIES.keys()}")
+            logger.info(f"DIAGNOSTIC Cookies: {list(request.COOKIES.keys())}")
             
-        response = self.get_response(request)
-        
         response = self.get_response(request)
         
         if request.path.startswith('/admin/') or request.path.startswith('/staff-login/'):

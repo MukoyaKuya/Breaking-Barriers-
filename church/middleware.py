@@ -3,14 +3,27 @@ from django.utils.deprecation import MiddlewareMixin
 from ipware import get_client_ip as ipware_get_client_ip
 
 
-def get_client_ip(request):
-    """Return the client IP for the request (proxy-aware via django-ipware).
+def anonymize_ip(ip):
+    """Anonymize the given IP address by masking the last octet (IPv4) or last 80 bits (IPv6)."""
+    if not ip:
+        return None
+    if '.' in ip:
+        # IPv4: Zero out the last octet
+        parts = ip.split('.')
+        if len(parts) == 4:
+            return f"{parts[0]}.{parts[1]}.{parts[2]}.0"
+    elif ':' in ip:
+        # IPv6: Keep only the first 48 bits (3 segments) to follow best practices
+        parts = ip.split(':')
+        if len(parts) >= 3:
+            return f"{parts[0]}:{parts[1]}:{parts[2]}::"
+    return ip
 
-    Uses multiple headers (X-Forwarded-For, X-Real-IP, CF-Connecting-IP, etc.)
-    so analytics work correctly behind load balancers and CDNs on cloud deployment.
-    """
+
+def get_client_ip(request):
+    """Return the client IP for the request (proxy-aware via django-ipware)."""
     client_ip, _ = ipware_get_client_ip(request)
-    return client_ip
+    return anonymize_ip(client_ip)
 
 
 class PageViewMiddleware(MiddlewareMixin):

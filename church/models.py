@@ -1,10 +1,10 @@
 from django.db import models
 from django.utils.text import slugify
-from ckeditor.fields import RichTextField
+from django_ckeditor_5.fields import CKEditor5Field
 from urllib.parse import urlparse, parse_qs
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
 from image_cropping import ImageRatioField
-
-
 class Verse(models.Model):
     """Model for daily/weekly Bible verses"""
     content = models.TextField()
@@ -32,7 +32,7 @@ class NewsItem(models.Model):
     image = models.ImageField(upload_to='news/')
     image_cropping = ImageRatioField('image', '800x600', size_warning=True, help_text='Crop the image to your desired size')
     summary = models.TextField()
-    body = RichTextField()
+    body = CKEditor5Field('Content', config_name='default')
     event_date = models.DateTimeField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     is_published = models.BooleanField(default=False)
@@ -71,7 +71,7 @@ class NewsLine(models.Model):
         help_text='Optional YouTube video URL (e.g. https://www.youtube.com/watch?v=VIDEO_ID). If provided, video will be shown.',
     )
     summary = models.TextField(help_text='Short description or summary')
-    body = RichTextField(blank=True, help_text='Full article content')
+    body = CKEditor5Field('Content', config_name='default', blank=True, help_text='Full article content')
     is_published = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -349,7 +349,7 @@ class AboutPage(models.Model):
         blank=True,
         help_text='Optional YouTube video URL (e.g. https://www.youtube.com/watch?v=VIDEO_ID or https://www.youtube.com/embed/VIDEO_ID). If provided, video will be shown instead of or alongside the image.',
     )
-    body = RichTextField(
+    body = CKEditor5Field('Story', config_name='default',
         help_text='Main About text. Supports headings, paragraphs and bullet lists.'
     )
     updated_at = models.DateTimeField(auto_now=True)
@@ -416,7 +416,7 @@ class InfoCard(models.Model):
     image_cropping = ImageRatioField('image', '1600x900', size_warning=True, help_text='Crop the image to 16:9 aspect ratio (1600x900) for proper display')
     headline = models.CharField(max_length=200, help_text='Bold headline text below the image')
     summary = models.TextField(help_text='Summary/description text (displayed on the homepage card)')
-    content = RichTextField(blank=True, help_text='Full article content triggered by "Read More"')
+    content = CKEditor5Field('Content', config_name='default', blank=True, help_text='Full article content triggered by "Read More"')
     author_name = models.CharField(max_length=100, default='TechNurtures', 
                                   help_text='Author name displayed in metadata')
     link_url = models.CharField(max_length=200, blank=True, 
@@ -451,7 +451,7 @@ class WordOfTruth(models.Model):
     author_name = models.CharField(max_length=100, default='Breaking Barriers International', help_text='Name of the article writer')
     image = models.ImageField(upload_to='word_of_truth/', blank=True, null=True, help_text='Featured image for the article')
     image_cropping = ImageRatioField('image', '800x600', size_warning=True, help_text='Crop the image for proper display (800x600)')
-    body = RichTextField(help_text='Full article content for the PDF and web view')
+    body = CKEditor5Field('Content', config_name='default', help_text='Full article content for the PDF and web view')
     is_published = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -496,7 +496,7 @@ class ManTalk(models.Model):
     author_name = models.CharField(max_length=100, default='Breaking Barriers International', help_text='Name of the article writer')
     image = models.ImageField(upload_to='man_talk/', blank=True, null=True, help_text='Featured image for the article')
     image_cropping = ImageRatioField('image', '800x600', size_warning=True, help_text='Crop the image for proper display (800x600)')
-    body = RichTextField(help_text='Full article content')
+    body = CKEditor5Field('Content', config_name='default', help_text='Full article content')
     is_published = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -542,7 +542,7 @@ class Book(models.Model):
     cover_image = models.ImageField(upload_to='books/', help_text='Book cover image')
     image_cropping = ImageRatioField('cover_image', '600x900', size_warning=True, help_text='Crop for vertical book display (600x900)')
     description = models.TextField(help_text='Short description/summary for the card')
-    review = RichTextField(help_text='Full book review and details')
+    review = CKEditor5Field('Review', config_name='default', help_text='Full book review and details')
     whatsapp_number = models.CharField(max_length=20, default='+254716703508', help_text='WhatsApp number for inquiries')
     is_published = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -582,7 +582,7 @@ class ChildrensBread(models.Model):
     author_name = models.CharField(max_length=100, default='Pst. Nellie Shani', help_text='Name of the article writer')
     image = models.ImageField(upload_to='childrens_bread/', blank=True, null=True, help_text='Featured image for the article')
     image_cropping = ImageRatioField('image', '800x600', size_warning=True, help_text='Crop the image for proper display (800x600)')
-    body = RichTextField(help_text='Full article content')
+    body = CKEditor5Field('Content', config_name='default', help_text='Full article content')
     is_published = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -877,7 +877,7 @@ class BoardMember(models.Model):
     role = models.CharField(max_length=200, help_text='Role/Position (e.g. Founder, Chairman)')
     image = models.ImageField(upload_to='leadership/', help_text='Professional photo (400x400 square recommended)')
     image_cropping = ImageRatioField('image', '400x400', size_warning=True)
-    bio = RichTextField(help_text='Short biography/background')
+    bio = CKEditor5Field('Bio', config_name='default', help_text='Short biography/background')
     display_order = models.PositiveIntegerField(default=0, help_text='Lower numbers appear first')
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -918,3 +918,28 @@ class MN(models.Model):
     def load(cls):
         obj, created = cls.objects.get_or_create(pk=1)
         return obj
+
+
+class ArticleComment(models.Model):
+    """Generic comment model for all article types."""
+    # Generic relation to link to any article type
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    object_id = models.PositiveIntegerField()
+    content_object = GenericForeignKey('content_type', 'object_id')
+
+    author_name = models.CharField(max_length=100)
+    email = models.EmailField(blank=False, help_text="Mandatory email for the commenter")
+    content = models.TextField()
+    is_approved = models.BooleanField(default=True, help_text="Checked by default. Uncheck to hide this comment.")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = 'Article Comment'
+        verbose_name_plural = 'Article Comments'
+        indexes = [
+            models.Index(fields=['content_type', 'object_id', 'is_approved', '-created_at']),
+        ]
+
+    def __str__(self):
+        return f"Comment by {self.author_name} on {self.content_object}"

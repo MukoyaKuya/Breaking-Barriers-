@@ -18,8 +18,13 @@
                         <div class="info-carousel-slide absolute inset-0 w-full h-full {% if forloop.first %}opacity-100 z-10{% else %}opacity-0 z-0{% endif %}"
                             data-slide style="transition: opacity 0.5s ease;">
                             {% if article.image %}
-                            <img src="{{ article.image.url }}" alt="{{ article.title }}"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                            <picture>
+                                {% thumbnail article.image "800x600" crop="smart" as thumb %}
+                                <source srcset="{{ thumb.url }}.webp" type="image/webp">
+                                <img src="{{ thumb.url }}" alt="{{ article.title }}"
+                                    class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                                    loading="lazy">
+                            </picture>
                             {% else %}
                             <div
                                 class="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
@@ -38,8 +43,13 @@
                         {% else %}
                         <div class="info-carousel-slide absolute inset-0 w-full h-full opacity-100 z-10" data-slide>
                             {% if childrens_bread_card.image %}
-                            <img src="{{ childrens_bread_card.image.url }}" alt="{{ childrens_bread_card.headline }}"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                            <picture>
+                                {% thumbnail childrens_bread_card.image "1600x900" crop="smart" as thumb %}
+                                <source srcset="{{ thumb.url }}.webp" type="image/webp">
+                                <img src="{{ thumb.url }}" alt="{{ childrens_bread_card.headline }}"
+                                    class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                                    loading="lazy">
+                            </picture>
                             {% else %}
                             <div
                                 class="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
@@ -92,8 +102,13 @@
                         <div class="info-carousel-slide absolute inset-0 w-full h-full {% if forloop.first %}opacity-100 z-10{% else %}opacity-0 z-0{% endif %}"
                             data-slide style="transition: opacity 0.5s ease;">
                             {% if article.image %}
-                            <img src="{{ article.image.url }}" alt="{{ article.title }}"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                            <picture>
+                                {% thumbnail article.image "800x600" crop="smart" as thumb %}
+                                <source srcset="{{ thumb.url }}.webp" type="image/webp">
+                                <img src="{{ thumb.url }}" alt="{{ article.title }}"
+                                    class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                                    loading="lazy">
+                            </picture>
                             {% else %}
                             <div
                                 class="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
@@ -112,8 +127,13 @@
                         {% else %}
                         <div class="info-carousel-slide absolute inset-0 w-full h-full opacity-100 z-10" data-slide>
                             {% if news_card.image %}
-                            <img src="{{ news_card.image.url }}" alt="{{ news_card.headline }}"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                            <picture>
+                                {% thumbnail news_card.image "1600x900" crop="smart" as thumb %}
+                                <source srcset="{{ thumb.url }}.webp" type="image/webp">
+                                <img src="{{ thumb.url }}" alt="{{ news_card.headline }}"
+                                    class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                                    loading="lazy">
+                            </picture>
                             {% else %}
                             <div
                                 class="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
@@ -167,8 +187,13 @@
                         <div class="info-carousel-slide absolute inset-0 w-full h-full {% if forloop.first %}opacity-100 z-10{% else %}opacity-0 z-0{% endif %}"
                             data-slide style="transition: opacity 0.5s ease;">
                             {% if article.image %}
-                            <img src="{{ article.image.url }}" alt="{{ article.title }}"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                            <picture>
+                                {% thumbnail article.image "800x600" crop="smart" as thumb %}
+                                <source srcset="{{ thumb.url }}.webp" type="image/webp">
+                                <img src="{{ thumb.url }}" alt="{{ article.title }}"
+                                    class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                                    loading="lazy">
+                            </picture>
                             {% else %}
                             <div
                                 class="w-full h-full bg-gradient-to-br from-yellow-400 via-orange-500 to-red-600 flex items-center justify-center">
@@ -187,8 +212,13 @@
                         {% else %}
                         <div class="info-carousel-slide absolute inset-0 w-full h-full opacity-100 z-10" data-slide>
                             {% if word_of_truth_card.image %}
-                            <img src="{{ word_of_truth_card.image.url }}" alt="{{ word_of_truth_card.headline }}"
-                                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                            <picture>
+                                {% thumbnail word_of_truth_card.image "1600x900" crop="smart" as thumb %}
+                                <source srcset="{{ thumb.url }}.webp" type="image/webp">
+                                <img src="{{ thumb.url }}" alt="{{ word_of_truth_card.headline }}"
+                                    class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                                    loading="lazy">
+                            </picture>
                             {% else %}
                             <div
                                 class="w-full h-full bg-gradient-to-br from-yellow-400 via-orange-500 to-red-600 flex items-center justify-center">

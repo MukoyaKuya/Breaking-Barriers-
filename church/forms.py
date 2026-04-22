@@ -7,7 +7,8 @@ from django.core.exceptions import ValidationError
 from .models import (
     WordOfTruth, ChildrensBread, ManTalk, NewsLine, NewsItem, InfoCard, 
     GalleryImage, HeroSettings, SidebarPromo, AboutPage, Partner, Testimonial,
-    ContactMessage, PartnerInquiry
+    ContactMessage, PartnerInquiry, NewsletterSubscriber, SchoolMinistryEnrollment,
+    ArticleComment
 )
 
 
@@ -274,3 +275,106 @@ class PartnerInquiryForm(forms.ModelForm):
         if re.search('[\u0400-\u04FF]', message):
             raise ValidationError("Spam attempt detected. Cyrillic text is not permitted.")
         return message
+
+class NewsletterSubscribeForm(forms.ModelForm):
+    # Hidden field to catch bots
+    honeypot = forms.CharField(required=False, widget=forms.HiddenInput(attrs={'class': 'hidden'}))
+
+    class Meta:
+        model = NewsletterSubscriber
+        fields = ['email']
+        widgets = {
+            'email': forms.EmailInput(attrs={'class': 'w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand focus:border-transparent outline-none transition duration-300', 'placeholder': 'Your Email Address'}),
+        }
+
+    def clean_honeypot(self):
+        if self.cleaned_data.get('honeypot'):
+            raise ValidationError("Bot detected.")
+        return self.cleaned_data.get('honeypot')
+
+
+class SchoolEnrollmentForm(forms.ModelForm):
+    # Hidden field to catch bots
+    honeypot = forms.CharField(required=False, widget=forms.HiddenInput(attrs={'class': 'hidden'}))
+
+    class Meta:
+        model = SchoolMinistryEnrollment
+        fields = ['name', 'email', 'phone_number']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand focus:border-transparent outline-none transition duration-300', 'placeholder': 'Your Full Name'}),
+            'email': forms.EmailInput(attrs={'class': 'w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand focus:border-transparent outline-none transition duration-300', 'placeholder': 'Your Email Address'}),
+            'phone_number': forms.TextInput(attrs={'class': 'w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand focus:border-transparent outline-none transition duration-300', 'placeholder': 'Your Phone Number (e.g. +254...)'}),
+        }
+
+    def clean_honeypot(self):
+        if self.cleaned_data.get('honeypot'):
+            raise ValidationError("Bot detected.")
+        return self.cleaned_data.get('honeypot')
+
+    def clean_phone_number(self):
+        """Ensure phone number starts with +254"""
+        phone = self.cleaned_data.get('phone_number')
+        if not phone.startswith('+254'):
+            raise ValidationError("Only Kenyan phone numbers starting with +254 are accepted.")
+        clean_ext = phone[4:].replace(' ', '').replace('-', '')
+        if not clean_ext.isdigit() or len(clean_ext) < 9 or len(clean_ext) > 10:
+             raise ValidationError("Please enter a valid Kenyan phone number (e.g. +254 7XX XXX XXX).")
+        return phone
+
+
+class ArticleCommentForm(forms.ModelForm):
+    # Hidden field to catch bots
+    honeypot = forms.CharField(required=False, widget=forms.HiddenInput(attrs={'class': 'hidden'}))
+
+    class Meta:
+        model = ArticleComment
+        fields = ['author_name', 'email', 'content']
+        widgets = {
+            'author_name': forms.TextInput(attrs={'class': 'w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#990030] focus:border-transparent outline-none transition duration-300', 'placeholder': 'Your Name'}),
+            'email': forms.EmailInput(attrs={'class': 'w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#990030] focus:border-transparent outline-none transition duration-300', 'placeholder': 'Email Address (Gmail, Outlook, or Hotmail)'}),
+            'content': forms.Textarea(attrs={'class': 'w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#990030] focus:border-transparent outline-none transition duration-300', 'rows': 4, 'placeholder': 'Add a comment...'}),
+        }
+
+    def clean_honeypot(self):
+        """Check if honeypot was filled"""
+        honeypot = self.cleaned_data.get('honeypot')
+        if honeypot:
+            raise ValidationError("Bot detected.")
+        return honeypot
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if not email:
+            raise ValidationError("Email is mandatory.")
+        
+        allowed_domains = ['gmail.com', 'outlook.com', 'hotmail.com', 'live.com', 'msn.com', 'office365.com']
+        domain = email.split('@')[-1].lower()
+        if domain not in allowed_domains:
+            raise ValidationError("Please use a valid Gmail, Outlook, or Hotmail address.")
+        return email
+
+    def validate_profanity(self, text):
+        """Check for vulgar words in English and Swahili"""
+        vulgar_words = [
+            'fuck', 'shit', 'bitch', 'asshole', 'pussy', 'dick', 'cock', 'bastard', 'cunt',
+            'kuma', 'mboro', 'msenge', 'malaya', 'mavi', 'matako', 'tako', 'pumbavu', 'fala', 'mkundu'
+        ]
+        if text:
+            text_lower = text.lower()
+            # Simple word-in-text check; could be improved with regex for word boundaries
+            for word in vulgar_words:
+                if re.search(r'\b' + re.escape(word) + r'\b', text_lower):
+                    raise ValidationError("Inappropriate language detected. Please maintain a respectful discussion.")
+
+    def clean_author_name(self):
+        name = self.cleaned_data.get('author_name')
+        self.validate_profanity(name)
+        return name
+
+    def clean_content(self):
+        """Block messages with Cyrillic characters and profanity"""
+        content = self.cleaned_data.get('content')
+        if content and re.search('[\u0400-\u04FF]', content):
+            raise ValidationError("Spam attempt detected. Cyrillic text is not permitted.")
+        self.validate_profanity(content)
+        return content

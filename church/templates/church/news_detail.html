@@ -2,7 +2,7 @@
 {% load static %}
 {% load thumbnail %}
 {% load safe_thumbnail %}
-
+{% load comment_tags %}
 {% block title %}{{ news_item.title }} - Breaking Barriers International{% endblock %}
 
 {% block meta_title %}{{ news_item.title }} | Breaking Barriers International{% endblock %}
@@ -126,6 +126,9 @@ else %}{{ block.super }}{% endif %}{% endblock %}
                 {% include 'church/partials/related_articles.html' with articles=related_articles type='news' %}
             </div>
         </div>
+
+        <!-- Comment Section -->
+        {% render_comments news_item %}
 
         <!-- Back to News Link -->
         <div class="mt-12 pt-8 border-t">

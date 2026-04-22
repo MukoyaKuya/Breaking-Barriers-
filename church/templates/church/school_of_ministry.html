@@ -37,33 +37,26 @@
         <form method="post" class="p-5 md:p-6 space-y-4">
           {% csrf_token %}
 
+          {{ form.honeypot }}
           <div>
-            <input
-              type="text"
-              name="name"
-              placeholder="Name"
-              required
-              class="w-full border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-200"
-            />
+            {{ form.name }}
+            {% if form.name.errors %}
+              <p class="text-red-500 text-xs mt-1">{{ form.name.errors.0 }}</p>
+            {% endif %}
           </div>
 
           <div>
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              required
-              class="w-full border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-200"
-            />
+            {{ form.email }}
+            {% if form.email.errors %}
+              <p class="text-red-500 text-xs mt-1">{{ form.email.errors.0 }}</p>
+            {% endif %}
           </div>
 
           <div>
-            <input
-              type="tel"
-              name="phone_number"
-              placeholder="Phone Number"
-              class="w-full border border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-200"
-            />
+            {{ form.phone_number }}
+            {% if form.phone_number.errors %}
+              <p class="text-red-500 text-xs mt-1">{{ form.phone_number.errors.0 }}</p>
+            {% endif %}
           </div>
 
           <button

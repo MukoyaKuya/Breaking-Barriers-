@@ -2,7 +2,7 @@
 {% load static %}
 {% load thumbnail %}
 {% load safe_thumbnail %}
-
+{% load comment_tags %}
 {% block title %}{{ article.title }} - News Line - Breaking Barriers International{% endblock %}
 
 {% block og_title %}{{ article.title }}{% endblock %}
@@ -95,6 +95,9 @@
                             </a>
                         </div>
                     </div>
+
+                    <!-- Comment Section -->
+                    {% render_comments article %}
                 </div>
             </article>
 

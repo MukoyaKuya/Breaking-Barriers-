@@ -71,8 +71,8 @@ def staff_login_view(request):
     Same User model and session; after login you are sent to /admin/.
     """
     next_url = request.GET.get('next') or request.POST.get('next') or '/admin/'
-    # Ensure next is same-host and safe
-    if not next_url.startswith('/'):
+    from django.utils.http import url_has_allowed_host_and_scheme
+    if not url_has_allowed_host_and_scheme(url=next_url, allowed_hosts={request.get_host()}, require_https=request.is_secure()):
         next_url = '/admin/'
 
     if request.user.is_authenticated and request.user.is_staff:
@@ -160,7 +160,7 @@ urlpatterns = [
     path('health/', health_check_view),
     path('staff-login/', staff_login_view),
     path('admin/', admin.site.urls),
-    path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('ckeditor5/', include('django_ckeditor_5.urls')),
     path('', include('church.urls')),
     path('favicon.ico', RedirectView.as_view(url='/static/images/logo.png', permanent=False)),
     path('offline/', TemplateView.as_view(template_name='church/offline.html'), name='offline'),

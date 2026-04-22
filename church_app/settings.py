@@ -20,15 +20,24 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env
+load_dotenv(BASE_DIR / '.env')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
 if not SECRET_KEY:
-    SECRET_KEY = 'django-insecure-np3^#88u=exi*1xe1^bl5__@g7#yr$&cps2o-jwx)y%cp#=1$5'
+    # If not in dev mode (DEBUG=True), raise an error
+    from django.core.exceptions import ImproperlyConfigured
+    if os.environ.get('DEBUG', 'False') != 'True':
+         raise ImproperlyConfigured("The SECRET_KEY environment variable is not set and is required in production.")
+    # Insecure fallback ONLY for internal local development if forgot to set .env
+    SECRET_KEY = 'django-insecure-local-dev-key-replace-me-in-production'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# Default to True for local development, False for production
-DEBUG = os.environ.get('DEBUG', 'True') == 'True'
+# Default to False for safety
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = [
     'bbi-international-1073897174388.europe-north2.run.app',
@@ -39,7 +48,7 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     '.a.run.app',
 ]
-# HostAfrica Domain logic
+# VPS/Environment Domain logic
 if os.environ.get('DOMAIN'):
     domain = os.environ.get('DOMAIN').strip()
     if domain not in ALLOWED_HOSTS:
@@ -145,7 +154,9 @@ LOGGING = {
 }
 
 if not DEBUG:
-    SECURE_SSL_REDIRECT = False  # Cloud Run handles HTTPS
+    # On HostPinnacle shared hosting, SSL is typically terminated by a proxy or LiteSpeed.
+    # We allow the user to control this via ENV to prevent redirect loops.
+    SECURE_SSL_REDIRECT = os.environ.get('SECURE_SSL_REDIRECT', 'False') == 'True'
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
     SECURE_HSTS_SECONDS = 31536000  # 1 year
@@ -168,10 +179,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.sitemaps',
-    'ckeditor',
-    'ckeditor_uploader',
     'image_cropping',
     'easy_thumbnails',
+    'django_ckeditor_5',
     'church',
 ]
 
@@ -232,16 +242,26 @@ WSGI_APPLICATION = 'church_app.wsgi.application'
 
 if os.environ.get('DATABASE_URL'):
     import dj_database_url
+    # Use dj-database-url for Neon, Heroku, etc.
     DATABASES = {
-        'default': dj_database_url.config(conn_max_age=0, ssl_require=True)
+        'default': dj_database_url.config(conn_max_age=0, ssl_require=os.environ.get('DB_SSL', 'True') == 'True')
     }
-    if os.environ.get('REPLICA_DATABASE_URL'):
-        DATABASES['replica'] = dj_database_url.config(
-            env='REPLICA_DATABASE_URL',
-            conn_max_age=0,
-            ssl_require=True,
-        )
-        DATABASE_ROUTERS = ['church_app.db_router.ReplicaRouter']
+elif os.environ.get('DB_NAME'):
+    # Primary configuration for HostPinnacle MySQL/MariaDB
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': os.environ.get('DB_NAME'),
+            'USER': os.environ.get('DB_USER'),
+            'PASSWORD': os.environ.get('DB_PASS', ''),
+            'HOST': os.environ.get('DB_HOST', 'localhost'),
+            'PORT': os.environ.get('DB_PORT', '3306'),
+            'OPTIONS': {
+                'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+                'charset': 'utf8mb4',
+            },
+        }
+    }
 else:
     DATABASES = {
         'default': {
@@ -249,6 +269,15 @@ else:
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
+
+if os.environ.get('REPLICA_DATABASE_URL') and 'REPLICA' in os.environ:
+    import dj_database_url
+    DATABASES['replica'] = dj_database_url.config(
+        env='REPLICA_DATABASE_URL',
+        conn_max_age=0,
+        ssl_require=True,
+    )
+    DATABASE_ROUTERS = ['church_app.db_router.ReplicaRouter']
 
 
 # Cache - Redis when REDIS_URL is set, else in-memory (dev)
@@ -405,7 +434,11 @@ STATICFILES_FINDERS = [
 
 # Media files (User uploaded content)
 # Using Django 4.2+ STORAGES dict format for compatibility with Django 5.2
-if os.environ.get('GS_BUCKET_NAME'):
+
+# HostPinnacle Optimization: Use local storage if requested or if GCS is not configured
+USE_GCS = os.environ.get('GS_BUCKET_NAME') and os.environ.get('USE_LOCAL_STORAGE', 'False') != 'True'
+
+if USE_GCS:
     GS_BUCKET_NAME = os.environ.get('GS_BUCKET_NAME')
     GS_DEFAULT_ACL = os.environ.get('GS_DEFAULT_ACL', None)
     GS_QUERYSTRING_AUTH = False
@@ -424,7 +457,7 @@ if os.environ.get('GS_BUCKET_NAME'):
             'BACKEND': 'whitenoise.storage.CompressedStaticFilesStorage',
         },
     }
-    # Direct GCS URL for media in production - ensures thumbnails resolve correctly
+    # Direct GCS URL for media in production
     MEDIA_URL = f"https://storage.googleapis.com/{GS_BUCKET_NAME}/"
 else:
     STORAGES = {
@@ -432,24 +465,32 @@ else:
             'BACKEND': 'django.core.files.storage.FileSystemStorage',
         },
         'staticfiles': {
-            # Use CompressedStaticFilesStorage in DEBUG mode (no manifest required)
-            # Use CompressedManifestStaticFilesStorage in production (requires manifest)
             'BACKEND': 'whitenoise.storage.CompressedStaticFilesStorage' if DEBUG else 'whitenoise.storage.CompressedManifestStaticFilesStorage',
         },
     }
-    MEDIA_URL = '/media/'
+    MEDIA_URL = os.environ.get('MEDIA_URL', '/media/')
 
-MEDIA_ROOT = BASE_DIR / 'media'
+# Fallback/Default Paths
+# HostPinnacle: May need to point these to /home/user/public_html/static if not using a proxy
+STATIC_URL = os.environ.get('STATIC_URL', '/static/')
+STATIC_ROOT = os.environ.get('STATIC_ROOT', BASE_DIR / 'staticfiles')
+MEDIA_ROOT = os.environ.get('MEDIA_ROOT', BASE_DIR / 'media')
 
-# CKEditor Configuration
-CKEDITOR_UPLOAD_PATH = 'uploads/'
-CKEDITOR_CONFIGS = {
+# CKEditor 5 Configuration
+CKEDITOR_5_CONFIGS = {
     'default': {
-        'toolbar': 'full',
-        'height': 300,
-        'width': '100%',
+        'toolbar': [
+            'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote',
+            'imageUpload', '|', 'insertTable', 'mediaEmbed', 'undo', 'redo', 'sourceEditing'
+        ],
+        'image': {
+            'toolbar': ['imageTextAlternative', '|', 'imageStyle:alignLeft', 'imageStyle:alignCenter', 'imageStyle:alignRight'],
+            'styles': ['full', 'alignLeft', 'alignCenter', 'alignRight']
+        },
     },
 }
+CKEDITOR_5_FILE_STORAGE = "django.core.files.storage.FileSystemStorage"
+CKEDITOR_5_UPLOAD_FILE_VIEW_NAME = "ckeditor_5_upload_file"
 
 # Easy Thumbnails Configuration
 # Use the same storage as default media so thumbnail URLs and files match (local /media/, prod GCS)
@@ -458,7 +499,7 @@ THUMBNAIL_DEFAULT_STORAGE = (
     if os.environ.get('GS_BUCKET_NAME')
     else 'django.core.files.storage.FileSystemStorage'
 )
-THUMBNAIL_DEBUG = DEBUG
+THUMBNAIL_DEBUG = False
 THUMBNAIL_PRESERVE_EXTENSIONS = False  # Use consistent extensions for thumbnails
 THUMBNAIL_CHECK_CACHE_MISS = True  # Check if thumbnail exists before generating
 THUMBNAIL_ALWAYS_GENERATE = False  # Don't generate thumbnails on every request

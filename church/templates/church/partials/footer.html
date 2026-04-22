@@ -2,28 +2,28 @@
 <footer class="brand-color text-white mt-auto safe-area-padding">
     <!-- DEPLOY_VERIF_SAFE_THUMBNAIL_FIX_V2 -->
     <div class="container mx-auto px-4 sm:px-6 py-8 max-w-[100vw] overflow-x-hidden">
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 items-start">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6 md:gap-8 items-start text-sm sm:text-base">
             <!-- Logo + Ministry name + Social icons -->
-            <div class="flex flex-col items-start space-y-3">
+            <div class="flex flex-col items-start space-y-4">
                 <div class="flex items-center space-x-3">
                     <img src="{% static 'images/logo.png' %}" alt="Breaking Barriers International Logo"
-                        class="h-12 w-auto">
+                        class="h-14 w-auto drop-shadow-lg">
                     <div class="flex flex-col leading-tight">
-                        <span class="font-bold text-lg">Breaking Barriers</span>
-                        <span class="font-bold text-lg">International</span>
+                        <span class="font-bold text-xl tracking-tight">Breaking Barriers</span>
+                        <span class="font-bold text-xl tracking-tight">International</span>
                     </div>
                 </div>
-                <div class="flex items-center space-x-3 pt-1">
+                <div class="flex items-center space-x-3 pt-2">
                     <a href="https://facebook.com/BreakingBarriersInternational" target="_blank"
                         rel="noopener noreferrer"
-                        class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-gray-200 hover:scale-110 hover:shadow-md transition-all duration-300 relative"
+                        class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-gray-100 hover:scale-110 transition-all duration-300 shadow-sm"
                         aria-label="Facebook">
                         <div class="w-8 h-8 rounded-full brand-color flex items-center justify-center">
                             <i class="fab fa-facebook-f text-white text-xs"></i>
                         </div>
                     </a>
                     <a href="https://wa.me/254716703508" target="_blank" rel="noopener noreferrer"
-                        class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-gray-200 hover:scale-110 hover:shadow-md transition-all duration-300 relative"
+                        class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-gray-100 hover:scale-110 transition-all duration-300 shadow-sm"
                         aria-label="WhatsApp">
                         <div class="w-8 h-8 rounded-full brand-color flex items-center justify-center">
                             <i class="fab fa-whatsapp text-white text-xs"></i>
@@ -31,7 +31,7 @@
                     </a>
                     <a href="https://www.youtube.com/@breakingbarriersinternatio5354" target="_blank"
                         rel="noopener noreferrer"
-                        class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-gray-200 hover:scale-110 hover:shadow-md transition-all duration-300 relative"
+                        class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-gray-100 hover:scale-110 transition-all duration-300 shadow-sm"
                         aria-label="YouTube">
                         <div class="w-8 h-8 rounded-full brand-color flex items-center justify-center">
                             <i class="fab fa-youtube text-white text-xs"></i>
@@ -40,63 +40,73 @@
                 </div>
             </div>
 
-            <!-- Mission text + verse (center-left) -->
-            <div class="text-sm md:text-base leading-relaxed">
-                <p>
+            <!-- Mission text + verse -->
+            <div class="leading-relaxed opacity-90">
+                <p class="italic">
                     {% if cta_card and cta_card.footer_quote_text %}
-                    {{ cta_card.footer_quote_text }}
+                    "{{ cta_card.footer_quote_text }}"
                     {% elif cta_card and cta_card.quote_text %}
-                    {{ cta_card.quote_text }}
+                    "{{ cta_card.quote_text }}"
                     {% else %}
-                    Empowering you to live victoriously by identifying and breaking invisible barriers in your life
+                    "Empowering you to live victoriously by identifying and breaking invisible barriers in your life"
                     {% endif %}
                 </p>
-                <p class="mt-2 font-bold">
+                <p class="mt-3 font-bold text-gray-100">
                     {% if cta_card and cta_card.footer_verse_reference %}
-                    -{{ cta_card.footer_verse_reference }}
+                    - {{ cta_card.footer_verse_reference }}
                     {% elif cta_card and cta_card.verse_reference %}
-                    -{{ cta_card.verse_reference }}
+                    - {{ cta_card.verse_reference }}
                     {% else %}
-                    -Galatians 3:13
+                    - Galatians 3:13
                     {% endif %}
                 </p>
             </div>
 
-            <!-- Navigation links (center-right) -->
-            <div class="space-y-1 text-sm md:text-base">
-                <a href="{% url 'about' %}" class="block hover:text-gray-200 transition py-2 sm:py-0">About Us</a>
-                <a href="{% url 'contact_us' %}" class="block hover:text-gray-200 transition py-2 sm:py-0">Contact
-                    Us</a>
-                <a href="{% url 'news_list' %}" class="block hover:text-gray-200 transition py-2 sm:py-0">Calendar</a>
-                <a href="{% url 'book_list' %}" class="block hover:text-gray-200 transition py-2 sm:py-0">Books</a>
+            <!-- Quick Links -->
+            <div class="space-y-4">
+                <h4 class="font-bold text-lg border-b border-white/20 pb-2 mb-4 uppercase tracking-wider text-xs sm:text-sm">Navigation</h4>
+                <ul class="space-y-3 opacity-90">
+                    <li><a href="{% url 'home' %}" class="hover:text-gray-200 transition-colors">Home</a></li>
+                    <li><a href="{% url 'about' %}" class="hover:text-gray-200 transition-colors">About Us</a></li>
+                    <li><a href="{% url 'contact_us' %}" class="hover:text-gray-200 transition-colors">Contact Us</a></li>
+                    <li><a href="{% url 'news_list' %}" class="hover:text-gray-200 transition-colors">Calendar / Events</a></li>
+                    <li><a href="{% url 'book_list' %}" class="hover:text-gray-200 transition-colors">Books & Resources</a></li>
+                </ul>
+            </div>
 
-                <a href="{% url 'childrens_bread_list' %}"
-                    class="block hover:text-gray-200 transition py-2 sm:py-0">Children's Bread</a>
-                <a href="{% url 'word_of_truth_list' %}" class="block hover:text-gray-200 transition py-2 sm:py-0">Word of Truth</a>
-                <a href="{% url 'school_of_ministry' %}" class="block hover:text-gray-200 transition py-2 sm:py-0">School of Ministry</a>
-                <a href="{% url 'mantalk_list' %}" class="block hover:text-gray-200 transition py-2 sm:py-0">ManTalk</a>
-                <a href="{% url 'leadership' %}" class="block hover:text-gray-200 transition py-2 sm:py-0">Leadership</a>
+            <!-- Ministries -->
+            <div class="space-y-4">
+                <h4 class="font-bold text-lg border-b border-white/20 pb-2 mb-4 uppercase tracking-wider text-xs sm:text-sm">Our Ministries</h4>
+                <ul class="space-y-3 opacity-90">
+                    <li><a href="{% url 'childrens_bread_list' %}" class="hover:text-gray-200 transition-colors">Children's Bread</a></li>
+                    <li><a href="{% url 'word_of_truth_list' %}" class="hover:text-gray-200 transition-colors">Word of Truth</a></li>
+                    <li><a href="{% url 'school_of_ministry' %}" class="hover:text-gray-200 transition-colors">School of Ministry</a></li>
+                    <li><a href="{% url 'mantalk_list' %}" class="hover:text-gray-200 transition-colors">ManTalk</a></li>
+                    <li><a href="{% url 'leadership' %}" class="hover:text-gray-200 transition-colors">Leadership</a></li>
+                </ul>
             </div>
 
             <!-- Newsletter (far right) -->
-            <div class="space-y-3 md:text-right sm:col-span-2 md:col-span-1" x-data="{ submitting: false }">
-                <!-- Newsletter Form (Header removed as requested) -->
-                <form action="{% url 'newsletter_subscribe' %}" method="post" class="space-y-3"
+            <div class="space-y-4 md:text-right" x-data="{ submitting: false }">
+                <h4 class="font-bold text-lg border-b border-white/20 pb-2 mb-4 uppercase tracking-wider text-xs sm:text-sm md:text-right">Stay Updated</h4>
+                <form action="{% url 'newsletter_subscribe' %}" method="post" class="flex flex-col md:items-end space-y-3"
                     @submit="submitting = true">
                     {% csrf_token %}
-                    <input type="email" name="email" placeholder="Email"
-                        class="w-full md:w-56 px-3 py-3 sm:py-2 rounded-sm bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white border border-gray-300 text-base"
+                    <input type="hidden" name="honeypot" class="hidden">
+                    <input type="email" name="email" placeholder="Your Email Address"
+                        class="w-full md:w-56 px-4 py-3 rounded-md bg-white/10 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-white border border-white/20 text-sm"
                         required>
                     <button type="submit" :disabled="submitting"
-                        class="w-full md:w-56 py-3 sm:py-2 rounded-sm bg-red-700 border border-white text-white font-semibold hover:bg-red-800 transition min-h-[44px] disabled:opacity-50 disabled:cursor-not-allowed">
-                        <span x-show="!submitting">Subscribe</span>
-                        <span x-show="submitting"><i class="fas fa-spinner fa-spin mr-2"></i></span>
+                        class="w-full md:w-56 py-3 rounded-md bg-white text-brand-color font-bold hover:bg-gray-100 transition shadow-lg disabled:opacity-50 disabled:cursor-not-allowed">
+                        <span x-show="!submitting">SUBSCRIBE</span>
+                        <span x-show="submitting"><i class="fas fa-spinner fa-spin mr-2"></i> PROCESSING...</span>
                     </button>
+                    <div class="pt-2 text-xs opacity-70">
+                        <a href="{% url 'privacy' %}" class="hover:underline">Privacy Policy</a>
+                    </div>
                 </form>
-                <div class="pt-2 text-sm">
-                    <a href="{% url 'privacy' %}" class="hover:text-gray-200 transition">Privacy Policy</a>
-                </div>
             </div>
+        </div>
         </div>
 
         <!-- Copyright -->

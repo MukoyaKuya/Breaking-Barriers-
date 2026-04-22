@@ -1,0 +1,71 @@
+<div class="mt-16 pt-10 border-t border-gray-200">
+    <h3 class="text-2xl font-bold font-heading text-gray-900 mb-8 flex items-center gap-3">
+        <i class="fa-solid fa-comments brand-text"></i>
+        Discussion ({{ comments|length }})
+    </h3>
+
+    <!-- Comment List -->
+    <div class="space-y-6 mb-12">
+        {% for comment in comments %}
+        <div class="bg-gray-50 rounded-xl p-6 border border-gray-100">
+            <div class="flex items-center gap-4 mb-4">
+                <div class="w-10 h-10 rounded-full bg-[#990030]/10 flex items-center justify-center flex-shrink-0">
+                    <span class="brand-text font-bold uppercase">{{ comment.author_name|slice:":1" }}</span>
+                </div>
+                <div>
+                    <h4 class="font-bold text-gray-900">{{ comment.author_name }}</h4>
+                    <p class="text-xs text-gray-500">{{ comment.created_at|date:"F j, Y, g:i a" }}</p>
+                </div>
+            </div>
+            <div class="text-gray-700 prose max-w-none">
+                {{ comment.content|linebreaks }}
+            </div>
+        </div>
+        {% empty %}
+        <div class="text-center py-8 bg-gray-50 rounded-xl border border-dashed border-gray-300">
+            <i class="fa-regular fa-comment-dots text-4xl text-gray-400 mb-3"></i>
+            <p class="text-gray-500">No comments yet. Be the first to share your thoughts!</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Comment Form -->
+    <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 md:p-8">
+        <h4 class="text-lg font-bold text-gray-900 mb-6">Leave a Comment</h4>
+        
+        <form action="{% url 'add_article_comment' content_type_id obj.id %}" method="post" class="space-y-5">
+            {% csrf_token %}
+            
+            {{ form.honeypot }}
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div>
+                    <label for="{{ form.author_name.id_for_label }}" class="block text-sm font-semibold text-gray-700 mb-1">Your Name <span class="brand-text">*</span></label>
+                    {{ form.author_name }}
+                    {% if form.author_name.errors %}
+                        <p class="text-red-500 text-sm mt-1">{{ form.author_name.errors.0 }}</p>
+                    {% endif %}
+                </div>
+                <div>
+                    <label for="{{ form.email.id_for_label }}" class="block text-sm font-semibold text-gray-700 mb-1">Email Address (Optional)</label>
+                    {{ form.email }}
+                    {% if form.email.errors %}
+                        <p class="text-red-500 text-sm mt-1">{{ form.email.errors.0 }}</p>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div>
+                <label for="{{ form.content.id_for_label }}" class="block text-sm font-semibold text-gray-700 mb-1">Your Comment <span class="brand-text">*</span></label>
+                {{ form.content }}
+                {% if form.content.errors %}
+                    <p class="text-red-500 text-sm mt-1">{{ form.content.errors.0 }}</p>
+                {% endif %}
+            </div>
+            
+            <button type="submit" class="w-full md:w-auto px-8 py-3 brand-color text-white font-bold rounded-lg hover:opacity-90 transition-all focus:ring-2 focus:ring-offset-2 focus:ring-[#990030] shadow-md">
+                Post Comment
+            </button>
+        </form>
+    </div>
+</div>

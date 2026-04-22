@@ -2,7 +2,7 @@
 {% load static %}
 {% load thumbnail %}
 {% load safe_thumbnail %}
-
+{% load comment_tags %}
 {% block title %}{{ word_of_truth.title }} - Breaking Barriers International{% endblock %}
 
 {% block meta_title %}{{ word_of_truth.title }} | Breaking Barriers International{% endblock %}
@@ -234,6 +234,9 @@ word_of_truth.image.url }}{% else %}{{ block.super }}{% endif %}{% endblock %}
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Comment Section -->
+                        {% render_comments word_of_truth %}
                     </div>
                 </div>
             </div>

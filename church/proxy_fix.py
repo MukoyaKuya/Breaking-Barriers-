@@ -16,37 +16,38 @@ class ProxyRefererFixMiddleware(MiddlewareMixin):
         # Check POST to admin login or staff login (custom form used behind proxy)
         if request.method != 'POST':
             return None
-        path = request.path.rstrip('/')
-        if path not in ('/admin/login', '/staff-login'):
+        path = request.path
+        if path not in ('/admin/login/', '/staff-login/', '/admin/login', '/staff-login'):
             return None
-            trusted_origins = settings.CSRF_TRUSTED_ORIGINS
-            try:
-                # Check if correct Host is trusted
-                request_host = request.get_host()
-                is_host_trusted = any(o.endswith(request_host) for o in trusted_origins)
-                
-                if is_host_trusted:
-                    referer = request.META.get('HTTP_REFERER')
-                    should_fix = False
-                    
-                    if not referer:
-                        should_fix = True
-                        logger.info(f"PROXY_REFERER_FIX: Missing Referer for host {request_host}")
-                    else:
-                        # Check if Referer matches a trusted origin
-                        parsed_ref = urlparse(referer)
-                        ref_origin = f"{parsed_ref.scheme}://{parsed_ref.netloc}"
-                        if ref_origin not in trusted_origins:
-                            should_fix = True
-                            logger.info(f"PROXY_REFERER_FIX: Mismatched Referer {referer} for host {request_host}")
 
-                    if should_fix:
-                        # Reconstruct the expected Referer (current page)
-                        new_referer = request.build_absolute_uri()
-                        request.META['HTTP_REFERER'] = new_referer
-                        logger.info(f"PROXY_REFERER_FIX: Set HTTP_REFERER to {new_referer}")
-            except Exception as e:
-                logger.error(f"PROXY_REFERER_FIX: Error checking/fixing referer: {e}")
+        trusted_origins = settings.CSRF_TRUSTED_ORIGINS
+        try:
+            # Check if correct Host is trusted
+            request_host = request.get_host()
+            is_host_trusted = any(o.endswith(request_host) for o in trusted_origins)
+            
+            if is_host_trusted:
+                referer = request.META.get('HTTP_REFERER')
+                should_fix = False
+                
+                if not referer:
+                    should_fix = True
+                    logger.info(f"PROXY_REFERER_FIX: Missing Referer for host {request_host}")
+                else:
+                    # Check if Referer matches a trusted origin
+                    parsed_ref = urlparse(referer)
+                    ref_origin = f"{parsed_ref.scheme}://{parsed_ref.netloc}"
+                    if ref_origin not in trusted_origins:
+                        should_fix = True
+                        logger.info(f"PROXY_REFERER_FIX: Mismatched Referer {referer} for host {request_host}")
+
+                if should_fix:
+                    # Reconstruct the expected Referer (current page)
+                    new_referer = request.build_absolute_uri()
+                    request.META['HTTP_REFERER'] = new_referer
+                    logger.info(f"PROXY_REFERER_FIX: Set HTTP_REFERER to {new_referer}")
+        except Exception as e:
+            logger.error(f"PROXY_REFERER_FIX: Error checking/fixing referer: {e}")
         return None
 
 def csrf_failure(request, reason=""):
