@@ -1,0 +1,7 @@
+NewsItem: 1
+NewsLine: 9
+Verse: 1
+Book: 12
+ChildrensBread: 40
+WordOfTruth: 25
+ManTalk: 31

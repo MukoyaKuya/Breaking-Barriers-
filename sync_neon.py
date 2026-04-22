@@ -33,40 +33,33 @@ if __name__ == "__main__":
     print(">>> DUMPING FROM NEON")
     env_dump = os.environ.copy()
     env_dump['DATABASE_URL'] = NEON_DB_URL
+    # Ensure UTF-8 output on Windows
+    env_dump['PYTHONIOENCODING'] = 'utf-8'
     
     # We use a python one-liner to dump to avoid shell redirection encoding issues
     dump_cmd = [
-        sys.executable, 'manage.py', 'dumpdata', 
+        sys.executable, '-X', 'utf8', 'manage.py', 'dumpdata', 
         '--exclude', 'auth.permission', 
         '--exclude', 'contenttypes',
         '--exclude', 'admin.logentry', 
         '--exclude', 'church.PageView',
+        '--exclude', 'church.BoardMember',
         '--exclude', 'sessions.Session',
-        '--indent', '2',
-        '--output', 'neon_data.json'
+        '--indent', '2'
     ]
     
     try:
-        # Capture output to see what went wrong
-        subprocess.run(dump_cmd, env=env_dump, check=True, capture_output=False) # We want to see it in console? 
-        # Wait, if we use check=True and it fails, it raises CalledProcessError.
-        # But we didn't capture execution output in the previous run status?
-        # The command_status tool shows stdout, but maybe stderr was lost or mixed?
-        # Let's redirect stderr to stdout to catch it.
-        pass 
-    except subprocess.CalledProcessError as e:
-        # e.cmd is the command, e.returncode is the code
-        pass
-
-    # Better implementation for debugging:
-    p = subprocess.run(dump_cmd, env=env_dump, text=True, capture_output=True)
-    if p.returncode != 0:
-        print(f"!!! DUMP FAILED (Code {p.returncode}):")
-        print(p.stderr)
-        print(p.stdout)
+        with open('neon_data.json', 'w', encoding='utf-8') as f:
+            p = subprocess.run(dump_cmd, env=env_dump, stdout=f, stderr=subprocess.PIPE, text=True)
+        if p.returncode != 0:
+            print(f"!!! DUMP FAILED (Code {p.returncode}):")
+            print(p.stderr)
+            sys.exit(1)
+        else:
+            print(">>> DUMP COMPLETE: neon_data.json")
+    except Exception as e:
+        print(f"!!! DUMP EXCEPTION: {e}")
         sys.exit(1)
-    else:
-        print(">>> DUMP COMPLETE: neon_data.json")
 
     # Phase 2: Load to Local (SQLite)
     print(">>> LOADING TO LOCAL SQLITE")

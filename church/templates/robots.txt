@@ -1,5 +1,5 @@
 User-agent: *
-Disallow: /admin/
+Disallow: /office/
 Disallow: /staff-login/
 
 Sitemap: https://bb-international.org/sitemap.xml

@@ -70,10 +70,10 @@ def staff_login_view(request):
     login loops behind a proxy (e.g. https://bb-international.org).
     Same User model and session; after login you are sent to /admin/.
     """
-    next_url = request.GET.get('next') or request.POST.get('next') or '/admin/'
+    next_url = request.GET.get('next') or request.POST.get('next') or '/office/'
     from django.utils.http import url_has_allowed_host_and_scheme
     if not url_has_allowed_host_and_scheme(url=next_url, allowed_hosts={request.get_host()}, require_https=request.is_secure()):
-        next_url = '/admin/'
+        next_url = '/office/'
 
     if request.user.is_authenticated and request.user.is_staff:
         host = _login_redirect_host(request)
@@ -159,7 +159,7 @@ admin.site.index_title = "Administration"
 urlpatterns = [
     path('health/', health_check_view),
     path('staff-login/', staff_login_view),
-    path('admin/', admin.site.urls),
+    path('office/', admin.site.urls),
     path('ckeditor5/', include('django_ckeditor_5.urls')),
     path('', include('church.urls')),
     path('favicon.ico', RedirectView.as_view(url='/static/images/logo.png', permanent=False)),

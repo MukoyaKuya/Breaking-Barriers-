@@ -17,7 +17,7 @@ class ProxyRefererFixMiddleware(MiddlewareMixin):
         if request.method != 'POST':
             return None
         path = request.path
-        if path not in ('/admin/login/', '/staff-login/', '/admin/login', '/staff-login'):
+        if path not in ('/office/login/', '/staff-login/', '/office/login', '/staff-login'):
             return None
 
         trusted_origins = settings.CSRF_TRUSTED_ORIGINS

@@ -29,7 +29,7 @@ def get_client_ip(request):
 class PageViewMiddleware(MiddlewareMixin):
     """Log a page view for each request (for visits-per-month and unique-visitor analytics)."""
     # Paths we don't log (admin, static, API, analytics)
-    SKIP_PREFIXES = ('/admin/', '/static/', '/media/', '/analytics/', '/__debug__/', '/health/', '/favicon.ico')
+    SKIP_PREFIXES = ('/office/', '/static/', '/media/', '/analytics/', '/__debug__/', '/health/', '/favicon.ico')
     
     # User agents we don't log (bots, health checks)
     SKIP_USER_AGENTS = (

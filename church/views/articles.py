@@ -337,7 +337,6 @@ def load_more_news_line_view(request):
 
 @cache_page_for_anonymous(60 * 10)
 def man_talk_list_view(request):
-    from django.db import connection
     search_query = request.GET.get('q', '').strip()
     page = request.GET.get('page', 1)
     articles = ManTalk.objects.filter(is_published=True).order_by('-created_at')
@@ -393,6 +392,17 @@ def add_article_comment(request, content_type_id, object_id):
     from django.shortcuts import redirect
     import time
     
+    # Security: Restrict comments to only these models
+    allowed_models = ['newsitem', 'newsline', 'wordoftruth', 'mantalk', 'childrensbread']
+    try:
+        ct = ContentType.objects.get(id=content_type_id)
+        if ct.model not in allowed_models:
+             messages.error(request, "This article type does not support comments.")
+             return redirect(request.META.get('HTTP_REFERER', '/'))
+    except ContentType.DoesNotExist:
+        messages.error(request, "Invalid article type.")
+        return redirect(request.META.get('HTTP_REFERER', '/'))
+
     if request.method == 'POST':
         # Rate limiting: 1 comment per 60 seconds per session
         last_comment_time = request.session.get('last_comment_time')
