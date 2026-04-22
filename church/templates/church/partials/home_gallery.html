@@ -100,11 +100,38 @@
                     style="background-color: #990030; border-color: #990030;">
 
                     {% if item.video_url %}
-                    <div class="absolute inset-0 w-full h-full">
-                        <iframe class="w-full h-full" src="{{ item.get_embed_url }}" title="{{ item.caption }}"
-                            frameborder="0" referrerpolicy="strict-origin-when-cross-origin"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
+                    <div class="absolute inset-0 w-full h-full" x-data="{ playing: false }">
+                        <!-- Preview Image -->
+                        <template x-if="!playing">
+                            <div class="w-full h-full relative cursor-pointer group/vid" @click="playing = true; stopAutoRotate()">
+                                {% if item.get_youtube_thumbnail_url %}
+                                <img src="{{ item.get_youtube_thumbnail_url }}" alt="{{ item.caption }}"
+                                    class="w-full h-full object-cover">
+                                {% elif item.image %}
+                                <img src="{{ item.image.url }}" alt="{{ item.caption }}"
+                                    class="w-full h-full object-cover">
+                                {% else %}
+                                <div class="w-full h-full bg-gray-900 flex items-center justify-center">
+                                    <i class="fas fa-video text-4xl text-gray-700"></i>
+                                </div>
+                                {% endif %}
+                                
+                                <!-- Play Button Overlay -->
+                                <div class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover/vid:bg-black/40 transition-colors">
+                                    <div class="w-20 h-20 bg-brand-color text-white rounded-full flex items-center justify-center shadow-2xl transform group-hover/vid:scale-110 transition-transform">
+                                        <i class="fas fa-play text-3xl ml-1"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+
+                        <!-- Actual Iframe -->
+                        <template x-if="playing">
+                            <iframe class="w-full h-full" src="{{ item.get_embed_url }}?autoplay=1&rel=0" title="{{ item.caption }}"
+                                frameborder="0" referrerpolicy="strict-origin-when-cross-origin"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                        </template>
                     </div>
                     {% else %}
                     <!-- Background Vibrant Layer (Blurred Backdrop) -->

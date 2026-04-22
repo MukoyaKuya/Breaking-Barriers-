@@ -10,11 +10,35 @@
 
         {% if mens_ministry %}
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div class="rounded-xl overflow-hidden shadow-lg bg-black aspect-video">
-                <iframe class="w-full h-full" src="{{ mens_ministry.get_embed_url }}" title="{{ mens_ministry.title }}"
-                    frameborder="0" referrerpolicy="strict-origin-when-cross-origin"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
+            <div class="rounded-xl overflow-hidden shadow-lg bg-black aspect-video" x-data="{ playing: false }">
+                <!-- Preview -->
+                <template x-if="!playing">
+                    <div class="w-full h-full relative cursor-pointer group" @click="playing = true">
+                        {% if mens_ministry.get_youtube_thumbnail_url %}
+                        <img src="{{ mens_ministry.get_youtube_thumbnail_url }}" alt="{{ mens_ministry.title }}"
+                            class="w-full h-full object-cover">
+                        {% else %}
+                        <div class="w-full h-full bg-gray-900 flex items-center justify-center">
+                            <i class="fas fa-video text-4xl text-gray-700"></i>
+                        </div>
+                        {% endif %}
+                        
+                        <!-- Play Button Overlay -->
+                        <div class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-colors">
+                            <div class="w-20 h-20 bg-brand-color text-white rounded-full flex items-center justify-center shadow-2xl transform group-hover:scale-110 transition-transform">
+                                <i class="fas fa-play text-3xl ml-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+
+                <!-- Iframe -->
+                <template x-if="playing">
+                    <iframe class="w-full h-full" src="{{ mens_ministry.get_embed_url }}?autoplay=1&rel=0" title="{{ mens_ministry.title }}"
+                        frameborder="0" referrerpolicy="strict-origin-when-cross-origin"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </template>
             </div>
             <div>
                 <p class="text-lg text-gray-700 leading-relaxed mb-6">

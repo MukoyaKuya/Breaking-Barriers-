@@ -244,6 +244,13 @@ class Testimonial(models.Model):
         """Return a YouTube embed URL if possible, or the raw URL as fallback."""
         return _to_youtube_embed(self.video_url)
 
+    def get_youtube_thumbnail_url(self) -> str:
+        """Return high-res YouTube thumbnail URL (maxresdefault) when video_url is a YouTube link."""
+        video_id = _youtube_video_id(self.video_url)
+        if video_id:
+            return f'https://img.youtube.com/vi/{video_id}/maxresdefault.jpg'
+        return ''
+
 
 class GalleryImage(models.Model):
     """Model for gallery images and videos"""
@@ -289,7 +296,7 @@ class GalleryImage(models.Model):
         """Return YouTube thumbnail URL (hqdefault) when video_url is a YouTube link. Empty string otherwise."""
         video_id = _youtube_video_id(self.video_url)
         if video_id:
-            return f'https://img.youtube.com/vi/{video_id}/hqdefault.jpg'
+            return f'https://img.youtube.com/vi/{video_id}/maxresdefault.jpg'
         return ''
 
     def get_image_url(self) -> str:
@@ -683,6 +690,13 @@ class MensMinistry(models.Model):
         """Return a YouTube embed URL if possible, or the raw URL as fallback."""
         return _to_youtube_embed(self.video_url)
 
+    def get_youtube_thumbnail_url(self) -> str:
+        """Return high-res YouTube thumbnail URL."""
+        video_id = _youtube_video_id(self.video_url)
+        if video_id:
+            return f'https://img.youtube.com/vi/{video_id}/maxresdefault.jpg'
+        return ''
+
 
 class Partner(models.Model):
     """Logo strip for ministry partners on the homepage"""
@@ -780,6 +794,13 @@ class SidebarPromo(models.Model):
     def get_embed_url(self):
         """Return YouTube embed URL if possible, or empty string."""
         return _to_youtube_embed(self.video_url)
+
+    def get_youtube_thumbnail_url(self) -> str:
+        """Return high-res YouTube thumbnail URL."""
+        video_id = _youtube_video_id(self.video_url)
+        if video_id:
+            return f'https://img.youtube.com/vi/{video_id}/maxresdefault.jpg'
+        return ''
 
 
 class FAQ(models.Model):

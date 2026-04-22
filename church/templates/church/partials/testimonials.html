@@ -64,14 +64,53 @@
                     x-transition:enter="transition ease-out duration-700" x-transition:enter-start="opacity-0 scale-95"
                     x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-500"
                     x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
-                    class="absolute inset-0 rounded-lg overflow-hidden shadow-lg bg-black">
+                    class="absolute inset-0 rounded-lg overflow-hidden shadow-lg bg-black"
+                    x-data="{ playing: false }">
                     {% if testimonial.video_url %}
-                    <div class="w-full h-full">
-                        <iframe class="w-full h-full" src="{{ testimonial.get_embed_url }}"
-                            title="{{ testimonial.member_name }} testimonial" frameborder="0"
-                            referrerpolicy="strict-origin-when-cross-origin"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
+                    <div class="w-full h-full relative">
+                        <!-- Preview Image -->
+                        <template x-if="!playing">
+                            <div class="w-full h-full relative cursor-pointer group" @click="playing = true; stopAutoRotate()">
+                                {% if testimonial.photo %}
+                                <img src="{{ testimonial.photo.url }}" alt="{{ testimonial.member_name }}"
+                                    class="w-full h-full object-cover">
+                                {% elif testimonial.get_youtube_thumbnail_url %}
+                                <img src="{{ testimonial.get_youtube_thumbnail_url }}" alt="{{ testimonial.member_name }}"
+                                    class="w-full h-full object-cover">
+                                {% else %}
+                                <div class="w-full h-full bg-gray-900 flex items-center justify-center">
+                                    <i class="fas fa-video text-4xl text-gray-700"></i>
+                                </div>
+                                {% endif %}
+                                
+                                <!-- Play Button Overlay -->
+                                <div class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-colors">
+                                    <div class="w-20 h-20 bg-brand-color text-white rounded-full flex items-center justify-center shadow-2xl transform group-hover:scale-110 transition-transform">
+                                        <i class="fas fa-play text-3xl ml-1"></i>
+                                    </div>
+                                </div>
+
+                                <!-- Member Name Badge -->
+                                <div class="absolute top-4 left-4 flex items-center bg-black/60 backdrop-blur-md rounded-full px-4 py-2 border border-white/20">
+                                    <div class="w-8 h-8 rounded-full bg-brand-color flex items-center justify-center text-white font-bold mr-2 text-xs">
+                                        {{ testimonial.member_name|first|upper }}
+                                    </div>
+                                    <div class="text-sm">
+                                        <p class="font-bold text-white leading-none">{{ testimonial.member_name }}</p>
+                                        <p class="text-[10px] text-gray-300 leading-none mt-1">Breaking Barriers International</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+
+                        <!-- Actual Iframe (Lazy Loaded) -->
+                        <template x-if="playing">
+                            <iframe class="w-full h-full" src="{{ testimonial.get_embed_url }}?autoplay=1&rel=0"
+                                title="{{ testimonial.member_name }} testimonial" frameborder="0"
+                                referrerpolicy="strict-origin-when-cross-origin"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                        </template>
                     </div>
                     {% elif testimonial.photo %}
                     <img src="{{ testimonial.photo.url }}" alt="{{ testimonial.member_name }} testimonial photo" loading="lazy"
