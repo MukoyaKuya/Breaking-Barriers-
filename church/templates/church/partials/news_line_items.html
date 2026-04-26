@@ -1,3 +1,5 @@
+{% load safe_thumbnail %}
+{% load thumbnail %}
 {% for article in articles %}
 <a href="{% url 'news_line_detail' article.slug %}"
     class="group bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-500 flex flex-col h-full transform hover:-translate-y-1">
@@ -10,8 +12,12 @@
         {% elif article.image %}
         <div class="cursor-pointer group-hover:brightness-95 transition-all duration-300 h-full w-full">
             {% if article.image %}
-            <img src="{{ article.image.url }}" alt="{{ article.title }}" loading="lazy"
-                class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+            <picture>
+                {% thumbnail article.image "800x600" crop="smart" as thumb %}
+                <source srcset="{{ thumb.url }}.webp" type="image/webp">
+                <img src="{{ thumb.url }}" alt="{{ article.title }}" loading="lazy"
+                    class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+            </picture>
             {% else %}
             <div class="w-full h-full bg-gray-200 flex items-center justify-center">
                 <i class="fas fa-newspaper text-gray-400 text-4xl"></i>
@@ -45,8 +51,8 @@
 <div class="text-center mt-12 col-span-full" id="load-more-wrapper">
     <button hx-get="{% url 'load_more_news_line' %}?offset={{ next_offset }}" hx-target="#load-more-wrapper"
         hx-swap="outerHTML"
-        class="bg-brand-color text-white px-8 py-3.5 rounded-xl hover:bg-red-900 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl hover:-translate-y-1 min-h-[48px]">
+        class="brand-color text-white px-8 py-3.5 rounded-xl hover:bg-red-900 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl hover:-translate-y-1 min-h-[48px]">
         Load More Articles
     </button>
 </div>
-{% endif %}
+{% endif %}

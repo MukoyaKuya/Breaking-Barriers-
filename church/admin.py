@@ -4,7 +4,7 @@ from django.utils.html import format_html
 from django.forms import ModelForm
 from django.forms.widgets import ColorInput
 from image_cropping import ImageCroppingMixin
-from .models import Verse, NewsItem, NewsLine, CalendarEvent, Testimonial, GalleryImage, HeroSettings, AboutPage, InfoCard, CTACard, MensMinistry, Partner, NewsletterSubscriber, SchoolMinistryEnrollment, FAQ, SidebarPromo, WordOfTruth, ManTalk, ChildrensBread, PageView, ContactMessage, PartnerInquiry, Book, MN, BoardMember, ArticleComment, ArticleComment
+from .models import Verse, NewsItem, NewsLine, CalendarEvent, Testimonial, GalleryImage, HeroSettings, AboutPage, InfoCard, CTACard, MensMinistry, Partner, NewsletterSubscriber, SchoolMinistryEnrollment, FAQ, SidebarPromo, WordOfTruth, ManTalk, ChildrensBread, PageView, ContactMessage, PartnerInquiry, Book, MN, BoardMember, ArticleComment
 from .forms import (
     WordOfTruthAdminForm, ChildrensBreadAdminForm, ManTalkAdminForm,
     NewsLineAdminForm, NewsItemAdminForm, InfoCardAdminForm,
@@ -222,18 +222,14 @@ class GalleryImageAdmin(ImageCroppingMixin, admin.ModelAdmin):
     readonly_fields = ('uploaded_at',)
 
     class Media:
-        # User requested: turn the alert color to green
-        # We target the errorlist to make it look like a success message
         css = {
             'all': ('admin/css/gallery_green_alerts.css',)
         }
 
     def save_model(self, request, obj, form, change):
-        # Prevent duplicates within a short window (avoid double-submits)
         if not change:
             from django.utils import timezone
             from datetime import timedelta
-            # If an identical image was uploaded in the last 30 seconds, skip
             duplicate = GalleryImage.objects.filter(
                 caption=obj.caption,
                 category=obj.category,
@@ -244,7 +240,6 @@ class GalleryImageAdmin(ImageCroppingMixin, admin.ModelAdmin):
                 messages.warning(request, "This image was already successfully uploaded.")
                 return 
 
-        # Add custom success message
         from django.contrib import messages
         messages.success(request, "Image Uploaded Successfully")
         super().save_model(request, obj, form, change)
@@ -262,11 +257,9 @@ class HeroSettingsAdmin(ImageCroppingMixin, admin.ModelAdmin):
     readonly_fields = ('updated_at',)
     
     def has_add_permission(self, request):
-        # Only allow one instance
         return not HeroSettings.objects.exists()
 
     def has_delete_permission(self, request, obj=None):
-        # Prevent deletion
         return False
 
 
@@ -277,11 +270,9 @@ class AboutPageAdmin(ImageCroppingMixin, admin.ModelAdmin):
     readonly_fields = ('updated_at',)
 
     def has_add_permission(self, request):
-        # Only allow one instance
         return not AboutPage.objects.exists()
 
     def has_delete_permission(self, request, obj=None):
-        # Prevent deletion
         return False
 
 
@@ -295,12 +286,7 @@ class InfoCardAdmin(ImageCroppingMixin, admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
     readonly_fields = ('created_at', 'updated_at')
 
-    class Media:
-        css = {'all': ()}
-        js = ()
-
     def listing_link(self, obj):
-        """Link to the article listing page this card leads to."""
         if not obj:
             return '-'
         from django.urls import reverse
@@ -321,15 +307,15 @@ class InfoCardAdmin(ImageCroppingMixin, admin.ModelAdmin):
     fieldsets = (
         ('Card Information', {
             'fields': ('card_type', 'title', 'slug', 'is_active'),
-            'description': 'Hero section card shown on the homepage. Each card links to its article listing (Children\'s Bread, Word of Truth, or News Line). Edit those articles under Church in the sidebar.',
+            'description': 'Hero section card shown on the homepage. Each card links to its article listing.',
         }),
         ('Content', {
             'fields': ('image', 'image_cropping', 'headline', 'summary', 'content', 'author_name'),
-            'description': 'Image, headline and summary shown on the hero card. Use the image cropper for 16:9 (1600x900) for best display.',
+            'description': 'Image, headline and summary shown on the hero card.',
         }),
         ('Link override', {
             'fields': ('link_url',),
-            'description': 'Leave blank so the card links to the article listing page (Children\'s Bread, Word of Truth, or News Line). Set a URL here only to override that default.',
+            'description': 'Leave blank for default linking.',
         }),
         ('Timestamps', {
             'fields': ('created_at', 'updated_at'),
@@ -351,11 +337,9 @@ class ManTalkAdmin(ImageCroppingMixin, admin.ModelAdmin):
 @admin.register(CTACard)
 class CTACardAdmin(admin.ModelAdmin):
     def has_add_permission(self, request):
-        # Only allow one instance
         return not CTACard.objects.exists()
 
     def has_delete_permission(self, request, obj=None):
-        # Prevent deletion
         return False
 
     fieldsets = (
@@ -467,11 +451,9 @@ class WordOfTruthAdmin(ImageCroppingMixin, admin.ModelAdmin):
     fieldsets = (
         (None, {
             'fields': ('title', 'slug', 'is_published', 'author_name'),
-            'description': 'Articles shown on the Word of Truth listing page (linked from the hero section).',
         }),
         ('Content & Media', {
             'fields': ('image', 'image_cropping', 'summary', 'body'),
-            'description': 'Images are cropped to 800x600 for consistency.'
         }),
         ('Timestamps', {
             'fields': ('created_at', 'updated_at'),
@@ -498,11 +480,9 @@ class ChildrensBreadAdmin(ImageCroppingMixin, admin.ModelAdmin):
     fieldsets = (
         (None, {
             'fields': ('title', 'slug', 'is_published'),
-            'description': 'Articles shown on the Children\'s Bread listing page (linked from the hero section).',
         }),
         ('Content & Media', {
             'fields': ('author_name', 'image', 'image_cropping', 'summary', 'body'),
-            'description': 'Images are cropped to 800x600 for consistency.'
         }),
         ('Timestamps', {
             'fields': ('created_at', 'updated_at'),
@@ -540,23 +520,21 @@ class ContactMessageAdmin(admin.ModelAdmin):
     )
     
     def has_add_permission(self, request):
-        # Disable manual creation - messages come from the form
         return False
 
     def delete_link(self, obj):
-        from django.urls import reverse
         url = reverse('admin:church_contactmessage_delete', args=[obj.id])
         return format_html('<a href="{}" class="deletelink" style="color:#ba2121; font-weight:bold; border: 1px solid #ccc; padding: 2px 5px; border-radius: 4px; background: #fff; text-decoration: none;">Delete</a>', url)
     delete_link.short_description = 'Actions'
 
     @admin.action(description='Clear all messages (DELETE ALL)')
     def delete_all_messages(self, request, queryset):
-        """Action to delete all messages in the system, not just selected ones."""
         count = ContactMessage.objects.all().count()
         ContactMessage.objects.all().delete()
         self.message_user(request, f"Successfully deleted all {count} messages.")
         from django.http import HttpResponseRedirect
         return HttpResponseRedirect(request.get_full_path())
+
 
 @admin.register(PartnerInquiry)
 class PartnerInquiryAdmin(admin.ModelAdmin):
@@ -580,11 +558,9 @@ class PartnerInquiryAdmin(admin.ModelAdmin):
     )
 
     def has_add_permission(self, request):
-        # Disable manual creation
         return False
 
     def delete_link(self, obj):
-        from django.urls import reverse
         url = reverse('admin:church_partnerinquiry_delete', args=[obj.id])
         return format_html('<a href="{}" class="deletelink" style="color:#ba2121; font-weight:bold; border: 1px solid #ccc; padding: 2px 5px; border-radius: 4px; background: #fff; text-decoration: none;">Delete</a>', url)
     delete_link.short_description = 'Actions'
@@ -627,7 +603,6 @@ class BookAdmin(ImageCroppingMixin, admin.ModelAdmin):
         }),
         ('Contact', {
             'fields': ('whatsapp_number',),
-            'description': 'Format: +254...'
         }),
         ('Timestamps', {
             'fields': ('created_at', 'updated_at'),
@@ -635,9 +610,12 @@ class BookAdmin(ImageCroppingMixin, admin.ModelAdmin):
         }),
     )
 
+
 @admin.register(MN)
 class MNAdmin(admin.ModelAdmin):
-    list_display = ('__str__', 'is_active', 'updated_at')
+    list_display = ('__str__', 'is_active', 'duration', 'estimated_end_time', 'updated_at')
+    fields = ('is_active', 'duration', 'show_timer', 'message', 'start_time', 'estimated_end_time', 'updated_at')
+    readonly_fields = ('start_time', 'estimated_end_time', 'updated_at')
     
     def has_add_permission(self, request):
         return not MN.objects.exists()

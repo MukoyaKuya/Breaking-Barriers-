@@ -1,40 +1,190 @@
 {% extends 'church/base.html' %}
-
 {% load static %}
 
 {% block title %}Site Maintenance | Breaking Barriers International{% endblock %}
 
 {% block content %}
-<div class="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-    <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10 text-center">
+<div class="min-h-screen bg-gray-50 flex items-center justify-center p-4 md:p-8" 
+     x-data="maintenanceTimer({
+        start: '{{ mn.start_time.isoformat }}',
+        end: '{{ mn.estimated_end_time.isoformat }}',
+        showTimer: {{ mn.show_timer|yesno:"true,false" }}
+     })">
+    
+    <div class="max-w-3xl w-full bg-white rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.05)] overflow-hidden border border-gray-100 flex flex-col md:flex-row">
+        
+        <!-- Left Content -->
+        <div class="flex-[1.1] p-6 md:p-8 flex flex-col justify-between">
+            <div>
+                <div class="mb-6 flex justify-center md:justify-start">
+                    <img class="h-8 w-auto" src="{% static 'images/bb_logo.png' %}?v=2" alt="BBI Logo">
+                </div>
 
-            <div class="mb-6">
-                <!-- Replace with your actual logo logic if needed -->
-                <img class="h-20 w-auto mx-auto" src="{% static 'images/logo.png' %}" alt="BBI Logo">
+                <h1 class="text-2xl md:text-3xl font-black text-gray-900 mb-3 tracking-tight leading-tight">
+                    Improving <br>
+                    <span class="text-brand-color">Your Experience</span>
+                </h1>
+
+                <p class="text-xs md:text-sm text-gray-500 leading-relaxed mb-6 max-w-[280px] mx-auto md:mx-0">
+                    {% if mn.message %}
+                        {{ mn.message|linebreaksbr }}
+                    {% else %}
+                        We're currently undergoing scheduled maintenance to bring you new features and a better experience.
+                    {% endif %}
+                </p>
+
+                <!-- Status Card (Ultra-Compact) -->
+                <template x-if="showTimer && !isFinished">
+                    <div class="bg-gray-50 rounded-xl p-4 border border-gray-100 shadow-sm relative overflow-hidden max-w-xs">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-8 h-8 rounded-full bg-brand-color/10 flex items-center justify-center text-brand-color shrink-0">
+                                <i class="fa-solid fa-clock text-xs"></i>
+                            </div>
+                            <div class="text-left">
+                                <h3 class="font-bold text-gray-900 text-[11px]">We'll be back soon</h3>
+                                <div class="flex items-center gap-1.5">
+                                    <div class="h-1.5 w-1.5 rounded-full bg-brand-color animate-ping"></div>
+                                    <p class="text-[9px] text-gray-400 uppercase font-bold tracking-wider">In the next</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Countdown Grid (Mini) -->
+                        <div class="grid grid-cols-4 gap-1.5">
+                            <div class="bg-white rounded-lg py-1.5 px-1 shadow-sm border border-gray-100 text-center">
+                                <div class="text-base font-black text-brand-color" x-text="days">00</div>
+                                <div class="text-[7px] uppercase font-bold text-gray-400 tracking-tighter">Days</div>
+                            </div>
+                            <div class="bg-white rounded-lg py-1.5 px-1 shadow-sm border border-gray-100 text-center">
+                                <div class="text-base font-black text-brand-color" x-text="hours">00</div>
+                                <div class="text-[7px] uppercase font-bold text-gray-400 tracking-tighter">Hrs</div>
+                            </div>
+                            <div class="bg-white rounded-lg py-1.5 px-1 shadow-sm border border-gray-100 text-center">
+                                <div class="text-base font-black text-brand-color" x-text="minutes">00</div>
+                                <div class="text-[7px] uppercase font-bold text-gray-400 tracking-tighter">Mins</div>
+                            </div>
+                            <div class="bg-white rounded-lg py-1.5 px-1 shadow-sm border border-gray-100 text-center">
+                                <div class="text-base font-black text-brand-color" x-text="seconds">00</div>
+                                <div class="text-[7px] uppercase font-bold text-gray-400 tracking-tighter">Secs</div>
+                            </div>
+                        </div>
+
+                        <!-- Progress Bar (Mini with Animation) -->
+                        <div class="mt-3 h-1 bg-gray-200 rounded-full overflow-hidden relative">
+                            <div class="h-full bg-brand-color transition-all duration-1000 ease-linear relative overflow-hidden" 
+                                 :style="`width: ${percentage}%` shadow: 0 0 10px rgba(153, 0, 48, 0.4)">
+                                 <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer" style="background-size: 200% 100%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+
+                <!-- Live Soon Alert (Premium Redesign) -->
+                <template x-if="isFinished || !showTimer">
+                    <div class="relative max-w-xs group">
+                        <div class="absolute -inset-0.5 bg-gradient-to-r from-green-500 to-emerald-400 rounded-xl blur opacity-20 group-hover:opacity-40 transition duration-1000 animate-pulse"></div>
+                        <div class="relative bg-white/80 backdrop-blur-xl rounded-xl p-4 border border-green-100/50 flex items-center gap-4 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+                            <div class="relative flex h-3 w-3">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                            </div>
+                            <div class="text-left">
+                                <h3 class="font-black text-gray-900 text-[11px] tracking-tight uppercase">Ready to Launch</h3>
+                                <p class="text-[10px] text-gray-500 font-medium leading-tight">Almost there! Site will be live in less than one minute.</p>
+                            </div>
+                        </div>
+                    </div>
+                </template>
             </div>
 
-            <h2 class="mt-2 text-2xl font-bold text-gray-900 tracking-tight">System Under Maintenance</h2>
-
-            <div class="mt-4 text-gray-600">
-                <p class="mb-4">
-                    Our website is currently undergoing scheduled maintenance to improve your experience.
-                    We are working hard to bring it back online as quickly as possible.
-                </p>
-                <p>
-                    Thank you for your patience and understanding.
-                </p>
+            <!-- Footer Section (Mini) -->
+            <div class="mt-6 flex items-center justify-between border-t border-gray-100 pt-4 gap-4">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-envelope text-gray-300 text-[10px]"></i>
+                    <a href="mailto:support@bb-international.org" class="text-[9px] font-bold text-gray-900 hover:text-brand-color transition-colors">support@bb-international.org</a>
+                </div>
+                <div class="flex gap-3 text-[10px]">
+                    <a href="#" class="text-gray-400 hover:text-brand-color transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-brand-color transition-colors"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-brand-color transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
             </div>
+        </div>
 
-            <div class="mt-8 border-t border-gray-200 pt-6">
-                <p class="text-sm text-gray-500">
-                    &copy; {% now "Y" %} Breaking Barriers International. All rights reserved.
-                </p>
-            </div>
+        <!-- Right Illustration Area (Slim) -->
+        <div class="flex-1 bg-gray-50 flex items-center justify-center p-6 md:p-8 relative overflow-hidden border-l border-gray-100">
+            <div class="absolute top-0 right-0 w-20 h-20 bg-brand-color/5 rounded-full blur-2xl translate-x-1/2 -translate-y-1/2"></div>
+            <div class="absolute bottom-0 left-0 w-24 h-24 bg-brand-color/5 rounded-full blur-2xl -translate-x-1/2 translate-y-1/2"></div>
+            
+            <img 
+                src="{% static 'images/maintenance_illustration.png' %}" 
+                alt="Illustration"
+                class="w-full h-auto max-w-[220px] relative z-10 drop-shadow-lg animate-float"
+            >
         </div>
     </div>
 </div>
+
+<style>
+    @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-8px); }
+    }
+    .animate-float {
+        animation: float 5s ease-in-out infinite;
+    }
+    @keyframes shimmer {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100%); }
+    }
+    .animate-shimmer {
+        animation: shimmer 2s infinite linear;
+    }
+    body { background-color: #f9fafb !important; }
+</style>
 {% endblock %}
 
 {% block header %}{% endblock %}
 {% block footer %}{% endblock %}
+
+{% block extra_js %}
+<script>
+    window.maintenanceTimer = function(config) {
+        return {
+            startTime: new Date(config.start).getTime(),
+            endTime: new Date(config.end).getTime(),
+            showTimer: config.showTimer,
+            days: '00', hours: '00', minutes: '00', seconds: '00',
+            percentage: 0, isFinished: false, interval: null,
+            init() {
+                if (!this.endTime || isNaN(this.endTime)) { this.isFinished = true; return; }
+                this.update();
+                this.interval = setInterval(() => this.update(), 1000);
+            },
+            update() {
+                const now = new Date().getTime();
+                const total = this.endTime - this.startTime;
+                const remaining = this.endTime - now;
+                if (remaining <= 0) {
+                    this.isFinished = true;
+                    this.percentage = 100;
+                    if (this.interval) clearInterval(this.interval);
+                    return;
+                }
+                const d = Math.floor(remaining / (1000 * 60 * 60 * 24));
+                const h = Math.floor((remaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const m = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((remaining % (1000 * 60)) / 1000);
+                this.days = d.toString().padStart(2, '0');
+                this.hours = h.toString().padStart(2, '0');
+                this.minutes = m.toString().padStart(2, '0');
+                this.seconds = s.toString().padStart(2, '0');
+                if (total > 0) {
+                    const elapsed = now - this.startTime;
+                    this.percentage = Math.min(Math.max((elapsed / total) * 100, 0), 100);
+                }
+            }
+        }
+    }
+</script>
+{% endblock %}

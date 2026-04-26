@@ -5,6 +5,19 @@ import sys
 project_root = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, project_root)
 
+# Initialize PyMySQL
+try:
+    import pymysql
+    pymysql.version_info = (2, 2, 1, "final", 0)
+    pymysql.install_as_MySQLdb()
+    
+    # Monkeypatch Django's MySQL features to disable RETURNING clause
+    from django.db.backends.mysql.features import DatabaseFeatures
+    DatabaseFeatures.can_return_columns_from_insert = property(lambda self: False)
+    DatabaseFeatures.can_return_rows_from_bulk_insert = property(lambda self: False)
+except Exception:
+    pass
+
 # Set the Django settings module
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'church_app.settings')
 

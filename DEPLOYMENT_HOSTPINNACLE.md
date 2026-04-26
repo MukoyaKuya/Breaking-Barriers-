@@ -121,7 +121,7 @@ You now need to install the dependencies and migrate the database.
 Because Google Cloud Storage was locked during the synchronization phase over a billing delinquency, the newly uploaded images trapped in Google Cloud could not be downloaded in bulk.
 
 **To fix missing images on the live site:**
-1. Navigate to your live website admin portal (`https://yourdomain.com/admin/`).
+1. Navigate to your live website admin portal (`https://yourdomain.com/office/`).
 2. Log in using your existing superuser credentials (they were transferred securely within the JSON export!).
 3. Go to the **Gallery** and **Articles** sections.
 4. Manually re-upload the latest images for the corrupted posts directly from your computer. Because `USE_LOCAL_STORAGE=True` is set, these images will elegantly save right to HostPinnacle's 100GB SSD perfectly.

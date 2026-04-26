@@ -1,4 +1,5 @@
 {% extends 'church/base.html' %}
+{% load thumbnail %}
 
 {% block title %}Word of Truth - Breaking Barriers International{% endblock %}
 
@@ -33,8 +34,12 @@
                     <a href="{% url 'word_of_truth_detail' word_of_truth.slug %}"
                         class="relative aspect-[16/10] overflow-hidden bg-gray-100 block">
                         {% if word_of_truth.image %}
-                        <img src="{{ word_of_truth.image.url }}" alt="{{ word_of_truth.title }}" loading="lazy"
-                            class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        <picture>
+                            {% thumbnail word_of_truth.image "800x500" crop="smart" as thumb %}
+                            <source srcset="{{ thumb.url }}.webp" type="image/webp">
+                            <img src="{{ thumb.url }}" alt="{{ word_of_truth.title }}" loading="lazy"
+                                class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        </picture>
                         {% else %}
                         <div class="w-full h-full brand-color opacity-90 flex items-center justify-center">
                             <i class="fas fa-bible text-white/30 text-6xl"></i>
@@ -85,7 +90,7 @@
                 <div class="text-center mt-12 col-span-full" id="load-more-wrapper">
                     <button hx-get="{% url 'load_more_word_of_truth' %}?offset={{ next_offset }}"
                         hx-target="#load-more-wrapper" hx-swap="outerHTML"
-                        class="bg-brand-color text-white px-8 py-3.5 rounded-xl hover:bg-red-900 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl hover:-translate-y-1 min-h-[48px]">
+                        class="brand-color text-white px-8 py-3.5 rounded-xl hover:bg-red-900 transition-all duration-300 font-semibold shadow-lg hover:shadow-xl hover:-translate-y-1 min-h-[48px]">
                         Load More Articles
                     </button>
                 </div>

@@ -1,6 +1,7 @@
 from django.test import TestCase, Client, override_settings
 from django.urls import reverse
-from .models import BoardMember
+from .models import BoardMember, Book
+from django.core.files.uploadedfile import SimpleUploadedFile
 
 class SecurityAndCoreTests(TestCase):
     def setUp(self):
@@ -58,3 +59,31 @@ class SecurityAndCoreTests(TestCase):
         from .middleware import anonymize_ip
         self.assertEqual(anonymize_ip("192.168.1.45"), "192.168.1.0")
         self.assertEqual(anonymize_ip("2001:db8:85a3:8d3:1319:8a2e:370:7348"), "2001:db8:85a3::")
+
+
+class BooksPaginationTemplateTests(TestCase):
+    def setUp(self):
+        self.client = Client()
+        small_gif = (
+            b'\x47\x49\x46\x38\x39\x61\x01\x00\x01\x00\x00\x00\x00\x21\xf9\x04'
+            b'\x01\x0a\x00\x01\x00\x2c\x00\x00\x00\x00\x01\x00\x01\x00\x00\x02'
+            b'\x02\x4c\x01\x00\x3b'
+        )
+        self.test_image = SimpleUploadedFile("book.png", small_gif, content_type="image/png")
+
+    def test_books_pagination_shows_dynamic_current_and_total_pages(self):
+        for i in range(10):
+            Book.objects.create(
+                title=f"Book {i}",
+                slug=f"book-{i}",
+                cover_image=self.test_image,
+                description="Desc",
+                review="Review body",
+                is_published=True,
+            )
+
+        response = self.client.get(reverse('book_list'), {'page': 2})
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Page 2 of 2")
+        self.assertNotContains(response, "{{ books.paginator.num_pages }}")

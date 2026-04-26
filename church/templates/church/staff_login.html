@@ -54,6 +54,18 @@
         button:hover { background: #7a0026; }
         .next { margin-top: 1rem; }
         .next input { margin-bottom: 0; }
+        .captcha-box { 
+            background: #f9f9f9; 
+            padding: 1rem; 
+            border-radius: 8px; 
+            margin-bottom: 1rem; 
+            border: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .captcha-label { font-size: 0.85rem; color: #666; font-weight: bold; margin-bottom: 0; }
+        .captcha-input { width: 80px !important; margin-bottom: 0 !important; text-align: center; }
     </style>
 </head>
 <body>
@@ -71,6 +83,12 @@
             <input type="text" name="username" id="id_username" required autofocus>
             <label for="id_password">Password</label>
             <input type="password" name="password" id="id_password" required>
+
+            <div class="captcha-box">
+                <label for="captcha_answer" class="captcha-label">Security Check: {{ captcha_question }} = </label>
+                <input type="number" name="captcha_answer" id="captcha_answer" required class="captcha-input" placeholder="?">
+            </div>
+
             <input type="hidden" name="next" value="{{ next_url }}">
             <button type="submit">Log in</button>
         </form>

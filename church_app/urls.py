@@ -20,15 +20,18 @@ from urllib.parse import urlparse
 from django.contrib import admin
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
-from django.urls import path, include
+from django.urls import path, include, re_path
+from django.views.static import serve
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import RedirectView, TemplateView
 from django.views.csrf import csrf_failure as default_csrf_failure
+from church.utils import generate_math_captcha, validate_math_captcha
 from django.http import JsonResponse
 from django.db import connection
 from django.contrib.sitemaps.views import sitemap
 from church.sitemaps import StaticViewSitemap, NewsItemSitemap, WordOfTruthSitemap, ChildrensBreadSitemap, ManTalkSitemap
+from django_ratelimit.decorators import ratelimit
 
 sitemaps = {
     'static': StaticViewSitemap,
@@ -64,6 +67,7 @@ def _login_redirect_host(request):
     return request.get_host()
 
 
+@ratelimit(key='ip', rate='5/5m', block=True)
 def staff_login_view(request):
     """
     Custom staff login that bypasses Django admin login. Use this when admin
@@ -116,6 +120,16 @@ def staff_login_view(request):
                 url = f'{scheme}://{host}{next_url}'
                 logger.info("STAFF_LOGIN: redirect after login to %s (host=%s)", url, host)
                 return redirect(url)
+            
+            # Captcha validation
+            captcha_answer = request.POST.get('captcha_answer')
+            if not validate_math_captcha(request, captcha_answer):
+                return render(request, 'church/staff_login.html', {
+                    'error': 'Incorrect CAPTCHA answer. Please try again.',
+                    'next_url': next_url,
+                    'captcha_question': generate_math_captcha(request)
+                })
+
             if user is not None and not user.is_staff:
                 return render(request, 'church/staff_login.html', {
                     'error': 'This account does not have staff access.',
@@ -126,7 +140,10 @@ def staff_login_view(request):
             'next_url': next_url,
         })
 
-    return render(request, 'church/staff_login.html', {'next_url': next_url})
+    return render(request, 'church/staff_login.html', {
+        'next_url': next_url,
+        'captcha_question': generate_math_captcha(request)
+    })
 
 
 def csrf_failure_view(request, reason=''):
@@ -156,6 +173,9 @@ admin.site.site_header = "Breaking Barriers International"
 admin.site.site_title = "Breaking Barriers International"
 admin.site.index_title = "Administration"
 
+# Apply rate limiting to admin login
+admin.site.login = ratelimit(key='ip', rate='5/5m', block=True)(admin.site.login)
+
 urlpatterns = [
     path('health/', health_check_view),
     path('staff-login/', staff_login_view),
@@ -180,3 +200,9 @@ if settings.DEBUG:
     # In development, serve static files from STATICFILES_DIRS
     from django.contrib.staticfiles.urls import staticfiles_urlpatterns
     urlpatterns += staticfiles_urlpatterns()
+else:
+    # Production Fallback: Serve media files via Django if they return 404 from the web server.
+    # This is necessary on shared hosting like HostPinnacle when the app is outside public_html.
+    urlpatterns += [
+        re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
+    ]

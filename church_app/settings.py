@@ -72,27 +72,31 @@ if os.environ.get('CUSTOM_DOMAIN'):
             if origin not in CSRF_TRUSTED_ORIGINS:
                 CSRF_TRUSTED_ORIGINS.append(origin)
 
-# Force DB sessions to avoid cache/memory issues on Cloud Run
+# Session & CSRF Configuration (HostPinnacle Production)
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
-
-# FIREBASE HOSTING REQUIREMENT:
-# Firebase strips ALL cookies except "__session".
-# We must rename our session cookie to exactly using this key.
-SESSION_COOKIE_NAME = '__session'
 SESSION_COOKIE_AGE = 1209600
 SESSION_SAVE_EVERY_REQUEST = True
 
-# Store CSRF token inside the session (DB) because we cannot send a separate
-# 'csrftoken' cookie (Firebase will strip it).
-CSRF_USE_SESSIONS = True
-
-# Security settings (Firebase terminates SSL, but we can usually set these)
-# Keeping them False for now to ensure no other blockers, but __session usually works.
-SESSION_COOKIE_SECURE = False
-SESSION_COOKIE_DOMAIN = None
-CSRF_COOKIE_SECURE = False
+# Security flags for cookies
+SESSION_COOKIE_HTTPONLY = True
+CSRF_COOKIE_HTTPONLY = True
 SESSION_COOKIE_SAMESITE = 'Lax'
 CSRF_COOKIE_SAMESITE = 'Lax'
+
+# Cookie Prefixes (__Host-)
+# Note: These require HTTPS and No Domain to be set.
+if not DEBUG:
+    SESSION_COOKIE_NAME = '__Host-sessionid'
+    CSRF_COOKIE_NAME = '__Host-csrftoken'
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    CSRF_USE_SESSIONS = False # Use a separate secure cookie for CSRF
+else:
+    SESSION_COOKIE_NAME = 'sessionid'
+    CSRF_COOKIE_NAME = 'csrftoken'
+    SESSION_COOKIE_SECURE = False
+    CSRF_COOKIE_SECURE = False
+    CSRF_USE_SESSIONS = True # Keep in session for easier local dev
 
 # Cloud Run / other service URLs that serve this app (so staff login works on run.app too)
 _extra_origins = os.environ.get('CSRF_EXTRA_ORIGINS', '').strip() or os.environ.get('CLOUD_RUN_URL', '').strip()
@@ -112,7 +116,40 @@ CSRF_FAILURE_VIEW = 'church_app.urls.csrf_failure_view'
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 X_FRAME_OPTIONS = 'DENY'
+SECURE_REFERRER_POLICY = 'same-origin'
+SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin'
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# Content Security Policy (CSP)
+# Analyzed resources: unpkg.com, cdn.jsdelivr.net, fonts.googleapis.com, cdnjs.cloudflare.com
+CSP_DEFAULT_SRC = ("'self'",)
+CSP_SCRIPT_SRC = (
+    "'self'", 
+    "'unsafe-inline'", 
+    "'unsafe-eval'", 
+    "https://unpkg.com", 
+    "https://cdn.jsdelivr.net",
+    "https://cdnjs.cloudflare.com"
+)
+CSP_STYLE_SRC = (
+    "'self'", 
+    "'unsafe-inline'", 
+    "https://fonts.googleapis.com", 
+    "https://cdnjs.cloudflare.com",
+    "https://cdn.jsdelivr.net"
+)
+CSP_IMG_SRC = (
+    "'self'", 
+    "data:", 
+    "https://storage.googleapis.com", 
+    "https://bb-international.org",
+    "https://www.bb-international.org"
+)
+CSP_FONT_SRC = ("'self'", "https://fonts.gstatic.com", "https://cdnjs.cloudflare.com")
+CSP_CONNECT_SRC = ("'self'",)
+CSP_FRAME_ANCESTORS = ("'none'",)
+CSP_OBJECT_SRC = ("'none'",)
+CSP_BASE_URI = ("'self'",)
 
 
 # django-ipware: client IP for analytics (unique visitors). Checks X-Forwarded-For,
@@ -127,38 +164,11 @@ USE_X_FORWARDED_PORT = True
 # Ensure cookies are associated with the custom domain if available - handled above
 
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-        },
-    },
-    'root': {
-        'handlers': ['console'],
-        'level': 'INFO',
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['console'],
-            'level': 'INFO',
-            'propagate': True,
-        },
-        'church.diagnostic_middleware': {  # Specific logger for our middleware
-            'handlers': ['console'],
-            'level': 'INFO',
-            'propagate': True,
-        },
-    },
-}
 
 if not DEBUG:
     # On HostPinnacle shared hosting, SSL is typically terminated by a proxy or LiteSpeed.
     # We allow the user to control this via ENV to prevent redirect loops.
     SECURE_SSL_REDIRECT = os.environ.get('SECURE_SSL_REDIRECT', 'False') == 'True'
-    SESSION_COOKIE_SECURE = True
-    CSRF_COOKIE_SECURE = True
     SECURE_HSTS_SECONDS = 31536000  # 1 year
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
@@ -202,10 +212,13 @@ if _debug_toolbar_available:
 MIDDLEWARE = [
     'church.diagnostic_middleware.HeaderLoggingMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'csp.middleware.CSPMiddleware',
+    'church.security_middleware.SecurityHeadersMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     *(['debug_toolbar.middleware.DebugToolbarMiddleware'] if _debug_toolbar_available else []),
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'church.middleware.MaintenanceModeMiddleware',
     'church.proxy_fix.ProxyRefererFixMiddleware',  # before CSRF so admin login works when proxy strips Referer
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',  # REQUIRED: Populates request.user

@@ -5,6 +5,31 @@
 
 {% block title %}{{ card.title }} - Breaking Barriers International{% endblock %}
 
+{% block meta_description %}{{ card.summary|striptags|truncatechars:155 }}{% endblock %}
+
+{% block og_title %}{{ card.title }}{% endblock %}
+{% block og_description %}{{ card.summary|striptags|truncatewords:25 }}{% endblock %}
+{% block og_type %}article{% endblock %}
+{% block og_image %}{% if card.image %}{{ request.scheme }}://{{ request.get_host }}{{ card.image.url }}{% else %}{% static 'images/logo.png' %}{% endif %}{% endblock %}
+
+{% block extra_head %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{ card.title|escapejs }}",
+  "description": "{{ card.summary|striptags|truncatewords:25|escapejs }}",
+  "image": ["{% if card.image %}{{ request.scheme }}://{{ request.get_host }}{{ card.image.url }}{% endif %}"],
+  "datePublished": "{{ card.created_at|date:'c' }}",
+  "dateModified": "{{ card.updated_at|date:'c' }}",
+  "author": [{
+      "@type": "Person",
+      "name": "{{ card.author_name|escapejs }}"
+    }]
+}
+</script>
+{% endblock %}
+
 {% block content %}
 <div class="bg-white py-8">
     <div class="container mx-auto px-4">

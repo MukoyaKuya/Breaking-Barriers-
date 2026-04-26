@@ -5,8 +5,7 @@
 {% load comment_tags %}
 {% block title %}{{ word_of_truth.title }} - Breaking Barriers International{% endblock %}
 
-{% block meta_title %}{{ word_of_truth.title }} | Breaking Barriers International{% endblock %}
-{% block meta_description %}{{ word_of_truth.summary|striptags|truncatewords:25 }}{% endblock %}
+{% block meta_description %}{{ word_of_truth.summary|striptags|truncatechars:155 }}{% endblock %}
 
 {% block og_title %}{{ word_of_truth.title }}{% endblock %}
 {% block og_description %}{{ word_of_truth.summary|striptags|truncatewords:25 }}{% endblock %}
@@ -97,8 +96,12 @@ word_of_truth.image.url }}{% else %}{{ block.super }}{% endif %}{% endblock %}
                     {% if word_of_truth.image %}
                     <div class="w-full max-h-[320px] md:max-h-[400px] relative bg-gray-100 group overflow-hidden">
                         {% if word_of_truth.image %}
-                        <img src="{{ word_of_truth.image.url }}" alt="{{ word_of_truth.title }}" loading="lazy"
-                            class="w-full h-full max-h-[320px] md:max-h-[400px] object-cover object-center transition-transform duration-700 group-hover:scale-105">
+                        <picture>
+                            {% thumbnail word_of_truth.image "1200x600" crop="smart" as thumb %}
+                            <source srcset="{{ thumb.url }}.webp" type="image/webp">
+                            <img src="{{ thumb.url }}" alt="{{ word_of_truth.title }}" loading="lazy"
+                                class="w-full h-full max-h-[320px] md:max-h-[400px] object-cover object-center transition-transform duration-700 group-hover:scale-105">
+                        </picture>
                         {% else %}
                         <div class="w-full h-full brand-color opacity-90 flex items-center justify-center">
                             <i class="fas fa-bible text-white/30 text-6xl"></i>

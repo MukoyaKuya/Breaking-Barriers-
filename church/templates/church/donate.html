@@ -67,6 +67,16 @@
                             {% endif %}
                         </div>
 
+                        <!-- Math CAPTCHA -->
+                        <div class="bg-red-50 p-3 rounded-lg border border-red-100">
+                            <label for="captcha_answer" class="block text-sm font-bold text-red-900 mb-1">
+                                Security Check: What is {{ captcha_question }}?
+                            </label>
+                            <input type="number" name="captcha_answer" id="captcha_answer" required
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-1 focus:ring-red-500 outline-none"
+                                placeholder="Your answer">
+                        </div>
+
                         <button type="submit" name="contact-submit" :disabled="submitting"
                             class="w-full brand-color text-white py-3 rounded-lg font-bold hover:opacity-90 transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
                             <span x-show="!submitting">Send</span>
@@ -142,6 +152,16 @@
                         {% if partner_form.message.errors %}
                         <p class="text-red-500 text-sm mt-1">{{ partner_form.message.errors.0 }}</p>
                         {% endif %}
+                    </div>
+
+                    <!-- Math CAPTCHA -->
+                    <div class="mb-8 bg-red-50 p-4 rounded-xl border border-red-100">
+                        <label for="partner_captcha" class="block text-sm font-bold text-red-900 mb-2">
+                            Security Check: What is {{ captcha_question }}?
+                        </label>
+                        <input type="number" name="captcha_answer" id="partner_captcha" required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 outline-none"
+                            placeholder="Your answer">
                     </div>
 
                     <button type="submit" name="partner-submit" :disabled="submitting"

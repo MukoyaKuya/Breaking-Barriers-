@@ -15,7 +15,7 @@
     <link rel="shortcut icon" type="image/png" href="{% static 'images/bb_logo.png' %}">
 
     <!-- SEO Meta Tags -->
-    <title>{% block meta_title %}Breaking Barriers International{% endblock %}</title>
+    <meta name="google-site-verification" content="3qBCuQg6APnXhNIUdgrxi21eq8dSt9m81IAjKnQNzO8" />
     <meta name="description"
         content="{% block meta_description %}Based in Nairobi, Kenya, Breaking Barriers International is a ministry dedicated to teaching spiritual warfare and deliverance.{% endblock %}">
     <meta name="author" content="Breaking Barriers International">
@@ -25,19 +25,20 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="{% block og_type %}website{% endblock %}">
     <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:site_name" content="Breaking Barriers International">
     <meta property="og:title"
-        content="{% block og_title %}{% block meta_title_og %}Breaking Barriers International{% endblock %}{% endblock %}">
+        content="{% block og_title %}Breaking Barriers International | Spiritual Warfare & Deliverance Ministry{% endblock %}">
     <meta property="og:description"
-        content="{% block og_description %}{% block meta_description_og %}Based in Nairobi, Kenya, Breaking Barriers International is a ministry dedicated to teaching spiritual warfare and deliverance.{% endblock %}{% endblock %}">
+        content="{% block og_description %}Based in Nairobi, Kenya, Breaking Barriers International is a ministry dedicated to teaching spiritual warfare and deliverance.{% endblock %}">
     <meta property="og:image"
         content="{% block og_image %}https://bb-international.org/static/images/bb_logo.png{% endblock %}">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{% block twitter_title %}Breaking Barriers International{% endblock %}">
+    <meta name="twitter:title" content="{% block twitter_title %}{{ self.og_title }}{% endblock %}">
     <meta name="twitter:description"
-        content="{% block twitter_description %}Breaking barriers in life and ministry through the power of the Holy Spirit{% endblock %}">
+        content="{% block twitter_description %}{{ self.og_description }}{% endblock %}">
     <meta name="twitter:image"
-        content="{% block twitter_image %}{% block og_image_tw %}https://bb-international.org/static/images/bb_logo.png{% endblock %}{% endblock %}">
+        content="{% block twitter_image %}{{ self.og_image }}{% endblock %}">
 
     {% block extra_meta %}{% endblock %}
 
@@ -45,10 +46,27 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Breaking Barriers International",
+      "alternateName": ["BBI", "Breaking Barriers"],
+      "url": "https://bb-international.org"
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Breaking Barriers International",
       "url": "https://bb-international.org",
       "logo": "https://bb-international.org{% static 'images/bb_logo.png' %}",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+254 716 703508",
+        "contactType": "customer service",
+        "areaServed": "KE",
+        "availableLanguage": "English"
+      },
       "sameAs": [
         "https://www.facebook.com/BreakingBarriersInt",
         "https://x.com/BreakingBarriers"
@@ -71,6 +89,7 @@
                 extend: {
                     colors: {
                         brand: 'rgb(153, 0, 48)',
+                        'brand-color': 'rgb(153, 0, 48)',
                     }
                 }
             }
@@ -109,7 +128,7 @@
             /* gray-900 */
         }
 
-        .brand-color {
+        .brand-color, .bg-brand-color {
             background-color: rgb(153, 0, 48);
         }
 

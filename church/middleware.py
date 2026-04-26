@@ -59,8 +59,50 @@ class PageViewMiddleware(MiddlewareMixin):
             return response
             
         try:
-            from .models import PageView
-            PageView.objects.create(path=path[:500], ip_address=get_client_ip(request))
+            import threading
+            from django.db import connections
+            
+            def log_page_view_async(p, ip):
+                try:
+                    from .models import PageView
+                    PageView.objects.create(path=p, ip_address=ip)
+                except Exception:
+                    pass
+                finally:
+                    for conn in connections.all():
+                        conn.close()
+            
+            threading.Thread(
+                target=log_page_view_async, 
+                args=(path[:500], get_client_ip(request)),
+                daemon=True
+            ).start()
         except Exception:
             pass  # Don't break the request if DB/logging fails
         return response
+
+
+class MaintenanceModeMiddleware(MiddlewareMixin):
+    """
+    Global lockdown middleware. If MN.is_active is True, all non-admin/non-static 
+    requests are diverted to the maintenance page.
+    """
+    SKIP_PATHS = ('/office/', '/static/', '/media/', '/staff-login/', '/favicon.ico')
+
+    def process_request(self, request):
+        # Allow admin and static files
+        if any(request.path.startswith(p) for p in self.SKIP_PATHS):
+            return None
+
+        try:
+            from .models import MN
+            mn_settings = MN.load()
+            if mn_settings.is_active:
+                # If we are already on the home page, home_view will handle it, 
+                # but for all other pages, we force the maintenance template.
+                from django.shortcuts import render
+                if request.path != '/':
+                    return render(request, 'church/maintenance.html', {'mn': mn_settings})
+        except Exception:
+            pass
+        return None

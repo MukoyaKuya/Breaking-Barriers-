@@ -5,6 +5,8 @@ from urllib.parse import urlparse, parse_qs
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from image_cropping import ImageRatioField
+from django.utils import timezone
+from datetime import timedelta
 class Verse(models.Model):
     """Model for daily/weekly Bible verses"""
     content = models.TextField()
@@ -922,7 +924,48 @@ class MN(models.Model):
         default=False, 
         help_text='Check this to enable Maintenance Mode on the homepage'
     )
+    start_time = models.DateTimeField(
+        null=True, blank=True,
+        help_text='When this maintenance period started (used for progress bar)'
+    )
+    estimated_end_time = models.DateTimeField(
+        null=True, blank=True,
+        help_text='When the maintenance is expected to end'
+    )
+    show_timer = models.BooleanField(
+        default=True,
+        help_text='Whether to show the countdown timer on the maintenance page'
+    )
+    DURATION_CHOICES = [
+        (5, '5 Minutes'),
+        (10, '10 Minutes'),
+        (20, '20 Minutes'),
+        (60, '1 Hour'),
+        (1440, '1+ Day'),
+    ]
+    duration = models.IntegerField(
+        choices=DURATION_CHOICES,
+        null=True, blank=True,
+        help_text='Select how long the maintenance will take. This will automatically calculate the end time.'
+    )
+    message = models.TextField(
+        blank=True,
+        help_text='Custom message to display on the maintenance page (defaults to standard text if blank)'
+    )
     updated_at = models.DateTimeField(auto_now=True)
+
+    def save(self, *args, **kwargs):
+        self.pk = 1
+        if self.is_active and self.duration:
+            # If turning on maintenance or updating duration, reset start/end times
+            self.start_time = timezone.now()
+            self.estimated_end_time = self.start_time + timedelta(minutes=self.duration)
+        elif not self.is_active:
+            # Clear times when maintenance is off
+            self.start_time = None
+            self.estimated_end_time = None
+            
+        super().save(*args, **kwargs)
 
     class Meta:
         verbose_name = 'Maintenance (MN)'
@@ -930,10 +973,6 @@ class MN(models.Model):
 
     def __str__(self):
         return "Maintenance Mode Settings"
-
-    def save(self, *args, **kwargs):
-        self.pk = 1
-        super().save(*args, **kwargs)
 
     @classmethod
     def load(cls):

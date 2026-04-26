@@ -5,8 +5,7 @@
 {% load comment_tags %}
 {% block title %}{{ article.title }} - Breaking Barriers International{% endblock %}
 
-{% block meta_title %}{{ article.title }} | Breaking Barriers International{% endblock %}
-{% block meta_description %}{{ article.summary|striptags|truncatewords:25 }}{% endblock %}
+{% block meta_description %}{{ article.summary|striptags|truncatechars:155 }}{% endblock %}
 
 {% block og_title %}{{ article.title }}{% endblock %}
 {% block og_description %}{{ article.summary|striptags|truncatewords:25 }}{% endblock %}

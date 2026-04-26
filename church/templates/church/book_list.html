@@ -2,7 +2,9 @@
 {% load thumbnail %}
 {% load safe_thumbnail %}
 
-{% block title %}Books - Breaking Barriers International{% endblock %}
+{% block title %}Books & Resources | Breaking Barriers International{% endblock %}
+
+{% block meta_description %}Explore our collection of books and spiritual resources by Pst. Nellie Shani. Empower yourself with teachings on spiritual warfare, deliverance, and victory in Christ.{% endblock %}
 
 {% block content %}
 <div class="bg-gray-50/50 py-8 sm:py-12 md:py-16 overflow-x-hidden">
@@ -68,8 +70,7 @@
                     <a href="?page={{ books.previous_page_number }}{% if search_query %}&q={{ search_query }}{% endif %}"
                         class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 text-gray-700 transition">Previous</a>
                     {% endif %}
-                    <span class="px-4 py-2 text-gray-500">Page {{ books.number }} of {{ books.paginator.num_pages
-                        }}</span>
+                    <span class="px-4 py-2 text-gray-500">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
                     {% if books.has_next %}
                     <a href="?page={{ books.next_page_number }}{% if search_query %}&q={{ search_query }}{% endif %}"
                         class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 text-gray-700 transition">Next</a>

@@ -3,8 +3,17 @@
 <section class="relative h-[380px] sm:h-[480px] md:h-[560px] lg:h-[600px] bg-cover bg-center bg-gray-900">
     {% if hero_settings.image %}
     <div class="absolute inset-0 z-0">
+        {% safe_thumbnail hero_settings.image "1600x900" crop=True detail=True as thumb %}
+        {% if thumb %}
+        <picture>
+            <source srcset="{{ thumb.url }}.webp" type="image/webp">
+            <img src="{{ thumb.url }}" alt="Hero Background" class="w-full h-full object-cover object-center"
+                loading="eager">
+        </picture>
+        {% else %}
         <img src="{{ hero_settings.image.url }}" alt="Hero Background" class="w-full h-full object-cover object-center"
             loading="eager">
+        {% endif %}
         <div class="absolute inset-0 bg-gradient-to-r from-gray-900/95 via-gray-900/80 to-gray-900/40"></div>
     </div>
     {% else %}

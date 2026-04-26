@@ -137,7 +137,7 @@
                     <!-- Background Vibrant Layer (Blurred Backdrop) -->
                     <div class="absolute inset-0 w-full h-full overflow-hidden">
                         {% if item.image %}
-                        <img src="{{ item.image.url }}" alt=""
+                        <img src="{{ item.image.url }}" alt="{{ item.caption|striptags|default:'Gallery Image Backdrop' }}"
                             class="w-full h-full object-cover blur-2xl opacity-40 scale-110">
                         {% else %}
                         <div class="w-full h-full bg-gray-800"></div>

@@ -48,6 +48,7 @@ from ..query_utils import (
 )
 from ..cache_decorators import cache_page_for_anonymous
 from ..middleware import get_client_ip
+from ..utils import generate_math_captcha, validate_math_captcha
 
 
 @cache_page_for_anonymous(60 * 60) # Cache the shell for an hour
@@ -55,7 +56,7 @@ def home_view(request):
     """Serve the lightweight App Shell with the logo instantly."""
     mn_settings = get_cached_maintenance_settings()
     if getattr(mn_settings, 'is_active', False):
-        return render(request, 'church/maintenance.html')
+        return render(request, 'church/maintenance.html', {'mn': mn_settings})
     return render(request, 'church/home_shell.html')
 
 
@@ -179,7 +180,15 @@ def donate_view(request):
         # Determine which form was submitted based on the button name or prefix presence
         if 'contact-submit' in request.POST:
             contact_form = ContactForm(request.POST, prefix='contact')
+            captcha_answer = request.POST.get('captcha_answer')
             if contact_form.is_valid():
+                if not validate_math_captcha(request, captcha_answer):
+                    messages.error(request, 'Incorrect CAPTCHA answer. Please try again.')
+                    return render(request, 'church/donate.html', {
+                        'contact_form': contact_form,
+                        'partner_form': partner_form,
+                        'captcha_question': generate_math_captcha(request)
+                    })
                 # Server-side deduplication check
                 name = contact_form.cleaned_data.get('name')
                 email = contact_form.cleaned_data.get('email')
@@ -198,7 +207,15 @@ def donate_view(request):
 
         elif 'partner-submit' in request.POST:
             partner_form = PartnerInquiryForm(request.POST, prefix='partner')
+            captcha_answer = request.POST.get('captcha_answer')
             if partner_form.is_valid():
+                if not validate_math_captcha(request, captcha_answer):
+                    messages.error(request, 'Incorrect CAPTCHA answer. Please try again.')
+                    return render(request, 'church/donate.html', {
+                        'contact_form': contact_form,
+                        'partner_form': partner_form,
+                        'captcha_question': generate_math_captcha(request)
+                    })
                 # Server-side deduplication
                 email = partner_form.cleaned_data.get('email')
                 message = partner_form.cleaned_data.get('message')
@@ -217,6 +234,7 @@ def donate_view(request):
     context = {
         'contact_form': contact_form,
         'partner_form': partner_form,
+        'captcha_question': generate_math_captcha(request)
     }
     return render(request, 'church/donate.html', context)
 
@@ -232,7 +250,14 @@ def school_of_ministry_view(request):
     
     if request.method == 'POST':
         form = SchoolEnrollmentForm(request.POST)
+        captcha_answer = request.POST.get('captcha_answer')
         if form.is_valid():
+            if not validate_math_captcha(request, captcha_answer):
+                messages.error(request, "Incorrect CAPTCHA answer. Please try again.")
+                return render(request, 'church/school_of_ministry.html', {
+                    'form': form,
+                    'captcha_question': generate_math_captcha(request)
+                })
             email = form.cleaned_data.get('email')
             name = form.cleaned_data.get('name')
             phone_number = form.cleaned_data.get('phone_number')
@@ -268,10 +293,13 @@ def school_of_ministry_view(request):
     else:
         form = SchoolEnrollmentForm()
 
-    return render(request, 'church/school_of_ministry.html', {'form': form})
+    return render(request, 'church/school_of_ministry.html', {
+        'form': form,
+        'captcha_question': generate_math_captcha(request)
+    })
 
 
-def media_view(request):
+def multimedia_view(request):
     """Media page"""
     return render(request, 'church/media.html')
 
@@ -282,7 +310,14 @@ def contact_us_view(request):
     
     if request.method == 'POST':
         form = ContactForm(request.POST)
+        captcha_answer = request.POST.get('captcha_answer')
         if form.is_valid():
+            if not validate_math_captcha(request, captcha_answer):
+                messages.error(request, 'Incorrect CAPTCHA answer. Please try again.')
+                return render(request, 'church/contact_us.html', {
+                    'form': form,
+                    'captcha_question': generate_math_captcha(request)
+                })
             # Server-side deduplication
             email = form.cleaned_data.get('email')
             message = form.cleaned_data.get('message')
@@ -300,7 +335,10 @@ def contact_us_view(request):
     else:
         form = ContactForm()
     
-    return render(request, 'church/contact_us.html', {'form': form})
+    return render(request, 'church/contact_us.html', {
+        'form': form,
+        'captcha_question': generate_math_captcha(request)
+    })
 
 
 def search_view(request):
